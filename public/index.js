@@ -17,26 +17,26 @@ function newUser(){
   alert("done");
 }
 //lOG IN
-document.getElementById("logIn").addEventListener("click",loginUser,false); 
+document.getElementById("login").addEventListener("click",loginUser,false); 
 function loginUser(){
   var UserPassword = document.getElementById("log-in-password").value;
   var UserEmail = document.getElementById("log-in-email").value;
   //TODO check retyped password
   
-  firebase.auth().signInWithEmailAndPassword(UserEmail, UserPassword).catch(function(error) {
+   firebase.auth().signInWithEmailAndPassword(UserEmail, UserPassword).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     // ...
-  });
-  var display = user.UserEmail;
-  alert("logged in as"+display);
+  }); 
+  alert("logged in as "+user.email);
 }
 // user state changed
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     alert("hello");
+    window.location.pathname = "/main";
     // ...
   } else {
     // User is signed out.
@@ -44,3 +44,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     alert("signed out")
   }
 });
+//sign out
+document.getElementById("signOut").addEventListener("click",signOutUser,false);
+function signOutUser(){
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }).catch(function(error) {
+    // An error happened.
+  });
+}

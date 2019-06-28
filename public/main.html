@@ -19,45 +19,14 @@
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation">
               <a class="mdl-navigation__link" href="#">Nav link 1</a>
-              <a class="mdl-navigation__link" href="#">Nav link 2</a>
+              <a class="mdl-navigation__link" id ="userEmail" href="#">Nav link 2</a>
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="signOut">
                 Sign Out
               </button>
             </nav>
           </div>
         </header>
-        <div id="login-box">
-                <div class="left" >
-                <h1>Sign up</h1>
-                
-                <input type="text" name="username" placeholder="Username" id="sign-up-username" />
-                <input type="text" name="email" placeholder="E-mail" id="sign-up-email" />
-                <input type="password" name="password" placeholder="Password" id="sign-up-password" />
-                <input type="password" name="password" placeholder="Retype password"id= "sign-up-password-re" />
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" id="signUp">
-                  Button
-                </button>
-
-              </div>
-                <div class="mid">
-                  <h1>Log in</h1>
-                  <input type="text2" name="log_email" placeholder="account E-mail" id="log-in-email" />
-                  <input type="password2" name="log_password" placeholder="account Password" id="log-in-password" />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" id="login">
-                  Login
-                  </button>
-                </div>
-                <div class="right">
-                <span class="loginwith">Sign in with<br />social network</span>
-                
-                <button class="social-signin facebook">Log in with facebook</button>
-                <button class="social-signin twitter">Log in with Twitter</button>
-                <button class="social-signin google">Log in with Google+</button>
-                </div>
-                <div class="or">OR</div>
-                
-                <div class="or2">OR</div>
-            </div>
+        
         <div class="mdl-layout__drawer">
         </div>
       </div>
@@ -85,6 +54,6 @@
         firebase.initializeApp(firebaseConfig);
         </script>
         <script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
-        <script src= "index.js"> </script>
+        <script src= "main.js"> </script>
     </body>
 </html>
