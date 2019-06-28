@@ -29,14 +29,13 @@ function loginUser(){
     var errorMessage = error.message;
     // ...
   }); 
-  alert("logged in as "+user.email);
 }
 // user state changed
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     alert("hello");
-    window.location.pathname = "/main";
+    window.location.href = "/main.html";
     // ...
   } else {
     // User is signed out.
