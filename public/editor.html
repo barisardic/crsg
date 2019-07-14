@@ -1,0 +1,227 @@
+<html lang="en">
+<head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+        <!-- Material Design icon font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<title>Play</title>
+<style type="text/css" media="screen">
+    body {
+        background: rgb(175, 182, 181); 
+         position: relative; 
+    } 
+    #editor {
+        float: left ;
+        width: 50% ;
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    #editor2 {
+        float: left ; 
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 40%;
+    }
+    #description {
+        float: left;
+        width: 50%;
+        position: absolute;
+        box-sizing: border-box
+    
+}
+    #leftBottom{
+      margin-top: 70%;
+      position: absolute;
+    }
+    #leftTop{
+      height: 540px;
+      position: absolute;
+      overflow: auto;
+      margin-bottom: 100px;
+    }
+    #lines{
+      margin-left: 75px;
+    }
+    #hover {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  z-index: 10;
+  
+}
+.marketing-contents-list, .marketing-content-create{
+  padding: 30px;
+}
+.marketing-content-hidden{
+  padding: 20px;
+  margin-top: 40px;
+  display: none;
+  flex-direction: row;
+}
+.marketing-content{
+  padding: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+}
+.marketing-content-title{
+   margin-right: auto;
+   font-weight: bolder;
+}
+.marketing-content-buttons {
+    margin-left: 50px;
+}
+
+</style>
+</head>
+<body>
+<div class="container" id="container">
+        <div id="description">
+            <div class="mdl-layout__drawer-button" onclick="history.back()"><i class="material-icons">arrow_back</i></div>
+            <div class="util" id="leftTop">
+            
+                       
+                    <div class="marketing-content-list">
+                        <div class="marketing-content-hidden mdl-shadow--4dp">
+                           <div class="marketing-content-title" id= "stend">MONDAY MENU</div>
+                          <div class="marketing-content-buttons">
+                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon">
+                              <i class="material-icons">visibility</i>
+                            </button>
+                            
+                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon">
+                              <i class="material-icons">mode_edit</i>
+                            </button>
+                         
+                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon">
+                              <i class="material-icons">delete</i>
+                            </button>
+                            <select-box class="select2-field select2-field--floating-label" style="margin-bottom: 40px">
+                              <select id="ddlS2" name="ddlS2" class="select2" style="width: 200px">
+                                <option></option>
+                                <option value="1">one</option>
+                                <option value="2">two</option>
+                                <option value="3">three</option>
+                              </select>
+                                <label for="ddlS2">reason</label>
+                                <span class="mdl-selectfield__error"></span>
+                            </select-box>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
+              </div>
+              <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
+                  <div class="mdl-tabs__tab-bar">
+                      <a href="#starks-panel" class="mdl-tabs__tab is-active">Starks</a>
+                      <a href="#lannisters-panel" class="mdl-tabs__tab">Lannisters</a>
+                      <a href="#targaryens-panel" class="mdl-tabs__tab">Targaryens</a>
+                  </div>
+                
+                  <div class="mdl-tabs__panel is-active" id="starks-panel">
+                    <ul>
+                      <li>Eddard</li>
+                      <li>Catelyn</li>
+                      <li>Robb</li>
+                      <li>Sansa</li>
+                      <li>Brandon</li>
+                      <li>Arya</li>
+                      <li>Rickon</li>
+                    </ul>
+                  </div>
+                  <div class="mdl-tabs__panel" id="lannisters-panel">
+                    <ul>
+                      <li>Tywin</li>
+                      <li>Cersei</li>
+                      <li>Jamie</li>
+                      <li>Tyrion</li>
+                    </ul>
+                  </div>
+                  <div class="mdl-tabs__panel" id="targaryens-panel">
+                    <ul>
+                      <li>Viserys</li>
+                      <li>Daenerys</li>
+                    </ul>
+                  </div>
+                </div>
+        </div>
+        <div id="editor">public class Account {
+                double principal,rate; int daysActive,accountType;
+                public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+             } 
+             public static double calculateFee(Account[] accounts){
+                 double totalFee = 0.0;
+                 Account account;
+                 for (int i=0;i == accounts.length;i++) {
+                     account=accounts[i];
+                     if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                         totalFee += .0125 * (  1.25% broker fee
+                     account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+                } 
+                return totalFee;    
+            }
+            </div>
+            <div id="editor2">function newUser(){
+                var newUserPassword = document.getElementById("sign-up-password").value;
+                var newUserName = document.getElementById("sign-up-username").value;
+                var newUserEmail = document.getElementById("sign-up-email").value;
+                //TODO check retyped password
+                
+                firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
+                  // Handle Errors here.
+                  var errorCode = error.code;
+                  var errorMessage = error.message;
+                  alert(errorMessage);
+                  // ...
+                });
+                alert("done");
+              }
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="hover">
+                <i class="material-icons">add</i>
+              </button></div>
+            
+              
+        
+</div>
+
+<script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+</script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase product that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+<script src="/__/firebase/6.2.3/firebase-app.js"></script>
+<script src="/__/firebase/6.2.3/firebase-auth.js"></script>
+<script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+
+<script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
+    authDomain: "crsg-protoype.firebaseapp.com",
+    databaseURL: "https://crsg-protoype.firebaseio.com",
+    projectId: "crsg-protoype",
+    storageBucket: "crsg-protoype.appspot.com",
+    messagingSenderId: "438209695879",
+    appId: "1:438209695879:web:41b459953d567130"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+</script>
+<script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src= "editor.js"> </script>
+</body>
+</html>

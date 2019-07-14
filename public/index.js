@@ -35,20 +35,22 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     alert("hello");
-    window.location.href = "/main.html";
     // ...
+    window.location.href = "/main.html";
   } else {
     // User is signed out.
     // ...
-    alert("signed out")
+    
   }
 });
 //sign out
 document.getElementById("signOut").addEventListener("click",signOutUser,false);
 function signOutUser(){
+  alert("signed out");
   firebase.auth().signOut().then(function() {
     // Sign-out successful.
   }).catch(function(error) {
     // An error happened.
   });
+  
 }

@@ -14,19 +14,6 @@
   
   /*Login Section */
   
-  .login-cover {
-    background: #ff0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 50vh;
-    z-index: 800;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
   #loginProgress {
     display: none;
   }
