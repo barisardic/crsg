@@ -1,7 +1,9 @@
-
+var originalDom = document.querySelector('.marketing-content-hidden');
+var listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = 2;
 if(levelChosen==1){
   document.getElementById("editor").style.display = "block";
+  var Range = ace.require("ace/range").Range;
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/monokai");
   editor.session.setMode("ace/mode/java");
@@ -10,7 +12,7 @@ if(levelChosen==1){
 else if(levelChosen ==2){
   document.getElementById("editor2").style.display = "block";
   var code = document.querySelector("editor2");
-
+  var Range = ace.require("ace/range").Range;
   var editor = ace.edit("editor2");
   editor.setTheme("ace/theme/monokai");
   editor.session.setMode("ace/mode/javascript");
@@ -56,10 +58,15 @@ function lines(){
     ListofErrors.push(selection);
     alert(ListofErrors.length);
     addComponent(ListofErrors);
-
+  
   }
   document.getElementById('hover').addEventListener('click', getLines, false);
+  
 };
+function submitSelection () {
+  alert("sendinnng");
+}
+document.getElementById('submitBtn').addEventListener('click',submitSelection,false);
 
 /* function getLines(){
   /* selectionRange = editor.getSelectionRange();
@@ -84,23 +91,97 @@ function addComponent (ListofErrors)
               var newNode = mc.cloneNode(true);
               var index = ListofErrors.length;
               var e = ListofErrors[index-1];
-              newNode.childNodes[1].innerHTML = "Error "+index+": between"+e.start+"-"+e.end; 
+              newNode.childNodes[1].innerHTML = "Error Lines : "+e.start+"&"+e.end;
               newNode.style.display = "flex";
-
-              reasons = newNode.querySelector(".marketing-content-buttons").querySelector(".select2-field").querySelector(".select2");
+              var buttons = newNode.querySelector(".marketing-content-buttons");
+              
+              reasons = buttons.querySelector(".select2-field").querySelector(".select2");
               reasons.setAttribute("id",index);
               reasons.addEventListener("change", reasonChanged);
+              
+              visibility = buttons.getElementsByTagName("button")[0];
+              visibility.setAttribute("id","v"+index);
+              visibility.addEventListener("click",visibilityPressed);
+              
+              remover = buttons.getElementsByTagName("button")[1];
+              remover.setAttribute("id","r"+index);
+              remover.addEventListener("click",removePressed);
+
               list.insertBefore(newNode, mc);
               componentHandler.upgradeDom();
-              alert();
+              //alert(visibility.innerHTML);
               
             }
 function reasonChanged(){
  // e.reason = this.options[this.selectedIndex].text;
-  alert(this.id+" "+this.options[this.selectedIndex].text);
+  //alert(this.id+" "+this.options[this.selectedIndex].text);
 //this.id
   index = this.id;
   ListofErrors[index-1].reason= this.options[this.selectedIndex].text; 
   //alert(ListofErrors[index-1].reason);
-  alert("The selection reason is now:"+ListofErrors[index-1].reason);
+  //alert("The selection reason is now:"+ListofErrors[index-1].reason);
 }
+function visibilityPressed(){
+
+  var visBtn = document.getElementById(this.id);
+  // ids are in v+index form thus take the 2nd character of the id and ıd use it as index.
+    index = this.id.charAt(1);
+    startingLine = ListofErrors[index-1].start;
+    endLine = ListofErrors[index-1].end;
+    var rng = new Range(startLine,0,endLine,0);
+    //var rng = clipNodes(startLine,endLine);
+    //var rng = new range(startLine,0,endLine,0);
+    //alert(startingLine+"**"+endLine);
+    //editor.addSelectionMarker(rng);
+    //editor.updateSelectionMarkers();
+    editor.session.addMarker(rng,"ace_active-line","fullLine");
+}
+  
+function removePressed(){
+  // ids are in rr+index form thus take the 2nd character of the id and ıd use it as index.
+  index = this.id.charAt(1);
+  var totalSelection  = ListofErrors.length;
+  alert(ListofErrors.length);
+  var removed =  ListofErrors.splice((index-1),1);
+  alert(ListofErrors.length);
+  var Domlist = document.querySelector('.marketing-content-list');
+  var lastChild = Domlist.lastChild;
+  alert("child count :"+Domlist.childNodes.length);
+  alert("innerHTML :"+Domlist.innerHTML);
+  Domlist.innerHTML = listInner;
+  alert("child count :"+Domlist.childNodes.length);
+  addListAsComponent(ListofErrors);
+      //cloneList.pop;
+  }
+
+function addListAsComponent (ListofErrors)
+            {
+              var list = document.querySelector('.marketing-content-list');
+              var mc = document.querySelector('.marketing-content-hidden');
+              for (index = ListofErrors.length;index>0;index--){
+                var newNode = mc.cloneNode(true);
+                var e = ListofErrors[index-1];
+                newNode.childNodes[1].innerHTML = "Error Lines : "+e.start+"&"+e.end; 
+                newNode.style.display = "flex";
+                var buttons = newNode.querySelector(".marketing-content-buttons");
+                
+                reasons = buttons.querySelector(".select2-field").querySelector(".select2");
+                reasons.setAttribute("id",index);
+                reasons.addEventListener("change", reasonChanged);
+                
+                visibility = buttons.getElementsByTagName("button")[0];
+                visibility.setAttribute("id","v"+index);
+                visibility.addEventListener("click",visibilityPressed);
+                
+                remover = buttons.getElementsByTagName("button")[1];
+                remover.setAttribute("id","r"+index);
+                remover.addEventListener("click",removePressed);
+
+                list.insertBefore(newNode, mc);
+                //
+              }
+              componentHandler.upgradeDom();
+              //alert(visibility.innerHTML);
+              
+            }
+  

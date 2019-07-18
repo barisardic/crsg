@@ -32,7 +32,7 @@
         left: 40%;
     }
     #description {
-        float: left;
+        float: right;
         width: 50%;
         position: absolute;
         box-sizing: border-box
@@ -42,11 +42,15 @@
       margin-top: 70%;
       position: absolute;
     }
+  /*   #leftMid{
+      margin-left:7px; 
+      margin-top:71%;
+      position: absolute;
+    } */
     #leftTop{
       height: 540px;
       position: absolute;
       overflow: auto;
-      margin-bottom: 100px;
     }
     #lines{
       margin-left: 75px;
@@ -57,7 +61,13 @@
   right: 5px;
   z-index: 10;
   
-}
+  }
+  #submitBtn{
+  position: absolute;
+  bottom: 175px;
+  left: 7px;
+  z-index: 10;
+  }
 .marketing-contents-list, .marketing-content-create{
   padding: 30px;
 }
@@ -78,7 +88,31 @@
    font-weight: bolder;
 }
 .marketing-content-buttons {
-    margin-left: 50px;
+    margin-left: 120px;
+    border-color: black;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #2c3e50;
+  background-image: none;
+}
+/* Remove IE arrow */
+select {
+  flex-direction: row;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+/* Arrow */
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
 }
 
 </style>
@@ -98,27 +132,23 @@
                               <i class="material-icons">visibility</i>
                             </button>
                             
-                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon">
+                            <!-- <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon">
                               <i class="material-icons">mode_edit</i>
-                            </button>
+                            </button> -->
                          
                             <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon">
                               <i class="material-icons">delete</i>
                             </button>
-                            <select-box class="select2-field select2-field--floating-label" style="margin-bottom: 40px">
+                            <select-box class="select select2-field select2-field--floating-label" style="margin-bottom: 40px">
                               <select id="ddlS2" name="ddlS2" class="select2" style="width: 200px">
-                                <option></option>
+                                <option value="" disabled selected hidden>Error Reason...</option>
                                 <option value="1">one</option>
                                 <option value="2">two</option>
                                 <option value="3">three</option>
                               </select>
-                                <label for="ddlS2">reason</label>
                                 <span class="mdl-selectfield__error"></span>
                             </select-box>
-                            
-                          </div>
-                        </div>
-                      </div>
+                          </div></div></div>
                       
               </div>
               <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
@@ -127,7 +157,6 @@
                       <a href="#lannisters-panel" class="mdl-tabs__tab">Lannisters</a>
                       <a href="#targaryens-panel" class="mdl-tabs__tab">Targaryens</a>
                   </div>
-                
                   <div class="mdl-tabs__panel is-active" id="starks-panel">
                     <ul>
                       <li>Eddard</li>
@@ -135,8 +164,6 @@
                       <li>Robb</li>
                       <li>Sansa</li>
                       <li>Brandon</li>
-                      <li>Arya</li>
-                      <li>Rickon</li>
                     </ul>
                   </div>
                   <div class="mdl-tabs__panel" id="lannisters-panel">
@@ -151,6 +178,7 @@
                     <ul>
                       <li>Viserys</li>
                       <li>Daenerys</li>
+                      <li>Jon</li>
                     </ul>
                   </div>
                 </div>
@@ -189,13 +217,20 @@
             </div>
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="hover">
                 <i class="material-icons">add</i>
-              </button></div>
+              </button>
+            <!-- Accent-colored raised button with ripple -->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="submitBtn">
+                Submit Selection</Button>
+              </button>
+            </div>
+
             
               
         
 </div>
 
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script>
 </script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
