@@ -4,41 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Acme Web Design</title>
+  <title> UserProfile</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
   <link rel="stylesheet" href="profile.css">
 </head>
 <body>
   <div class="container">
-    <h1 class="brand"><span>Acme</span> Web Design</h1>
+   <!--  <h1 class="brand"><span></span> Web Design</h1> -->
     <div class="wrapper animated bounceInLeft">
       <div class="company-info">
-        <h3>Acme Web Design</h3>
+        <h2>BILSEN</h2>
         <ul>
-          <li><i class="fa fa-road"></i> 44 Something st</li>
-          <li><i class="fa fa-phone"></i> (555) 555-5555</li>
-          <li><i class="fa fa-envelope"></i> test@acme.test</li>
+          <li><i class="fa fa-road"></i> Bilkent University</li>
+          <li><i class="fa fa-phone"></i> EA527</li>
+          <li><i class="fa fa-envelope"></i> bilsen.apps@gmail.com</li>
         </ul>
       </div>
       <div class="contact">
-        <h3>Email Us</h3>
-        <form>
+        <form >
+        <h3>Your Information</h3>
+        <p>
+            <label>University</label>
+            <input type="text" name="company">
+          </p>
+          <p>
+            <label>Contact Email</label>
+            <input type="email" name="email">
+          </p>
           <p>
             <label>Name</label>
             <input type="text" name="name">
           </p>
+          <h3>Classes :</h3>
           <p>
-            <label>Company</label>
-            <input type="text" name="company">
-          </p>
-          <p>
-            <label>Email Address</label>
-            <input type="email" name="email">
-          </p>
-          <p>
-            <label>Phone Number</label>
-            <input type="text" name="phone">
+              
+            <div class="container2">
+  <ul class="ks-cboxtags">
+    <li><input type="checkbox" id="checkboxOne" value="Rainbow Dash"><label for="checkboxOne">CS453</label></li>
+    <li><input type="checkbox" id="checkboxThirteen" value="Baby Moondancer"><label for="checkboxThirteen">CS415</label></li>
+    <li><input type="checkbox" id="checkboxFourteen" value="Medley"><label for="checkboxFourteen">CS319</label></li>
+  </ul>
+
+</div>
           </p>
           <p class="full">
             <label>Message</label>

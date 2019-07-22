@@ -17,6 +17,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 document.getElementById("signout2").addEventListener("click",signOutUser,false);
+userEmailButton.addEventListener("click",toProfile,false);
 function signOutUser(){
   alert("singning out");
   firebase.auth().signOut().then(function() {
@@ -38,7 +39,10 @@ function playPage(){
   //TODO goto new page after this and load the level:D
   window.location.href = "/editor.html";
 }
-
+function toProfile(){
+  alert("go");
+  window.location.href = "/userprofile.html";
+}
 /* $('#playButton,#pro2,#pro3').addEventListener("click",playPage,false); 
 function playPage(){
   alert("Plaay?");
