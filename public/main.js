@@ -3,11 +3,11 @@ var imagesRef = firebase.storage().ref();
 var backgroundImageUrl = imagesRef.child('level-background-pictures/1.jpg').getDownloadURL();
   var img = document.getElementById('card1');
   img.src = backgroundImageUrl;
-
+  var userEmailButton = document.getElementById("userEmail");
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    var userEmailButton = document.getElementById("userEmail");
+    
     userEmailButton.textContent= user.email;
     // ...
   } else {
