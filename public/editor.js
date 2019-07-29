@@ -99,11 +99,11 @@ function addComponent (ListofErrors)
               reasons.setAttribute("id",index);
               reasons.addEventListener("change", reasonChanged);
               
-              visibility = buttons.getElementsByTagName("button")[0];
+              visibility = buttons.getElementsByTagName("button")[1];
               visibility.setAttribute("id","v"+index);
               visibility.addEventListener("click",visibilityPressed);
               
-              remover = buttons.getElementsByTagName("button")[1];
+              remover = buttons.getElementsByTagName("button")[2];
               remover.setAttribute("id","r"+index);
               remover.addEventListener("click",removePressed);
 
@@ -169,11 +169,11 @@ function addListAsComponent (ListofErrors)
                 reasons.setAttribute("id",index);
                 reasons.addEventListener("change", reasonChanged);
                 
-                visibility = buttons.getElementsByTagName("button")[0];
+                visibility = buttons.getElementsByTagName("button")[1];
                 visibility.setAttribute("id","v"+index);
                 visibility.addEventListener("click",visibilityPressed);
                 
-                remover = buttons.getElementsByTagName("button")[1];
+                remover = buttons.getElementsByTagName("button")[2];
                 remover.setAttribute("id","r"+index);
                 remover.addEventListener("click",removePressed);
 
