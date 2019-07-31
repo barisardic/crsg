@@ -98,7 +98,10 @@ function addComponent (ListofErrors)
               reasons = buttons.querySelector(".select2-field").querySelector(".select2");
               reasons.setAttribute("id",index);
               reasons.addEventListener("change", reasonChanged);
-              
+
+              reasons2 = buttons.querySelector(".btn-secondary");
+              reasons2.setAttribute("id","c"+index);
+
               visibility = buttons.getElementsByTagName("button")[1];
               visibility.setAttribute("id","v"+index);
               visibility.addEventListener("click",visibilityPressed);
@@ -107,11 +110,43 @@ function addComponent (ListofErrors)
               remover.setAttribute("id","r"+index);
               remover.addEventListener("click",removePressed);
 
+              document.addEventListener('click', function(e){
+                if(e.target.className=="dropdown-item"){
+                  e.preventDefault();
+                  /* var selText = $(this).text; */
+                  var selText = $(event.target).text();
+                  var parentofButton = closestByClass(event.target,"dropdown left");
+                  var parentId = parentofButton.querySelector(".btn-secondary").id;
+                  //alert(""+parentId);
+                  $("#"+parentId).text(selText);
+                  //alert('BUTTON CLICKED'); 
+                  var ind = parentId.charAt(1);
+                  //alert(ind);
+                  ListofErrors[ind-1].reason= selText;
+                }
+              })
+
               list.insertBefore(newNode, mc);
               componentHandler.upgradeDom();
               //alert(visibility.innerHTML);
               
             }
+var closestByClass = function(el, clazz) {
+  // Traverse the DOM up with a while loop
+  while (el.className != clazz) {
+      //alert(el.className);
+      // Increment the loop to the parent node
+      el = el.parentNode;
+      if (!el) {
+          return null;
+      }
+  }
+  // At this point, the while loop has stopped and `el` represents the element that has
+  // the class you specified in the second parameter of the function `clazz`
+
+  // Then return the matched element
+  return el;
+}
 function reasonChanged(){
  // e.reason = this.options[this.selectedIndex].text;
   //alert(this.id+" "+this.options[this.selectedIndex].text);
@@ -176,6 +211,12 @@ function addListAsComponent (ListofErrors)
                 remover = buttons.getElementsByTagName("button")[2];
                 remover.setAttribute("id","r"+index);
                 remover.addEventListener("click",removePressed);
+
+                document.addEventListener('click', function(e){
+                  if(e.target.className=="dropdown-item"){
+                   alert('BUTTON CLICKED');
+                  }
+                })
 
                 list.insertBefore(newNode, mc);
                 //

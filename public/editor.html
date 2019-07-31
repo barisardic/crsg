@@ -60,6 +60,7 @@
       /* border: 5px solid #E18728; */
       bottom: 0px;
       height: 40%;
+      overflow: auto;
 
     }
     #submitBtn{
@@ -86,7 +87,7 @@
  
 .marketing-contents-list, .marketing-content-create{
   padding: 10px;
-  border: 5px solid rgb(52, 153, 91);
+  /* border: 5px solid rgb(52, 153, 91); */
   flex-direction: row;
 }
 .marketing-content-hidden{
@@ -105,13 +106,12 @@
     height: 20%;
     margin-right: 60%;
     border-color: black;
-    border: 5px solid rgb(214, 123, 49);
+    /* border: 5px solid rgb(214, 123, 49); */
 }
-.dropdown{
+/* .dropdown{
   border: 5px solid rgb(59, 37, 189);
-}
+} */
 select {
-  display: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -181,7 +181,12 @@ select {
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
-
+p{
+  line-height:1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding:1em;
+    font-size: large;
+}
 </style>
 </head>
 <body>
@@ -195,29 +200,28 @@ select {
                         <div class="marketing-content-hidden mdl-shadow--4dp">
                            <div class="marketing-content-title" id= "stend">MONDAY MENU</div>
                           <div class="marketing-content-buttons">
-                              
                               <div class="dropdown left" >
                                   <button class="btn btn-secondary dropdown-toggle" id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    Nanana
+                                    Error Reason
                                   </button>
                                   <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                       <li class="dropdown-submenu">
-                                          <a  class="dropdown-item" tabindex="-1" href="#">Evolvability Defects</a>
+                                          <a  class="dropdown-item"  tabindex="-1" href="#">Evolvability Defects</a>
                                           <ul class="dropdown-menu">
                                               <li class="dropdown-submenu">
                                                   <a class="dropdown-item" href="#">Structure</a>
                                                   <ul class="dropdown-menu">
                                                       <li class="dropdown-submenu"><a class="dropdown-item" href="#">Solution Approach</a>
                                                         <ul class="dropdown-menu">
-                                                            <li class="dropdown-item"><a href="#" onclick="var v =$(this).text();$('.btn-secondary').text(v);">Semantic duplication</a></li>
-                                                            <li class="dropdown-item"><a href="#" onclick="var v =$(this).text();$('.btn-secondary').text(v);">Semantic dead code</a></li>
+                                                            <li class="dropdown-item"><a href="#" >Semantic duplication</a></li>
+                                                            <li class="dropdown-item"><a href="#" >Semantic dead code</a></li>
                                                         </ul>
                                                       </li>
                                                         <li class="dropdown-submenu"><a class="dropdown-item" href="#">Organization</a>
                                                         <ul class="dropdown-menu">
-                                                            <li class="dropdown-item"><a href="#" onclick="var v =$(this).text();$('.btn-secondary').text(v);">Duplication</a></li>
-                                                            <li class="dropdown-item"><a href="#" onclick="var v =$(this).text();$('.btn-secondary').text(v);">Consistency</a></li>
-                                                            <li class="dropdown-item"><a href="#" onclick="var v =$(this).text();$('.btn-secondary').text(v);">Dead code</a></li>
+                                                            <li class="dropdown-item"><a href="#" >Duplication</a></li>
+                                                            <li class="dropdown-item"><a href="#">Consistency</a></li>
+                                                            <li class="dropdown-item"><a href="#" >Dead code</a></li>
                                                         </ul>
                                                       </li>
                                                   </ul>
@@ -225,10 +229,10 @@ select {
                                             <li class="dropdown-submenu">
                                               <a class="dropdown-item" href="#">Visual Representation</a>
                                               <ul class="dropdown-menu">
-                                                    <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Bracket</a></li>
-                                                    <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Indentation</a></li>
-                                                    <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Blank line usage</a></li>
-                                                    <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Long line</a></li>
+                                                    <li class="dropdown-item"><a href="#">Bracket</a></li>
+                                                    <li class="dropdown-item"><a href="#">Indentation</a></li>
+                                                    <li class="dropdown-item"><a href="#">Blank line usage</a></li>
+                                                    <li class="dropdown-item"><a href="#">Long line</a></li>
                                               </ul>
                                             </li>
                                             <li class="dropdown-submenu">
@@ -236,16 +240,16 @@ select {
                                                 <ul class="dropdown-menu">
                                                     <li class="dropdown-submenu"><a class="dropdown-item" href="#">Supported by Language</a>
                                                       <ul class="dropdown-menu">
-                                                          <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Immutable</a></li>
-                                                          <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Void parameter</a></li>
-                                                          <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Element Type</a></li>
+                                                          <li class="dropdown-item"><a href="#">Immutable</a></li>
+                                                          <li class="dropdown-item"><a href="#">Void parameter</a></li>
+                                                          <li class="dropdown-item"><a href="#">Element Type</a></li>
                                                       </ul>
                                                     </li>
                                                       <li class="dropdown-submenu"><a class="dropdown-item" href="#">Textual</a>
                                                       <ul class="dropdown-menu">
-                                                          <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Naming</a></li>
-                                                          <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Comments</a></li>
-                                                          <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Others</a></li>
+                                                          <li class="dropdown-item"><a href="#">Naming</a></li>
+                                                          <li class="dropdown-item"><a href="#">Comments</a></li>
+                                                          <li class="dropdown-item"><a href="#">Others</a></li>
                                                       </ul>
                                                     </li>
                                                 </ul>
@@ -254,7 +258,7 @@ select {
                                           </ul>
                                         </li>
                                         <li class="dropdown-divider"></li>
-                                      <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">False Positives</a></li>
+                                      <li class="dropdown-item"><a href="#">False Positives</a></li>
                                       <li class="dropdown-divider"></li>
                                       <li class="dropdown-submenu">
                                         <a  class="dropdown-item" tabindex="-1" href="#">Functional Defects</a>
@@ -262,25 +266,25 @@ select {
                                           <li class="dropdown-submenu">
                                             <a class="dropdown-item" href="#">Interface</a>
                                             <ul class="dropdown-menu">
-                                                <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Function Call</a></li>
-                                                <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Parameter</a></li>
+                                                <li class="dropdown-item"><a href="#">Function Call</a></li>
+                                                <li class="dropdown-item"><a href="#">Parameter</a></li>
                                                 
                                             </ul>
                                           </li>
                                           <li class="dropdown-submenu">
                                               <a class="dropdown-item" href="#">Resource</a>
                                               <ul class="dropdown-menu">
-                                                  <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Variable initialization</a></li>
-                                                  <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Memory management</a></li>
-                                                  <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Data and resource manipulation</a></li>
+                                                  <li class="dropdown-item"><a href="#">Variable initialization</a></li>
+                                                  <li class="dropdown-item"><a href="#">Memory management</a></li>
+                                                  <li class="dropdown-item"><a href="#">Data and resource manipulation</a></li>
                                               </ul>
                                             </li>
                                             <li class="dropdown-submenu">
                                                 <a class="dropdown-item" href="#">Logic</a>
                                                 <ul class="dropdown-menu">
-                                                    <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Compare</a></li>
-                                                    <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Compute</a></li>
-                                                    <li class="dropdown-item"><a href="#"onclick="var v =$(this).text();$('.btn-secondary').text(v);">Algorithm/Performance</a></li>
+                                                    <li class="dropdown-item"><a href="#">Compare</a></li>
+                                                    <li class="dropdown-item"><a href="#">Compute</a></li>
+                                                    <li class="dropdown-item"><a href="#">Algorithm/Performance</a></li>
                                                     
                                                       
                                                 </ul>
@@ -289,6 +293,7 @@ select {
                                       </li>
                                     </ul>
                               </div>
+
                             <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon left">
                               <i class="material-icons">visibility</i>
                             </button>
@@ -311,33 +316,76 @@ select {
               </div>
               <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
                   <div class="mdl-tabs__tab-bar">
-                      <a href="#starks-panel" class="mdl-tabs__tab is-active">Starks</a>
-                      <a href="#lannisters-panel" class="mdl-tabs__tab">Lannisters</a>
-                      <a href="#targaryens-panel" class="mdl-tabs__tab">Targaryens</a>
+                      <a href="#narrative-panel" class="mdl-tabs__tab is-active">Narrative</a>
+                      <a href="#description-panel" class="mdl-tabs__tab">Description</a>
+                      <a href="#checkist-panel" class="mdl-tabs__tab">Checklist</a>
                   </div>
-                  <div class="mdl-tabs__panel is-active" id="starks-panel">
+                  <div class="mdl-tabs__panel is-active" id="narrative-panel">
                     <ul>
-                      <li>Eddard</li>
-                      <li>Catelyn</li>
-                      <li>Robb</li>
-                      <li>Sansa</li>
-                      <li>Brandon</li>
+                      <p>Welcome to the CRSG, you can start right away by reviewing the code. 
+                        Remember to make use of your checklist. If you are not sure about the 
+                        type of defect that you have found or how to select it, you should refer
+                         back to the tutorial.
+                                                                                -Bilsen Team </p>
                     </ul>
                   </div>
-                  <div class="mdl-tabs__panel" id="lannisters-panel">
+                  <div class="mdl-tabs__panel" id="description-panel">
                     <ul>
-                      <li>Tywin</li>
-                      <li>Cersei</li>
-                      <li>Jamie</li>
-                      <li>Tyrion</li>
+                        <p>REC: Exception is caught when Exception is not thrown (REC_CATCH_EXCEPTION)
+                            This method uses a try-catch block that catches Exception objects, but Exception is not thrown within the try block, and RuntimeException is not explicitly caught. It is a common bug pattern to say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well, masking potential bugs.</p>
                     </ul>
                   </div>
-                  <div class="mdl-tabs__panel" id="targaryens-panel">
-                    <ul>
-                      <li>Viserys</li>
-                      <li>Daenerys</li>
-                      <li>Jon</li>
-                    </ul>
+                  <div class="mdl-tabs__panel" id="checkist-panel">
+                    
+                        <table>
+                            <tbody>
+                             <tr>
+                              <td><li>Use Intention-Revealing Names --></li></td>
+                              <td><li>Meaningful Names</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Pick one word per concept --></li></td>
+                              <td><li>Meaningful Names</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Use Solution/Problem Domain Names --></li></td>
+                              <td><li>Meaningful Names</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Classes should be small! --></li></td>
+                              <td><li>Classes</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Functions should be small! --></li></td>
+                              <td><li>Functions</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Do one Thing --></li></td>
+                              <td><li>Functions</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Don't Repeat Yourself (Avoid Duplication) --></li></td>
+                              <td><li>Functions</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Explain yourself in code --></li></td>
+                              <td><li>Comments</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Make sure the code formatting is applied --></li></td>
+                              <td><li>Formatting</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Use Exceptions rather than Return codes --></li></td>
+                              <td><li>Exceptions</li></td>
+                             </tr>
+                             <tr>
+                              <td><li>Don't return Null --></li></td>
+                              <td><li>Exceptions</li></td>
+                             </tr>
+                            </tbody>
+                           </table>
+                    
                   </div>
                 </div>
         </div>
@@ -382,10 +430,31 @@ select {
 
             
             </div>
-
-            
-              
         
+              
+<script>
+/* $(document).ready(function(e) {   
+    // your code here
+    $(".dropdown-menu li a").click(function(){
+                var selText = $(this).text();
+                $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+              });
+ });
+function nonono(){
+  
+  var selText = $(this).innerHtml;
+  alert(selText);
+                $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+} */
+
+/* $(".dropdown-item a").click(function(e){
+                  e.preventDefault();
+                  var selText = $(this).text();
+                  var parentId = $(this).closest('.btn').attr('id');
+                  alert(""+parentId);
+                  $("#"+parentId).text(selText);
+              }); */
+</script>
 </div>
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script>
