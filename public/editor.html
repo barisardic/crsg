@@ -38,6 +38,46 @@
         left: 50%;
         /* border: 5px solid rgb(226, 9, 20); */
     }
+    #editor3 {
+        float: right ;
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        /* border: 5px solid rgb(226, 9, 20); */
+    }
+    #editor4 {
+        float: right ;
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        /* border: 5px solid rgb(226, 9, 20); */
+    }
+    #editor5 {
+        float: right ;
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        /* border: 5px solid rgb(226, 9, 20); */
+    }
+    #editor6 {
+        float: right ;
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        /* border: 5px solid rgb(226, 9, 20); */
+    }
     #description {
         position: absolute;
         /* border: 5px solid rgb(52, 153, 91); */
@@ -87,26 +127,33 @@
  
 .marketing-contents-list, .marketing-content-create{
   padding: 10px;
-  /* border: 5px solid rgb(52, 153, 91); */
+  border: 5px solid rgb(52, 153, 91); 
   flex-direction: row;
 }
 .marketing-content-hidden{
-  padding: 10px;
-  margin-top: 30px;
+  padding: 5px;
+  margin-top: 25px;
   display: none;
-  flex-direction: row;
+  /* flex-direction: row; */
+  border: 5px solid rgb(177, 16, 226); 
 }
 .marketing-content-title{
    margin-right: auto;
    font-weight: bolder;
-   flex-direction: row;
+   /* flex-direction: row; */
+   border: 5px solid rgb(204, 16, 57); 
 }
 .marketing-content-buttons {
-    flex-direction: row;
-    height: 20%;
-    margin-right: 60%;
+    flex-direction: column; 
+    
+    float: left;
+    width: 60%;
+    margin-right: 70%;
     border-color: black;
-    /* border: 5px solid rgb(214, 123, 49); */
+    border: 5px solid rgb(214, 123, 49);
+}
+.inline-block-child {
+  display: inline-block;
 }
 /* .dropdown{
   border: 5px solid rgb(59, 37, 189);
@@ -198,8 +245,8 @@ p{
                        
                     <div class="marketing-content-list">
                         <div class="marketing-content-hidden mdl-shadow--4dp">
-                           <div class="marketing-content-title" id= "stend">MONDAY MENU</div>
-                          <div class="marketing-content-buttons">
+                           <div class="marketing-content-title inline-block-child" id= "stend">MONDAY MENU</div>
+                          <div class="marketing-content-buttons inline-block-child">
                               <div class="dropdown left" >
                                   <button class="btn btn-secondary dropdown-toggle" id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
                                     Error Reason
@@ -301,15 +348,6 @@ p{
                             <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right">
                               <i class="material-icons">delete</i>
                             </button>
-                            <select-box class="select select2-field select2-field--floating-label" style="margin-bottom: 40px">
-                              <select id="ddlS2" name="ddlS2" class="select2" style="width: 200px">
-                                <option value="" disabled selected hidden>Error Reason...</option>
-                                <option value="1">one</option>
-                                <option value="2">two</option>
-                                <option value="3">three</option>
-                              </select>
-                                <span class="mdl-selectfield__error"></span>
-                            </select-box>
 
                           </div></div></div>
                       
@@ -390,9 +428,10 @@ p{
                 </div>
         </div>
         <div id="editor">public class Account {
-                double principal,rate; int daysActive,accountType;
+                double principal1,rate; int daysActive,accountType;
                 public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-             } 
+             }
+             // select here 
              public static double calculateFee(Account[] accounts){
                  double totalFee = 0.0;
                  Account account;
@@ -405,21 +444,85 @@ p{
                 return totalFee;    
             }
             </div>
-            <div id="editor2">function newUser(){
-                var newUserPassword = document.getElementById("sign-up-password").value;
-                var newUserName = document.getElementById("sign-up-username").value;
-                var newUserEmail = document.getElementById("sign-up-email").value;
-                //TODO check retyped password
-                
-                firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
-                  // Handle Errors here.
-                  var errorCode = error.code;
-                  var errorMessage = error.message;
-                  alert(errorMessage);
-                  // ...
-                });
-                alert("done");
-              }
+            <div id="editor2">public class Account {
+              double principal2,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
+            </div>
+            <div id="editor3">public class Account {
+              double principal3,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
+            </div>
+            <div id="editor4">public class Account {
+              double principal4,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
+            </div>
+            <div id="editor5">public class Account {
+              double principal5,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
+            </div>
+            <div id="editor6">public class Account {
+              double principal6,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
             </div>
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="hover">
                 <i class="material-icons">add</i>

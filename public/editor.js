@@ -1,24 +1,57 @@
 var originalDom = document.querySelector('.marketing-content-hidden');
 var listInner = document.querySelector('.marketing-content-list').innerHTML;
-levelChosen = 2;
+levelChosen = localStorage.getItem('selected');
+var Range = ace.require("ace/range").Range;
+
 if(levelChosen==1){
   document.getElementById("editor").style.display = "block";
-  var Range = ace.require("ace/range").Range;
   var editor = ace.edit("editor");
+  var code = document.querySelector("editor");
   editor.setTheme("ace/theme/monokai");
   editor.session.setMode("ace/mode/java");
-  editor.setReadOnly(true); 
+  editor.setReadOnly(true);  
 }
 else if(levelChosen ==2){
   document.getElementById("editor2").style.display = "block";
-  var code = document.querySelector("editor2");
-  var Range = ace.require("ace/range").Range;
   var editor = ace.edit("editor2");
+  var code = document.querySelector("editor2");
   editor.setTheme("ace/theme/monokai");
-  editor.session.setMode("ace/mode/javascript");
-  editor.setReadOnly(true); 
-  
+  editor.session.setMode("ace/mode/java");
+  editor.setReadOnly(true);  
 }
+else if(levelChosen==3){
+  document.getElementById("editor3").style.display = "block";
+  var editor = ace.edit("editor3");
+  var code = document.querySelector("editor3");
+  editor.setTheme("ace/theme/monokai");
+  editor.session.setMode("ace/mode/java");
+  editor.setReadOnly(true);  
+}
+else if(levelChosen==4){
+  document.getElementById("editor4").style.display = "block";
+  var editor = ace.edit("editor4");
+  var code = document.querySelector("editor4");
+  editor.setTheme("ace/theme/monokai");
+  editor.session.setMode("ace/mode/java");
+  editor.setReadOnly(true);  
+}
+else if(levelChosen==5){
+  document.getElementById("editor5").style.display = "block";
+  var editor = ace.edit("editor5");
+  var code = document.querySelector("editor5");
+  editor.setTheme("ace/theme/monokai");
+  editor.session.setMode("ace/mode/java");
+  editor.setReadOnly(true);  
+}
+else if(levelChosen==6){
+  document.getElementById("editor6").style.display = "block";
+  var editor = ace.edit("editor6");
+  var code = document.querySelector("editor6");
+  editor.setTheme("ace/theme/monokai");
+  editor.session.setMode("ace/mode/java");
+  editor.setReadOnly(true);  
+}
+
 // custom error object for user to select/save the errors in the code.
 class Err {
   constructor(start, end) {
@@ -43,8 +76,14 @@ class Err {
   }
   set reason(value){
     this._reason = value;
+  }
+  toString(){
+    return "" + this.start+ "-" + this.end +"-" + this.reason;
   } 
 }
+var answer1 = new Err(4,4);
+answer1.reason = "Comments";
+
 var ListofErrors = [];
 document.addEventListener('DOMContentLoaded', lines, false);
 function lines(){
@@ -64,10 +103,24 @@ function lines(){
   
 };
 function submitSelection () {
-  alert("sendinnng");
+  alert(answer1.toString()+"**"+ListofErrors[0].toString());
 }
 document.getElementById('submitBtn').addEventListener('click',submitSelection,false);
-
+document.addEventListener('click', function(e){
+  if(e.target.className=="dropdown-item"){
+    e.preventDefault();
+    /* var selText = $(this).text; */
+    var selText = $(event.target).text();
+    var parentofButton = closestByClass(event.target,"dropdown left");
+    var parentId = parentofButton.querySelector(".btn-secondary").id;
+    //alert(""+parentId);
+    $("#"+parentId).text(selText);
+    //alert('BUTTON CLICKED'); 
+    var ind = parentId.charAt(1);
+    alert(selText);
+    ListofErrors[ind-1].reason= selText;
+  }
+});
 /* function getLines(){
   /* selectionRange = editor.getSelectionRange();
 
@@ -95,9 +148,9 @@ function addComponent (ListofErrors)
               newNode.style.display = "flex";
               var buttons = newNode.querySelector(".marketing-content-buttons");
               
-              reasons = buttons.querySelector(".select2-field").querySelector(".select2");
+              /* reasons = buttons.querySelector(".select2-field").querySelector(".select2");
               reasons.setAttribute("id",index);
-              reasons.addEventListener("change", reasonChanged);
+              reasons.addEventListener("change", reasonChanged); */
 
               reasons2 = buttons.querySelector(".btn-secondary");
               reasons2.setAttribute("id","c"+index);
@@ -109,22 +162,6 @@ function addComponent (ListofErrors)
               remover = buttons.getElementsByTagName("button")[2];
               remover.setAttribute("id","r"+index);
               remover.addEventListener("click",removePressed);
-
-              document.addEventListener('click', function(e){
-                if(e.target.className=="dropdown-item"){
-                  e.preventDefault();
-                  /* var selText = $(this).text; */
-                  var selText = $(event.target).text();
-                  var parentofButton = closestByClass(event.target,"dropdown left");
-                  var parentId = parentofButton.querySelector(".btn-secondary").id;
-                  //alert(""+parentId);
-                  $("#"+parentId).text(selText);
-                  //alert('BUTTON CLICKED'); 
-                  var ind = parentId.charAt(1);
-                  //alert(ind);
-                  ListofErrors[ind-1].reason= selText;
-                }
-              })
 
               list.insertBefore(newNode, mc);
               componentHandler.upgradeDom();

@@ -27,7 +27,7 @@ function signOutUser(){
     // An error happened.
   });
 }
-document.getElementById("playButton").addEventListener("click",playPage,false);
+document.getElementById("playButton1").addEventListener("click",playPage,false);
 document.getElementById("playButton2").addEventListener("click",playPage,false);
 document.getElementById("playButton3").addEventListener("click",playPage,false);
 document.getElementById("playButton4").addEventListener("click",playPage,false);
@@ -35,6 +35,8 @@ document.getElementById("playButton5").addEventListener("click",playPage,false);
 document.getElementById("playButton6").addEventListener("click",playPage,false); 
 function playPage(){
   alert(this.id);
+  var selectedLevel = this.id.charAt(this.id.length-1);
+  localStorage.setItem('selected', selectedLevel);
     // ...
   //TODO goto new page after this and load the level:D
   window.location.href = "/editor.html";
