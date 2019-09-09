@@ -52,6 +52,11 @@ else if(levelChosen==6){
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
+// Initialize library and start tracking time
+TimeMe.initialize({
+	currentPageName: "play", // current page
+	idleTimeoutInSeconds: 600 // seconds
+    });
 
 // custom error object for user to select/save the errors in the code.
 class Err {
@@ -86,6 +91,8 @@ var answer1 = new Err(4,4);
 answer1.reason = "Comments";
 
 var ListofErrors = [];
+var answers = [];
+answers[0] =answer1;
 document.addEventListener('DOMContentLoaded', lines, false);
 function lines(){
   function getLines () {
@@ -104,30 +111,49 @@ function lines(){
   
 };
 function submitSelection () {
+  var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
   alert(answer1.toString()+"**"+ListofErrors[0].toString());
-  var scoreCalc =calculateScore(answer1,ListofErrors[0]);
+  var scoreCalc =calculateScore(answers,ListofErrors);
   alert(scoreCalc);
   var user = firebase.auth().currentUser;
      var userId = user.uid;
     //todo finsd out boolean returning checkbox value
     var database = firebase.database();
-    var newPostRef = postListRef.push();
-     database.ref('games/' + userId +"/"+ newPostRef ).set({
+    var newPostRef = database.ref('games/' + userId).push();
+    newPostRef.set({
       user: userId,
       level: levelChosen,
-      submission: ListofErrors
+      submission: ListofErrors,
+      score: scoreCalc,
+      timeSpend: timeSpentOnPage
     });  
 }
 
 
-function calculateScore(answer,submission){
+function calculateScore(answers,submission){
+  var grandTruth = answers;
   var score = 0;
-  if(answer.start == submission.start)
-    score++;
-  if(answer.end == submission.end)
-    score++;
-  if(answer.reason == submission.reason)
-    score++;
+  for (var i = 0; i<submission.length;i++) {
+    alert("1");
+    for(var j=0;j<grandTruth.length;j++){
+      alert("2");
+      if(submission[i].start == grandTruth[j].start){
+        alert("3");
+        if(submission[i].end == grandTruth[j].end){
+          score++;
+          alert("4");
+          if(submission[i].reason == grandTruth[j].reason){
+            score = score+2;
+            alert("5");
+            //delete found element , give points only once
+            grandTruth.splice(j,1);
+          }
+        }
+        
+      }
+      
+    }
+  } 
 return score; 
 }
 document.getElementById('submitBtn').addEventListener('click',submitSelection,false);

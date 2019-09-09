@@ -437,12 +437,18 @@ p{
              public static double calculateFee(Account[] accounts){
                  double totalFee = 0.0;
                  Account account;
+              // select here reason is Duplication
+              // select here
+              // select here
+              // select here
                  for (int i=0;i == accounts.length;i++) {
                      account=accounts[i];
                      if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
                          totalFee += .0125 * (  1.25% broker fee
                      account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
                 } 
+                // select here reason is Parameter
+                // select here
                 return totalFee;    
             }
             </div>
@@ -564,6 +570,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 </script>
+<script src="timeme.min.js"></script>
 <script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
 <script src= "editor.js"> </script>
 </body>
