@@ -220,7 +220,9 @@ select {
 .dropdown-submenu.pull-left {
     float: none;
 }
-
+.dropdown-item{
+  pointer-events: auto;
+}
 .dropdown-submenu.pull-left>.dropdown-menu {
     left: -100%;
     margin-left: 10px;
@@ -276,7 +278,7 @@ p{
                                             <li class="dropdown-submenu">
                                               <a class="dropdown-item" href="#">Visual Representation</a>
                                               <ul class="dropdown-menu">
-                                                    <li class="dropdown-item"><a href="#">Bracket</a></li>
+                                                    <li class="dropdown-item"><a>Bracket</a></li>
                                                     <li class="dropdown-item"><a href="#">Indentation</a></li>
                                                     <li class="dropdown-item"><a href="#">Blank line usage</a></li>
                                                     <li class="dropdown-item"><a href="#">Long line</a></li>
@@ -532,32 +534,7 @@ p{
                 Submit Selection</Button>
 
             
-            </div>
-        
-              
-<script>
-/* $(document).ready(function(e) {   
-    // your code here
-    $(".dropdown-menu li a").click(function(){
-                var selText = $(this).text();
-                $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-              });
- });
-function nonono(){
-  
-  var selText = $(this).innerHtml;
-  alert(selText);
-                $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-} */
-
-/* $(".dropdown-item a").click(function(e){
-                  e.preventDefault();
-                  var selText = $(this).text();
-                  var parentId = $(this).closest('.btn').attr('id');
-                  alert(""+parentId);
-                  $("#"+parentId).text(selText);
-              }); */
-</script>
+            </div>      
 </div>
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script>
@@ -570,6 +547,7 @@ function nonono(){
 <script src="/__/firebase/6.2.3/firebase-app.js"></script>
 <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
 <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
 
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>

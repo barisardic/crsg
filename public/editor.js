@@ -1,6 +1,7 @@
 var originalDom = document.querySelector('.marketing-content-hidden');
 var listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = localStorage.getItem('selected');
+//window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
 
 if(levelChosen==1){
@@ -104,10 +105,34 @@ function lines(){
 };
 function submitSelection () {
   alert(answer1.toString()+"**"+ListofErrors[0].toString());
+  var scoreCalc =calculateScore(answer1,ListofErrors[0]);
+  alert(scoreCalc);
+  var user = firebase.auth().currentUser;
+     var userId = user.uid;
+    //todo finsd out boolean returning checkbox value
+    var database = firebase.database();
+    var newPostRef = postListRef.push();
+     database.ref('games/' + userId +"/"+ newPostRef ).set({
+      user: userId,
+      level: levelChosen,
+      submission: ListofErrors
+    });  
+}
+
+
+function calculateScore(answer,submission){
+  var score = 0;
+  if(answer.start == submission.start)
+    score++;
+  if(answer.end == submission.end)
+    score++;
+  if(answer.reason == submission.reason)
+    score++;
+return score; 
 }
 document.getElementById('submitBtn').addEventListener('click',submitSelection,false);
 document.addEventListener('click', function(e){
-  if(e.target.className=="dropdown-item"){
+  if(e.target.className=="dropdown-item" || e.target.className==""){
     e.preventDefault();
     /* var selText = $(this).text; */
     var selText = $(event.target).text();
@@ -118,6 +143,7 @@ document.addEventListener('click', function(e){
     //alert('BUTTON CLICKED'); 
     var ind = parentId.charAt(1);
     alert(selText);
+    alert(e.target.innerHTML);
     ListofErrors[ind-1].reason= selText;
   }
 });
@@ -237,9 +263,9 @@ function addListAsComponent (ListofErrors)
                 newNode.style.display = "flex";
                 var buttons = newNode.querySelector(".marketing-content-buttons");
                 
-                reasons = buttons.querySelector(".select2-field").querySelector(".select2");
+               /*  reasons = buttons.querySelector(".select2-field").querySelector(".select2");
                 reasons.setAttribute("id",index);
-                reasons.addEventListener("change", reasonChanged);
+                reasons.addEventListener("change", reasonChanged); */
                 
                 visibility = buttons.getElementsByTagName("button")[1];
                 visibility.setAttribute("id","v"+index);
