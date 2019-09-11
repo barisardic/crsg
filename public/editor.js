@@ -144,7 +144,7 @@ function submitSelection () {
   var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
   alert(answer1.toString()+"**"+ListofErrors[0].toString());
   var scoreCalc =calculateScore(answers,ListofErrors);
-  alert("total score : "+ scoreCalc);
+  alert("total score : "+ scoreCalc[0]);
   var user = firebase.auth().currentUser;
      var userId = user.uid;
     //todo finsd out boolean returning checkbox value
@@ -154,15 +154,30 @@ function submitSelection () {
       user: userId,
       level: levelChosen,
       submission: ListofErrors,
-      score: scoreCalc,
+      score: scoreCalc[0],
       timeSpend: timeSpentOnPage
-    });  
+
+    });
+/*   $("#resultModal").find('.modal-body').text("There were " +answers.length+1 + "mistakes. You got "+scoreCalc[1]+"right!");
+  //jQuery("#resultModal").modal('show');
+  $(document).ready(function() { 
+    $("#resultModal").modal('show'); 
+});  */
+  noOfanswers = answers.length+1;
+  var data = {
+    message: "There were " +noOfanswers  +" mistakes. You got "+scoreCalc[1]+"  exactly right!",
+    timeout: 10000,
+    actionHandler: handler,
+    actionText: ' '
+  };
+  snackbarContainer.MaterialSnackbar.showSnackbar(data);
 }
 
 
 function calculateScore(answers,submission){
   var grandTruth = answers;
   var score = 0;
+  var exact = 0;
   for (var i = 0; i<submission.length;i++) {
     
     for(var j=0;j<grandTruth.length;j++){
@@ -174,7 +189,7 @@ function calculateScore(answers,submission){
           
           if(submission[i].reason == grandTruth[j].reason){
             score = score+2;
-            
+            exact++;
             //delete found element , give points only once
             grandTruth.splice(j,1);
           }
@@ -183,8 +198,9 @@ function calculateScore(answers,submission){
       }
       
     }
-  } 
-return score; 
+  }
+var scoreAndExact = [score, exact]; 
+return scoreAndExact; 
 }
 var hintCount = 0 ;
 var snackbarContainer = document.querySelector('#demo-snackbar-example');
