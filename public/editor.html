@@ -110,6 +110,35 @@
   left: 40px;
   z-index: 10;
   }
+  #hintBtn{
+  position: absolute;
+  bottom: 35.6%;
+  height: 40px;
+  left: 630px;
+  z-index: 10;
+  }
+  #answersBtn{
+  position: absolute;
+  bottom: 35.6%;
+  height: 40px;
+  left: 720px;
+  z-index: 10;
+  }
+  .mdl-snackbar {
+  background-color: rgba(6, 7, 6, 0.95);
+  /* bottom: 41.6%; */
+  left: 400px;
+
+}
+
+.mdl-snackbar__icon {
+  color: #ffffff;
+  padding: 13px 0 0 24px;
+}
+
+.mdl-snackbar__action {
+  color: #ffffff;
+}
   /*   #leftMid{
       margin-left:7px; 
       margin-top:71%;
@@ -588,7 +617,17 @@ p{
             <!-- Accent-colored raised button with ripple -->
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="submitBtn">
                 Submit Selection</Button>
-
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="hintBtn">
+                Hint</Button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="answersBtn">
+                See Answers</Button>
+            <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+              <div class="mdl-snackbar__icon">
+                  <i class="material-icons">extension</i>
+              </div>
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
+            </div>
             
             </div>      
 </div>

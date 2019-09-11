@@ -101,7 +101,9 @@ if(levelChosen == 1){
 
   var answer3 = new Err(18,19);
   answer3.reason = "Parameter";
-  answers[2] =answer3;  
+  answers[2] =answer3;
+
+  var hints = ["Your first hint","Your second hint","Are you ok ?"];
 }
 else if(levelChosen == 2){
   var answers = [];
@@ -116,6 +118,8 @@ else if(levelChosen == 2){
   var answer3 = new Err(56,56);
   answer3.reason = "Long line";
   answers[2] =answer3;
+
+  var hints = ["Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
 }
 var ListofErrors = [];
 
@@ -182,6 +186,24 @@ function calculateScore(answers,submission){
   } 
 return score; 
 }
+var hintCount = 0 ;
+var snackbarContainer = document.querySelector('#demo-snackbar-example');
+var showSnackbarButton = document.getElementById('hintBtn');
+var handler = function(event) {
+    //showSnackbarButton.style.backgroundColor = '';
+  };
+showSnackbarButton.addEventListener('click', function() {
+  'use strict';
+  var data = {
+    message: hints[hintCount%hints.length],
+    timeout: 2500,
+    actionHandler: handler,
+    actionText: ' '
+  };
+  hintCount++;
+  snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
+
 document.getElementById('submitBtn').addEventListener('click',submitSelection,false);
 document.addEventListener('click', function(e){
   if(e.target.className=="dropdown-item" || e.target.className==""){
