@@ -452,21 +452,71 @@ p{
                 return totalFee;    
             }
             </div>
-            <div id="editor2">public class Account {
-              double principal2,rate; int daysActive,accountType;
-              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-           } 
-           public static double calculateFee(Account[] accounts){
-               double totalFee = 0.0;
-               Account account;
-               for (int i=0;i == accounts.length;i++) {
-                   account=accounts[i];
-                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-                       totalFee += .0125 * (  1.25% broker fee
-                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+            <div id="editor2">// Class Declaration 
+  
+              public class Dog 
+              { 
+                  // Instance Variables 
+                  String name; 
+                  String breed; 
+                  int age; 
+                  String color; 
+                
+                  // Constructor Declaration of Class 
+                  public Dog(String name, String breed, 
+                                 int age, String color) 
+                  { 
+                      this.name = name; 
+                      this.breed = breed; 
+                      this.age = age; 
+                      this.color = color; 
+                  } 
+                
+                  // method 1 
+                  public String getName() 
+                  { 
+                      return name; 
+                  } 
+                
+                  // method 2 
+                  public String getBreed() 
+                  { 
+                      return breed; 
+                  }
+
+                  // method 1 
+                  public String getName() 
+                  { 
+                      return name; 
+                  } 
+
+                  // method 3 
+                  public int getAge() 
+                  { 
+                      return age; 
+                  } 
+                
+                      // method 4 
+                      public String getColor() 
+                      { 
+                          return color; 
+                      } 
+                  public boolean equals(Dog dogo){
+                    return this.toString == dogo.toString; 
+                  }
+                
+                  @Override
+                  public String toString() 
+                  { 
+                      return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+ ","+ this.getColor()); 
+                  } 
+                
+                  public static void main(String[] args) 
+                  { 
+                      Dog tuffy = new Dog("tuffy","papillon", 5, "white"); 
+                      System.out.println(tuffy.toString()); 
+                  } 
               } 
-              return totalFee;    
-          }
             </div>
             <div id="editor3">public class Account {
               double principal3,rate; int daysActive,accountType;

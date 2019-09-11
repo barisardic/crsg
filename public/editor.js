@@ -10,7 +10,9 @@ if(levelChosen==1){
   var code = document.querySelector("editor");
   editor.setTheme("ace/theme/monokai");
   editor.session.setMode("ace/mode/java");
-  editor.setReadOnly(true);  
+  editor.setReadOnly(true);
+
+  
 }
 else if(levelChosen ==2){
   document.getElementById("editor2").style.display = "block";
@@ -18,7 +20,7 @@ else if(levelChosen ==2){
   var code = document.querySelector("editor2");
   editor.setTheme("ace/theme/monokai");
   editor.session.setMode("ace/mode/java");
-  editor.setReadOnly(true);  
+  editor.setReadOnly(true);
 }
 else if(levelChosen==3){
   document.getElementById("editor3").style.display = "block";
@@ -87,12 +89,36 @@ class Err {
     return "" + this.start+ "-" + this.end +"-" + this.reason;
   } 
 }
-var answer1 = new Err(4,4);
-answer1.reason = "Comments";
+if(levelChosen == 1){
+  var answers = [];
+  var answer1 = new Err(4,4);
+  answer1.reason = "Comments";
+  answers[0] =answer1;
 
+  var answer2 = new Err(8,11);
+  answer2.reason = "Duplication";
+  answers[1] =answer2;
+
+  var answer3 = new Err(18,19);
+  answer3.reason = "Parameter";
+  answers[2] =answer3;  
+}
+else if(levelChosen == 2){
+  var answers = [];
+  var answer1 = new Err(32,36);
+  answer1.reason = "Duplication";
+  answers[0] =answer1;
+
+  var answer2 = new Err(44,48);
+  answer2.reason = "Indentation";
+  answers[1] =answer2;
+
+  var answer3 = new Err(56,56);
+  answer3.reason = "Long line";
+  answers[2] =answer3;
+}
 var ListofErrors = [];
-var answers = [];
-answers[0] =answer1;
+
 document.addEventListener('DOMContentLoaded', lines, false);
 function lines(){
   function getLines () {
@@ -114,7 +140,7 @@ function submitSelection () {
   var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
   alert(answer1.toString()+"**"+ListofErrors[0].toString());
   var scoreCalc =calculateScore(answers,ListofErrors);
-  alert(scoreCalc);
+  alert("total score : "+ scoreCalc);
   var user = firebase.auth().currentUser;
      var userId = user.uid;
     //todo finsd out boolean returning checkbox value
@@ -134,17 +160,17 @@ function calculateScore(answers,submission){
   var grandTruth = answers;
   var score = 0;
   for (var i = 0; i<submission.length;i++) {
-    alert("1");
+    
     for(var j=0;j<grandTruth.length;j++){
-      alert("2");
+      
       if(submission[i].start == grandTruth[j].start){
-        alert("3");
+
         if(submission[i].end == grandTruth[j].end){
           score++;
-          alert("4");
+          
           if(submission[i].reason == grandTruth[j].reason){
             score = score+2;
-            alert("5");
+            
             //delete found element , give points only once
             grandTruth.splice(j,1);
           }
