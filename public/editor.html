@@ -38,6 +38,46 @@
         left: 50%;
         /* border: 5px solid rgb(226, 9, 20); */
     }
+    #editor3 {
+        float: right ;
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        /* border: 5px solid rgb(226, 9, 20); */
+    }
+    #editor4 {
+        float: right ;
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        /* border: 5px solid rgb(226, 9, 20); */
+    }
+    #editor5 {
+        float: right ;
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        /* border: 5px solid rgb(226, 9, 20); */
+    }
+    #editor6 {
+        float: right ;
+        display: none; 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        /* border: 5px solid rgb(226, 9, 20); */
+    }
     #description {
         position: absolute;
         /* border: 5px solid rgb(52, 153, 91); */
@@ -70,6 +110,35 @@
   left: 40px;
   z-index: 10;
   }
+  #hintBtn{
+  position: absolute;
+  bottom: 35.6%;
+  height: 40px;
+  left: 630px;
+  z-index: 10;
+  }
+  #answersBtn{
+  position: absolute;
+  bottom: 35.6%;
+  height: 40px;
+  left: 720px;
+  z-index: 10;
+  }
+  .mdl-snackbar {
+  background-color: rgba(6, 7, 6, 0.95);
+  /* bottom: 41.6%; */
+  left: 400px;
+
+}
+
+.mdl-snackbar__icon {
+  color: #ffffff;
+  padding: 13px 0 0 24px;
+}
+
+.mdl-snackbar__action {
+  color: #ffffff;
+}
   /*   #leftMid{
       margin-left:7px; 
       margin-top:71%;
@@ -87,26 +156,33 @@
  
 .marketing-contents-list, .marketing-content-create{
   padding: 10px;
-  /* border: 5px solid rgb(52, 153, 91); */
+  border: 5px solid rgb(52, 153, 91); 
   flex-direction: row;
 }
 .marketing-content-hidden{
-  padding: 10px;
-  margin-top: 30px;
+  padding: 5px;
+  margin-top: 25px;
   display: none;
-  flex-direction: row;
+  /* flex-direction: row; */
+  border: 5px solid rgb(177, 16, 226); 
 }
 .marketing-content-title{
    margin-right: auto;
    font-weight: bolder;
-   flex-direction: row;
+   /* flex-direction: row; */
+   border: 5px solid rgb(204, 16, 57); 
 }
 .marketing-content-buttons {
-    flex-direction: row;
-    height: 20%;
-    margin-right: 60%;
+    flex-direction: column; 
+    
+    float: left;
+    width: 60%;
+    margin-right: 70%;
     border-color: black;
-    /* border: 5px solid rgb(214, 123, 49); */
+    border: 5px solid rgb(214, 123, 49);
+}
+.inline-block-child {
+  display: inline-block;
 }
 /* .dropdown{
   border: 5px solid rgb(59, 37, 189);
@@ -173,7 +249,9 @@ select {
 .dropdown-submenu.pull-left {
     float: none;
 }
-
+.dropdown-item{
+  pointer-events: auto;
+}
 .dropdown-submenu.pull-left>.dropdown-menu {
     left: -100%;
     margin-left: 10px;
@@ -198,8 +276,8 @@ p{
                        
                     <div class="marketing-content-list">
                         <div class="marketing-content-hidden mdl-shadow--4dp">
-                           <div class="marketing-content-title" id= "stend">MONDAY MENU</div>
-                          <div class="marketing-content-buttons">
+                           <div class="marketing-content-title inline-block-child" id= "stend">MONDAY MENU</div>
+                          <div class="marketing-content-buttons inline-block-child">
                               <div class="dropdown left" >
                                   <button class="btn btn-secondary dropdown-toggle" id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
                                     Error Reason
@@ -229,7 +307,7 @@ p{
                                             <li class="dropdown-submenu">
                                               <a class="dropdown-item" href="#">Visual Representation</a>
                                               <ul class="dropdown-menu">
-                                                    <li class="dropdown-item"><a href="#">Bracket</a></li>
+                                                    <li class="dropdown-item"><a>Bracket</a></li>
                                                     <li class="dropdown-item"><a href="#">Indentation</a></li>
                                                     <li class="dropdown-item"><a href="#">Blank line usage</a></li>
                                                     <li class="dropdown-item"><a href="#">Long line</a></li>
@@ -301,15 +379,6 @@ p{
                             <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right">
                               <i class="material-icons">delete</i>
                             </button>
-                            <select-box class="select select2-field select2-field--floating-label" style="margin-bottom: 40px">
-                              <select id="ddlS2" name="ddlS2" class="select2" style="width: 200px">
-                                <option value="" disabled selected hidden>Error Reason...</option>
-                                <option value="1">one</option>
-                                <option value="2">two</option>
-                                <option value="3">three</option>
-                              </select>
-                                <span class="mdl-selectfield__error"></span>
-                            </select-box>
 
                           </div></div></div>
                       
@@ -390,36 +459,157 @@ p{
                 </div>
         </div>
         <div id="editor">public class Account {
-                double principal,rate; int daysActive,accountType;
+                double principal1,rate; int daysActive,accountType;
                 public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-             } 
+             }
+             // select here 
              public static double calculateFee(Account[] accounts){
                  double totalFee = 0.0;
                  Account account;
+              // select here reason is Duplication
+              // select here
+              // select here
+              // select here
                  for (int i=0;i == accounts.length;i++) {
                      account=accounts[i];
                      if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
                          totalFee += .0125 * (  1.25% broker fee
                      account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
                 } 
+                // select here reason is Parameter
+                // select here
                 return totalFee;    
             }
             </div>
-            <div id="editor2">function newUser(){
-                var newUserPassword = document.getElementById("sign-up-password").value;
-                var newUserName = document.getElementById("sign-up-username").value;
-                var newUserEmail = document.getElementById("sign-up-email").value;
-                //TODO check retyped password
+            <div id="editor2">// Class Declaration 
+  
+              public class Dog 
+              { 
+                  // Instance Variables 
+                  String name; 
+                  String breed; 
+                  int age; 
+                  String color; 
                 
-                firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
-                  // Handle Errors here.
-                  var errorCode = error.code;
-                  var errorMessage = error.message;
-                  alert(errorMessage);
-                  // ...
-                });
-                alert("done");
-              }
+                  // Constructor Declaration of Class 
+                  public Dog(String name, String breed, 
+                                 int age, String color) 
+                  { 
+                      this.name = name; 
+                      this.breed = breed; 
+                      this.age = age; 
+                      this.color = color; 
+                  } 
+                
+                  // method 1 
+                  public String getName() 
+                  { 
+                      return name; 
+                  } 
+                
+                  // method 2 
+                  public String getBreed() 
+                  { 
+                      return breed; 
+                  }
+
+                  // method 1 
+                  public String getName() 
+                  { 
+                      return name; 
+                  } 
+
+                  // method 3 
+                  public int getAge() 
+                  { 
+                      return age; 
+                  } 
+                
+                      // method 4 
+                      public String getColor() 
+                      { 
+                          return color; 
+                      } 
+                  public boolean equals(Dog dogo){
+                    return this.toString == dogo.toString; 
+                  }
+                
+                  @Override
+                  public String toString() 
+                  { 
+                      return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+ ","+ this.getColor()); 
+                  } 
+                
+                  public static void main(String[] args) 
+                  { 
+                      Dog tuffy = new Dog("tuffy","papillon", 5, "white"); 
+                      System.out.println(tuffy.toString()); 
+                  } 
+              } 
+            </div>
+            <div id="editor3">public class Account {
+              double principal3,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
+            </div>
+            <div id="editor4">public class Account {
+              double principal4,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
+            </div>
+            <div id="editor5">public class Account {
+              double principal5,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
+            </div>
+            <div id="editor6">public class Account {
+              double principal6,rate; int daysActive,accountType;
+              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+           } 
+           public static double calculateFee(Account[] accounts){
+               double totalFee = 0.0;
+               Account account;
+               for (int i=0;i == accounts.length;i++) {
+                   account=accounts[i];
+                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+                       totalFee += .0125 * (  1.25% broker fee
+                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+              } 
+              return totalFee;    
+          }
             </div>
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="hover">
                 <i class="material-icons">add</i>
@@ -427,34 +617,37 @@ p{
             <!-- Accent-colored raised button with ripple -->
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="submitBtn">
                 Submit Selection</Button>
-
-            
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="hintBtn">
+                Hint</Button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="answersBtn">
+                See Answers</Button>
+            <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+              <div class="mdl-snackbar__icon">
+                  <i class="material-icons">extension</i>
+              </div>
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
             </div>
-        
-              
-<script>
-/* $(document).ready(function(e) {   
-    // your code here
-    $(".dropdown-menu li a").click(function(){
-                var selText = $(this).text();
-                $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-              });
- });
-function nonono(){
-  
-  var selText = $(this).innerHtml;
-  alert(selText);
-                $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-} */
-
-/* $(".dropdown-item a").click(function(e){
-                  e.preventDefault();
-                  var selText = $(this).text();
-                  var parentId = $(this).closest('.btn').attr('id');
-                  alert(""+parentId);
-                  $("#"+parentId).text(selText);
-              }); */
-</script>
+            <!-- Modal -->
+            <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Your results!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>      
 </div>
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script>
@@ -467,6 +660,7 @@ function nonono(){
 <script src="/__/firebase/6.2.3/firebase-app.js"></script>
 <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
 <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
 
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
@@ -483,6 +677,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 </script>
+<script src="timeme.min.js"></script>
 <script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
 <script src= "editor.js"> </script>
 </body>
