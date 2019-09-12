@@ -3,12 +3,11 @@ var listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = localStorage.getItem('selected');
 //window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
-
 if(levelChosen==1){
   document.getElementById("editor").style.display = "block";
   var editor = ace.edit("editor");
   var code = document.querySelector("editor");
-  editor.setTheme("ace/theme/monokai");
+  editor.setTheme("ace/theme/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
 
@@ -18,7 +17,7 @@ else if(levelChosen ==2){
   document.getElementById("editor2").style.display = "block";
   var editor = ace.edit("editor2");
   var code = document.querySelector("editor2");
-  editor.setTheme("ace/theme/monokai");
+  editor.setTheme("ace/theme/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
 }
@@ -26,7 +25,7 @@ else if(levelChosen==3){
   document.getElementById("editor3").style.display = "block";
   var editor = ace.edit("editor3");
   var code = document.querySelector("editor3");
-  editor.setTheme("ace/theme/monokai");
+  editor.setTheme("ace/theme/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -34,7 +33,7 @@ else if(levelChosen==4){
   document.getElementById("editor4").style.display = "block";
   var editor = ace.edit("editor4");
   var code = document.querySelector("editor4");
-  editor.setTheme("ace/theme/monokai");
+  editor.setTheme("ace/theme/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -42,7 +41,7 @@ else if(levelChosen==5){
   document.getElementById("editor5").style.display = "block";
   var editor = ace.edit("editor5");
   var code = document.querySelector("editor5");
-  editor.setTheme("ace/theme/monokai");
+  editor.setTheme("ace/theme/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -50,7 +49,7 @@ else if(levelChosen==6){
   document.getElementById("editor6").style.display = "block";
   var editor = ace.edit("editor6");
   var code = document.querySelector("editor6");
-  editor.setTheme("ace/theme/monokai");
+  editor.setTheme("ace/theme/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -142,9 +141,9 @@ function lines(){
 };
 function submitSelection () {
   var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
-  alert(answer1.toString()+"**"+ListofErrors[0].toString());
+  //alert(answer1.toString()+"**"+ListofErrors[0].toString());
   var scoreCalc =calculateScore(answers,ListofErrors);
-  alert("total score : "+ scoreCalc[0]);
+  //alert("total score : "+ scoreCalc[0]);
   var user = firebase.auth().currentUser;
      var userId = user.uid;
     //todo finsd out boolean returning checkbox value
@@ -158,12 +157,7 @@ function submitSelection () {
       timeSpend: timeSpentOnPage
 
     });
-/*   $("#resultModal").find('.modal-body').text("There were " +answers.length+1 + "mistakes. You got "+scoreCalc[1]+"right!");
-  //jQuery("#resultModal").modal('show');
-  $(document).ready(function() { 
-    $("#resultModal").modal('show'); 
-});  */
-  noOfanswers = answers.length+1;
+  noOfanswers = answers.length;
   var data = {
     message: "There were " +noOfanswers  +" mistakes. You got "+scoreCalc[1]+"  exactly right!",
     timeout: 10000,
@@ -171,11 +165,15 @@ function submitSelection () {
     actionText: ' '
   };
   snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  // open answers button
+  var answersButton = document.getElementById("answersBtn");
+  answersButton.style.opacity= 1;
+  answersButton.style.cursor = "auto";
 }
 
 
 function calculateScore(answers,submission){
-  var grandTruth = answers;
+  var grandTruth = answers.slice();
   var score = 0;
   var exact = 0;
   for (var i = 0; i<submission.length;i++) {
@@ -237,22 +235,20 @@ document.addEventListener('click', function(e){
     ListofErrors[ind-1].reason= selText;
   }
 });
-/* function getLines(){
-  /* selectionRange = editor.getSelectionRange();
+document.getElementById('answersBtn').addEventListener('click',answersPressed,false);
+function answersPressed(){
+  for(var i =0; i< answers.length;i++){
+    startingLine = answers[i].start;
+    endLine = answers[i].end;
+    if(startingLine==endLine){
+      endLine++;
+    }
+    var rng = new Range(startingLine,0,endLine,0);
+    editor.session.addMarker(rng,"ace_active-line","background",false);
+  }
+}
 
-  startLine = selectionRange.start.row;
-  endLine = selectionRange.end.row;
 
-  content = editor.session.getTextRange(selectionRange); */
-
-//editor.setValue(code,-1); 
-
-
-/*  var codeRef = firebase.database().ref('/code1');
-codeRef.on('value', function(snapshot) {
-  var code = snapshot.val();
-}); 
-alert("nana"+code); */
 function addComponent (ListofErrors)
             {
               var list = document.querySelector('.marketing-content-list');
@@ -316,7 +312,7 @@ function visibilityPressed(){
     index = this.id.charAt(1);
     startingLine = ListofErrors[index-1].start;
     endLine = ListofErrors[index-1].end;
-    var rng = new Range(startLine,0,endLine,0);
+    var rng = new Range(startingLine,0,endLine,0);
     //var rng = clipNodes(startLine,endLine);
     //var rng = new range(startLine,0,endLine,0);
     //alert(startingLine+"**"+endLine);
