@@ -196,7 +196,7 @@ button.social-signin {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   transition: 0.2s ease;
-  cursor: pointer;
+  cursor: not-allowed;
 }
 
 button.social-signin:hover,

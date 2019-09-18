@@ -14,11 +14,12 @@ function newUser(){
     alert(errorMessage);
     // ...
   });
-  alert("done");
+  //alert("done");
 }
 //lOG IN
 document.getElementById("login").addEventListener("click",loginUser,false); 
 function loginUser(){
+  $("#loginProgress").show();
   var UserPassword = document.getElementById("log-in-password").value;
   var UserEmail = document.getElementById("log-in-email").value;
   //TODO check retyped password
@@ -27,6 +28,7 @@ function loginUser(){
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
+    $("#loginProgress").hide();
     // ...
   }); 
 }
@@ -34,7 +36,7 @@ function loginUser(){
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    alert("hello");
+    //alert("hello");
     // ...
     window.location.href = "/main.html";
   } else {
@@ -46,7 +48,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 //sign out
 document.getElementById("signOut").addEventListener("click",signOutUser,false);
 function signOutUser(){
-  alert("signed out");
+  //alert("signed out");
   firebase.auth().signOut().then(function() {
     // Sign-out successful.
   }).catch(function(error) {
