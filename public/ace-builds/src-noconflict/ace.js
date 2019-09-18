@@ -17747,7 +17747,8 @@ z-index: 6;\
 }\
 .ace_marker-layer .ace_active-line {\
 position: absolute;\
-z-index: 2;\
+color: rgba(255, 255, 0, 0.2);\
+z-index: 6;\
 }\
 .ace_marker-layer .ace_selected-word {\
 position: absolute;\

@@ -230,13 +230,17 @@ document.addEventListener('click', function(e){
     $("#"+parentId).text(selText);
     //alert('BUTTON CLICKED'); 
     var ind = parentId.charAt(1);
-    alert(selText);
-    alert(e.target.innerHTML);
+    //alert(selText);
+    //alert(e.target.innerHTML);
     ListofErrors[ind-1].reason= selText;
   }
 });
 document.getElementById('answersBtn').addEventListener('click',answersPressed,false);
 function answersPressed(){
+  var Domlist = document.querySelector('.marketing-content-list');
+  Domlist.innerHTML = listInner;
+  //alert("child count :"+Domlist.childNodes.length);
+  addListAsComponentForAnswers(answers);
   for(var i =0; i< answers.length;i++){
     startingLine = answers[i].start;
     endLine = answers[i].end;
@@ -244,7 +248,7 @@ function answersPressed(){
       endLine++;
     }
     var rng = new Range(startingLine,0,endLine,0);
-    editor.session.addMarker(rng,"ace_active-line","background",false);
+    editor.session.addMarker(rng,"ace_active-line","screen",false);
   }
 }
 
@@ -325,20 +329,20 @@ function removePressed(){
   // ids are in rr+index form thus take the 2nd character of the id and ıd use it as index.
   index = this.id.charAt(1);
   var totalSelection  = ListofErrors.length;
-  alert(ListofErrors.length);
+  //alert(ListofErrors.length);
   var removed =  ListofErrors.splice((index-1),1);
-  alert(ListofErrors.length);
+  //alert(ListofErrors.length);
   var Domlist = document.querySelector('.marketing-content-list');
   var lastChild = Domlist.lastChild;
-  alert("child count :"+Domlist.childNodes.length);
-  alert("innerHTML :"+Domlist.innerHTML);
+  //alert("child count :"+Domlist.childNodes.length);
+  //alert("innerHTML :"+Domlist.innerHTML);
   Domlist.innerHTML = listInner;
-  alert("child count :"+Domlist.childNodes.length);
+  //alert("child count :"+Domlist.childNodes.length);
   addListAsComponent(ListofErrors);
       //cloneList.pop;
   }
 
-function addListAsComponent (ListofErrors)
+function addListAsComponentForAnswers (ListofErrors)
             {
               var list = document.querySelector('.marketing-content-list');
               var mc = document.querySelector('.marketing-content-hidden');
@@ -353,6 +357,10 @@ function addListAsComponent (ListofErrors)
                 reasons.setAttribute("id",index);
                 reasons.addEventListener("change", reasonChanged); */
                 
+                reasons2 = buttons.querySelector(".btn-secondary");
+                reasons2.setAttribute("id","c"+index);
+                reasons2.innerHTML = answers[index-1].reason;
+
                 visibility = buttons.getElementsByTagName("button")[1];
                 visibility.setAttribute("id","v"+index);
                 visibility.addEventListener("click",visibilityPressed);
@@ -363,7 +371,7 @@ function addListAsComponent (ListofErrors)
 
                 document.addEventListener('click', function(e){
                   if(e.target.className=="dropdown-item"){
-                   alert('BUTTON CLICKED');
+                   //alert('BUTTON CLICKED');
                   }
                 })
 
@@ -374,4 +382,43 @@ function addListAsComponent (ListofErrors)
               //alert(visibility.innerHTML);
               
             }
-  
+            function addListAsComponent (ListofErrors)
+            {
+              var list = document.querySelector('.marketing-content-list');
+              var mc = document.querySelector('.marketing-content-hidden');
+              for (index = ListofErrors.length;index>0;index--){
+                var newNode = mc.cloneNode(true);
+                var e = ListofErrors[index-1];
+                newNode.childNodes[1].innerHTML = "Error Lines : "+e.start+"&"+e.end; 
+                newNode.style.display = "flex";
+                var buttons = newNode.querySelector(".marketing-content-buttons");
+                
+               /*  reasons = buttons.querySelector(".select2-field").querySelector(".select2");
+                reasons.setAttribute("id",index);
+                reasons.addEventListener("change", reasonChanged); */
+                
+                reasons2 = buttons.querySelector(".btn-secondary");
+                reasons2.setAttribute("id","c"+index);
+                reasons2.innerHTML = answers[index-1];
+
+                visibility = buttons.getElementsByTagName("button")[1];
+                visibility.setAttribute("id","v"+index);
+                visibility.addEventListener("click",visibilityPressed);
+                
+                remover = buttons.getElementsByTagName("button")[2];
+                remover.setAttribute("id","r"+index);
+                remover.addEventListener("click",removePressed);
+
+                document.addEventListener('click', function(e){
+                  if(e.target.className=="dropdown-item"){
+                   //alert('BUTTON CLICKED');
+                  }
+                })
+
+                list.insertBefore(newNode, mc);
+                //
+              }
+              componentHandler.upgradeDom();
+              //alert(visibility.innerHTML);
+              
+            }
