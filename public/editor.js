@@ -118,6 +118,10 @@ else if(levelChosen == 2){
   answer3.reason = "Long line";
   answers[2] =answer3;
 
+  var answer4 = new Err(50,50);
+  answer4.reason = "Compare";
+  answers[3] =answer4;
+
   var hints = ["Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
 }
 var ListofErrors = [];
@@ -243,10 +247,8 @@ function answersPressed(){
   addListAsComponentForAnswers(answers);
   for(var i =0; i< answers.length;i++){
     startingLine = answers[i].start;
-    endLine = answers[i].end;
-    if(startingLine==endLine){
-      endLine++;
-    }
+    endLine = answers[i].end + 1;
+
     var rng = new Range(startingLine,0,endLine,0);
     editor.session.addMarker(rng,"ace_active-line","screen",false);
   }
