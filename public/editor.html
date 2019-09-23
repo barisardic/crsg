@@ -78,6 +78,9 @@
         left: 50%;
         /* border: 5px solid rgb(226, 9, 20); */
     }
+    i.icon-black {
+    color: black;
+}
     #description {
         position: absolute;
         /* border: 5px solid rgb(52, 153, 91); */
@@ -272,7 +275,7 @@ p{
 <body>
 <div class="container" id="container">
         <div id="description">
-            <div class="mdl-layout__drawer-button" onclick="history.back()"><i class="material-icons">arrow_back</i></div>
+            <div class="mdl-layout__drawer-button " onclick="history.back()"><i class="material-icons" style="color:red">arrow_back</i></div>
             <div class="util" id="leftTop"> 
             
                        
@@ -309,7 +312,7 @@ p{
                                             <li class="dropdown-submenu">
                                               <a class="dropdown-item" href="#">Visual Representation</a>
                                               <ul class="dropdown-menu">
-                                                    <li class="dropdown-item"><a>Bracket</a></li>
+                                                    <li class="dropdown-item"><a href="#">Bracket</a></li>
                                                     <li class="dropdown-item"><a href="#">Indentation</a></li>
                                                     <li class="dropdown-item"><a href="#">Blank line usage</a></li>
                                                     <li class="dropdown-item"><a href="#">Long line</a></li>
@@ -338,7 +341,6 @@ p{
                                           </ul>
                                         </li>
                                         <li class="dropdown-divider"></li>
-                                      <li class="dropdown-item"><a href="#">False Positives</a></li>
                                       <li class="dropdown-divider"></li>
                                       <li class="dropdown-submenu">
                                         <a  class="dropdown-item" tabindex="-1" href="#">Functional Defects</a>
@@ -460,94 +462,93 @@ p{
                   </div>
                 </div>
         </div>
-        <div id="editor">public class Account {
-                double principal1,rate; int daysActive,accountType;
-                public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-             }
-             // select here  reason is Comments
-             public static double calculateFee(Account[] accounts){
-                 double totalFee = 0.0;
-                 Account account;
-              // select here reason is Duplication
-              // select here
-              // select here
-              // select here
-                 for (int i=0;i == accounts.length;i++) {
-                     account=accounts[i];
-                     if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-                         totalFee += .0125 * (  1.25% broker fee
-                     account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-                } 
-                // select here reason is Parameter
-                // select here
-                return totalFee;    
-            }
-            </div>
-            <div id="editor2">// Class Declaration 
-  
-              public class Dog 
-              { 
-                  // Instance Variables 
-                  String name; 
-                  String breed; 
-                  int age; 
-                  String color; 
-                
-                  // Constructor Declaration of Class 
-                  public Dog(String name, String breed, 
-                                 int age, String color) 
-                  { 
-                      this.name = name; 
-                      this.breed = breed; 
-                      this.age = age; 
-                      this.color = color; 
-                  } 
-                
-                  // method 1 
-                  public String getName() 
-                  { 
-                      return name; 
-                  } 
-                
-                  // method 2 
-                  public String getBreed() 
-                  { 
-                      return breed; 
-                  }
-
-                  // method 1 
-                  public String getName() 
-                  { 
-                      return name; 
-                  } 
-
-                  // method 3 
-                  public int getAge() 
-                  { 
-                      return age; 
-                  } 
-                
-                      // method 4 
-                      public String getColor() 
-                      { 
-                          return color; 
-                      } 
-                  public boolean equals(Dog dogo){
-                    return this.toString == dogo.toString; 
-                  }
-                
-                  @Override
-                  public String toString() 
-                  { 
-                      return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+ ","+ this.getColor()); 
-                  } 
-                
-                  public static void main(String[] args) 
-                  { 
-                      Dog tuffy = new Dog("tuffy","papillon", 5, "white"); 
-                      System.out.println(tuffy.toString()); 
-                  } 
-              } 
+        <pre id="editor">
+  public class Account {
+    double principal1,rate; int daysActive,accountType;
+    public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+  }
+  // select here  reason is Comments
+  public static double calculateFee(Account[] accounts){
+    double totalFee = 0.0;
+    Account account;
+    // select here reason is Duplication
+    // select here
+    // select here
+    // select here
+    for (int i=0;i == accounts.length;i++) {
+      account=accounts[i];
+      if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+        totalFee += .0125 * (  1.25% broker fee
+        account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+      } 
+      // select here reason is Parameter
+      // select here
+  return totalFee;    
+  }</pre>
+            <div id="editor2">
+    // Class Declaration
+    public class Dog 
+    { 
+      // Instance Variables 
+      String name; 
+      String breed; 
+      int age; 
+      String color; 
+    
+      // Constructor Declaration of Class 
+      public Dog(String name, String breed, 
+              int age, String color) 
+      { 
+        this.name = name; 
+        this.breed = breed; 
+        this.age = age; 
+        this.color = color; 
+      } 
+    
+      // method 1 
+      public String getName() 
+      { 
+        return name; 
+      } 
+    
+      // method 2 
+      public String getBreed() 
+      { 
+        return breed; 
+      }
+    
+      // method 1 
+      public String getName() 
+      { 
+        return name; 
+      } 
+    
+        // method 3 
+        public int getAge() 
+        { 
+          return age; 
+        } 
+    
+        // method 4 
+        public String getColor() 
+        { 
+          return color; 
+        } 
+      public boolean equals(Dog dogo){
+      return this.toString == dogo.toString; 
+      }
+    
+      @Override
+      public String toString() 
+      { 
+        return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+ ","+ this.getColor()); 
+      } 
+    }
+    public static void main(String[] args) 
+    { 
+        Dog tuffy = new Dog("tuffy","papillon", 5, "white"); 
+        System.out.println(tuffy.toString()); 
+    }  
             </div>
             <div id="editor3">public class Account {
               double principal3,rate; int daysActive,accountType;

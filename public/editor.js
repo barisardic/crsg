@@ -318,6 +318,9 @@ function visibilityPressed(){
     index = this.id.charAt(1);
     startingLine = ListofErrors[index-1].start;
     endLine = ListofErrors[index-1].end;
+    if(startingLine==endLine){
+      endLine++;
+    }
     var rng = new Range(startingLine,0,endLine,0);
     //var rng = clipNodes(startLine,endLine);
     //var rng = new range(startLine,0,endLine,0);
