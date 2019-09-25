@@ -132,11 +132,11 @@ function lines(){
     selectionRange = editor.getSelectionRange();
     startLine = selectionRange.start.row;
     endLine = selectionRange.end.row;
-    alert("starts at : "+startLine+ "ends at : "+ endLine );
+    //alert("starts at : "+startLine+ "ends at : "+ endLine );
     content = editor.session.getTextRange(selectionRange);
     var selection = new Err(startLine,endLine);
     ListofErrors.push(selection);
-    alert(ListofErrors.length);
+    //alert(ListofErrors.length);
     addComponent(ListofErrors);
   
   }
@@ -281,7 +281,8 @@ function addComponent (ListofErrors)
               remover.setAttribute("id","r"+index);
               remover.addEventListener("click",removePressed);
 
-              list.insertBefore(newNode, mc);
+              //list.insertBefore(newNode, mc.nextSibling);
+              list.appendChild(newNode);
               componentHandler.upgradeDom();
               //alert(visibility.innerHTML);
               
@@ -380,8 +381,8 @@ function addListAsComponentForAnswers (ListofErrors)
                   }
                 })
 
-                list.insertBefore(newNode, mc);
-                //
+                //list.insertBefore(newNode, mc.nextSibling);
+                list.appendChild(newNode);
               }
               componentHandler.upgradeDom();
               //alert(visibility.innerHTML);
@@ -420,8 +421,8 @@ function addListAsComponentForAnswers (ListofErrors)
                   }
                 })
 
-                list.insertBefore(newNode, mc);
-                //
+                //list.insertBefore(newNode, mc.nextSibling);
+                list.appendChild(newNode);
               }
               componentHandler.upgradeDom();
               //alert(visibility.innerHTML);

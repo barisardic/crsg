@@ -1,6 +1,6 @@
 document.getElementById("signout3").addEventListener("click",signOutUser,false);
 function signOutUser(){
-  alert("singning out");
+  //alert("singning out");
   firebase.auth().signOut().then(function() {
     // Sign-out successful.
     

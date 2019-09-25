@@ -19,7 +19,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 document.getElementById("signout2").addEventListener("click",signOutUser,false);
 userEmailButton.addEventListener("click",toProfile,false);
 function signOutUser(){
-  alert("singning out");
+  //alert("singning out");
   firebase.auth().signOut().then(function() {
     // Sign-out successful.
     
@@ -34,7 +34,7 @@ document.getElementById("playButton4").addEventListener("click",playPage,false);
 document.getElementById("playButton5").addEventListener("click",playPage,false);
 document.getElementById("playButton6").addEventListener("click",playPage,false); 
 function playPage(){
-  alert(this.id);
+  //alert(this.id);
   var selectedLevel = this.id.charAt(this.id.length-1);
   localStorage.setItem('selected', selectedLevel);
     // ...
@@ -42,7 +42,7 @@ function playPage(){
   window.location.href = "/editor.html";
 }
 function toProfile(){
-  alert("go");
+  //alert("go");
   window.location.href = "/userprofile.html";
 }
 /* $('#playButton,#pro2,#pro3').addEventListener("click",playPage,false); 
