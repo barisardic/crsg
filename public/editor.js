@@ -405,8 +405,8 @@ function addListAsComponentForAnswers (ListofErrors)
                 
                 reasons2 = buttons.querySelector(".btn-secondary");
                 reasons2.setAttribute("id","c"+index);
-                reasons2.innerHTML = answers[index-1];
-
+                reasons2.innerHTML = ListofErrors[index-1].reason;
+ 
                 visibility = buttons.getElementsByTagName("button")[1];
                 visibility.setAttribute("id","v"+index);
                 visibility.addEventListener("click",visibilityPressed);
