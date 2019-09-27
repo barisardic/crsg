@@ -364,6 +364,7 @@ function addListAsComponentForAnswers (ListofErrors)
                 reasons.addEventListener("change", reasonChanged); */
                 
                 reasons2 = buttons.querySelector(".btn-secondary");
+                reasons2.disabled = true;
                 reasons2.setAttribute("id","c"+index);
                 reasons2.innerHTML = answers[index-1].reason;
 
@@ -371,9 +372,9 @@ function addListAsComponentForAnswers (ListofErrors)
                 visibility.setAttribute("id","v"+index);
                 visibility.addEventListener("click",visibilityPressed);
                 
-                remover = buttons.getElementsByTagName("button")[2];
+                /* remover = buttons.getElementsByTagName("button")[2];
                 remover.setAttribute("id","r"+index);
-                remover.addEventListener("click",removePressed);
+                remover.addEventListener("click",removePressed); */
 
                 document.addEventListener('click', function(e){
                   if(e.target.className=="dropdown-item"){
