@@ -275,6 +275,17 @@ p{
     padding:1em;
     font-size: large;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
 </style>
 </head>
 <body>
@@ -416,53 +427,52 @@ p{
                             This method uses a try-catch block that catches Exception objects, but Exception is not thrown within the try block, and RuntimeException is not explicitly caught. It is a common bug pattern to say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well, masking potential bugs.</p>
                     </ul>
                   </div>
-                  <div class="mdl-tabs__panel" id="checkist-panel">
+                  <div class="mdl-tabs__panel"style="overflow-x:auto;" id="checkist-panel">
                     
                         <table>
                             <tbody>
                              <tr>
-                              <td><li>Use Intention-Revealing Names --></li></td>
-                              <td><li>Meaningful Names</li></td>
+                              <td>Use Intention-Revealing Names</td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Pick one word per concept --></li></td>
-                              <td><li>Meaningful Names</li></td>
+                              <td>Pick one word per concept</td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Use Solution/Problem Domain Names --></li></td>
-                              <td><li>Meaningful Names</li></td>
+                              <td>Use Solution/Problem Domain Names </td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Classes should be small! --></li></td>
-                              <td><li>Classes</li></td>
+                              <td>Classes should be small!</td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Functions should be small! --></li></td>
-                              <td><li>Functions</li></td>
+                              <td>Functions should be small! </td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Do one Thing --></li></td>
-                              <td><li>Functions</li></td>
+                              <td>Do one Thing </td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Don't Repeat Yourself (Avoid Duplication) --></li></td>
-                              <td><li>Functions</li></td>
+                              <td>Don't Repeat Yourself (Avoid Duplication) </li></td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Explain yourself in code --></li></td>
-                              <td><li>Comments</li></td>
+                              <td>Explain yourself in code </td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Make sure the code formatting is applied --></li></td>
-                              <td><li>Formatting</li></td>
+                              <td>Make sure the code formatting is applied </td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Use Exceptions rather than Return codes --></li></td>
-                              <td><li>Exceptions</li></td>
+                              <td>Use Exceptions rather than Return codes </td>
+                              
                              </tr>
                              <tr>
-                              <td><li>Don't return Null --></li></td>
-                              <td><li>Exceptions</li></td>
+                              <td>Don't return Null </td>
                              </tr>
                             </tbody>
                            </table>
