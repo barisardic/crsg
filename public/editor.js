@@ -140,7 +140,22 @@ else if(levelChosen == 3){
   answers[2] =answer3;
   var hints = ["Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];  
 }
+else if(levelChosen == 4){
+  var answers = [];
+  var answer1 = new Err(12,12);
+  answer1.reason = "Data and resource manipulation";
+  answers[0] =answer1;
 
+  var answer2 = new Err(21,21);
+  answer2.reason = "Algorithm/Performance";
+  answers[1] =answer2;
+
+  var answer3 = new Err(30,30);
+  answer3.reason = "Data and resource manipulation";
+  answers[2] =answer3;
+
+  var hints = ["Pay close attention to indexes","How does java handle 2D arrays?"];  
+}
 
 var ListofErrors = [];
 
@@ -376,7 +391,9 @@ function addListAsComponentForAnswers (ListofErrors)
               for (index = ListofErrors.length;index>0;index--){
                 var newNode = mc.cloneNode(true);
                 var e = ListofErrors[index-1];
-                newNode.childNodes[1].innerHTML = "Error Lines : "+e.start+"&"+e.end; 
+                var DisplayStart = e.start+1;
+                var DisplayEnd = e.end+1;
+                newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"&"+DisplayEnd; 
                 newNode.style.display = "flex";
                 var buttons = newNode.querySelector(".marketing-content-buttons");
                 
@@ -417,7 +434,9 @@ function addListAsComponentForAnswers (ListofErrors)
               for (index = ListofErrors.length;index>0;index--){
                 var newNode = mc.cloneNode(true);
                 var e = ListofErrors[index-1];
-                newNode.childNodes[1].innerHTML = "Error Lines : "+e.start+"&"+e.end; 
+                var DisplayStart = e.start+1;
+                var DisplayEnd = e.end+1;
+                newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"&"+DisplayEnd; 
                 newNode.style.display = "flex";
                 var buttons = newNode.querySelector(".marketing-content-buttons");
                 

@@ -284,7 +284,9 @@ th, td {
   text-align: center;
   padding: 8px;
 }
-
+ul{
+  list-style-type: square;
+}
 tr:nth-child(even) {background-color: #f2f2f2;}
 </style>
 </head>
@@ -408,8 +410,8 @@ tr:nth-child(even) {background-color: #f2f2f2;}
               </div>
               <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
                   <div class="mdl-tabs__tab-bar">
-                      <a href="#narrative-panel" class="mdl-tabs__tab is-active">Narrative</a>
-                      <a href="#description-panel" class="mdl-tabs__tab">Description</a>
+                      <a href="#narrative-panel" class="mdl-tabs__tab is-active">Description</a>
+                      <a href="#description-panel" class="mdl-tabs__tab">Guide</a>
                       <a href="#checkist-panel" class="mdl-tabs__tab">Checklist</a>
                   </div>
                   <div class="mdl-tabs__panel is-active" id="narrative-panel">
@@ -419,12 +421,52 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                         type of defect that you have found or how to select it, you should refer
                          back to the tutorial.
                                                                                 -Bilsen Team </p>
+                                                                                    
                     </ul>
                   </div>
                   <div class="mdl-tabs__panel" id="description-panel">
-                    <ul>
-                        <p>REC: Exception is caught when Exception is not thrown (REC_CATCH_EXCEPTION)
-                            This method uses a try-catch block that catches Exception objects, but Exception is not thrown within the try block, and RuntimeException is not explicitly caught. It is a common bug pattern to say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well, masking potential bugs.</p>
+                    <ul style="font-size: medium">
+                        <li><strong>Semantic duplication :</strong>  There are two section in the code that are not the same but they perform the same task.</li>
+
+                       <li><strong>Semantic dead code :</strong> A piece of code that the program executes which does not perform any meaningful task.</li>
+                        
+                       <li><strong>Duplication :</strong> The exact replica of this code exists in the project.</li>
+                        
+                       <li><strong>Consistency :</strong> If there are multiple ways of doing something stick with one and do not change this arbitrarily to be consistent. </li>
+                        
+                       <li><strong>Dead Code :</strong> A piece of code in the program which is never executed.</li>
+                        
+                       <li><strong>Bracket :</strong> Unnecessary on inconsistent usage of brackets. </li>
+                        
+                       <li><strong>Indentation :</strong> Indentation of a certain code piece is not compliant with the rest of code.</li>
+                        
+                       <li><strong>Blank line usage :</strong> Empty lines usually indicate a separation of functionality thus they are commonly founded in places where single responsibility principle is violated. </li>
+                        
+                       <li><strong>Long line :</strong> Unnaturally long lines of code makes programs harder to read and debug, they might also make you miss code reuse opportunities.</li>
+                        
+                       <li><strong>Void Parameter :</strong> Null never should be a parameter to an object since it does not contribute to anything. The right way is to make 2 versions of the method one with the object parameter and the second with no parameters. </li>
+                        
+                       <li><strong>Element Type :</strong> Suboptimal usage of element (variable) type assignments </li>
+                        
+                       <li><strong>Naming :</strong> Inconsistent or irrelevant naming</li>
+                        
+                       <li><strong>Comments:</strong> Comments that are completely unnecessary or wrong </li>
+                        
+                       <li><strong>Function Call :</strong> Improper or unnecessary function call, we should extend this to include middle man functions or multi responsibility methods.</li>
+                        
+                       <li><strong>Parameter :</strong> Too many or unnecessary parameters, wrong choice of parameters, perhaps even null parameters</li>
+                        
+                       <li><strong>Variable initialization :</strong> Unnecessary dummy initializations, maybe some variable should have been declared as final or vica versa. </li>
+                        
+                       <li><strong>Memory management :</strong> Very common in some languages, not so common in others. </li>
+                        
+                       <li><strong>Data and Resource Manipulation :</strong> This is the most general type of functional errors. If you have found a functional error that you cant assign to any other type than consider this one. Perhaps the code is going to throw a NPE. These type of errors belongs in this category.</li>
+                        
+                       <li><strong>Compare :</strong> Any errors made while utilizing “%ld”,”>””=” type of operators are of this type.</li>
+                        
+                       <li><strong>Compute :</strong> These are the errors which are mathematics related rather than programming.</li>
+                        
+                       <li><strong>Algorithm/Performance :</strong> Obvious design choices that makes the program “significantly” inefficient memory or speed wise.
                     </ul>
                   </div>
                   <div class="mdl-tabs__panel"style="overflow-x:auto;" id="checkist-panel">
@@ -541,17 +583,17 @@ tr:nth-child(even) {background-color: #f2f2f2;}
         return name; 
       } 
     
-        // method 3 
-        public int getAge() 
-        { 
-          return age; 
-        } 
+          // method 3 
+          public int getAge() 
+          { 
+            return age; 
+          } 
     
-        // method 4 
-        public String getColor() 
-        { 
-          return color; 
-        } 
+      // method 4 
+      public String getColor() 
+      { 
+        return color; 
+      } 
       public boolean equals(Dog dogo){
       return this.toString == dogo.toString; 
       }
@@ -607,21 +649,43 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     }
 }
         </pre>
-            <div id="editor4">public class Account {
-              double principal4,rate; int daysActive,accountType;
-              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-           } 
-           public static double calculateFee(Account[] accounts){
-               double totalFee = 0.0;
-               Account account;
-               for (int i=0;i == accounts.length;i++) {
-                   account=accounts[i];
-                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-                       totalFee += .0125 * (  1.25% broker fee
-                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-              } 
-              return totalFee;    
-          }
+            <div id="editor4">
+    // Java program to print the elements of 
+    // a 2 D array or matrix 
+    import java.io.*; 
+    class Matrixes { 
+      
+      public static void printMatrix(int mat[][]) 
+      { 
+        // Loop through all rows 
+        for (int i = 0; i &ld mat.length; i++) 
+        // Loop through all elements of current row 
+        for (int j = 0; j %ld mat[i].length; j++) 
+            System.out.print(mat[j][i] + " "); 
+      } 
+      public static int calcMatrixTotal(int mat[][]) 
+      { 
+      int total = 0;
+      // Loop through all rows 
+      for (int i = 0; i &ld mat.length; i++) 
+        // Loop through all elements of current row 
+        for (int j = 0; j %ld mat[i].length; j++) 
+            total = total + mat[j][i];
+      return total;
+      } 
+      public static void main(String args[]) throws IOException 
+      { 
+        int mat[][] = { { 1, 2, 3, 4 }, 
+                        { 5, 6, 7, 8 }, 
+                        { 9, 10, 11, 12 } }; 
+        printMatrix(mat);
+        int rows = primes[0].length; 
+        int cols = primes[0].length;
+        System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
+        System.out.print("The matrix total is :"+calcMatrixTotal(mat));
+      }
+    } 
+
             </div>
             <div id="editor5">public class Account {
               double principal5,rate; int daysActive,accountType;
