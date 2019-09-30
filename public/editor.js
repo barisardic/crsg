@@ -125,6 +125,23 @@ else if(levelChosen == 2){
 
   var hints = ["Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
 }
+else if(levelChosen == 3){
+  var answers = [];
+  var answer1 = new Err(16,16);
+  answer1.reason = "Data and resource manipulation";
+  answers[0] =answer1;
+
+  var answer2 = new Err(17,17);
+  answer2.reason = "Data and resource manipulation";
+  answers[1] =answer2;
+
+  var answer3 = new Err(29,29);
+  answer3.reason = "Compare";
+  answers[2] =answer3;
+  var hints = ["Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];  
+}
+
+
 var ListofErrors = [];
 
 document.addEventListener('DOMContentLoaded', lines, false);
@@ -164,7 +181,7 @@ function submitSelection () {
     });
   noOfanswers = answers.length;
   var data = {
-    message: "There were " +noOfanswers  +" mistakes. You got "+scoreCalc[1]+"  exactly right!",
+    message: "There were " +noOfanswers  +" mistakes. You got "+scoreCalc[1]+"  exactly right! Score : "+scoreCalc[0],
     timeout: 10000,
     actionHandler: handler,
     actionText: ' '
@@ -263,7 +280,9 @@ function addComponent (ListofErrors)
               var newNode = mc.cloneNode(true);
               var index = ListofErrors.length;
               var e = ListofErrors[index-1];
-              newNode.childNodes[1].innerHTML = "Error Lines : "+e.start+"&"+e.end;
+              var DisplayStart = e.start+1;
+              var DisplayEnd = e.end+1;
+              newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"&"+DisplayEnd;
               newNode.style.display = "flex";
               var buttons = newNode.querySelector(".marketing-content-buttons");
               

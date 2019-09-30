@@ -560,30 +560,53 @@ tr:nth-child(even) {background-color: #f2f2f2;}
       public String toString() 
       { 
         return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+ ","+ this.getColor()); 
-      } 
-    }
-    public static void main(String[] args) 
-    { 
+      }
+      public static void main(String[] args) 
+      { 
         Dog tuffy = new Dog("tuffy","papillon", 5, "white"); 
         System.out.println(tuffy.toString()); 
-    }  
+      }   
+    }
+    
             </div>
-            <div id="editor3">public class Account {
-              double principal3,rate; int daysActive,accountType;
-              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-           } 
-           public static double calculateFee(Account[] accounts){
-               double totalFee = 0.0;
-               Account account;
-               for (int i=0;i == accounts.length;i++) {
-                   account=accounts[i];
-                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-                       totalFee += .0125 * (  1.25% broker fee
-                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-              } 
-              return totalFee;    
-          }
-            </div>
+            <pre id="editor3">
+    public class ExerciseSumArray {
+    /*
+    Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
+    calculate the sum of 2 Lists, and return the result in an List.
+    For example:
+    [1, 0, 0] + [4,0] = [1,4,0]
+    [6,7] + [0] = [6,7]
+      */
+    public ArrayList<Integer> getSum(List<Integer> firstNumber, List<Integer> secondNumber ){
+        ArrayList<Integer> result = new ArrayList<Integer>();
+
+        int carry = 0;
+        Collections.reverse(firstNumber);
+        Collections.reverse(secondNumber);
+
+        for (int i = 0; (i &lt Math.max(firstNumber.size(), secondNumber.size())); i ++){
+            Integer firstValue = i &lt firstNumber.size() ? firstNumber.get(i) : null;
+            Integer secondValue = i &lt secondNumber.size() ? secondNumber.get(i) : null;
+
+            int res = firstValue + secondValue + carry;
+
+            carry = 0;
+            if (res > 10){
+                carry = 1;
+                res = res % 10;
+            }
+            result.add(res);
+        }
+
+        if (carry >= 0)
+            result.add(carry);
+
+        Collections.reverse(result);
+        return result;
+    }
+}
+        </pre>
             <div id="editor4">public class Account {
               double principal4,rate; int daysActive,accountType;
               public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
