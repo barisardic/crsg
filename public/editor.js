@@ -53,6 +53,7 @@ else if(levelChosen==6){
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
+editor.setFontSize(14);
 // Initialize library and start tracking time
 TimeMe.initialize({
 	currentPageName: "play", // current page
@@ -344,7 +345,8 @@ function removePressed(){
   //alert("innerHTML :"+Domlist.innerHTML);
   Domlist.innerHTML = listInner;
   //alert("child count :"+Domlist.childNodes.length);
-  addListAsComponent(ListofErrors);
+  ListofErrors.reverse();
+  addListAsComponentForErrors(ListofErrors);
       //cloneList.pop;
   }
 
@@ -389,7 +391,7 @@ function addListAsComponentForAnswers (ListofErrors)
               //alert(visibility.innerHTML);
               
             }
-            function addListAsComponent (ListofErrors)
+            function addListAsComponentForErrors (ListofErrors)
             {
               var list = document.querySelector('.marketing-content-list');
               var mc = document.querySelector('.marketing-content-hidden');
