@@ -200,9 +200,10 @@ function submitSelection () {
 
     });
   noOfanswers = answers.length;
+  maxScore = 3*noOfanswers;
   var data = {
-    message: "There were " +noOfanswers  +" mistakes. You got "+scoreCalc[1]+"  exactly right! Score : "+scoreCalc[0],
-    timeout: 10000,
+    message: "There were " +noOfanswers  +" mistakes. You got "+scoreCalc[1]+"  exactly right! Score : "+scoreCalc[0]+"/"+maxScore,
+    timeout: 12000,
     actionHandler: handler,
     actionText: ' '
   };
@@ -252,7 +253,7 @@ showSnackbarButton.addEventListener('click', function() {
   'use strict';
   var data = {
     message: hints[hintCount%hints.length],
-    timeout: 2500,
+    timeout: 4000,
     actionHandler: handler,
     actionText: ' '
   };
