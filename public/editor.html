@@ -78,6 +78,21 @@
         left: 50%;
         /* border: 5px solid rgb(226, 9, 20); */
     }
+    #narrativeText{
+      display: none;
+    }
+    #narrativeText2{
+      display: none;
+    }
+    #narrativeText3{
+      display: none;
+    }
+    #narrativeText4{
+      display: none;
+    }
+    #narrativeText5{
+      display: none;
+    }
     i.icon-black {
     color: black;
 }
@@ -415,24 +430,66 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                       <a href="#checkist-panel" class="mdl-tabs__tab">Checklist</a>
                   </div>
                   <div class="mdl-tabs__panel is-active" id="narrative-panel">
-                    <ul>
-                      <p>Welcome to the CRSG, you can start right away by reviewing the code. 
-                        Remember to make use of your checklist. If you are not sure about the 
-                        type of defect that you have found or how to select it, you should refer
-                         back to the tutorial.
-                                                                                -Bilsen Team </p>
+                    <ul id="narrativeText">
+                      <p>Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
+                      <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
+                          It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
+                       <p> Remember to make use of your checklist and guide. If you are not sure about the 
+                          type of defect that you have found or how to select it, you should refer
+                           back to the guide.
+                                                                                  -Bilsen Team </p>
                                                                                     
                     </ul>
+                    <ul id="narrativeText2">
+                        <p>2Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
+                        <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
+                            It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
+                         <p> Remember to make use of your checklist and guide. If you are not sure about the 
+                            type of defect that you have found or how to select it, you should refer
+                             back to the guide.
+                                                                                    -Bilsen Team </p>
+                                                                                      
+                      </ul>
+                      <ul id="narrativeText3">
+                          <p>3Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
+                          <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
+                              It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
+                           <p> Remember to make use of your checklist and guide. If you are not sure about the 
+                              type of defect that you have found or how to select it, you should refer
+                               back to the guide.
+                                                                                      -Bilsen Team </p>
+                                                                                        
+                        </ul>
+                        <ul id="narrativeText4">
+                            <p>4Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
+                            <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
+                                It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
+                             <p> Remember to make use of your checklist and guide. If you are not sure about the 
+                                type of defect that you have found or how to select it, you should refer
+                                 back to the guide.
+                                                                                        -Bilsen Team </p>
+                                                                                          
+                          </ul>
+                          <ul id="narrativeText5">
+                              <p>5Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
+                              <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
+                                  It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
+                               <p> Remember to make use of your checklist and guide. If you are not sure about the 
+                                  type of defect that you have found or how to select it, you should refer
+                                   back to the guide.
+                                                                                          -Bilsen Team </p>
+                                                                                            
+                            </ul>
                   </div>
                   <div class="mdl-tabs__panel" id="description-panel">
                     <ul style="font-size: medium">
-                        <li><strong>Semantic duplication :</strong>  There are two section in the code that are not the same but they perform the same task.</li>
+                        <li><strong>Semantic duplication :</strong>  There are two sections in the code that are not the same but they perform the same task.</li>
 
                        <li><strong>Semantic dead code :</strong> A piece of code that the program executes which does not perform any meaningful task.</li>
                         
                        <li><strong>Duplication :</strong> The exact replica of this code exists in the project.</li>
                         
-                       <li><strong>Consistency :</strong> If there are multiple ways of doing something stick with one and do not change this arbitrarily to be consistent. </li>
+                       <li><strong>Consistency :</strong> When something is achieveable with multiple ways or styles, you should select one of them and use only that for consistency. For example if you are naming your variables as camel case, you should not change it arbitrarily  </li>
                         
                        <li><strong>Dead Code :</strong> A piece of code in the program which is never executed.</li>
                         
@@ -524,7 +581,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
         </div>
         <pre id="editor">
   public class Account {
-    double principal1,rate; int daysActive,accountType;
+    double principal,rate; int daysActive,accountType;
     public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
   }
   // select here  reason is Comments
