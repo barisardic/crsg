@@ -191,7 +191,7 @@ Score.prototype._defaults = {
 			"checkmark": 4000,
 			"status":"dolphin",
 			"quote":"You've arrived! you will be known forever as a Legend"
-		},
+		}
 		{
 			"checkmark": 5000,
 			"status":"lion",

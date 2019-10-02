@@ -180,18 +180,6 @@ border: 2px solid #e9a1ff;
   display: inline-block;
   width: 300px;
 }
-.mdl-snackbar {
-  background-color: rgba(6, 7, 6, 0.95);
-}
-
-.mdl-snackbar__icon {
-  color: #ffffff;
-  padding: 13px 0 0 24px;
-}
-
-.mdl-snackbar__action {
-  color: #ffffff;
-}
 h1{
   font-weight: 100;
   font-size: 4.5em;

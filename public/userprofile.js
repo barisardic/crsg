@@ -44,16 +44,6 @@ document.getElementById("submitBtn").addEventListener("click",writeUserData,fals
       cs415 :cs415Bool,
       cs319 :cs319Bool,
       feedback : fb
-    });
-    var snackbarContainer = document.querySelector('#demo-snackbar-example');
-    var handler = function(event) {
-      //showSnackbarButton.style.backgroundColor = '';
-    }; 
-    var feedbackMsg = {
-      message: "Submitted Sucessfully",
-      timeout: 10000,
-      actionHandler: handler,
-      actionText: ' '
-    };
-    snackbarContainer.MaterialSnackbar.showSnackbar(feedbackMsg);
+    }); 
+
   }

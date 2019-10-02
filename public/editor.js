@@ -3,19 +3,18 @@ var listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = localStorage.getItem('selected');
 //window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
-
 if(levelChosen==1){
   document.getElementById("editor").style.display = "block";
-  document.getElementById("narrativeText").style.display = "block";
   var editor = ace.edit("editor");
   var code = document.querySelector("editor");
   editor.setTheme("ace/theme/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
+
+  
 }
 else if(levelChosen ==2){
   document.getElementById("editor2").style.display = "block";
-  document.getElementById("narrativeText2").style.display = "block";
   var editor = ace.edit("editor2");
   var code = document.querySelector("editor2");
   editor.setTheme("ace/theme/cobalt");
@@ -24,7 +23,6 @@ else if(levelChosen ==2){
 }
 else if(levelChosen==3){
   document.getElementById("editor3").style.display = "block";
-  document.getElementById("narrativeText3").style.display = "block";
   var editor = ace.edit("editor3");
   var code = document.querySelector("editor3");
   editor.setTheme("ace/theme/cobalt");
@@ -33,7 +31,6 @@ else if(levelChosen==3){
 }
 else if(levelChosen==4){
   document.getElementById("editor4").style.display = "block";
-  document.getElementById("narrativeText4").style.display = "block";
   var editor = ace.edit("editor4");
   var code = document.querySelector("editor4");
   editor.setTheme("ace/theme/cobalt");
@@ -42,7 +39,6 @@ else if(levelChosen==4){
 }
 else if(levelChosen==5){
   document.getElementById("editor5").style.display = "block";
-  document.getElementById("narrativeText5").style.display = "block";
   var editor = ace.edit("editor5");
   var code = document.querySelector("editor5");
   editor.setTheme("ace/theme/cobalt");
@@ -51,7 +47,6 @@ else if(levelChosen==5){
 }
 else if(levelChosen==6){
   document.getElementById("editor6").style.display = "block";
-  document.getElementById("narrativeText5").style.display = "block";
   var editor = ace.edit("editor6");
   var code = document.querySelector("editor6");
   editor.setTheme("ace/theme/cobalt");
