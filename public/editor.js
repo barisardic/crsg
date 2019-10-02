@@ -112,19 +112,19 @@ if(levelChosen == 1){
 }
 else if(levelChosen == 2){
   var answers = [];
-  var answer1 = new Err(32,36);
+  var answer1 = new Err(29,32);
   answer1.reason = "Duplication";
   answers[0] =answer1;
 
-  var answer2 = new Err(44,48);
+  var answer2 = new Err(39,42);
   answer2.reason = "Indentation";
   answers[1] =answer2;
 
-  var answer3 = new Err(56,56);
+  var answer3 = new Err(52,52);
   answer3.reason = "Long line";
   answers[2] =answer3;
 
-  var answer4 = new Err(50,50);
+  var answer4 = new Err(46,46);
   answer4.reason = "Compare";
   answers[3] =answer4;
 
@@ -176,7 +176,7 @@ function lines(){
     ListofErrors.push(selection);
     //alert(ListofErrors.length);
     addComponent(ListofErrors);
-  
+    
   }
   document.getElementById('hover').addEventListener('click', getLines, false);
   
@@ -326,6 +326,10 @@ function addComponent (ListofErrors)
               componentHandler.upgradeDom();
               //alert(visibility.innerHTML);
               
+              if(ListofErrors.length !=0){
+                document.getElementById("titleMsg").innerHTML="";
+              }
+
             }
 var closestByClass = function(el, clazz) {
   // Traverse the DOM up with a while loop
@@ -469,6 +473,9 @@ function addListAsComponentForAnswers (ListofErrors)
 
                 //list.insertBefore(newNode, mc.nextSibling);
                 list.appendChild(newNode);
+              }
+              if(ListofErrors.length ==0){
+                document.getElementById("titleMsg").innerHTML='<h3 id="titleMsg">Defects you find will go here!</h3>';
               }
               componentHandler.upgradeDom();
               //alert(visibility.innerHTML);

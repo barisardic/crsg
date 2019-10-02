@@ -302,6 +302,9 @@ th, td {
 ul{
   list-style-type: square;
 }
+#titleMsg{
+  text-align: center
+}
 tr:nth-child(even) {background-color: #f2f2f2;}
 </style>
 </head>
@@ -309,6 +312,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 <div class="container" id="container">
         <div id="description">
             <div class="mdl-layout__drawer-button " onclick="history.back()"><i class="material-icons" style="color:red">arrow_back</i></div>
+            <h3 id="titleMsg">Defects you find will go here!</h3>
             <div class="util" id="leftTop"> 
             
                        
@@ -441,33 +445,24 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                                                                                     
                     </ul>
                     <ul id="narrativeText2">
-                        <p>2Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
-                        <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
-                            It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
-                         <p> Remember to make use of your checklist and guide. If you are not sure about the 
-                            type of defect that you have found or how to select it, you should refer
-                             back to the guide.
-                                                                                    -Bilsen Team </p>
+                        <p>This level will be your first real taste of the game. This level consists of a simple java class
+                          with code smells and even defects. Go and find them! As always select the error reasons carefully and reasonably in order to
+                          get more points. 
+                        </p>
                                                                                       
                       </ul>
                       <ul id="narrativeText3">
-                          <p>3Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
-                          <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
-                              It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
-                           <p> Remember to make use of your checklist and guide. If you are not sure about the 
-                              type of defect that you have found or how to select it, you should refer
-                               back to the guide.
-                                                                                      -Bilsen Team </p>
+                          <p>Thing are getting more serious. In this level you are reviewing a very simple aritmatic operation implemented on 
+                            arrays however in order to get a high score you need to pay close attention to the operations performed and their 
+                            validity. 
+                          </p>
                                                                                         
                         </ul>
                         <ul id="narrativeText4">
-                            <p>4Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
-                            <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
-                                It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
-                             <p> Remember to make use of your checklist and guide. If you are not sure about the 
-                                type of defect that you have found or how to select it, you should refer
-                                 back to the guide.
-                                                                                        -Bilsen Team </p>
+                            <p> <strong>Congratulations for making it this far! </strong>
+                              You are now dealing with a program performing matrix operations. While working with matrixes things can always
+                              go wrong and defect can hide under your nose for a long time. <strong> So be careful. </strong>  
+                               </p>
                                                                                           
                           </ul>
                           <ul id="narrativeText5">
@@ -602,8 +597,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
       // select here
   return totalFee;    
   }</pre>
-            <div id="editor2">
-    // Class Declaration
+            <div id="editor2">    // Class Declaration
     public class Dog 
     { 
       // Instance Variables 
@@ -620,37 +614,34 @@ tr:nth-child(even) {background-color: #f2f2f2;}
         this.breed = breed; 
         this.age = age; 
         this.color = color; 
-      } 
-    
-      // method 1 
+      }
+
       public String getName() 
       { 
         return name; 
-      } 
-    
-      // method 2 
+      }
+
       public String getBreed() 
       { 
         return breed; 
       }
-    
-      // method 1 
+
       public String getName() 
       { 
         return name; 
-      } 
-    
-          // method 3 
-          public int getAge() 
-          { 
-            return age; 
-          } 
-    
-      // method 4 
-      public String getColor() 
+      }
+
+      public int getAge() 
       { 
-        return color; 
-      } 
+        return age; 
+      }
+
+          public String getColor() 
+          { 
+            return color; 
+          }
+
+      @Override     
       public boolean equals(Dog dogo){
       return this.toString == dogo.toString; 
       }
@@ -660,6 +651,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
       { 
         return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+ ","+ this.getColor()); 
       }
+
       public static void main(String[] args) 
       { 
         Dog tuffy = new Dog("tuffy","papillon", 5, "white"); 
