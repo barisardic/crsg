@@ -106,7 +106,7 @@
 }
     
     #leftTop{
-      height: 60%;
+      height: 50%;
       width: 100%;
       position: absolute;
       overflow: auto;
@@ -117,20 +117,20 @@
       position: absolute;
       /* border: 5px solid #E18728; */
       bottom: 0px;
-      height: 40%;
+      height: 50%;
       overflow: auto;
 
     }
     #submitBtn{
   position: absolute;
-  bottom: 35.6%;
+  bottom: 45.6%;
   height: 40px;
   left: 2%;
   z-index: 10;
   }
   #hintBtn{
   position: absolute;
-  bottom: 35.6%;
+  bottom: 45.6%;
   height: 40px;
   left: 36%;
   z-index: 10;
@@ -139,7 +139,7 @@
   opacity: 0.65; 
   cursor: not-allowed;
   position: absolute;
-  bottom: 35.6%;
+  bottom: 45.6%;
   height: 40px;
   left: 42%;
   z-index: 10;
@@ -184,7 +184,7 @@
   margin-top: 27px;
   display: none;
   /* flex-direction: row; */
-  /* border: 5px solid rgb(177, 16, 226);  */
+   /* border: 5px solid rgb(177, 16, 226); */
 }
 .marketing-content-title{
    margin-top: 2.5%;
@@ -477,6 +477,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                             </ul>
                   </div>
                   <div class="mdl-tabs__panel" id="description-panel">
+                    <img src = "assets/defects picture.png"  />
                     <ul style="font-size: medium">
                         <li><strong>Semantic duplication :</strong>  There are two sections in the code that are not the same but they perform the same task.</li>
 
@@ -590,8 +591,8 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     for (int i=0;i == accounts.length;i++) {
       account=accounts[i];
       if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-        totalFee += .0125 * (  1.25% broker fee
-        account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+        totalFee += .0125 * (  1.25% account.principal 
+        * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
       } 
       // select here reason is Parameter
       // select here

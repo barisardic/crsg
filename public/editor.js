@@ -108,7 +108,7 @@ if(levelChosen == 1){
   answer3.reason = "Parameter";
   answers[2] =answer3;
 
-  var hints = ["Your first hint","Your second hint","Are you ok ?"];
+  var hints = ["Duplication error at lines 8-11","Parameter error at lines 18-19","Comments error at line 4"];
 }
 else if(levelChosen == 2){
   var answers = [];
@@ -219,18 +219,28 @@ function calculateScore(answers,submission){
   var grandTruth = answers.slice();
   var score = 0;
   var exact = 0;
+  
   for (var i = 0; i<submission.length;i++) {
-    
+    var containerIndex = i+1;
+    var reasonContainerId = "n"+containerIndex;
+    var domElementToBeColored = document.getElementById(reasonContainerId);
+    domElementToBeColored.style.border = "5px solid red";
     for(var j=0;j<grandTruth.length;j++){
       
       if(submission[i].start == grandTruth[j].start){
-
         if(submission[i].end == grandTruth[j].end){
           score++;
-          
+          var containerIndex = i+1;
+          var reasonContainerId = "n"+containerIndex;
+          var domElementToBeColored = document.getElementById(reasonContainerId);
+          //alert(domElementToBeColored.innerHTML);
+          domElementToBeColored.style.border = "5px solid yellow";
           if(submission[i].reason == grandTruth[j].reason){
             score = score+2;
             exact++;
+            var reasonContainerId = "n"+containerIndex;
+            var domElementToBeColored = document.getElementById(reasonContainerId);
+            domElementToBeColored.style.border = "5px solid green";
             //delete found element , give points only once
             grandTruth.splice(j,1);
           }
@@ -321,7 +331,8 @@ function addComponent (ListofErrors)
               remover = buttons.getElementsByTagName("button")[2];
               remover.setAttribute("id","r"+index);
               remover.addEventListener("click",removePressed);
-
+              
+              newNode.setAttribute("id","n"+index);
               //list.insertBefore(newNode, mc.nextSibling);
               list.appendChild(newNode);
               componentHandler.upgradeDom();
@@ -419,7 +430,7 @@ function addListAsComponentForAnswers (ListofErrors)
                 visibility = buttons.getElementsByTagName("button")[1];
                 visibility.setAttribute("id","v"+index);
                 visibility.addEventListener("click",visibilityPressed);
-                
+                newNode.setAttribute("id","n"+index);
                 /* remover = buttons.getElementsByTagName("button")[2];
                 remover.setAttribute("id","r"+index);
                 remover.addEventListener("click",removePressed); */
@@ -465,7 +476,7 @@ function addListAsComponentForAnswers (ListofErrors)
                 remover = buttons.getElementsByTagName("button")[2];
                 remover.setAttribute("id","r"+index);
                 remover.addEventListener("click",removePressed);
-
+                newNode.setAttribute("id","n"+index);
                 document.addEventListener('click', function(e){
                   if(e.target.className=="dropdown-item"){
                    //alert('BUTTON CLICKED');
