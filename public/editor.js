@@ -108,7 +108,7 @@ if(levelChosen == 1){
   answer3.reason = "Parameter";
   answers[2] =answer3;
 
-  var hints = ["Duplication error at lines 8-11","Parameter error at lines 18-19","Comments error at line 4"];
+  var hints = ["There are "+ answers.length+" defects in the code","Duplication error at lines 8-11","Parameter error at lines 18-19","Comments error at line 4"];
 }
 else if(levelChosen == 2){
   var answers = [];
@@ -128,7 +128,7 @@ else if(levelChosen == 2){
   answer4.reason = "Compare";
   answers[3] =answer4;
 
-  var hints = ["Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
+  var hints = ["There are "+ answers.length+" defects in the code","Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
 }
 else if(levelChosen == 3){
   var answers = [];
@@ -143,7 +143,7 @@ else if(levelChosen == 3){
   var answer3 = new Err(29,29);
   answer3.reason = "Compare";
   answers[2] =answer3;
-  var hints = ["Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];  
+  var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];  
 }
 else if(levelChosen == 4){
   var answers = [];
@@ -159,7 +159,7 @@ else if(levelChosen == 4){
   answer3.reason = "Data and resource manipulation";
   answers[2] =answer3;
 
-  var hints = ["Pay close attention to indexes","How does java handle 2D arrays?"];  
+  var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];  
 }
 
 var ListofErrors = [];
