@@ -50,7 +50,7 @@ document.getElementById("submitBtn").addEventListener("click",writeUserData,fals
       //showSnackbarButton.style.backgroundColor = '';
     }; 
     var feedbackMsg = {
-      message: "Submitted Sucessfully",
+      message: "Submitted Successfully",
       timeout: 10000,
       actionHandler: handler,
       actionText: ' '
