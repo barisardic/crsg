@@ -108,7 +108,7 @@ if(levelChosen == 1){
   answer3.reason = "Parameter";
   answers[2] =answer3;
 
-  var hints = ["There are "+ answers.length+" defects in the code","Duplication error at lines 8-11","Parameter error at lines 18-19","Comments error at line 4"];
+  var hints = ["There are "+ answers.length+" defects in the code","Duplication error at lines 9-12","Parameter error at lines 19-20","Comments error at line 5"];
 }
 else if(levelChosen == 2){
   var answers = [];
@@ -212,6 +212,7 @@ function submitSelection () {
   var answersButton = document.getElementById("answersBtn");
   answersButton.style.opacity= 1;
   answersButton.style.cursor = "auto";
+  answersButton.style.pointerEvents ="all";
 }
 
 

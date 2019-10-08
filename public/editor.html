@@ -136,6 +136,7 @@
   z-index: 10;
   }
   #answersBtn{
+  pointer-events: none;
   opacity: 0.65; 
   cursor: not-allowed;
   position: absolute;
@@ -435,10 +436,10 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                   </div>
                   <div class="mdl-tabs__panel is-active" id="narrative-panel">
                     <ul id="narrativeText">
-                      <p>Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
+                      <p>Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by giving a quick glance to the <strong> GUIDE</strong>. Than you can review the code.</p>
                       <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
                           It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
-                       <p> Remember to make use of your checklist and guide. If you are not sure about the 
+                       <p> Remember to make use of your <strong>checklist</strong> and <strong>guide</strong> . If you are not sure about the 
                           type of defect that you have found or how to select it, you should refer
                            back to the guide.
                                                                                   -Bilsen Team </p>
@@ -452,7 +453,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                                                                                       
                       </ul>
                       <ul id="narrativeText3">
-                          <p>Thing are getting more serious. In this level you are reviewing a very simple aritmatic operation implemented on 
+                          <p>Thing are getting more serious. In this level you are reviewing a very simple arithmetic operation implemented on 
                             arrays however in order to get a high score you need to pay close attention to the operations performed and their 
                             validity. 
                           </p>
@@ -479,7 +480,9 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                   <div class="mdl-tabs__panel" id="description-panel">
                     <img src = "assets/defects picture.png"  />
                     <ul style="font-size: medium">
-                        <li><strong>Semantic duplication :</strong>  There are two sections in the code that are not the same but they perform the same task.</li>
+                      <li><u> <strong>False Positives :</strong>  Instances where you think you have found a defect when are isn't any are false positives. False positives are unwanted in the code review process. You should double check your defect list before submitting to try avoiding false positives. </u></li>
+                       <h2 align="center" title="These type of defects increase maintanance effort and decrease understandibility of code.">Evolvability Defects</h2> 
+                      <li><strong>Semantic duplication :</strong>  There are two sections in the code that are not the same but they perform the same task.</li>
 
                        <li><strong>Semantic dead code :</strong> A piece of code that the program executes which does not perform any meaningful task.</li>
                         
@@ -489,7 +492,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                         
                        <li><strong>Dead Code :</strong> A piece of code in the program which is never executed.</li>
                         
-                       <li><strong>Bracket :</strong> Unnecessary on inconsistent usage of brackets. </li>
+                       <li><strong>Bracket :</strong> Unnecessary or inconsistent usage of brackets. </li>
                         
                        <li><strong>Indentation :</strong> Indentation of a certain code piece is not compliant with the rest of code.</li>
                         
@@ -504,7 +507,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                        <li><strong>Naming :</strong> Inconsistent or irrelevant naming</li>
                         
                        <li><strong>Comments:</strong> Comments that are completely unnecessary or wrong </li>
-                        
+                      <h2 align="center" title="These type of defects prevent the code from working correctly." >Functional Defects</h2>
                        <li><strong>Function Call :</strong> Improper or unnecessary function call, we should extend this to include middle man functions or multi responsibility methods.</li>
                         
                        <li><strong>Parameter :</strong> Too many or unnecessary parameters, wrong choice of parameters, perhaps even null parameters</li>
@@ -662,10 +665,10 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     
             </div>
             <pre id="editor3">
-    public class ExerciseSumArray {
+public class ExerciseSumArray {
     /*
     Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
-    calculate the sum of 2 Lists, and return the result in an List.
+    calculate the sum of 2 Lists, and return the result in a List.
     For example:
     [1, 0, 0] + [4,0] = [1,4,0]
     [6,7] + [0] = [6,7]
@@ -707,8 +710,8 @@ tr:nth-child(even) {background-color: #f2f2f2;}
       
       public static void printMatrix(int mat[][]) 
       { 
-        // Loop through all rows 
-        for (int i = 0; i &ld mat.length; i++) 
+      // Loop through all rows 
+      for (int i = 0; i &ld mat.length; i++) 
         // Loop through all elements of current row 
         for (int j = 0; j %ld mat[i].length; j++) 
             System.out.print(mat[j][i] + " "); 
