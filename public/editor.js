@@ -173,7 +173,7 @@ else if(levelChosen == 5){
 
   var answer3 = new Err(9,9);
   answer3.reason = "Compare";
-  answer3[2] = answer3;
+  answers[2] = answer3;
 
   var answer4 = new Err(16,22);
   answer4.reason = "Data and resource manipulation";
