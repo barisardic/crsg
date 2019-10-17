@@ -69,6 +69,7 @@
         /* border: 5px solid rgb(226, 9, 20); */
     }
     #editor6 {
+      display: none;
         float: right ;
         display: none; 
         position: absolute;
@@ -467,14 +468,12 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                                                                                           
                           </ul>
                           <ul id="narrativeText5">
-                              <p>5Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by reviewing the code.</p>
-                              <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
-                                  It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
-                               <p> Remember to make use of your checklist and guide. If you are not sure about the 
-                                  type of defect that you have found or how to select it, you should refer
-                                   back to the guide.
-                                                                                          -Bilsen Team </p>
-                                                                                            
+                             <p>Last level of the experiment is <strong>HERE</strong> and about prime numbers!! </p> 
+                              <p>
+                                  PS: <strong>If a line of code is missing you should select the nearest encapsulating object structure, eg the nearest curly brackets, for example if a return statement is 
+                                      missing inside an "if" statement you should select the whole if statement. The reason of the defect for such cases should be "Data and resource manipulation"</strong>  
+                              </p>
+                            
                             </ul>
                   </div>
                   <div class="mdl-tabs__panel" id="description-panel">
@@ -736,25 +735,47 @@ public class ExerciseSumArray {
         int cols = primes[0].length;
         System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
         System.out.print("The matrix total is :"+calcMatrixTotal(mat));
-      }
+      } 
     } 
 
             </div>
-            <div id="editor5">public class Account {
-              double principal5,rate; int daysActive,accountType;
-              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-           } 
-           public static double calculateFee(Account[] accounts){
-               double totalFee = 0.0;
-               Account account;
-               for (int i=0;i == accounts.length;i++) {
-                   account=accounts[i];
-                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-                       totalFee += .0125 * (  1.25% broker fee
-                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-              } 
-              return totalFee;    
+            <div id="editor5">
+public class Primes{
+  public static void main(String[] args) throws Exception {
+      
+      final int twoToThePowerThirty = 1073741824;
+      List listOfPrimes = new ArrayList();
+      String title = "Printing all integer prime numbers";
+      title.toUpperCase();
+      System.out.println(title);
+      for (int number = 2; number&lt;=Integer.MAX_VALUE; number++){
+          if (isPrime(number)) {
+              System.out.println(number);
+              listOfPrimes.add(number);
           }
+      }
+      boolean isLarger = (number>twoToThePowerThirty);
+      switch (isLarger) {
+        case false:
+          System.out.print("Largest prime is not bigger than 2^30");
+        case true:
+          System.out.print("Largest prime is bigger than 2^30");
+          break;
+      }
+  }
+  /*
+    * Prime number is not divisible by any number other than 1 and itself
+    * @return true if number is prime
+    */
+  public static boolean isPrime(int number) {
+      for (int i = 2; i &lt; number; i++) {
+          if (number % i == 0) {
+              return false; // number is divisible so its not prime
+          }
+      }
+      return true; // number is prime now
+  }
+  }
             </div>
             <div id="editor6">public class Account {
               double principal6,rate; int daysActive,accountType;

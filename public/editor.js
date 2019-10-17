@@ -159,9 +159,28 @@ else if(levelChosen == 4){
   answer3.reason = "Data and resource manipulation";
   answers[2] =answer3;
 
+  var hints = ["There are "+ answers.length+" defects in the code","If a line of code is missing you should select the nearest encapsulating object structure","Is java dynamically typed?"];  
+}
+else if(levelChosen == 5){
+  var answers = [];
+  var answer1 = new Err(5,5);
+  answer1.reason = "Element Type";
+  answers[0] =answer1;
+
+  var answer2 = new Err(7,7);
+  answer2.reason = "Immutable";
+  answers[1] =answer2;
+
+  var answer3 = new Err(9,9);
+  answer3.reason = "Compare";
+  answer3[2] = answer3;
+
+  var answer4 = new Err(16,22);
+  answer4.reason = "Data and resource manipulation";
+  answers[3] =answer4;
+
   var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];  
 }
-
 var ListofErrors = [];
 
 document.addEventListener('DOMContentLoaded', lines, false);
