@@ -120,11 +120,11 @@ else if(levelChosen == 2){
   answer2.reason = "Indentation";
   answers[1] =answer2;
 
-  var answer3 = new Err(52,52);
+  var answer3 = new Err(53,53);
   answer3.reason = "Long line";
   answers[2] =answer3;
 
-  var answer4 = new Err(46,46);
+  var answer4 = new Err(47,47);
   answer4.reason = "Compare";
   answers[3] =answer4;
 
@@ -159,7 +159,7 @@ else if(levelChosen == 4){
   answer3.reason = "Data and resource manipulation";
   answers[2] =answer3;
 
-  var hints = ["There are "+ answers.length+" defects in the code","If a line of code is missing you should select the nearest encapsulating object structure","Is java dynamically typed?"];  
+  var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];  
 }
 else if(levelChosen == 5){
   var answers = [];
@@ -179,7 +179,7 @@ else if(levelChosen == 5){
   answer4.reason = "Data and resource manipulation";
   answers[3] =answer4;
 
-  var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];  
+  var hints = ["There are "+ answers.length+" defects in the code","If a line of code is missing you should select the nearest encapsulating object structure","Is java dynamically typed?"];  
 }
 var ListofErrors = [];
 

@@ -479,7 +479,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                   <div class="mdl-tabs__panel" id="description-panel">
                     <img src = "assets/defects picture.png"  />
                     <ul style="font-size: medium">
-                      <li><u> <strong>False Positives :</strong>  Instances where you think you have found a defect when are isn't any are false positives. False positives are unwanted in the code review process. You should double check your defect list before submitting to try avoiding false positives. </u></li>
+                      <li><u> <strong>False Positives :</strong>  Instances where you think you have found a defect when there isn't any are false positives. False positives are unwanted in the code review process. You should double check your defect list before submitting to avoid false positives. </u></li>
                        <h2 align="center" title="These type of defects increase maintanance effort and decrease understandibility of code.">Evolvability Defects</h2> 
                       <li><strong>Semantic duplication :</strong>  There are two sections in the code that are not the same but they perform the same task.</li>
 
@@ -487,7 +487,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                         
                        <li><strong>Duplication :</strong> The exact replica of this code exists in the project.</li>
                         
-                       <li><strong>Consistency :</strong> When something is achieveable with multiple ways or styles, you should select one of them and use only that for consistency. For example if you are naming your variables as camel case, you should not change it arbitrarily  </li>
+                       <li><strong>Consistency :</strong> When something is achieveable with multiple ways or styles, you should select one of them and use only that for consistency. For example if you are naming your variables as camel case, you should not change it arbitrarily.  </li>
                         
                        <li><strong>Dead Code :</strong> A piece of code in the program which is never executed.</li>
                         
@@ -498,18 +498,20 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                        <li><strong>Blank line usage :</strong> Empty lines usually indicate a separation of functionality thus they are commonly founded in places where single responsibility principle is violated. </li>
                         
                        <li><strong>Long line :</strong> Unnaturally long lines of code makes programs harder to read and debug, they might also make you miss code reuse opportunities.</li>
-                        
+                       
+                       <li><strong>Immutable :</strong> An immutable object is an object that can not be changed once its created.  </li>
+                       
                        <li><strong>Void Parameter :</strong> Null never should be a parameter to an object since it does not contribute to anything. The right way is to make 2 versions of the method one with the object parameter and the second with no parameters. </li>
                         
-                       <li><strong>Element Type :</strong> Suboptimal usage of element (variable) type assignments </li>
+                       <li><strong>Element Type :</strong> Suboptimal usage of element (variable) type assignments. </li>
                         
-                       <li><strong>Naming :</strong> Inconsistent or irrelevant naming</li>
+                       <li><strong>Naming :</strong> Inconsistent or irrelevant naming.</li>
                         
-                       <li><strong>Comments:</strong> Comments that are completely unnecessary or wrong </li>
+                       <li><strong>Comments:</strong> Comments that are completely unnecessary or wrong. </li>
                       <h2 align="center" title="These type of defects prevent the code from working correctly." >Functional Defects</h2>
                        <li><strong>Function Call :</strong> Improper or unnecessary function call, we should extend this to include middle man functions or multi responsibility methods.</li>
                         
-                       <li><strong>Parameter :</strong> Too many or unnecessary parameters, wrong choice of parameters, perhaps even null parameters</li>
+                       <li><strong>Parameter :</strong> Too many or unnecessary parameters, wrong choice of parameters, perhaps even null parameters.</li>
                         
                        <li><strong>Variable initialization :</strong> Unnecessary dummy initializations, maybe some variable should have been declared as final or vica versa. </li>
                         
@@ -517,7 +519,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                         
                        <li><strong>Data and Resource Manipulation :</strong> This is the most general type of functional errors. If you have found a functional error that you cant assign to any other type than consider this one. Perhaps the code is going to throw a NPE. These type of errors belongs in this category.</li>
                         
-                       <li><strong>Compare :</strong> Any errors made while utilizing “%ld”,”>””=” type of operators are of this type.</li>
+                       <li><strong>Compare :</strong> Any errors made while utilizing "&lt;",”>””=” type of operators are of this type.</li>
                         
                        <li><strong>Compute :</strong> These are the errors which are mathematics related rather than programming.</li>
                         
@@ -645,8 +647,9 @@ tr:nth-child(even) {background-color: #f2f2f2;}
           }
 
       @Override     
-      public boolean equals(Dog dogo){
-      return this.toString == dogo.toString; 
+      public boolean equals(Dog dogo)
+      {
+        return this.toString == dogo.toString; 
       }
     
       @Override
@@ -710,18 +713,18 @@ public class ExerciseSumArray {
       public static void printMatrix(int mat[][]) 
       { 
       // Loop through all rows 
-      for (int i = 0; i &ld mat.length; i++) 
+      for (int i = 0; i &lt; mat.length; i++) 
         // Loop through all elements of current row 
-        for (int j = 0; j %ld mat[i].length; j++) 
+        for (int j = 0; j &lt; mat[i].length; j++) 
             System.out.print(mat[j][i] + " "); 
       } 
       public static int calcMatrixTotal(int mat[][]) 
       { 
       int total = 0;
       // Loop through all rows 
-      for (int i = 0; i &ld mat.length; i++) 
+      for (int i = 0; i &lt; mat.length; i++) 
         // Loop through all elements of current row 
-        for (int j = 0; j %ld mat[i].length; j++) 
+        for (int j = 0; j&lt;mat[i].length; j++) 
             total = total + mat[j][i];
       return total;
       } 
@@ -748,18 +751,18 @@ public class Primes{
       String title = "Printing all integer prime numbers";
       title.toUpperCase();
       System.out.println(title);
-      for (int number = 2; number&lt;=Integer.MAX_VALUE; number++){
+      for (int number = largestPrimeSoFar; number&lt;=Integer.MAX_VALUE; number++){
           if (isPrime(number)) {
               System.out.println(number);
               listOfPrimes.add(number);
           }
       }
-      boolean isLarger = (number>twoToThePowerThirty);
+      int isLarger = (listOfPrimes.get(listOfPrimes.size()-1)>twoToThePowerThirty) ? 1 : 0;
       switch (isLarger) {
         case false:
-          System.out.print("Largest prime is not bigger than 2^30");
+          System.out.print("Largest prime integer is not bigger than 2^30");
         case true:
-          System.out.print("Largest prime is bigger than 2^30");
+          System.out.print("Largest prime integer is bigger than 2^30");
           break;
       }
   }
