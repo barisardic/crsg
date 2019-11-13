@@ -455,15 +455,14 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                       </ul>
                       <ul id="narrativeText3">
                           <p>Thing are getting more serious. In this level you are reviewing a very simple arithmetic operation implemented on 
-                            arrays however in order to get a high score you need to pay close attention to the operations performed and their 
-                            validity. 
+                           prime numbers. What you are expected to do is to find where was the programmer not aware of what they were doing.
                           </p>
                                                                                         
                         </ul>
                         <ul id="narrativeText4">
                             <p> <strong>Congratulations for making it this far! </strong>
-                              You are now dealing with a program performing matrix operations. While working with matrixes things can always
-                              go wrong and defect can hide under your nose for a long time. <strong> So be careful. </strong>  
+                              You are now dealing with printing the diamond of a number. What you have in front of you are number and spaces (and errors ...).
+                               <strong> So be careful. </strong>  
                                </p>
                                                                                           
                           </ul>
@@ -530,16 +529,28 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                     
                         <table>
                             <tbody>
+                            <tr>
+                            <td>Indentation</td>
+                            
+                            </tr>
+                            <tr>
+                            <td>Be careful with the spacing</td>
+                    
+                            </tr>
+                            <tr>
+                                <td>Explanatory header</td>
+                               </tr>
+
                              <tr>
-                              <td>Use Intention-Revealing Names</td>
+                              <td>Use Intention-Revealing(Meaningful) Names</td>
                               
                              </tr>
                              <tr>
-                              <td>Pick one word per concept</td>
+                              <td>Extra variables means more memory.</td>
                               
                              </tr>
                              <tr>
-                              <td>Use Solution/Problem Domain Names </td>
+                              <td> Assignment after initialization. </td>
                               
                              </tr>
                              <tr>
@@ -579,29 +590,55 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                   </div>
                 </div>
         </div>
-        <pre id="editor">
-  public class Account {
-    double principal,rate; int daysActive,accountType;
-    public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-  }
-  // select here  reason is Comments
-  public static double calculateFee(Account[] accounts){
-    double totalFee = 0.0;
-    Account account;
-    // select here reason is Duplication
-    // select here
-    // select here
-    // select here
-    for (int i=0;i == accounts.length;i++) {
-      account=accounts[i];
-      if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-        totalFee += .0125 * (  1.25% account.principal 
-        * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-      } 
-      // select here reason is Parameter
-      // select here
-  return totalFee;    
-  }</pre>
+        <pre id="editor">/* 
+author: Doren
+date: 12.11.2019 // error here, add functionality
+*/
+
+/*
+This is a suggestive pseudo-code on how to play the game.
+Take your time to go through it, as it helps for the next questions. 
+*/
+open crsg(code review serious game)
+
+// login
+if first time -> register ( email, username, password)
+else -> login (username, password)
+
+// main logic
+for each of the levels in the screen in order:
+
+  // open level
+  open level (click on "play this level")
+  read description of level 
+  read code
+  check hint for number of total errors
+           // error here <= extra space
+
+  // find errors
+  for each specific error type in checklist
+
+    // understanding errors
+    if do not know what error means -> check description in guide
+
+    // error found
+    if specific error in code
+    add error     //
+    add type      // <= error here - indentation
+
+    // no more errors to find
+    if number of errors you found is equal to the number of errors from the hint
+      break the loop 
+
+  // end level 
+  submit
+  check your score
+
+  // go back
+  go back to intro page
+
+end game
+</pre>
             <div id="editor2">    // Class Declaration
     public class Dog 
     { 
@@ -666,81 +703,150 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     }
     
             </div>
-            <pre id="editor3">
-public class ExerciseSumArray {
-    /*
-    Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
-    calculate the sum of 2 Lists, and return the result in a List.
-    For example:
-    [1, 0, 0] + [4,0] = [1,4,0]
-    [6,7] + [0] = [6,7]
-      */
-    public ArrayList<Integer> getSum(List<Integer> firstNumber, List<Integer> secondNumber ){
-        ArrayList<Integer> result = new ArrayList<Integer>();
+            <pre id="editor3">/* 
+author: Doren
+functionality: returns the biggest prime divisor of a number
+date: 12.11.2019
+*/
 
-        int carry = 0;
-        Collections.reverse(firstNumber);
-        Collections.reverse(secondNumber);
+public class Primes{
 
-        for (int i = 0; (i &lt Math.max(firstNumber.size(), secondNumber.size())); i ++){
-            Integer firstValue = i &lt firstNumber.size() ? firstNumber.get(i) : null;
-            Integer secondValue = i &lt secondNumber.size() ? secondNumber.get(i) : null;
-
-            int res = firstValue + secondValue + carry;
-
-            carry = 0;
-            if (res > 10){
-                carry = 1;
-                res = res % 10;
-            }
-            result.add(res);
-        }
-
-        if (carry >= 0)
-            result.add(carry);
-
-        Collections.reverse(result);
-        return result;
-    }
-}
-        </pre>
-            <div id="editor4">
-    // Java program to print the elements of 
-    // a 2 D array or matrix 
-    import java.io.*; 
-    class Matrixes { 
+  /*
+  This method provides the biggest prime 
+  number which divides the number provided.
+  
+  @param n = the number to be calculated
+  @returns biggest factor
+  */
+  public static int dividePrime( int n)
+  {
+    // the biggest prime, 
+    // updated in loop
+    int bigPrime = -1;
+    int number = n;
+    
+    // start from 2(the first prime number)
+    // to the square root of n 
+    for ( int i = 2; i * i <= number; i++){
+        
+      // in case the number has been divided totally
+      if (number == 1) { 
+        break; 
+      }
       
-      public static void printMatrix(int mat[][]) 
-      { 
-      // Loop through all rows 
-      for (int i = 0; i &lt; mat.length; i++) 
-        // Loop through all elements of current row 
-        for (int j = 0; j &lt; mat[i].length; j++) 
-            System.out.print(mat[j][i] + " "); 
-      } 
-      public static int calcMatrixTotal(int mat[][]) 
-      { 
-      int total = 0;
-      // Loop through all rows 
-      for (int i = 0; i &lt; mat.length; i++) 
-        // Loop through all elements of current row 
-        for (int j = 0; j&lt;mat[i].length; j++) 
-            total = total + mat[j][i];
-      return total;
-      } 
-      public static void main(String args[]) throws IOException 
-      { 
-        int mat[][] = { { 1, 2, 3, 4 }, 
-                        { 5, 6, 7, 8 }, 
-                        { 9, 10, 11, 12 } }; 
-        printMatrix(mat);
-        int rows = primes[0].length; 
-        int cols = primes[0].length;
-        System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
-        System.out.print("The matrix total is :"+calcMatrixTotal(mat));
-      } 
-    } 
+      // if cannot divide by i, skip
+      // otherwise, remember i as the biggest factor
+      if (number % i != 0) { 
+        continue; 
+      }
+      bigPrime = i;
+      
+      // while you can still divide the number
+      // with the index, continue dividing
+      while (number % i == 0) {
+        number /= i;
+      }
+    }
+    
+    // return either the last factor which divided n
+    // or n itself, after removing all the factors in it
+    if (number==1){
+      return bigPrime; 
+    }
+    else {
+      return number; 
+    }
+  }
+  
+  public static void main(String []args){
+    // run code
+    System.out.print(dividePrime(1008));
+  }
+}</pre>
+            <div id="editor4">
+/* 
+author: Doren
+functionality: prints diamond of a number
+date: 12.11.2019
+*/
 
+public class HelloWorld{
+    
+  /**
+    * This method prints the diamond of a number. 
+    * For example, the diamond of 5 would be:
+        3  
+       2 2 
+      1   1
+       2 2 
+        3  
+    * @param number of the diamond 0 < number < 10
+    * @return null - we are printing
+  */
+  public static double createDiamond( int number)
+  {
+    // what is the length and width of diamond
+    int size; 
+    int first_space; 
+    int second_space;
+    int k;  // which number is to be printed next
+      
+    size = number * 2 - 1;
+    first_space = "";
+    second_space = "";
+    
+    // for each of the lines to be printed
+    for( int i=0; i < size; i++){
+      
+      // create space before printing the number
+      first_space = (number-i-1)% number;
+      if (first_space < 0){
+        first_space = - first_space;
+      }
+      for (int sp = 0; sp < first_space ; sp++) System.out.print(" ");
+          
+      /*
+        Decides on which number to print. For example, for number =4
+        print: 4 3 2 1 2 3 4
+        index: 0 1 2 3 4 5 6
+      */
+      k = 0;
+      if ( i == 0){ 
+        // if first one, print 4
+        k = number;
+      }
+      else if( i < number){  
+        // if i in decreasing from top of diamond
+        k = number-i;
+      } 
+      else{  
+        // after the biggest horizontal width has passed
+        // index -> print , 4-4+2-> 2, 5-4+2->3
+        k = i - number + 2; // add error here
+      }
+
+      // print the number
+      System.out.print(k);
+      
+      // if you are not in vertical edges, print twice, 
+      // including space in the middle
+      if ( k != number){
+        second_space = size-(first_space*2)-2;
+        for (int sp = 0; sp < second_space ; sp++) System.out.print(" ");
+        System.out.print(k);
+      }
+    
+        // go to next line
+        System.out.println();
+    }
+    return 0;
+    
+  }
+
+  public static void main(String []args){
+    createDiamond(5);
+  }
+}
             </div>
             <div id="editor5">
 public class Primes{
