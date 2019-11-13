@@ -1,80 +1,81 @@
 <!Doctype html>
 <html>
+
 <head>
-  <title>Code Review Serious Game by Bilsen</title>
+    <title>Code Review Serious Game by Bilsen</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-  <!--Main Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+    <!--Main Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <div class="mdl-layout mdl-js-layout">
         <header class="mdl-layout__header">
-          <div class="mdl-layout-icon"></div>
-          <div class="mdl-layout__header-row">
-            <div class="mdl-layout-spacer"></div>
-            <span class="mdl-layout_title" style="font-size: 27px">Code Review Serious Game</span>
-            <div class="mdl-layout-spacer"></div>
-            <nav class="mdl-navigation">
-              <!-- <a class="mdl-navigation__link" href="#">Nav link 1</a>
+            <div class="mdl-layout-icon"></div>
+            <div class="mdl-layout__header-row">
+                <div class="mdl-layout-spacer"></div>
+                <span class="mdl-layout_title" style="font-size: 27px">Code Review Serious Game</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <!-- <a class="mdl-navigation__link" href="#">Nav link 1</a>
               <a class="mdl-navigation__link" href="#">Nav link 2</a> -->
-              <!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="signOut">
+                    <!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="signOut">
                 Sign Out
               </button> -->
-            </nav>
-          </div>
+                </nav>
+            </div>
         </header>
         <div id="login-box">
-                <div class="left" >
+            <div class="left">
                 <h1>Sign Up</h1>
-                
+
                 <input type="text" name="UserName" placeholder="User Name" id="sign-up-username" />
                 <input type="text" name="Email" placeholder="E-mail" id="sign-up-email" />
                 <input type="password" name="Password" placeholder="Password" id="sign-up-password" />
-                <input type="password" name="Password" placeholder="Retype Password"id= "sign-up-password-re" />
+                <input type="password" name="Password" placeholder="Retype Password" id="sign-up-password-re" />
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" id="signUp">
-                  Sign Up
+                    Sign Up
                 </button>
 
-              </div>
-                <div class="mid">
-                  <h1>Log in</h1>
-                  <input type="text2" name="log_email" placeholder="Account E-mail" id="log-in-email" />
-                  <input type="password" name="log_password" placeholder="Password" id="log-in-password" />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" id="login">
-                  Login
-                  </button>
-                </div>
-                <div class="right">
-                <span class="loginwith">Sign in with<br />social network</span>
-                
-                <button class="social-signin facebook" disabled >Log in with facebook</button>
-                <button class="social-signin twitter" disabled >Log in with Twitter</button>
-                <button class="social-signin google" disabled >Log in with Google</button>
-                </div>
-                <div class="or">OR</div>
-                
-                <div class="or2">OR</div>
             </div>
-       <!--  <div class="mdl-layout__drawer">
+            <div class="mid">
+                <h1>Log in</h1>
+                <input type="text2" name="log_email" placeholder="Account E-mail" id="log-in-email" />
+                <input type="password" name="log_password" placeholder="Password" id="log-in-password" />
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" id="login">
+                    Login
+                </button>
+            </div>
+            <div class="right">
+                <span class="loginwith">Sign in with<br />social network</span>
+
+                <button class="social-signin facebook" disabled>Log in with facebook</button>
+                <button class="social-signin twitter" disabled>Log in with Twitter</button>
+                <button class="social-signin google" disabled>Log in with Google</button>
+            </div>
+            <div class="or">OR</div>
+
+            <div class="or2">OR</div>
+        </div>
+        <!--  <div class="mdl-layout__drawer">
         </div> -->
-      </div>
-      <!-- MDL Spinner Component -->
-      <div id="loginProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    </div>
+    <!-- MDL Spinner Component -->
+    <div id="loginProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
-        <!-- TODO: Add SDKs for Firebase product that you want to use
+    <!-- TODO: Add SDKs for Firebase product that you want to use
             https://firebase.google.com/docs/web/setup#config-web-app -->
-        <script src="/__/firebase/6.2.3/firebase-app.js"></script>
-        <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
-        <script src="/__/firebase/6.2.4/firebase-database.js"></script>
+    <script src="/__/firebase/6.2.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
+    <script src="/__/firebase/6.2.4/firebase-database.js"></script>
 
-
-        <script>
+    <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
@@ -87,8 +88,10 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        </script>
-        <script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
-        <script src= "index.js"> </script>
-    </body>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="index.js">
+    </script>
+</body>
+
 </html>

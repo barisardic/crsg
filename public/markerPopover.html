@@ -1,76 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Ace Editor Marker Popovers</title>
-  
+    <meta charset="UTF-8">
+    <title>Ace Editor Marker Popovers</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-<style>
-/*Downloaded from https://www.codeseek.co/oatssss/ace-editor-marker-popovers-oYxJQV */
-#editor {
-  position: absolute;
-  width: 98%;
-  height: 97%;
-}
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <style>
+        /*Downloaded from https://www.codeseek.co/oatssss/ace-editor-marker-popovers-oYxJQV */
+        
+        #editor {
+            position: absolute;
+            width: 98%;
+            height: 97%;
+        }
+        
+        .marker1 {
+            position: absolute;
+            background-color: rgba(255, 0, 0, 0.4);
+        }
+        
+        .marker2 {
+            position: absolute;
+            background-color: rgba(0, 255, 0, 0.4);
+        }
+        
+        .marker3 {
+            position: absolute;
+            background-color: rgba(0, 0, 255, 0.4);
+        }
+        
+        iframe {
+            position: absolute;
+            z-index: 5;
+        }
+    </style>
 
-.marker1 {
-  position: absolute;
-  background-color: rgba(255, 0, 0, 0.4);
-}
-
-.marker2 {
-  position: absolute;
-  background-color: rgba(0, 255, 0, 0.4);
-}
-
-.marker3 {
-  position: absolute;
-  background-color: rgba(0, 0, 255, 0.4);
-}
-
-iframe {
-  position: absolute;
-  z-index: 5;
-}</style>
-
-  
 </head>
 
 <body>
 
-  <body>
-  <div id="editor">Hover over the highlighted words to see some popups!
------------------------------------------------------------
-across against answer awhile
-between board bottom breakfast broken build building built
-captain carried caught charge chicken circus cities clothes company
-couldn't country discover doctor doesn't dollar during
-eighth else enjoy enough everybody example except excuse
-field fifth finish following good-by group
-happened harden haven't heavy held hospital
-idea instead known laugh middle minute mountain
-ninth ocean office parent peanut pencil picnic police pretty prize
-quite radio raise really reason remember return
-Saturday scare second since slowly stories student sudden suit sure swimming
-though threw tired together tomorrow toward tried trouble truly turtle
-until village visit wear we'll whole whose women wouldn't writing written wrote
-yell young</div>
-</body>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.30.5/react-bootstrap.min.js'></script>
-<script src='https://cdn.rawgit.com/oatssss/ace/1c73517bdf38c381c8975b1fef1c0ca298fc1e96/custom-build/src-min-noconflict/ace.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <body>
+        <div id="editor">Hover over the highlighted words to see some popups! ----------------------------------------------------------- across against answer awhile between board bottom breakfast broken build building built captain carried caught charge chicken circus cities clothes company couldn't country discover doctor doesn't dollar during eighth else enjoy enough everybody example except excuse field fifth finish following good-by group happened harden haven't heavy held hospital idea instead known laugh middle minute mountain ninth ocean office parent peanut pencil picnic police pretty prize quite radio raise really reason remember return Saturday scare second since slowly stories student sudden suit sure swimming though threw tired together tomorrow toward tried trouble truly turtle until village visit wear we'll whole whose women wouldn't writing written wrote yell young</div>
+    </body>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.30.5/react-bootstrap.min.js'></script>
+    <script src='https://cdn.rawgit.com/oatssss/ace/1c73517bdf38c381c8975b1fef1c0ca298fc1e96/custom-build/src-min-noconflict/ace.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 
-  
-
-    <script  src="markerPopover.js"></script>
-
-
-
+    <script src="markerPopover.js"></script>
 
 </body>
 

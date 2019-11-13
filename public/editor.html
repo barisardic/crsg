@@ -862,6 +862,33 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 </script>
+<script>
+ //var beautify_html = require('js-beautify').html;
+ var ref = firebase.database().ref('exercise');
+  ref.once("value", gotData, errData)
+
+  function gotData( data){
+
+    // get all exercises from database
+    var exercises = data.val();
+    for( var i = 0; i < exercises.length; i++ ){
+      var ex_single = exercises[i];
+      var code = ex_single.code; 
+
+      // update the text in the fields
+      var div = document.getElementById('editor'+ (i+2).toString());
+      console.log("editor"+ (i+2).toString());
+      console.log(div.innerText)
+      div.innerText = code;
+      //div.textContent = code;
+      //div.TEXT_NODE = code;
+    }
+  }
+  function errData( err){
+    console.log("Error");
+    console.log(err)
+  }
+</script>
 <script src="timeme.min.js"></script>
 <script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
 <script src= "editor.js"> </script>
