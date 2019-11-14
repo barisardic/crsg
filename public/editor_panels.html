@@ -1,0 +1,149 @@
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
+    <div class="mdl-tabs__tab-bar">
+        <a href="#narrative-panel" class="mdl-tabs__tab is-active">Description</a>
+        <a href="#description-panel" class="mdl-tabs__tab">Guide</a>
+        <a href="#checkist-panel" class="mdl-tabs__tab">Checklist</a>
+    </div>
+    <div class="mdl-tabs__panel is-active" id="narrative-panel">
+      <ul id="narrativeText">
+        <p>Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by giving a quick glance to the <strong> GUIDE</strong>. Than you can review the code.</p>
+        <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
+            It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
+         <p> Remember to make use of your <strong>checklist</strong> and <strong>guide</strong> . If you are not sure about the 
+            type of defect that you have found or how to select it, you should refer
+             back to the guide.
+                                                                    -Bilsen Team </p>
+                                                                      
+      </ul>
+      <ul id="narrativeText2">
+          <p>This level will be your first real taste of the game. This level consists of a simple java class
+            with code smells and even defects. Go and find them! As always select the error reasons carefully and reasonably in order to
+            get more points. 
+          </p>
+                                                                        
+        </ul>
+        <ul id="narrativeText3">
+            <p>Thing are getting more serious. In this level you are reviewing a very simple arithmetic operation implemented on 
+              arrays however in order to get a high score you need to pay close attention to the operations performed and their 
+              validity. 
+            </p>
+                                                                          
+          </ul>
+          <ul id="narrativeText4">
+              <p> <strong>Congratulations for making it this far! </strong>
+                You are now dealing with a program performing matrix operations. While working with matrixes things can always
+                go wrong and defect can hide under your nose for a long time. <strong> So be careful. </strong>  
+                 </p>
+                                                                            
+            </ul>
+            <ul id="narrativeText5">
+               <p>Last level of the experiment is <strong>HERE</strong> and about prime numbers!! </p> 
+                <p>
+                    PS: <strong>If a line of code is missing you should select the nearest encapsulating object structure, eg the nearest curly brackets, for example if a return statement is 
+                        missing inside an "if" statement you should select the whole if statement. The reason of the defect for such cases should be "Data and resource manipulation"</strong>  
+                </p>
+              
+              </ul>
+    </div>
+    <div class="mdl-tabs__panel" id="description-panel">
+      <img src = "assets/defects picture.png"  />
+      <ul style="font-size: medium">
+        <li><u> <strong>False Positives :</strong>  Instances where you think you have found a defect when there isn't any are false positives. False positives are unwanted in the code review process. You should double check your defect list before submitting to avoid false positives. </u></li>
+         <h2 align="center" title="These type of defects increase maintanance effort and decrease understandibility of code.">Evolvability Defects</h2> 
+        <li><strong>Semantic duplication :</strong>  There are two sections in the code that are not the same but they perform the same task.</li>
+
+         <li><strong>Semantic dead code :</strong> A piece of code that the program executes which does not perform any meaningful task.</li>
+          
+         <li><strong>Duplication :</strong> The exact replica of this code exists in the project.</li>
+          
+         <li><strong>Consistency :</strong> When something is achieveable with multiple ways or styles, you should select one of them and use only that for consistency. For example if you are naming your variables as camel case, you should not change it arbitrarily.  </li>
+          
+         <li><strong>Dead Code :</strong> A piece of code in the program which is never executed.</li>
+          
+         <li><strong>Bracket :</strong> Unnecessary or inconsistent usage of brackets. </li>
+          
+         <li><strong>Indentation :</strong> Indentation of a certain code piece is not compliant with the rest of code.</li>
+          
+         <li><strong>Blank line usage :</strong> Empty lines usually indicate a separation of functionality thus they are commonly founded in places where single responsibility principle is violated. </li>
+          
+         <li><strong>Long line :</strong> Unnaturally long lines of code makes programs harder to read and debug, they might also make you miss code reuse opportunities.</li>
+         
+         <li><strong>Immutable :</strong> An immutable object is an object that can not be changed once its created.  </li>
+         
+         <li><strong>Void Parameter :</strong> Null never should be a parameter to an object since it does not contribute to anything. The right way is to make 2 versions of the method one with the object parameter and the second with no parameters. </li>
+          
+         <li><strong>Element Type :</strong> Suboptimal usage of element (variable) type assignments. </li>
+          
+         <li><strong>Naming :</strong> Inconsistent or irrelevant naming.</li>
+          
+         <li><strong>Comments:</strong> Comments that are completely unnecessary or wrong. </li>
+        <h2 align="center" title="These type of defects prevent the code from working correctly." >Functional Defects</h2>
+         <li><strong>Function Call :</strong> Improper or unnecessary function call, we should extend this to include middle man functions or multi responsibility methods.</li>
+          
+         <li><strong>Parameter :</strong> Too many or unnecessary parameters, wrong choice of parameters, perhaps even null parameters.</li>
+          
+         <li><strong>Variable initialization :</strong> Unnecessary dummy initializations, maybe some variable should have been declared as final or vica versa. </li>
+          
+         <li><strong>Memory management :</strong> Very common in some languages, not so common in others. </li>
+          
+         <li><strong>Data and Resource Manipulation :</strong> This is the most general type of functional errors. If you have found a functional error that you cant assign to any other type than consider this one. Perhaps the code is going to throw a NPE. These type of errors belongs in this category.</li>
+          
+         <li><strong>Compare :</strong> Any errors made while utilizing "&lt;",”>””=” type of operators are of this type.</li>
+          
+         <li><strong>Compute :</strong> These are the errors which are mathematics related rather than programming.</li>
+          
+         <li><strong>Algorithm/Performance :</strong> Obvious design choices that makes the program “significantly” inefficient memory or speed wise.
+      </ul>
+    </div>
+    <div class="mdl-tabs__panel"style="overflow-x:auto;" id="checkist-panel">
+      
+          <table>
+              <tbody>
+               <tr>
+                <td>Use Intention-Revealing Names</td>
+                
+               </tr>
+               <tr>
+                <td>Pick one word per concept</td>
+                
+               </tr>
+               <tr>
+                <td>Use Solution/Problem Domain Names </td>
+                
+               </tr>
+               <tr>
+                <td>Classes should be small!</td>
+                
+               </tr>
+               <tr>
+                <td>Functions should be small! </td>
+                
+               </tr>
+               <tr>
+                <td>Do one Thing </td>
+                
+               </tr>
+               <tr>
+                <td>Don't Repeat Yourself (Avoid Duplication) </li></td>
+                
+               </tr>
+               <tr>
+                <td>Explain yourself in code </td>
+                
+               </tr>
+               <tr>
+                <td>Make sure the code formatting is applied </td>
+                
+               </tr>
+               <tr>
+                <td>Use Exceptions rather than Return codes </td>
+                
+               </tr>
+               <tr>
+                <td>Don't return Null </td>
+               </tr>
+              </tbody>
+             </table>
+      
+    </div>
+  </div>

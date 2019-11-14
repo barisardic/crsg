@@ -232,8 +232,7 @@ React.createElement('iframe', {
 src: '//s.codepen.io/oatssss/debug/oYxJQV?allowInfiniteRecursion=' + Math.random(),
 height: '300px',
 width: '600px'
-})
-), true);
+})//), true);
 
 // Finally, add the markers to the editor
 var marker1 = editor.session.addDynamicMarker(highlight1);

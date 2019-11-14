@@ -1,66 +1,75 @@
+/**
+ * author: Baris
+ * functionality: updates the functionality of the main page- the editor. 
+ */
+
+// INITIAL SETUP
 var originalDom = document.querySelector('.marketing-content-hidden');
 var listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = localStorage.getItem('selected');
 //window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
+var l_groundtruth_errors = []; // list of errors in the code
+var ListofErrors = []; // errors submitted by the user
 
-if (levelChosen == 1) {
-    document.getElementById("editor").style.display = "block";
-    document.getElementById("narrativeText").style.display = "block";
-    var editor = ace.edit("editor");
-    var code = document.querySelector("editor");
-    editor.setTheme("ace/theme/cobalt");
+/**
+ * UPDATE:
+ * get data from firebase, 
+ * update editor text, narrative text( description)
+ * update exercises from db
+ */
+// connect to database, get exercises
+var ref = firebase.database().ref('exercise');
+var l_exerc_html = document.getElementsByClassName("exercises_html");
+
+// take the data once from firebase in the first call
+ref.once("value", gotData, errData)
+
+   // function to show what to do with the data when the data has been taken
+  function gotData( data){
+
+    // get all exercises from database
+    var exercises = data.val();
+    // level chosen from the user once in the program
+    i = levelChosen -1; 
+    // extract from exercises
+    var db_code =  exercises[i].code;
+
+    // update the text in the fields by calling the "id" element
+    document.getElementById( l_exerc_html[ i][ 'id']).innerHTML = db_code;
+    
+    // css for the editor
+    var editor = ace.edit( l_exerc_html[i]['id']);
+    document.getElementById( l_exerc_html[i]['id']).style.display = "block"; 
     editor.session.setMode("ace/mode/java");
-    editor.setReadOnly(true);
-} else if (levelChosen == 2) {
-    document.getElementById("editor2").style.display = "block";
-    document.getElementById("narrativeText2").style.display = "block";
-    var editor = ace.edit("editor2");
-    var code = document.querySelector("editor2");
     editor.setTheme("ace/theme/cobalt");
-    editor.session.setMode("ace/mode/java");
     editor.setReadOnly(true);
-} else if (levelChosen == 3) {
-    document.getElementById("editor3").style.display = "block";
-    document.getElementById("narrativeText3").style.display = "block";
-    var editor = ace.edit("editor3");
-    var code = document.querySelector("editor3");
-    editor.setTheme("ace/theme/cobalt");
-    editor.session.setMode("ace/mode/java");
-    editor.setReadOnly(true);
-} else if (levelChosen == 4) {
-    document.getElementById("editor4").style.display = "block";
-    document.getElementById("narrativeText4").style.display = "block";
-    var editor = ace.edit("editor4");
-    var code = document.querySelector("editor4");
-    editor.setTheme("ace/theme/cobalt");
-    editor.session.setMode("ace/mode/java");
-    editor.setReadOnly(true);
-} else if (levelChosen == 5) {
-    document.getElementById("editor5").style.display = "block";
-    document.getElementById("narrativeText5").style.display = "block";
-    var editor = ace.edit("editor5");
-    var code = document.querySelector("editor5");
-    editor.setTheme("ace/theme/cobalt");
-    editor.session.setMode("ace/mode/java");
-    editor.setReadOnly(true);
-} else if (levelChosen == 6) {
-    document.getElementById("editor6").style.display = "block";
-    document.getElementById("narrativeText5").style.display = "block";
-    var editor = ace.edit("editor6");
-    var code = document.querySelector("editor6");
-    editor.setTheme("ace/theme/cobalt");
-    editor.session.setMode("ace/mode/java");
-    editor.setReadOnly(true);
+    editor.setFontSize(14);
+
+    // change the narrative of the editor
+    document.getElementById("narrativeText"+l_exerc_html[i]['id'].slice(6) ).style.display = "block";
+
+    // errors
+    var db_errors = exercises[i].errors;
+    var hints = exercises[i].hints;
+    for(var i_error =0; i_error< db_errors.length; i_error ++){
+        err = new Err( db_errors[ i_error]['lines'][0], db_errors[ i_error]['lines'][1]);
+        err.reason = db_errors[ i_error]['reason'];
+        l_groundtruth_errors.push(err);
+    }
+    
+  }
+  // when there is an error from reading from the database
+  function errData( err){
+    console.log("Error");
+    console.log(err)
 }
-editor.setFontSize(14);
-// Initialize library and start tracking time
-TimeMe.initialize({
-    currentPageName: "play", // current page
-    idleTimeoutInSeconds: 600 // seconds
-});
 
-// custom error object for user to select/save the errors in the code.
+/**
+ * ERROR CLASS (central to the game)
+ * !! check if moving it before makes a difference.
+ * custom error object for user to select/save the errors in the code.
+ */
 class Err {
     constructor(start, end) {
         this.start = start;
@@ -89,93 +98,20 @@ class Err {
         return "" + this.start + "-" + this.end + "-" + this.reason;
     }
 }
-if (levelChosen == 1) {
-    var answers = [];
-    var answer1 = new Err(4, 4);
-    answer1.reason = "Comments";
-    answers[0] = answer1;
 
-    var answer2 = new Err(8, 11);
-    answer2.reason = "Duplication";
-    answers[1] = answer2;
+// Initialize library and start tracking time
+TimeMe.initialize({
+    currentPageName: "play", // current page
+    idleTimeoutInSeconds: 600 // seconds
+});
 
-    var answer3 = new Err(18, 19);
-    answer3.reason = "Parameter";
-    answers[2] = answer3;
-
-    var hints = ["There are " + answers.length + " defects in the code", "Duplication error at lines 9-12", "Parameter error at lines 19-20", "Comments error at line 5"];
-} else if (levelChosen == 2) {
-    var answers = [];
-    var answer1 = new Err(29, 32);
-    answer1.reason = "Duplication";
-    answers[0] = answer1;
-
-    var answer2 = new Err(39, 42);
-    answer2.reason = "Indentation";
-    answers[1] = answer2;
-
-    var answer3 = new Err(53, 53);
-    answer3.reason = "Long line";
-    answers[2] = answer3;
-
-    var answer4 = new Err(47, 47);
-    answer4.reason = "Compare";
-    answers[3] = answer4;
-
-    var hints = ["There are " + answers.length + " defects in the code", "Focus on the styling aspects of the code", "Consider looking for string equality violations", "Copy pasting is harmful"];
-} else if (levelChosen == 3) {
-    var answers = [];
-    var answer1 = new Err(16, 16);
-    answer1.reason = "Data and resource manipulation";
-    answers[0] = answer1;
-
-    var answer2 = new Err(17, 17);
-    answer2.reason = "Data and resource manipulation";
-    answers[1] = answer2;
-
-    var answer3 = new Err(29, 29);
-    answer3.reason = "Compare";
-    answers[2] = answer3;
-    var hints = ["There are " + answers.length + " defects in the code", "Pay close attention to comparisons", "Sadly, mistakes can be repeted ", "There are some things in OO languages that are always more dangerous"];
-} else if (levelChosen == 4) {
-    var answers = [];
-    var answer1 = new Err(12, 12);
-    answer1.reason = "Data and resource manipulation";
-    answers[0] = answer1;
-
-    var answer2 = new Err(21, 21);
-    answer2.reason = "Algorithm/Performance";
-    answers[1] = answer2;
-
-    var answer3 = new Err(30, 30);
-    answer3.reason = "Data and resource manipulation";
-    answers[2] = answer3;
-
-    var hints = ["There are " + answers.length + " defects in the code", "Pay close attention to indexes", "How does java handle 2D arrays?"];
-} else if (levelChosen == 5) {
-    var answers = [];
-    var answer1 = new Err(5, 5);
-    answer1.reason = "Element Type";
-    answers[0] = answer1;
-
-    var answer2 = new Err(7, 7);
-    answer2.reason = "Immutable";
-    answers[1] = answer2;
-
-    var answer3 = new Err(9, 9);
-    answer3.reason = "Compare";
-    answers[2] = answer3;
-
-    var answer4 = new Err(16, 22);
-    answer4.reason = "Data and resource manipulation";
-    answers[3] = answer4;
-
-    var hints = ["There are " + answers.length + " defects in the code", "If a line of code is missing you should select the nearest encapsulating object structure", "Is java dynamically typed?"];
-}
-var ListofErrors = [];
-
+/**
+ * FUNCTIONALITY
+ * 1. Take the lines the user submitted
+ * 2. Check on error reason change or deleted. 
+ * 3. Submit selected values, take score. 
+ */
 document.addEventListener('DOMContentLoaded', lines, false);
-
 function lines() {
     function getLines() {
         selectionRange = editor.getSelectionRange();
@@ -187,21 +123,23 @@ function lines() {
         ListofErrors.push(selection);
         //alert(ListofErrors.length);
         addComponent(ListofErrors);
-
     }
     document.getElementById('hover').addEventListener('click', getLines, false);
-
 };
 
 function submitSelection() {
-    var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
-    //alert(answer1.toString()+"**"+ListofErrors[0].toString());
-    var scoreCalc = calculateScore(answers, ListofErrors);
-    //alert("total score : "+ scoreCalc[0]);
+
+    // authenticate user
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     //todo finsd out boolean returning checkbox value
     var database = firebase.database();
+
+    var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+    //alert(answer1.toString()+"**"+ListofErrors[0].toString());
+    var scoreCalc = calculateScore(answers, ListofErrors);
+    //alert("total score : "+ scoreCalc[0]);
+
     var newPostRef = database.ref('games/' + userId).push();
     newPostRef.set({
         user: userId,
@@ -209,7 +147,6 @@ function submitSelection() {
         submission: ListofErrors,
         score: scoreCalc[0],
         timeSpend: timeSpentOnPage
-
     });
     noOfanswers = answers.length;
     maxScore = 3 * noOfanswers;
@@ -301,8 +238,8 @@ document.addEventListener('click', function(e) {
         ListofErrors[ind - 1].reason = selText;
     }
 });
-document.getElementById('answersBtn').addEventListener('click', answersPressed, false);
 
+document.getElementById('answersBtn').addEventListener('click', answersPressed, false);
 function answersPressed() {
     var Domlist = document.querySelector('.marketing-content-list');
     Domlist.innerHTML = listInner;
@@ -354,8 +291,9 @@ function addComponent(ListofErrors) {
     if (ListofErrors.length != 0) {
         document.getElementById("titleMsg").innerHTML = "";
     }
-
 }
+
+
 var closestByClass = function(el, clazz) {
     // Traverse the DOM up with a while loop
     while (el.className != clazz) {

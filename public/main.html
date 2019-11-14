@@ -1,112 +1,114 @@
 <!Doctype html>
 <html>
-<head>
-<title>Code Review Serious Game by Bilsen</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
-  <!-- Material Design icon font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <!--Main Stylesheet -->
-  <link rel="stylesheet" href="main.css" />
+<head>
+    <title>Code Review Serious Game by Bilsen</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--Main Stylesheet -->
+    <link rel="stylesheet" href="main.css" />
 </head>
+
 <body>
     <div class="mdl-layout mdl-js-layout">
         <header class="mdl-layout__header">
-          <div class="mdl-layout-icon"></div>
-          <div class="mdl-layout__header-row">
-              
-              <span class="mdl-layout_title title" style="font-size: 27px" >Code Review Serious Game</span>
-            <!-- <div class="mdl-layout-spacer"></div> -->
-            <div class="mdl-layout-spacer"></div>
-            <nav class="mdl-navigation">
-              <!-- <a class="mdl-navigation__link" href="#">Nav link 1</a> -->
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-left: 375px" id="userEmail" onclick="window.location.href='/userprofile.html'">
-                
-              </button>
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="signout2">
-                  Sign Out
-              </button>
-            </nav>
-          </div>
+            <div class="mdl-layout-icon"></div>
+            <div class="mdl-layout__header-row">
+
+                <span class="mdl-layout_title title" style="font-size: 27px">Code Review Serious Game</span>
+                <!-- <div class="mdl-layout-spacer"></div> -->
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <!-- <a class="mdl-navigation__link" href="#">Nav link 1</a> -->
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-left: 375px" id="userEmail" onclick="window.location.href='/userprofile.html'">
+
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="signout2">
+                        Sign Out
+                    </button>
+                </nav>
+            </div>
         </header>
-       <!--  <div class="mdl-layout__drawer">
+        <!--  <div class="mdl-layout__drawer">
         </div> -->
-        <div class="mdl-grid">        
-       <!-- Square card -->
-      <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card1">
-        <div class="mdl-card__title mdl-card--expand">
-          <h2 class="mdl-card__title-text" style="color: black"></h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          This is the starting level that you can get familiar with the game.
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect"id="playButton1">
-            <strong>Play: Practice Level</strong> 
-            </a>
-        </div>
-      </div>
-  <!-- Square card -->
-      <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card2">
-        <div class="mdl-card__title mdl-card__accent mdl-card--expand">
-          <h2 class="mdl-card__title-text"style="color: black"></h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          This is the first real level with easy to find errors.
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"id="playButton2">
-            <strong>Play: Level 2</strong> 
-            </a>
-        </div>
-      </div>
-  <!-- Square card -->
-      <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card3">
-        <div class="mdl-card__title mdl-card--expand">
-          <h2 class="mdl-card__title-text"style="color: black"></h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          Things are getting a little bit more serious!
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect"id="playButton3">
-            <strong>Play: Level 3</strong> 
-            </a>
-        </div>
-      </div>
-  <!-- Square card -->
-      <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card4">
-        <div class="mdl-card__title mdl-card--expand">
-          <h2 class="mdl-card__title-text"style="color: black"></h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          Now, this might be a proper challange for anyone!
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="playButton4">
-            <strong>Play: Level 4</strong> 
-            </a>
-        </div>
-      </div>
-  <!-- Square card -->
-      <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card5">
-        <div class="mdl-card__title mdl-card--expand">
-          <h2 class="mdl-card__title-text"style="color: black"></h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          This level is for the saints of code review!
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" id="playButton5">
-            <strong>Play: Level 5</strong> 
-            </a>
-        </div>
-      </div>
-  <!-- Square card -->
-<!--       <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card6">
+        <div class="mdl-grid">
+            <!-- Square card -->
+            <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card1">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text" style="color: black"></h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    This is the starting level that you can get familiar with the game.
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" id="playButton1">
+                        <strong>Play: Practice Level</strong>
+                    </a>
+                </div>
+            </div>
+            <!-- Square card -->
+            <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card2">
+                <div class="mdl-card__title mdl-card__accent mdl-card--expand">
+                    <h2 class="mdl-card__title-text" style="color: black"></h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    This is the first real level with easy to find errors.
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="playButton2">
+                        <strong>Play: Level 2</strong>
+                    </a>
+                </div>
+            </div>
+            <!-- Square card -->
+            <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card3">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text" style="color: black"></h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Things are getting a little bit more serious!
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" id="playButton3">
+                        <strong>Play: Level 3</strong>
+                    </a>
+                </div>
+            </div>
+            <!-- Square card -->
+            <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card4">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text" style="color: black"></h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Now, this might be a proper challange for anyone!
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="playButton4">
+                        <strong>Play: Level 4</strong>
+                    </a>
+                </div>
+            </div>
+            <!-- Square card -->
+            <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card5">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text" style="color: black"></h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    This level is for the saints of code review!
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" id="playButton5">
+                        <strong>Play: Level 5</strong>
+                    </a>
+                </div>
+            </div>
+            <!-- Square card -->
+            <!--       <div class="mdl-card mdl-shadow--2dp demo-card-square" id="card6">
         <div class="mdl-card__title mdl-card--expand">
           <h2 class="mdl-card__title-text"style="color: black"></h2>
         </div>
@@ -119,7 +121,7 @@
             </a>
         </div>
       </div> -->
-      </div>
+        </div>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
@@ -131,20 +133,22 @@
 
         <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
-            authDomain: "crsg-protoype.firebaseapp.com",
-            databaseURL: "https://crsg-protoype.firebaseio.com",
-            projectId: "crsg-protoype",
-            storageBucket: "crsg-protoype.appspot.com",
-            messagingSenderId: "438209695879",
-            appId: "1:438209695879:web:41b459953d567130"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
+                authDomain: "crsg-protoype.firebaseapp.com",
+                databaseURL: "https://crsg-protoype.firebaseio.com",
+                projectId: "crsg-protoype",
+                storageBucket: "crsg-protoype.appspot.com",
+                messagingSenderId: "438209695879",
+                appId: "1:438209695879:web:41b459953d567130"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
         </script>
-        <script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
-        <script src= "main.js"> </script>
-    </body>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="main.js">
+        </script>
+</body>
+
 </html>
