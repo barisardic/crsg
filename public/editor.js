@@ -1,6 +1,9 @@
 /**
  * author: Baris
- * functionality: updates the functionality of the main page- the editor. 
+ * functionality: 
+ *  1. updates the functionality of the main page- the editor. 
+ *  2. gets the lines selected, created an error, allows you to change the reason
+ *  3. check the good answers, the hints, and your score
  */
 
 // INITIAL SETUP
@@ -11,7 +14,7 @@ levelChosen = localStorage.getItem('selected');
 var Range = ace.require("ace/range").Range;
 var l_groundtruth_errors = []; // list of errors in the code
 var ListofErrors = []; // errors submitted by the user
-
+var editor = 0; 
 /**
  * UPDATE:
  * get data from firebase, 
@@ -21,7 +24,6 @@ var ListofErrors = []; // errors submitted by the user
 // connect to database, get exercises
 var ref = firebase.database().ref('exercise');
 var l_exerc_html = document.getElementsByClassName("exercises_html");
-
 // take the data once from firebase in the first call
 ref.once("value", gotData, errData)
 
@@ -34,18 +36,15 @@ ref.once("value", gotData, errData)
     i = levelChosen -1; 
     // extract from exercises
     var db_code =  exercises[i].code;
-
     // update the text in the fields by calling the "id" element
     document.getElementById( l_exerc_html[ i][ 'id']).innerHTML = db_code;
-    
     // css for the editor
-    var editor = ace.edit( l_exerc_html[i]['id']);
+    editor = ace.edit( l_exerc_html[i]['id']);
     document.getElementById( l_exerc_html[i]['id']).style.display = "block"; 
     editor.session.setMode("ace/mode/java");
     editor.setTheme("ace/theme/cobalt");
     editor.setReadOnly(true);
     editor.setFontSize(14);
-
     // change the narrative of the editor
     document.getElementById("narrativeText"+l_exerc_html[i]['id'].slice(6) ).style.display = "block";
 
@@ -57,6 +56,7 @@ ref.once("value", gotData, errData)
         err.reason = db_errors[ i_error]['reason'];
         l_groundtruth_errors.push(err);
     }
+    console.log(l_groundtruth_errors[-1]);
     
   }
   // when there is an error from reading from the database
@@ -110,16 +110,35 @@ TimeMe.initialize({
  * 1. Take the lines the user submitted
  * 2. Check on error reason change or deleted. 
  * 3. Submit selected values, take score. 
+ * 4. Show hints.
  */
+// 1. take the lines the user submitted.
+// create an error based on these lines
+// add error to list of errors
+// add the following function after the loaded content
 document.addEventListener('DOMContentLoaded', lines, false);
 function lines() {
+
+    function getSelectionRange() {
+        var sel;
+        if (window.getSelection) {
+            sel = window.getSelection();
+            if (sel.rangeCount) {
+                return sel.getRangeAt(0);
+            }
+        } else if (document.selection) {
+            return document.selection.createRange();
+        }
+        return null;
+    }
+
     function getLines() {
+        console.log("hover button, clicked.");
+
+        // get the information for the lines selected
         selectionRange = editor.getSelectionRange();
-        startLine = selectionRange.start.row;
-        endLine = selectionRange.end.row;
-        //alert("starts at : "+startLine+ "ends at : "+ endLine );
-        content = editor.session.getTextRange(selectionRange);
-        var selection = new Err(startLine, endLine);
+        // content = editor.session.getTextRange(selectionRange);
+        var selection = new Err( selectionRange.start.row +1, selectionRange.end.row+1);
         ListofErrors.push(selection);
         //alert(ListofErrors.length);
         addComponent(ListofErrors);
@@ -127,19 +146,70 @@ function lines() {
     document.getElementById('hover').addEventListener('click', getLines, false);
 };
 
+// adds the visual component for the addition of error
+// it makes visible the previously stored components.
+function addComponent(ListofErrors) {
+
+    // start
+    var list = document.querySelector('.marketing-content-list');
+    // get the hidden content 
+    var mc = document.querySelector('.marketing-content-hidden');
+    var newNode = mc.cloneNode(true); // deep clone
+
+    // get the last error
+    var index = ListofErrors.length;
+    var e = ListofErrors[index - 1];
+
+    // data to show
+    newNode.childNodes[1].innerHTML = "Error Lines : " + (e.start + 1) + "&" + (e.end + 1);
+    newNode.style.display = "flex";
+
+    /* what's the usage for this one?
+    reasons2 = buttons.querySelector(".btn-secondary");
+    reasons2.setAttribute("id", "c" + index);
+    */
+    
+    //var buttons = editor.querySelector(".mdl-button");
+    var buttons = newNode.getElementsByTagName("button");
+
+    reasons = buttons[0];
+    reasons.setAttribute("id",index);
+    reasons.addEventListener("change", reasonChanged); 
+
+    visibility = buttons[1];
+    visibility.setAttribute("id", "v" + index);
+    visibility.addEventListener("click", visibilityPressed);
+
+    remover = buttons[2];
+    remover.setAttribute("id", "r" + index);
+    remover.addEventListener("click", removePressed);
+
+    newNode.setAttribute("id", "n" + index);
+    //list.insertBefore(newNode, mc.nextSibling);
+    list.appendChild(newNode);
+    componentHandler.upgradeDom();
+    //alert(visibility.innerHTML);
+
+    if (ListofErrors.length != 0) {
+        document.getElementById("titleMsg").innerHTML = "";
+    }
+}
+
+
+
+// 3. Submit selection and score
 function submitSelection() {
 
     // authenticate user
     var user = firebase.auth().currentUser;
     var userId = user.uid;
-    //todo finsd out boolean returning checkbox value
-    var database = firebase.database();
 
     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
-    //alert(answer1.toString()+"**"+ListofErrors[0].toString());
     var scoreCalc = calculateScore(answers, ListofErrors);
-    //alert("total score : "+ scoreCalc[0]);
+    alert("total score : "+ scoreCalc[0]);
 
+    // add data to database
+    var database = firebase.database();
     var newPostRef = database.ref('games/' + userId).push();
     newPostRef.set({
         user: userId,
@@ -157,6 +227,7 @@ function submitSelection() {
         actionText: ' '
     };
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
+
     // open answers button
     var answersButton = document.getElementById("answersBtn");
     answersButton.style.opacity = 1;
@@ -203,6 +274,8 @@ function calculateScore(answers, submission) {
     var scoreAndExact = [score, exact];
     return scoreAndExact;
 }
+
+// 4. Show hints
 var hintCount = 0;
 var snackbarContainer = document.querySelector('#demo-snackbar-example');
 var showSnackbarButton = document.getElementById('hintBtn');
@@ -253,46 +326,6 @@ function answersPressed() {
         editor.session.addMarker(rng, "ace_active-line", "screen", false);
     }
 }
-
-
-function addComponent(ListofErrors) {
-    var list = document.querySelector('.marketing-content-list');
-    var mc = document.querySelector('.marketing-content-hidden');
-    var newNode = mc.cloneNode(true);
-    var index = ListofErrors.length;
-    var e = ListofErrors[index - 1];
-    var DisplayStart = e.start + 1;
-    var DisplayEnd = e.end + 1;
-    newNode.childNodes[1].innerHTML = "Error Lines : " + DisplayStart + "&" + DisplayEnd;
-    newNode.style.display = "flex";
-    var buttons = newNode.querySelector(".marketing-content-buttons");
-
-    /* reasons = buttons.querySelector(".select2-field").querySelector(".select2");
-    reasons.setAttribute("id",index);
-    reasons.addEventListener("change", reasonChanged); */
-
-    reasons2 = buttons.querySelector(".btn-secondary");
-    reasons2.setAttribute("id", "c" + index);
-
-    visibility = buttons.getElementsByTagName("button")[1];
-    visibility.setAttribute("id", "v" + index);
-    visibility.addEventListener("click", visibilityPressed);
-
-    remover = buttons.getElementsByTagName("button")[2];
-    remover.setAttribute("id", "r" + index);
-    remover.addEventListener("click", removePressed);
-
-    newNode.setAttribute("id", "n" + index);
-    //list.insertBefore(newNode, mc.nextSibling);
-    list.appendChild(newNode);
-    componentHandler.upgradeDom();
-    //alert(visibility.innerHTML);
-
-    if (ListofErrors.length != 0) {
-        document.getElementById("titleMsg").innerHTML = "";
-    }
-}
-
 
 var closestByClass = function(el, clazz) {
     // Traverse the DOM up with a while loop
