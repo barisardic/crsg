@@ -6,6 +6,7 @@
  *  3. check the good answers, the hints, and your score
  */
 
+
 // INITIAL SETUP
 var originalDom = document.querySelector('.marketing-content-hidden');
 var listInner = document.querySelector('.marketing-content-list').innerHTML;
@@ -14,9 +15,13 @@ levelChosen = localStorage.getItem('selected');
 var Range = ace.require("ace/range").Range;
 var l_groundtruth_errors = []; // list of errors in the code
 var ListofErrors = []; // errors submitted by the user
+var answers = [];
 var editor = 0; 
+var hints = [];
+
+//--------------------------------------------------------------------------------------------
 /**
- * UPDATE:
+ * INITIALIZE FROM DATABASE
  * get data from firebase, 
  * update editor text, narrative text( description)
  * update exercises from db
@@ -32,12 +37,16 @@ ref.once("value", gotData, errData)
 
     // get all exercises from database
     var exercises = data.val();
+
     // level chosen from the user once in the program
     i = levelChosen -1; 
+
     // extract from exercises
     var db_code =  exercises[i].code;
+
     // update the text in the fields by calling the "id" element
     document.getElementById( l_exerc_html[ i][ 'id']).innerHTML = db_code;
+
     // css for the editor
     editor = ace.edit( l_exerc_html[i]['id']);
     document.getElementById( l_exerc_html[i]['id']).style.display = "block"; 
@@ -45,18 +54,24 @@ ref.once("value", gotData, errData)
     editor.setTheme("ace/theme/cobalt");
     editor.setReadOnly(true);
     editor.setFontSize(14);
+
     // change the narrative of the editor
     document.getElementById("narrativeText"+l_exerc_html[i]['id'].slice(6) ).style.display = "block";
 
     // errors
     var db_errors = exercises[i].errors;
-    var hints = exercises[i].hints;
+    hints = exercises[i].hints;
+
+    // get all errors
     for(var i_error =0; i_error< db_errors.length; i_error ++){
+
+        // create the errors and the lines
         err = new Err( db_errors[ i_error]['lines'][0], db_errors[ i_error]['lines'][1]);
         err.reason = db_errors[ i_error]['reason'];
-        l_groundtruth_errors.push(err);
+
+        // add error to the groundtruth that you are trying to compare the results with
+        answers.push(err);
     }
-    console.log(l_groundtruth_errors[-1]);
     
   }
   // when there is an error from reading from the database
@@ -65,6 +80,7 @@ ref.once("value", gotData, errData)
     console.log(err)
 }
 
+//--------------------------------------------------------------------------------------------
 /**
  * ERROR CLASS (central to the game)
  * !! check if moving it before makes a difference.
@@ -100,57 +116,64 @@ class Err {
 }
 
 // Initialize library and start tracking time
+// Important: after load from firebase.
 TimeMe.initialize({
     currentPageName: "play", // current page
     idleTimeoutInSeconds: 600 // seconds
 });
 
+//--------------------------------------------------------------------------------------------
 /**
- * FUNCTIONALITY
+ * ADD ERROR SELECTED
  * 1. Take the lines the user submitted
  * 2. Check on error reason change or deleted. 
  * 3. Submit selected values, take score. 
  * 4. Show hints.
  */
-// 1. take the lines the user submitted.
-// create an error based on these lines
-// add error to list of errors
-// add the following function after the loaded content
 document.addEventListener('DOMContentLoaded', lines, false);
 function lines() {
-
-    function getSelectionRange() {
-        var sel;
-        if (window.getSelection) {
-            sel = window.getSelection();
-            if (sel.rangeCount) {
-                return sel.getRangeAt(0);
-            }
-        } else if (document.selection) {
-            return document.selection.createRange();
-        }
-        return null;
-    }
-
     function getLines() {
         console.log("hover button, clicked.");
 
         // get the information for the lines selected
         selectionRange = editor.getSelectionRange();
+
+        // creeate an error based on the lines submitted
         // content = editor.session.getTextRange(selectionRange);
         var selection = new Err( selectionRange.start.row +1, selectionRange.end.row+1);
+
+        // add error to list of errors
         ListofErrors.push(selection);
-        //alert(ListofErrors.length);
+
+        // add the following function after the loaded content
         addComponent(ListofErrors);
     }
     document.getElementById('hover').addEventListener('click', getLines, false);
 };
 
+// take the lines the user submitted.
+function getSelectionRange() {
+    var sel;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.rangeCount) {
+            return sel.getRangeAt(0);
+        }
+    } else if (document.selection) {
+        return document.selection.createRange();
+    }
+    return null;
+}
+
+//--------------------------------------------------------------------------------------------
+/**
+ * ADD ERROR COMPONENT ON THE RIGHT SIDE OF THE SCREEN
+ */
 // adds the visual component for the addition of error
 // it makes visible the previously stored components.
 function addComponent(ListofErrors) {
 
-    // start
+    // list of components
     var list = document.querySelector('.marketing-content-list');
     // get the hidden content 
     var mc = document.querySelector('.marketing-content-hidden');
@@ -161,52 +184,119 @@ function addComponent(ListofErrors) {
     var e = ListofErrors[index - 1];
 
     // data to show
-    newNode.childNodes[1].innerHTML = "Error Lines : " + (e.start + 1) + "&" + (e.end + 1);
+    newNode.childNodes[1].innerHTML = "Error Lines : " + e.start + "&" + e.end ;
     newNode.style.display = "flex";
 
-    /* what's the usage for this one?
-    reasons2 = buttons.querySelector(".btn-secondary");
-    reasons2.setAttribute("id", "c" + index);
-    */
-    
-    //var buttons = editor.querySelector(".mdl-button");
+    // make visible the buttons of the element 
     var buttons = newNode.getElementsByTagName("button");
-
     reasons = buttons[0];
     reasons.setAttribute("id",index);
     reasons.addEventListener("change", reasonChanged); 
-
     visibility = buttons[1];
     visibility.setAttribute("id", "v" + index);
     visibility.addEventListener("click", visibilityPressed);
-
     remover = buttons[2];
     remover.setAttribute("id", "r" + index);
     remover.addEventListener("click", removePressed);
-
     newNode.setAttribute("id", "n" + index);
-    //list.insertBefore(newNode, mc.nextSibling);
+
+    // add button to the errors.
     list.appendChild(newNode);
     componentHandler.upgradeDom();
-    //alert(visibility.innerHTML);
 
+    // if list of errors has been updated, remove the title 
     if (ListofErrors.length != 0) {
         document.getElementById("titleMsg").innerHTML = "";
     }
 }
 
+function reasonChanged() {
+
+    // get the index of the reason (I guess), and update the last of errors
+    index = this.id;
+    ListofErrors[index - 1].reason = this.options[this.selectedIndex].text;
+}
+
+function visibilityPressed() {
+
+    // ids are in v+index form thus take the 2nd character of the id and id use it as index.
+    index = this.id.charAt(1);
+
+    // get the lines of the error
+    startingLine = ListofErrors[index - 1].start;
+    endLine = ListofErrors[index - 1].end;
+
+    // if it is one-line error, add a new line
+    if (startingLine == endLine) {
+        endLine++;
+    }
+
+    // add the range for visibility
+    var rng = new Range(startingLine, 0, endLine, 0);
+
+    // make visible
+    editor.session.addMarker(rng, "ace_active-line", "fullLine");
+}
+
+// DOES THIS DO ITS FUNCTIONALITY??
+function removePressed() {
+
+    // ids are in rr+index form thus take the 2nd character of the id and id use it as index.
+    index = this.id.charAt(1);
+    var totalSelection = ListofErrors.length;
+    //alert(ListofErrors.length);
+    var removed = ListofErrors.splice((index - 1), 1);
+    //alert(ListofErrors.length);
+    var Domlist = document.querySelector('.marketing-content-list');
+    var lastChild = Domlist.lastChild;
+    //alert("child count :"+Domlist.childNodes.length);
+    //alert("innerHTML :"+Domlist.innerHTML);
+    Domlist.innerHTML = listInner;
+    //alert("child count :"+Domlist.childNodes.length);
+    ListofErrors.reverse();
+    addListAsComponentForErrors(ListofErrors);
+    //cloneList.pop;
+}
+
+//--------------------------------------------------------------------------------------------
+/**
+ * HINTS
+ */
+var hintCount = 0; // variable for circling the hints
+var snackbarContainer = document.querySelector('#demo-snackbar-example');
+var showSnackbarButton = document.getElementById('hintBtn');
+var handler = function(event) {
+    //showSnackbarButton.style.backgroundColor = 'blue';
+};
+showSnackbarButton.addEventListener('click', function() {
+    'use strict';
+    var data = {
+        message: hints[hintCount % hints.length],
+        timeout: 4000,
+        actionHandler: handler,
+        actionText: ' '
+    };
+    hintCount++;
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
 
 
-// 3. Submit selection and score
+//--------------------------------------------------------------------------------------------
+/**
+ * SUBMISSION AND SCORE
+ * 
+ */ 
 function submitSelection() {
 
     // authenticate user
     var user = firebase.auth().currentUser;
     var userId = user.uid;
+    var noOfanswers = answers.length;
 
+    // get data: time and date
     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
-    var scoreCalc = calculateScore(answers, ListofErrors);
-    alert("total score : "+ scoreCalc[0]);
+    var scoreCalc = calculateScore( answers, ListofErrors);
+    //alert("total score : "+ scoreCalc[0]);
 
     // add data to database
     var database = firebase.database();
@@ -218,7 +308,7 @@ function submitSelection() {
         score: scoreCalc[0],
         timeSpend: timeSpentOnPage
     });
-    noOfanswers = answers.length;
+    
     maxScore = 3 * noOfanswers;
     var data = {
         message: "There were " + noOfanswers + " mistakes. You got " + scoreCalc[1] + "  exactly right! Score : " + scoreCalc[0] + "/" + maxScore,
@@ -235,66 +325,56 @@ function submitSelection() {
     answersButton.style.pointerEvents = "all";
 }
 
-
-function calculateScore(answers, submission) {
-    var grandTruth = answers.slice();
+// simple calculation of the score 
+// 1 point for finding the place, 2 for exact reason
+function calculateScore(answers_real, submission) {
     var score = 0;
     var exact = 0;
+    var answers_copy = answers_real.slice();
 
-    for (var i = 0; i < submission.length; i++) {
+    console.log(answers_copy);
+    console.log(submission);
+    for (var i = 0; i < submission.length; i++) 
+    {
+        // if it is not found in answers
+        // mark it in the begining to skip the if statement
         var containerIndex = i + 1;
         var reasonContainerId = "n" + containerIndex;
         var domElementToBeColored = document.getElementById(reasonContainerId);
         domElementToBeColored.style.border = "5px solid red";
-        for (var j = 0; j < grandTruth.length; j++) {
 
-            if (submission[i].start == grandTruth[j].start) {
-                if (submission[i].end == grandTruth[j].end) {
-                    score++;
-                    var containerIndex = i + 1;
-                    var reasonContainerId = "n" + containerIndex;
-                    var domElementToBeColored = document.getElementById(reasonContainerId);
-                    //alert(domElementToBeColored.innerHTML);
-                    domElementToBeColored.style.border = "5px solid yellow";
-                    if (submission[i].reason == grandTruth[j].reason) {
-                        score = score + 2;
-                        exact++;
-                        var reasonContainerId = "n" + containerIndex;
-                        var domElementToBeColored = document.getElementById(reasonContainerId);
-                        domElementToBeColored.style.border = "5px solid green";
-                        //delete found element , give points only once
-                        grandTruth.splice(j, 1);
-                    }
+        // check for each of the answers if it is there
+        for (var j = 0; j < answers_copy.length; j++) {
+
+            // if you found the lines of code, then think of scoring it right
+            if ((submission[i].start == answers_copy[j].start) & (submission[i].end == answers_copy[j].end)) {
+
+                // found score +1 
+                score++;
+                // mark the container with yellow
+                domElementToBeColored.style.border = "5px solid yellow";
+
+                // if reason found too - score twice
+                if (submission[i].reason == answers_copy[j].reason) {
+
+                    // update score
+                    exact++;
+                    score = score + 2;
+                    // update block
+                    domElementToBeColored.style.border = "5px solid green";
+                    //delete found element , give points only once
+                    answers_copy.splice(j,1);
                 }
-
             }
-
         }
     }
-    var scoreAndExact = [score, exact];
-    return scoreAndExact;
+    return [score, exact];
 }
 
-// 4. Show hints
-var hintCount = 0;
-var snackbarContainer = document.querySelector('#demo-snackbar-example');
-var showSnackbarButton = document.getElementById('hintBtn');
-var handler = function(event) {
-    //showSnackbarButton.style.backgroundColor = '';
-};
-showSnackbarButton.addEventListener('click', function() {
-    'use strict';
-    var data = {
-        message: hints[hintCount % hints.length],
-        timeout: 4000,
-        actionHandler: handler,
-        actionText: ' '
-    };
-    hintCount++;
-    snackbarContainer.MaterialSnackbar.showSnackbar(data);
-});
-
+// submission button functionality
 document.getElementById('submitBtn').addEventListener('click', submitSelection, false);
+
+// do the dropdown menu
 document.addEventListener('click', function(e) {
     if (e.target.className == "dropdown-item" || e.target.className == "") {
         e.preventDefault();
@@ -311,22 +391,6 @@ document.addEventListener('click', function(e) {
         ListofErrors[ind - 1].reason = selText;
     }
 });
-
-document.getElementById('answersBtn').addEventListener('click', answersPressed, false);
-function answersPressed() {
-    var Domlist = document.querySelector('.marketing-content-list');
-    Domlist.innerHTML = listInner;
-    //alert("child count :"+Domlist.childNodes.length);
-    addListAsComponentForAnswers(answers);
-    for (var i = 0; i < answers.length; i++) {
-        startingLine = answers[i].start;
-        endLine = answers[i].end + 1;
-
-        var rng = new Range(startingLine, 0, endLine, 0);
-        editor.session.addMarker(rng, "ace_active-line", "screen", false);
-    }
-}
-
 var closestByClass = function(el, clazz) {
     // Traverse the DOM up with a while loop
     while (el.className != clazz) {
@@ -344,137 +408,28 @@ var closestByClass = function(el, clazz) {
     return el;
 }
 
-function reasonChanged() {
-    // e.reason = this.options[this.selectedIndex].text;
-    //alert(this.id+" "+this.options[this.selectedIndex].text);
-    //this.id
-    index = this.id;
-    ListofErrors[index - 1].reason = this.options[this.selectedIndex].text;
-    //alert(ListofErrors[index-1].reason);
-    //alert("The selection reason is now:"+ListofErrors[index-1].reason);
-}
 
-function visibilityPressed() {
-
-    var visBtn = document.getElementById(this.id);
-    // ids are in v+index form thus take the 2nd character of the id and ıd use it as index.
-    index = this.id.charAt(1);
-    startingLine = ListofErrors[index - 1].start;
-    endLine = ListofErrors[index - 1].end;
-    if (startingLine == endLine) {
-        endLine++;
-    }
-    var rng = new Range(startingLine, 0, endLine, 0);
-    //var rng = clipNodes(startLine,endLine);
-    //var rng = new range(startLine,0,endLine,0);
-    //alert(startingLine+"**"+endLine);
-    //editor.addSelectionMarker(rng);
-    //editor.updateSelectionMarkers();
-    editor.session.addMarker(rng, "ace_active-line", "fullLine");
-}
-
-function removePressed() {
-    // ids are in rr+index form thus take the 2nd character of the id and ıd use it as index.
-    index = this.id.charAt(1);
-    var totalSelection = ListofErrors.length;
-    //alert(ListofErrors.length);
-    var removed = ListofErrors.splice((index - 1), 1);
-    //alert(ListofErrors.length);
+// check the answers. 
+document.getElementById('answersBtn').addEventListener('click', answersPressed, false);
+function answersPressed() {
     var Domlist = document.querySelector('.marketing-content-list');
-    var lastChild = Domlist.lastChild;
-    //alert("child count :"+Domlist.childNodes.length);
-    //alert("innerHTML :"+Domlist.innerHTML);
     Domlist.innerHTML = listInner;
-    //alert("child count :"+Domlist.childNodes.length);
-    ListofErrors.reverse();
-    addListAsComponentForErrors(ListofErrors);
-    //cloneList.pop;
-}
 
-function addListAsComponentForAnswers(ListofErrors) {
-    var list = document.querySelector('.marketing-content-list');
-    var mc = document.querySelector('.marketing-content-hidden');
-    for (index = ListofErrors.length; index > 0; index--) {
-        var newNode = mc.cloneNode(true);
-        var e = ListofErrors[index - 1];
-        var DisplayStart = e.start + 1;
-        var DisplayEnd = e.end + 1;
-        newNode.childNodes[1].innerHTML = "Error Lines : " + DisplayStart + "&" + DisplayEnd;
-        newNode.style.display = "flex";
-        var buttons = newNode.querySelector(".marketing-content-buttons");
-
-        /*  reasons = buttons.querySelector(".select2-field").querySelector(".select2");
-         reasons.setAttribute("id",index);
-         reasons.addEventListener("change", reasonChanged); */
-
-        reasons2 = buttons.querySelector(".btn-secondary");
-        reasons2.disabled = true;
-        reasons2.setAttribute("id", "c" + index);
-        reasons2.innerHTML = answers[index - 1].reason;
-
-        visibility = buttons.getElementsByTagName("button")[1];
-        visibility.setAttribute("id", "v" + index);
-        visibility.addEventListener("click", visibilityPressed);
-        newNode.setAttribute("id", "n" + index);
-        /* remover = buttons.getElementsByTagName("button")[2];
-        remover.setAttribute("id","r"+index);
-        remover.addEventListener("click",removePressed); */
-
-        document.addEventListener('click', function(e) {
-            if (e.target.className == "dropdown-item") {
-                //alert('BUTTON CLICKED');
-            }
-        })
-
-        //list.insertBefore(newNode, mc.nextSibling);
-        list.appendChild(newNode);
+    // mark
+    for (var i = 0; i < answers.length; i++) {
+        startingLine = answers[i].start;
+        endLine = answers[i].end;
+        var rng = new Range(startingLine-1, 0, endLine, 0);
+        editor.session.addMarker(rng, "ace_active-line", "screen", false);
     }
+
+    // show the components
+    while( answers.length >0){
+        // print last one first
+        addComponent([answers.shift()]);
+    }
+
+    // FINISH: make every button unclickable
     componentHandler.upgradeDom();
-    //alert(visibility.innerHTML);
-
-}
-
-function addListAsComponentForErrors(ListofErrors) {
-    var list = document.querySelector('.marketing-content-list');
-    var mc = document.querySelector('.marketing-content-hidden');
-    for (index = ListofErrors.length; index > 0; index--) {
-        var newNode = mc.cloneNode(true);
-        var e = ListofErrors[index - 1];
-        var DisplayStart = e.start + 1;
-        var DisplayEnd = e.end + 1;
-        newNode.childNodes[1].innerHTML = "Error Lines : " + DisplayStart + "&" + DisplayEnd;
-        newNode.style.display = "flex";
-        var buttons = newNode.querySelector(".marketing-content-buttons");
-
-        /*  reasons = buttons.querySelector(".select2-field").querySelector(".select2");
-         reasons.setAttribute("id",index);
-         reasons.addEventListener("change", reasonChanged); */
-
-        reasons2 = buttons.querySelector(".btn-secondary");
-        reasons2.setAttribute("id", "c" + index);
-        reasons2.innerHTML = ListofErrors[index - 1].reason;
-
-        visibility = buttons.getElementsByTagName("button")[1];
-        visibility.setAttribute("id", "v" + index);
-        visibility.addEventListener("click", visibilityPressed);
-
-        remover = buttons.getElementsByTagName("button")[2];
-        remover.setAttribute("id", "r" + index);
-        remover.addEventListener("click", removePressed);
-        newNode.setAttribute("id", "n" + index);
-        document.addEventListener('click', function(e) {
-            if (e.target.className == "dropdown-item") {
-                //alert('BUTTON CLICKED');
-            }
-        })
-
-        //list.insertBefore(newNode, mc.nextSibling);
-        list.appendChild(newNode);
-    }
-    if (ListofErrors.length == 0) {
-        document.getElementById("titleMsg").innerHTML = '<h3 id="titleMsg">Defects you find will go here!</h3>';
-    }
-    componentHandler.upgradeDom();
-    //alert(visibility.innerHTML);
-
+    //addListAsComponentForAnswers(answers);
 }
