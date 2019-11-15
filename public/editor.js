@@ -13,7 +13,8 @@ var listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = localStorage.getItem('selected');
 //window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
-var l_groundtruth_errors = []; // list of errors in the code
+
+// variables for later usage
 var ListofErrors = []; // errors submitted by the user
 var answers = [];
 var editor = 0; 
@@ -34,7 +35,7 @@ ref.once("value", gotData, errData)
 
    // function to show what to do with the data when the data has been taken
   function gotData( data){
-
+      
     // get all exercises from database
     var exercises = data.val();
 
@@ -81,6 +82,16 @@ ref.once("value", gotData, errData)
 }
 
 //--------------------------------------------------------------------------------------------
+// TIMING
+// Initialize library and start tracking time
+// Important: after load from firebase.
+TimeMe.initialize({
+    currentPageName: "play", // current page
+    idleTimeoutInSeconds: 600 // seconds
+});
+
+
+//--------------------------------------------------------------------------------------------
 /**
  * ERROR CLASS (central to the game)
  * !! check if moving it before makes a difference.
@@ -114,13 +125,6 @@ class Err {
         return "" + this.start + "-" + this.end + "-" + this.reason;
     }
 }
-
-// Initialize library and start tracking time
-// Important: after load from firebase.
-TimeMe.initialize({
-    currentPageName: "play", // current page
-    idleTimeoutInSeconds: 600 // seconds
-});
 
 //--------------------------------------------------------------------------------------------
 /**
@@ -214,7 +218,8 @@ function reasonChanged() {
 
     // get the index of the reason (I guess), and update the last of errors
     index = this.id;
-    ListofErrors[index - 1].reason = this.options[this.selectedIndex].text;
+    console.log(this);
+    //ListofErrors[index - 1].reason = this.options[this.selectedIndex].text;
 }
 
 function visibilityPressed() {
@@ -258,6 +263,44 @@ function removePressed() {
     //cloneList.pop;
 }
 
+
+// do the dropdown menu
+document.addEventListener('click', function(e) {
+    if (e.target.className == "dropdown-item" || e.target.className == "") {
+        e.preventDefault();
+
+        // the reason's text 
+        var selText = $(event.target).text();
+
+        // find where it is
+        var parentofButton = closestByClass(event.target, "dropdown left");
+        var parentId = parentofButton.querySelector(".btn-secondary").id;
+        //alert(""+parentId);
+        $("#" + parentId).text(selText);
+        
+        // previous value: charAt(1) ??
+        var ind = parentId.charAt(0);
+        ListofErrors[ind - 1].reason = selText;
+    }
+});
+var closestByClass = function(el, clazz) {
+    
+    // Traverse the DOM up with a while loop
+    while (el.className != clazz) {
+        //alert(el.className);
+        // Increment the loop to the parent node
+        el = el.parentNode;
+        if (!el) {
+            return null;
+        }
+    }
+    // At this point, the while loop has stopped and `el` represents the element that has
+    // the class you specified in the second parameter of the function `clazz`
+
+    // Then return the matched element
+    return el;
+}
+
 //--------------------------------------------------------------------------------------------
 /**
  * HINTS
@@ -286,8 +329,9 @@ showSnackbarButton.addEventListener('click', function() {
  * SUBMISSION AND SCORE
  * 
  */ 
+// submission button functionality
+document.getElementById('submitBtn').addEventListener('click', submitSelection, false);
 function submitSelection() {
-
     // authenticate user
     var user = firebase.auth().currentUser;
     var userId = user.uid;
@@ -371,44 +415,10 @@ function calculateScore(answers_real, submission) {
     return [score, exact];
 }
 
-// submission button functionality
-document.getElementById('submitBtn').addEventListener('click', submitSelection, false);
-
-// do the dropdown menu
-document.addEventListener('click', function(e) {
-    if (e.target.className == "dropdown-item" || e.target.className == "") {
-        e.preventDefault();
-        /* var selText = $(this).text; */
-        var selText = $(event.target).text();
-        var parentofButton = closestByClass(event.target, "dropdown left");
-        var parentId = parentofButton.querySelector(".btn-secondary").id;
-        //alert(""+parentId);
-        $("#" + parentId).text(selText);
-        //alert('BUTTON CLICKED'); 
-        var ind = parentId.charAt(1);
-        //alert(selText);
-        //alert(e.target.innerHTML);
-        ListofErrors[ind - 1].reason = selText;
-    }
-});
-var closestByClass = function(el, clazz) {
-    // Traverse the DOM up with a while loop
-    while (el.className != clazz) {
-        //alert(el.className);
-        // Increment the loop to the parent node
-        el = el.parentNode;
-        if (!el) {
-            return null;
-        }
-    }
-    // At this point, the while loop has stopped and `el` represents the element that has
-    // the class you specified in the second parameter of the function `clazz`
-
-    // Then return the matched element
-    return el;
-}
-
-
+/**
+ * ANSWERS
+ * Show answers functionality - related to answers button.
+ */
 // check the answers. 
 document.getElementById('answersBtn').addEventListener('click', answersPressed, false);
 function answersPressed() {
