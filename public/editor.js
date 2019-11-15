@@ -5,15 +5,12 @@
  *  2. gets the lines selected, created an error, allows you to change the reason
  *  3. check the good answers, the hints, and your score
  */
-
-
 // INITIAL SETUP
 var originalDom = document.querySelector('.marketing-content-hidden');
 var listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = localStorage.getItem('selected');
 //window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
-
 // variables for later usage
 var ListofErrors = []; // errors submitted by the user
 var answers = [];
@@ -32,22 +29,16 @@ var ref = firebase.database().ref('exercise');
 var l_exerc_html = document.getElementsByClassName("exercises_html");
 // take the data once from firebase in the first call
 ref.once("value", gotData, errData)
-
    // function to show what to do with the data when the data has been taken
   function gotData( data){
-      
     // get all exercises from database
     var exercises = data.val();
-
     // level chosen from the user once in the program
     i = levelChosen -1; 
-
     // extract from exercises
     var db_code =  exercises[i].code;
-
     // update the text in the fields by calling the "id" element
     document.getElementById( l_exerc_html[ i][ 'id']).innerHTML = db_code;
-
     // css for the editor
     editor = ace.edit( l_exerc_html[i]['id']);
     document.getElementById( l_exerc_html[i]['id']).style.display = "block"; 
@@ -55,25 +46,19 @@ ref.once("value", gotData, errData)
     editor.setTheme("ace/theme/cobalt");
     editor.setReadOnly(true);
     editor.setFontSize(14);
-
     // change the narrative of the editor
     document.getElementById("narrativeText"+l_exerc_html[i]['id'].slice(6) ).style.display = "block";
-
     // errors
     var db_errors = exercises[i].errors;
     hints = exercises[i].hints;
-
     // get all errors
     for(var i_error =0; i_error< db_errors.length; i_error ++){
-
         // create the errors and the lines
         err = new Err( db_errors[ i_error]['lines'][0], db_errors[ i_error]['lines'][1]);
         err.reason = db_errors[ i_error]['reason'];
-
         // add error to the groundtruth that you are trying to compare the results with
         answers.push(err);
     }
-    
   }
   // when there is an error from reading from the database
   function errData( err){
@@ -89,7 +74,6 @@ TimeMe.initialize({
     currentPageName: "play", // current page
     idleTimeoutInSeconds: 600 // seconds
 });
-
 
 //--------------------------------------------------------------------------------------------
 /**
@@ -137,20 +121,15 @@ class Err {
 document.addEventListener('DOMContentLoaded', lines, false);
 function lines() {
     function getLines() {
-        console.log("hover button, clicked.");
-
         // get the information for the lines selected
         selectionRange = editor.getSelectionRange();
-
         // creeate an error based on the lines submitted
         // content = editor.session.getTextRange(selectionRange);
         var selection = new Err( selectionRange.start.row +1, selectionRange.end.row+1);
-
         // add error to list of errors
         ListofErrors.push(selection);
-
         // add the following function after the loaded content
-        addComponent(ListofErrors);
+        addComponent(selection, ListofErrors.length);
     }
     document.getElementById('hover').addEventListener('click', getLines, false);
 };
@@ -175,22 +154,15 @@ function getSelectionRange() {
  */
 // adds the visual component for the addition of error
 // it makes visible the previously stored components.
-function addComponent(ListofErrors) {
-
+function addComponent(e, index){
     // list of components
     var list = document.querySelector('.marketing-content-list');
     // get the hidden content 
     var mc = document.querySelector('.marketing-content-hidden');
     var newNode = mc.cloneNode(true); // deep clone
-
-    // get the last error
-    var index = ListofErrors.length;
-    var e = ListofErrors[index - 1];
-
     // data to show
     newNode.childNodes[1].innerHTML = "Error Lines : " + e.start + "&" + e.end ;
     newNode.style.display = "flex";
-
     // make visible the buttons of the element 
     var buttons = newNode.getElementsByTagName("button");
     reasons = buttons[0];
@@ -203,49 +175,41 @@ function addComponent(ListofErrors) {
     remover.setAttribute("id", "r" + index);
     remover.addEventListener("click", removePressed);
     newNode.setAttribute("id", "n" + index);
-
     // add button to the errors.
     list.appendChild(newNode);
     componentHandler.upgradeDom();
-
     // if list of errors has been updated, remove the title 
     if (ListofErrors.length != 0) {
         document.getElementById("titleMsg").innerHTML = "";
     }
 }
-
+// There is a problem in update
 function reasonChanged() {
-
     // get the index of the reason (I guess), and update the last of errors
     index = this.id;
     console.log(this);
+    console.log(ListofErrors[index-1].reason);
     //ListofErrors[index - 1].reason = this.options[this.selectedIndex].text;
 }
 
 function visibilityPressed() {
-
     // ids are in v+index form thus take the 2nd character of the id and id use it as index.
     index = this.id.charAt(1);
-
     // get the lines of the error
     startingLine = ListofErrors[index - 1].start;
     endLine = ListofErrors[index - 1].end;
-
     // if it is one-line error, add a new line
     if (startingLine == endLine) {
         endLine++;
     }
-
     // add the range for visibility
     var rng = new Range(startingLine, 0, endLine, 0);
-
     // make visible
     editor.session.addMarker(rng, "ace_active-line", "fullLine");
 }
 
 // DOES THIS DO ITS FUNCTIONALITY??
 function removePressed() {
-
     // ids are in rr+index form thus take the 2nd character of the id and id use it as index.
     index = this.id.charAt(1);
     var totalSelection = ListofErrors.length;
@@ -263,28 +227,23 @@ function removePressed() {
     //cloneList.pop;
 }
 
-
-// do the dropdown menu
+// CHANGE THE VALUE OF DROPDOWN MENU
 document.addEventListener('click', function(e) {
     if (e.target.className == "dropdown-item" || e.target.className == "") {
         e.preventDefault();
-
         // the reason's text 
         var selText = $(event.target).text();
-
         // find where it is
         var parentofButton = closestByClass(event.target, "dropdown left");
         var parentId = parentofButton.querySelector(".btn-secondary").id;
         //alert(""+parentId);
         $("#" + parentId).text(selText);
-        
         // previous value: charAt(1) ??
         var ind = parentId.charAt(0);
         ListofErrors[ind - 1].reason = selText;
     }
 });
 var closestByClass = function(el, clazz) {
-    
     // Traverse the DOM up with a while loop
     while (el.className != clazz) {
         //alert(el.className);
@@ -296,7 +255,6 @@ var closestByClass = function(el, clazz) {
     }
     // At this point, the while loop has stopped and `el` represents the element that has
     // the class you specified in the second parameter of the function `clazz`
-
     // Then return the matched element
     return el;
 }
@@ -323,7 +281,6 @@ showSnackbarButton.addEventListener('click', function() {
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
 });
 
-
 //--------------------------------------------------------------------------------------------
 /**
  * SUBMISSION AND SCORE
@@ -336,12 +293,10 @@ function submitSelection() {
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     var noOfanswers = answers.length;
-
     // get data: time and date
     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
     var scoreCalc = calculateScore( answers, ListofErrors);
     //alert("total score : "+ scoreCalc[0]);
-
     // add data to database
     var database = firebase.database();
     var newPostRef = database.ref('games/' + userId).push();
@@ -352,7 +307,6 @@ function submitSelection() {
         score: scoreCalc[0],
         timeSpend: timeSpentOnPage
     });
-    
     maxScore = 3 * noOfanswers;
     var data = {
         message: "There were " + noOfanswers + " mistakes. You got " + scoreCalc[1] + "  exactly right! Score : " + scoreCalc[0] + "/" + maxScore,
@@ -361,46 +315,35 @@ function submitSelection() {
         actionText: ' '
     };
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
-
     // open answers button
     var answersButton = document.getElementById("answersBtn");
     answersButton.style.opacity = 1;
     answersButton.style.cursor = "auto";
     answersButton.style.pointerEvents = "all";
 }
-
 // simple calculation of the score 
 // 1 point for finding the place, 2 for exact reason
 function calculateScore(answers_real, submission) {
     var score = 0;
     var exact = 0;
     var answers_copy = answers_real.slice();
-
-    console.log(answers_copy);
-    console.log(submission);
     for (var i = 0; i < submission.length; i++) 
-    {
-        // if it is not found in answers
+    {   // if it is not found in answers
         // mark it in the begining to skip the if statement
         var containerIndex = i + 1;
         var reasonContainerId = "n" + containerIndex;
         var domElementToBeColored = document.getElementById(reasonContainerId);
         domElementToBeColored.style.border = "5px solid red";
-
         // check for each of the answers if it is there
         for (var j = 0; j < answers_copy.length; j++) {
-
             // if you found the lines of code, then think of scoring it right
             if ((submission[i].start == answers_copy[j].start) & (submission[i].end == answers_copy[j].end)) {
-
                 // found score +1 
                 score++;
                 // mark the container with yellow
                 domElementToBeColored.style.border = "5px solid yellow";
-
                 // if reason found too - score twice
                 if (submission[i].reason == answers_copy[j].reason) {
-
                     // update score
                     exact++;
                     score = score + 2;
@@ -415,6 +358,7 @@ function calculateScore(answers_real, submission) {
     return [score, exact];
 }
 
+//--------------------------------------------------------------------------------------------
 /**
  * ANSWERS
  * Show answers functionality - related to answers button.
@@ -422,9 +366,9 @@ function calculateScore(answers_real, submission) {
 // check the answers. 
 document.getElementById('answersBtn').addEventListener('click', answersPressed, false);
 function answersPressed() {
-    var Domlist = document.querySelector('.marketing-content-list');
+    // remove existing errors
+    Domlist = document.querySelector('.marketing-content-list');
     Domlist.innerHTML = listInner;
-
     // mark
     for (var i = 0; i < answers.length; i++) {
         startingLine = answers[i].start;
@@ -432,12 +376,19 @@ function answersPressed() {
         var rng = new Range(startingLine-1, 0, endLine, 0);
         editor.session.addMarker(rng, "ace_active-line", "screen", false);
     }
+    for (var i = 0; i < answers.length; i++){
+        // print first one first
+        var err = answers[i];
+        // get the parent of this one
+        //var parentofButton = closestByClass(err.reason, "dropdown left");
+        //var parentId = parentofButton.querySelector(".btn-secondary").id;
+        //alert(""+parentId);
+        //$("#" + parentId).text(err.reason);
+        addComponent(err,i+1);
+    }
 
     // show the components
-    while( answers.length >0){
-        // print last one first
-        addComponent([answers.shift()]);
-    }
+    calculateScore(answers, answers);
 
     // FINISH: make every button unclickable
     componentHandler.upgradeDom();
