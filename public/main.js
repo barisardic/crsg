@@ -1,13 +1,19 @@
+/**
+ * MAIN PAGE
+ * Loading the information updated. 
+ */
+
 // set background pictures for level cards
 var imagesRef = firebase.storage().ref();
 var backgroundImageUrl = imagesRef.child('level-background-pictures/1.jpg').getDownloadURL();
 var img = document.getElementById('card1');
 img.src = backgroundImageUrl;
+
+// Authentication
 var userEmailButton = document.getElementById("userEmail");
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
-
         userEmailButton.textContent = user.email;
         // ...
     } else {
@@ -16,9 +22,10 @@ firebase.auth().onAuthStateChanged(function(user) {
         window.location.href = "/index.html";
     }
 });
+
+// Sign out
 document.getElementById("signout2").addEventListener("click", signOutUser, false);
 userEmailButton.addEventListener("click", toProfile, false);
-
 function signOutUser() {
     //alert("singning out");
     firebase.auth().signOut().then(function() {
@@ -28,12 +35,19 @@ function signOutUser() {
         // An error happened.
     });
 }
+
+/**
+ * SELECT LEVEL
+ * Pick one of the levels
+ * Based on that, set the selectedLevel, which defines the data found there
+ */
 document.getElementById("playButton1").addEventListener("click", playPage, false);
 document.getElementById("playButton2").addEventListener("click", playPage, false);
 document.getElementById("playButton3").addEventListener("click", playPage, false);
 document.getElementById("playButton4").addEventListener("click", playPage, false);
 document.getElementById("playButton5").addEventListener("click", playPage, false);
 //document.getElementById("playButton6").addEventListener("click",playPage,false); 
+
 function playPage() {
     //alert(this.id);
     var selectedLevel = this.id.charAt(this.id.length - 1);
@@ -47,6 +61,8 @@ function toProfile() {
     //alert("go");
     window.location.href = "/userprofile.html";
 }
+
+
 /* $('#playButton,#pro2,#pro3').addEventListener("click",playPage,false); 
 function playPage(){
   alert("Plaay?");

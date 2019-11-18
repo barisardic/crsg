@@ -8,7 +8,8 @@
 // INITIAL SETUP
 var originalDom = document.querySelector('.marketing-content-hidden');
 var listInner = document.querySelector('.marketing-content-list').innerHTML;
-levelChosen = localStorage.getItem('selected');
+var levelChosen = localStorage.getItem('selected'); // get which level was chose
+
 //window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
 // variables for later usage
@@ -16,64 +17,6 @@ var ListofErrors = []; // errors submitted by the user
 var answers = [];
 var editor = 0; 
 var hints = [];
-
-//--------------------------------------------------------------------------------------------
-/**
- * INITIALIZE FROM DATABASE
- * get data from firebase, 
- * update editor text, narrative text( description)
- * update exercises from db
- */
-// connect to database, get exercises
-var ref = firebase.database().ref('exercise');
-var l_exerc_html = document.getElementsByClassName("exercises_html");
-// take the data once from firebase in the first call
-ref.once("value", gotData, errData)
-   // function to show what to do with the data when the data has been taken
-  function gotData( data){
-    // get all exercises from database
-    var exercises = data.val();
-    // level chosen from the user once in the program
-    i = levelChosen -1; 
-    // extract from exercises
-    var db_code =  exercises[i].code;
-    // update the text in the fields by calling the "id" element
-    document.getElementById( l_exerc_html[ i][ 'id']).innerHTML = db_code;
-    // css for the editor
-    editor = ace.edit( l_exerc_html[i]['id']);
-    document.getElementById( l_exerc_html[i]['id']).style.display = "block"; 
-    editor.session.setMode("ace/mode/java");
-    editor.setTheme("ace/theme/cobalt");
-    editor.setReadOnly(true);
-    editor.setFontSize(14);
-    // change the narrative of the editor
-    document.getElementById("narrativeText"+l_exerc_html[i]['id'].slice(6) ).style.display = "block";
-    // errors
-    var db_errors = exercises[i].errors;
-    hints = exercises[i].hints;
-    // get all errors
-    for(var i_error =0; i_error< db_errors.length; i_error ++){
-        // create the errors and the lines
-        err = new Err( db_errors[ i_error]['lines'][0], db_errors[ i_error]['lines'][1]);
-        err.reason = db_errors[ i_error]['reason'];
-        // add error to the groundtruth that you are trying to compare the results with
-        answers.push(err);
-    }
-  }
-  // when there is an error from reading from the database
-  function errData( err){
-    console.log("Error");
-    console.log(err)
-}
-
-//--------------------------------------------------------------------------------------------
-// TIMING
-// Initialize library and start tracking time
-// Important: after load from firebase.
-TimeMe.initialize({
-    currentPageName: "play", // current page
-    idleTimeoutInSeconds: 600 // seconds
-});
 
 //--------------------------------------------------------------------------------------------
 /**
@@ -109,6 +52,105 @@ class Err {
         return "" + this.start + "-" + this.end + "-" + this.reason;
     }
 }
+
+
+//--------------------------------------------------------------------------------------------
+/**
+ * INITIALIZE FROM DATABASE
+ * get data from firebase, 
+ * update editor text, narrative text( description)
+ * update exercises from db
+ */
+// connect to database, get exercises
+var ref = firebase.database().ref('exercise');
+
+// connect to editor.html
+var l_exerc_html = document.getElementsByClassName("exercises_html");
+var l_narrative_html = document.getElementsByClassName("narrative_html");
+// take the data once from firebase in the first call
+ref.once("value", gotData, errData)
+   // function to show what to do with the data when the data has been taken
+  function gotData( data){
+
+    // get all exercise information from database
+    var exercises = data.val();
+    // level chosen from the user once in the program
+    var i = levelChosen -1; 
+    // update the text in the fields by calling the "id" element
+    document.getElementById( l_exerc_html[ i][ 'id']).innerHTML = exercises[i].code;
+    // css for the editor
+    editor = ace.edit( l_exerc_html[i]['id']);
+    document.getElementById( l_exerc_html[i]['id']).style.display = "block"; 
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/cobalt");
+    editor.setReadOnly(true);
+    editor.setFontSize(14);
+    // change the narrative of the editor
+    var narrative_i = document.getElementById( l_narrative_html[ i][ 'id']);
+    narrative_i.innerHTML = exercises[i].narrative;
+    narrative_i.style.display = "block";
+    //document.getElementById("narrativeText"+l_exerc_html[i]['id'].slice(6) ).style.display = "block";
+    // errors
+    var db_errors = exercises[i].errors;
+    hints = exercises[i].hints;
+    // get all errors
+    for(var i_error =0; i_error< db_errors.length; i_error ++){
+        // create the errors and the lines
+        err = new Err( db_errors[ i_error]['lines'][0], db_errors[ i_error]['lines'][1]);
+        err.reason = db_errors[ i_error]['reason'];
+        // add error to the groundtruth that you are trying to compare the results with
+        answers.push(err);
+    }
+  }
+  // when there is an error from reading from the database
+  function errData( err){
+    console.log("Error");
+    console.log(err)
+}
+
+// create Checklist
+function tableCreate() {
+
+    var ref_checklist = firebase.database().ref('checklist');
+    ref_checklist.once("value", gotDataCheckList, errDataCheckList)
+        // function to show what to do with the data when the data has been taken
+        function gotDataCheckList( data){
+            // get all exercise information from database
+            var checklist = data.val();
+            // create table and body of table
+            var tbl = document.createElement('table');
+            var tbdy = document.createElement('tbody');
+            // add the elements to each
+            for (var i = 0; i < checklist.length; i++) {
+                var tr = document.createElement('tr');
+                var td = document.createElement('td');
+                td.appendChild(document.createTextNode(checklist[i]));
+                tr.appendChild(td);
+                tbdy.appendChild(tr);
+            }
+            tbl.appendChild(tbdy);
+            // get panel
+            $('#checklist-panel').append(tbl);
+           //document.getElementById('checklist-panel').append(tbl);
+        }
+          // when there is an error from reading from the database
+  function errDataCheckList( err){
+    console.log("Error");
+    console.log(err)
+}
+}
+tableCreate();
+       // tableCreate();
+
+
+//--------------------------------------------------------------------------------------------
+// TIMING
+// Initialize library and start tracking time
+// Important: after load from firebase.
+TimeMe.initialize({
+    currentPageName: "play", // current page
+    idleTimeoutInSeconds: 600 // seconds
+});
 
 //--------------------------------------------------------------------------------------------
 /**
@@ -223,7 +265,7 @@ function removePressed() {
     Domlist.innerHTML = listInner;
     //alert("child count :"+Domlist.childNodes.length);
     ListofErrors.reverse();
-    addListAsComponentForErrors(ListofErrors);
+    //addListAsComponentForErrors(ListofErrors);
     //cloneList.pop;
 }
 
@@ -301,6 +343,13 @@ function submitSelection() {
     var database = firebase.database();
     var newPostRef = database.ref('games/' + userId).push();
     newPostRef.set({
+        user: userId,
+        level: levelChosen,
+        submission: ListofErrors,
+        score: scoreCalc[0],
+        timeSpend: timeSpentOnPage
+    });
+    console.log({
         user: userId,
         level: levelChosen,
         submission: ListofErrors,

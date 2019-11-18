@@ -148,56 +148,21 @@
                   <div class="mdl-tabs__tab-bar">
                       <a href="#narrative-panel" class="mdl-tabs__tab is-active">Description</a>
                       <a href="#description-panel" class="mdl-tabs__tab">Guide</a>
-                      <a href="#checkist-panel" class="mdl-tabs__tab">Checklist</a>
+                      <a href="#checklist-panel" class="mdl-tabs__tab">Checklist</a>
                   </div>
                   <div class="mdl-tabs__panel is-active" id="narrative-panel">
-                    <ul id="narrativeText">
-                      <p>Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by giving a quick glance to the <strong> GUIDE</strong>. Than you can review the code.</p>
-                      <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
-                          It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
-                       <p> Remember to make use of your <strong>checklist</strong> and <strong>guide</strong> . If you are not sure about the 
-                          type of defect that you have found or how to select it, you should refer
-                           back to the guide.
-                                                                                  -Bilsen Team </p>
-                                                                                    
-                    </ul>
-                    <ul id="narrativeText2">
-                        <p>This level will be your first real taste of the game. This level consists of a simple java class
-                          with code smells and even defects. Go and find them! As always select the error reasons carefully and reasonably in order to
-                          get more points. 
-                        </p>
-                                                                                      
+                    <ul id="narrativeText" class="narrative_html">                                                     
                       </ul>
-                      <ul id="narrativeText3">
-                          <p>Thing are getting more serious. In this level you are reviewing a very simple arithmetic operation implemented on 
-                            arrays however in order to get a high score you need to pay close attention to the operations performed and their 
-                            validity. 
-                          </p>
-                                                                                        
+                    <ul id="narrativeText2" class="narrative_html">                                                                                   
+                      </ul>
+                    <ul id="narrativeText3" class="narrative_html">                                                                   
+                      </ul>
+                    <ul id="narrativeText4" class="narrative_html">                 
+                      </ul>
+                    <ul id="narrativeText5" class="narrative_html">
+                      </ul>
+                    <ul id="narrativeText6" class="narrative_html">
                         </ul>
-                        <ul id="narrativeText4">
-                            <p> <strong>Congratulations for making it this far! </strong>
-                              You are now dealing with a program performing matrix operations. While working with matrixes things can always
-                              go wrong and defect can hide under your nose for a long time. <strong> So be careful. </strong>  
-                               </p>
-                                                                                          
-                          </ul>
-                          <ul id="narrativeText5">
-                             <p>Last level of the experiment is <strong>HERE</strong> and about prime numbers!! </p> 
-                              <p>
-                                  PS: <strong>If a line of code is missing you should select the nearest encapsulating object structure, eg the nearest curly brackets, for example if a return statement is 
-                                      missing inside an "if" statement you should select the whole if statement. The reason of the defect for such cases should be "Data and resource manipulation"</strong>  
-                              </p>
-                            
-                            </ul>
-                            <ul id="narrativeText6">
-                                <p>Last level of the experiment is <strong>HERE</strong> and about prime numbers!! </p> 
-                                 <p>
-                                     PS: <strong>If a line of code is missing you should select the nearest encapsulating object structure, eg the nearest curly brackets, for example if a return statement is 
-                                         missing inside an "if" statement you should select the whole if statement. The reason of the defect for such cases should be "Data and resource manipulation"</strong>  
-                                 </p>
-                               
-                               </ul>
                       </div>
                   <div class="mdl-tabs__panel" id="description-panel">
                     <img src = "assets/defects picture.png"  />
@@ -249,277 +214,20 @@
                        <li><strong>Algorithm/Performance :</strong> Obvious design choices that makes the program “significantly” inefficient memory or speed wise.
                     </ul>
                   </div>
-                  <div class="mdl-tabs__panel"style="overflow-x:auto;" id="checkist-panel">
-                    
-                        <table>
-                            <tbody>
-                             <tr>
-                              <td>Use Intention-Revealing Names</td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Pick one word per concept</td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Use Solution/Problem Domain Names </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Classes should be small!</td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Functions should be small! </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Do one Thing </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Don't Repeat Yourself (Avoid Duplication) </li></td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Explain yourself in code </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Make sure the code formatting is applied </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Use Exceptions rather than Return codes </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Don't return Null </td>
-                             </tr>
-                            </tbody>
-                           </table>
-                    
+
+                  <!-- CHECK LIST OF POSSIBLE ERRORS-->
+                  <div class="mdl-tabs__panel" style="overflow-x:auto;" id="checklist-panel">
+    
                   </div>
-                </div>
-        </div>
-        <pre id="editor" class="exercises_html">
-  public class Account {
-    double principal,rate; int daysActive,accountType;
-    public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-  }
-  // select here  reason is Comments
-  public static double calculateFee(Account[] accounts){
-    double totalFee = 0.0;
-    Account account;
-    // select here reason is Duplication
-    // select here
-    // select here
-    // select here
-    for (int i=0;i == accounts.length;i++) {
-      account=accounts[i];
-      if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-        totalFee += .0125 * (  1.25% account.principal 
-        * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-      } 
-      // select here reason is Parameter
-      // select here
-  return totalFee;    
-  }</pre>
-            <div id="editor2" class="exercises_html">    // Class Declaration
-    public class Dog 
-    { 
-      // Instance Variables 
-      String name; 
-      String breed; 
-      int age; 
-      String color; 
-    
-      // Constructor Declaration of Class 
-      public Dog(String name, String breed, 
-              int age, String color) 
-      { 
-        this.name = name; 
-        this.breed = breed; 
-        this.age = age; 
-        this.color = color; 
-      }
-
-      public String getName() 
-      { 
-        return name; 
-      }
-
-      public String getBreed() 
-      { 
-        return breed; 
-      }
-
-      public String getName() 
-      { 
-        return name; 
-      }
-
-      public int getAge() 
-      { 
-        return age; 
-      }
-
-          public String getColor() 
-          { 
-            return color; 
-          }
-
-      @Override     
-      public boolean equals(Dog dogo)
-      {
-        return this.toString == dogo.toString; 
-      }
-    
-      @Override
-      public String toString() 
-      { 
-        return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+ ","+ this.getColor()); 
-      }
-
-      public static void main(String[] args) 
-      { 
-        Dog tuffy = new Dog("tuffy","papillon", 5, "white"); 
-        System.out.println(tuffy.toString()); 
-      }   
-    }
-    
-            </div>
-            <pre id="editor3" class="exercises_html">
-public class ExerciseSumArray {
-    /*
-    Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
-    calculate the sum of 2 Lists, and return the result in a List.
-    For example:
-    [1, 0, 0] + [4,0] = [1,4,0]
-    [6,7] + [0] = [6,7]
-      */
-    public ArrayList<Integer> getSum(List<Integer> firstNumber, List<Integer> secondNumber ){
-        ArrayList<Integer> result = new ArrayList<Integer>();
-
-        int carry = 0;
-        Collections.reverse(firstNumber);
-        Collections.reverse(secondNumber);
-
-        for (int i = 0; (i &lt Math.max(firstNumber.size(), secondNumber.size())); i ++){
-            Integer firstValue = i &lt firstNumber.size() ? firstNumber.get(i) : null;
-            Integer secondValue = i &lt secondNumber.size() ? secondNumber.get(i) : null;
-
-            int res = firstValue + secondValue + carry;
-
-            carry = 0;
-            if (res > 10){
-                carry = 1;
-                res = res % 10;
-            }
-            result.add(res);
-        }
-
-        if (carry >= 0)
-            result.add(carry);
-
-        Collections.reverse(result);
-        return result;
-    }
-}
-        </pre>
-            <div id="editor4" class="exercises_html">
-    // Java program to print the elements of 
-    // a 2 D array or matrix 
-    import java.io.*; 
-    class Matrixes { 
-      
-      public static void printMatrix(int mat[][]) 
-      { 
-      // Loop through all rows 
-      for (int i = 0; i &lt; mat.length; i++) 
-        // Loop through all elements of current row 
-        for (int j = 0; j &lt; mat[i].length; j++) 
-            System.out.print(mat[j][i] + " "); 
-      } 
-      public static int calcMatrixTotal(int mat[][]) 
-      { 
-      int total = 0;
-      // Loop through all rows 
-      for (int i = 0; i &lt; mat.length; i++) 
-        // Loop through all elements of current row 
-        for (int j = 0; j&lt;mat[i].length; j++) 
-            total = total + mat[j][i];
-      return total;
-      } 
-      public static void main(String args[]) throws IOException 
-      { 
-        int mat[][] = { { 1, 2, 3, 4 }, 
-                        { 5, 6, 7, 8 }, 
-                        { 9, 10, 11, 12 } }; 
-        printMatrix(mat);
-        int rows = primes[0].length; 
-        int cols = primes[0].length;
-        System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
-        System.out.print("The matrix total is :"+calcMatrixTotal(mat));
-      } 
-    } 
-
-            </div>
-            <div id="editor5" class="exercises_html">
-public class Primes{
-  public static void main(String[] args) throws Exception {
-      
-      final int twoToThePowerThirty = 1073741824;
-      List listOfPrimes = new ArrayList();
-      String title = "Printing all integer prime numbers";
-      title.toUpperCase();
-      System.out.println(title);
-      for (int number = largestPrimeSoFar; number&lt;=Integer.MAX_VALUE; number++){
-          if (isPrime(number)) {
-              System.out.println(number);
-              listOfPrimes.add(number);
-          }
-      }
-      int isLarger = (listOfPrimes.get(listOfPrimes.size()-1)>twoToThePowerThirty) ? 1 : 0;
-      switch (isLarger) {
-        case false:
-          System.out.print("Largest prime integer is not bigger than 2^30");
-        case true:
-          System.out.print("Largest prime integer is bigger than 2^30");
-          break;
-      }
-  }
-  /*
-    * Prime number is not divisible by any number other than 1 and itself
-    * @return true if number is prime
-    */
-  public static boolean isPrime(int number) {
-      for (int i = 2; i &lt; number; i++) {
-          if (number % i == 0) {
-              return false; // number is divisible so its not prime
-          }
-      }
-      return true; // number is prime now
-  }
-  }
-            </div>
-            <div id="editor6" class="exercises_html">
-              public class Account {
-              double principal6,rate; int daysActive,accountType;
-              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-           } 
-           public static double calculateFee(Account[] accounts){
-               double totalFee = 0.0;
-               Account account;
-               for (int i=0;i == accounts.length;i++) {
-                   account=accounts[i];
-                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-                       totalFee += .0125 * (  1.25% broker fee
-                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-              } 
-              return totalFee;    
-          }
-            </div>
+                  </div>
+          </div>
+        <pre id="editor" class="exercises_html"> </pre>
+        <div id="editor2" class="exercises_html"> </div>
+        <pre id="editor3" class="exercises_html"> </pre>
+        <div id="editor4" class="exercises_html"> </div>
+        <div id="editor5" class="exercises_html"> </div>
+        <div id="editor6" class="exercises_html"> </div>
+        
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored " id="hover">
                 <i class="material-icons">add</i>
               </button>
