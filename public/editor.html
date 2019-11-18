@@ -138,9 +138,7 @@
                             <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right grid-item">
                               <i class="material-icons">delete</i>
                             </button>
-                            
-                            
-
+                        
                           </div></div></div>
                       
               </div>
@@ -163,64 +161,13 @@
                       </ul>
                     <ul id="narrativeText6" class="narrative_html">
                         </ul>
-                      </div>
-                  <div class="mdl-tabs__panel" id="description-panel">
-                    <img src = "assets/defects picture.png"  />
-                    <ul style="font-size: medium">
-                      <li><u> <strong>False Positives :</strong>  Instances where you think you have found a defect when there isn't any are false positives. False positives are unwanted in the code review process. You should double check your defect list before submitting to avoid false positives. </u></li>
-                       <h2 align="center" title="These type of defects increase maintanance effort and decrease understandibility of code.">Evolvability Defects</h2> 
-                      <li><strong>Semantic duplication :</strong>  There are two sections in the code that are not the same but they perform the same task.</li>
-
-                       <li><strong>Semantic dead code :</strong> A piece of code that the program executes which does not perform any meaningful task.</li>
                         
-                       <li><strong>Duplication :</strong> The exact replica of this code exists in the project.</li>
-                        
-                       <li><strong>Consistency :</strong> When something is achieveable with multiple ways or styles, you should select one of them and use only that for consistency. For example if you are naming your variables as camel case, you should not change it arbitrarily.  </li>
-                        
-                       <li><strong>Dead Code :</strong> A piece of code in the program which is never executed.</li>
-                        
-                       <li><strong>Bracket :</strong> Unnecessary or inconsistent usage of brackets. </li>
-                        
-                       <li><strong>Indentation :</strong> Indentation of a certain code piece is not compliant with the rest of code.</li>
-                        
-                       <li><strong>Blank line usage :</strong> Empty lines usually indicate a separation of functionality thus they are commonly founded in places where single responsibility principle is violated. </li>
-                        
-                       <li><strong>Long line :</strong> Unnaturally long lines of code makes programs harder to read and debug, they might also make you miss code reuse opportunities.</li>
-                       
-                       <li><strong>Immutable :</strong> An immutable object is an object that can not be changed once its created.  </li>
-                       
-                       <li><strong>Void Parameter :</strong> Null never should be a parameter to an object since it does not contribute to anything. The right way is to make 2 versions of the method one with the object parameter and the second with no parameters. </li>
-                        
-                       <li><strong>Element Type :</strong> Suboptimal usage of element (variable) type assignments. </li>
-                        
-                       <li><strong>Naming :</strong> Inconsistent or irrelevant naming.</li>
-                        
-                       <li><strong>Comments:</strong> Comments that are completely unnecessary or wrong. </li>
-                       <h2 align="center" title="These type of defects prevent the code from working correctly." >Functional Defects</h2>
-                       <li><strong>Function Call :</strong> Improper or unnecessary function call, we should extend this to include middle man functions or multi responsibility methods.</li>
-                        
-                       <li><strong>Parameter :</strong> Too many or unnecessary parameters, wrong choice of parameters, perhaps even null parameters.</li>
-                        
-                       <li><strong>Variable initialization :</strong> Unnecessary dummy initializations, maybe some variable should have been declared as final or vica versa. </li>
-                        
-                       <li><strong>Memory management :</strong> Very common in some languages, not so common in others. </li>
-                        
-                       <li><strong>Data and Resource Manipulation :</strong> This is the most general type of functional errors. If you have found a functional error that you cant assign to any other type than consider this one. Perhaps the code is going to throw a NPE. These type of errors belongs in this category.</li>
-                        
-                       <li><strong>Compare :</strong> Any errors made while utilizing "&lt;",”>””=” type of operators are of this type.</li>
-                        
-                       <li><strong>Compute :</strong> These are the errors which are mathematics related rather than programming.</li>
-                        
-                       <li><strong>Algorithm/Performance :</strong> Obvious design choices that makes the program “significantly” inefficient memory or speed wise.
-                    </ul>
-                  </div>
-
-                  <!-- CHECK LIST OF POSSIBLE ERRORS-->
-                  <div class="mdl-tabs__panel" style="overflow-x:auto;" id="checklist-panel">
-    
-                  </div>
-                  </div>
+                  <!--UPDATED FROM DATABASE-->
+                  </div> <div class="mdl-tabs__panel" id="description-panel"></div>
+                  </div> <div class="mdl-tabs__panel" style="overflow-x:auto;" id="checklist-panel"> </div> </div>
           </div>
+
+        <!-- EDITORS OF THE EXERCISESE-->
         <pre id="editor" class="exercises_html"> </pre>
         <div id="editor2" class="exercises_html"> </div>
         <pre id="editor3" class="exercises_html"> </pre>
