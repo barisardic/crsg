@@ -9,7 +9,6 @@
 var originalDom = document.querySelector('.marketing-content-hidden');
 var listInner = document.querySelector('.marketing-content-list').innerHTML;
 var levelChosen = localStorage.getItem('selected'); // get which level was chose
-
 //window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
 // variables for later usage
@@ -66,11 +65,10 @@ class Err {
 var ref_exercises = firebase.database().ref('exercises');
 var ref_checklist = firebase.database().ref('checklist');
 var ref_guide     = firebase.database().ref('guide');
+var ref_errors    = firebase.database().ref('errors');
 
 function appendExercise(){
-    // connect to editor.html
-    var l_exerc_html = document.getElementsByClassName("exercises_html");
-    var l_narrative_html = document.getElementsByClassName("narrative_html");
+
     // take the data once from firebase in the first call
     ref_exercises.once("value", gotData, errData)
     // function to show what to do with the data when the data has been taken
@@ -81,19 +79,19 @@ function appendExercise(){
         // level chosen from the user once in the program
         var i = levelChosen -1; 
         // update the text in the fields by calling the "id" element
-        document.getElementById( l_exerc_html[ i][ 'id']).innerHTML = exercises[i].code;
+        document.getElementById( "editor").innerHTML = exercises[i].code;
         // css for the editor
-        editor = ace.edit( l_exerc_html[i]['id']);
-        document.getElementById( l_exerc_html[i]['id']).style.display = "block"; 
+        editor = ace.edit( "editor");
+        document.getElementById( "editor").style.display = "block"; 
         editor.session.setMode("ace/mode/java");
         editor.setTheme("ace/theme/cobalt");
         editor.setReadOnly(true);
         editor.setFontSize(14);
+
+        // NARRATIVE 
         // change the narrative of the editor
-        var narrative_i = document.getElementById( l_narrative_html[ i][ 'id']);
-        narrative_i.innerHTML = exercises[i].narrative;
-        narrative_i.style.display = "block";
-        //document.getElementById("narrativeText"+l_exerc_html[i]['id'].slice(6) ).style.display = "block";
+        document.getElementById( "narrative-panel").innerHTML = exercises[i].narrative;
+
         // errors
         var db_errors = exercises[i].errors;
         hints = exercises[i].hints;
@@ -133,36 +131,33 @@ function appendChecklist() {
             }
             tbl.appendChild(tbdy);
             // get panel
-            $('#checklist-panel').append(tbl);
-           //document.getElementById('checklist-panel').append(tbl);
+           //$('#checklist-panel').append(tbl);
+           document.getElementById('checklist-panel').append(tbl);
         }
           // when there is an error from reading from the database
-  function errDataCheckList( err){
-    console.log("Error");
-    console.log(err)
+    function errDataCheckList( err){
+       console.log("Error");
+       console.log(err)
     }
 }
 
-
-// create Checklist
+// create GUIDE
 function appendGuide() {
-    ref_guide.once("value", gotData, errData)
+   
+    ref_errors.once("value", gotData, errData)
         // function to show what to do with the data when the data has been taken
         function gotData( data){
-            // get all exercise information from database
-            var guide = data.val();
-       
-            var ul = document.createElement('ul');
+            var errors = data.val();// get all guide information from database
+            var ul = document.createElement('ul');// single ul
             ul.setAttribute('id','proList');
-    
+            // add to the main document
             document.getElementById('description-panel').appendChild(ul);
-            guide.forEach(guide_point);
-    
-            function guide_point(element, index, arr) {
+            for(var i in errors){
+                var key = Object.keys(errors[i]);
                 var li = document.createElement('li');
                 li.setAttribute('class','item');
                 ul.appendChild(li);
-                li.innerHTML=li.innerHTML + element;
+                li.innerHTML= "<strong>" + key + "</strong> : "+ errors[i][key] + "\n <hr>";
             }
         }
   function errData( err){
@@ -376,13 +371,6 @@ function submitSelection() {
     var database = firebase.database();
     var newPostRef = database.ref('games/' + userId).push();
     newPostRef.set({
-        user: userId,
-        level: levelChosen,
-        submission: ListofErrors,
-        score: scoreCalc[0],
-        timeSpend: timeSpentOnPage
-    });
-    console.log({
         user: userId,
         level: levelChosen,
         submission: ListofErrors,
