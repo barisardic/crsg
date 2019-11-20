@@ -14,70 +14,7 @@
           bottom: 0;
           left: 50%;
       }
-      #editor2 {
-          float: right ;
-          display: none; 
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 50%;
-          /* border: 5px solid rgb(226, 9, 20); */
-      }
-      #editor3 {
-          float: right ;
-          display: none; 
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 50%;
-          /* border: 5px solid rgb(226, 9, 20); */
-      }
-      #editor4 {
-          float: right ;
-          display: none; 
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 50%;
-          /* border: 5px solid rgb(226, 9, 20); */
-      }
-      #editor5 {
-          float: right ;
-          display: none; 
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 50%;
-          /* border: 5px solid rgb(226, 9, 20); */
-      }
-      #editor6 {
-        display: none;
-          float: right ;
-          display: none; 
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 50%;
-          /* border: 5px solid rgb(226, 9, 20); */
-      }
       #narrativeText{
-        display: none;
-      }
-      #narrativeText2{
-        display: none;
-      }
-      #narrativeText3{
-        display: none;
-      }
-      #narrativeText4{
-        display: none;
-      }
-      #narrativeText5{
         display: none;
       }
       i.icon-black {
@@ -91,7 +28,6 @@
           bottom: 0;
           left: 0;
   }
-      
       #leftTop{
         height: 50%;
         width: 100%;
@@ -106,7 +42,7 @@
         bottom: 0px;
         height: 50%;
         overflow: auto;
-  
+        after: 
       }
       #submitBtn{
     position: absolute;

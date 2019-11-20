@@ -20,6 +20,7 @@
 
 <div class="container" id="container">
         <div id="description">
+
             <!-- BACK BUTTON -->
             <div class="mdl-layout__drawer-button " onclick="history.back()">
               <i class="material-icons" style="color:red">arrow_back</i></div>
@@ -27,135 +28,28 @@
             <!-- SETUP FOR PUTTING THE ERRORS -->
             <h3 id="titleMsg">Defects you find will go here!</h3>
             <div class="util" id="leftTop">                        
-                    <div class="marketing-content-list">
-                        <div class="marketing-content-hidden mdl-shadow--4dp">
-                           <div class="marketing-content-title inline-block-child" id= "stend">MONDAY MENU</div>
-                          <div class="marketing-content-buttons inline-block-child grid-container">
-      
-                          <div class="dropdown left">
-                            <button class="btn btn-secondary dropdown-toggle grid-item" id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
-                              Error Reason
-                            </button>
-                            <!--
-                            <script>
-                            var myParent = document.body;
-
-                            //Create array of options to be added
-                            var array = ["Volvo","Saab","Mercades","Audi"];
-                            
-                            //Create and append select list
-                            var selectList = document.createElement("select");
-                            selectList.id = "mySelect";
-                            myParent.appendChild(selectList);
-                            
-                            //Create and append the options
-                            for (var i = 0; i < array.length; i++) {
-                                var option = document.createElement("option");
-                                option.value = array[i];
-                                option.text = array[i];
-                                selectList.appendChild(option);
-                            }
-                            </script>
-                            -->
-                            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                <li class="dropdown-submenu">
-                                    <a  class="dropdown-item"  tabindex="-1" href="#">Evolvability Defects</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-submenu">
-                                            <a class="dropdown-item" href="#">Structure</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-submenu"><a class="dropdown-item" href="#">Solution Approach</a>
-                                                  <ul class="dropdown-menu">
-                                                      <li class="dropdown-item"><a href="#" >Semantic duplication</a></li>
-                                                      <li class="dropdown-item"><a href="#" >Semantic dead code</a></li>
-                                                  </ul>
-                                                </li>
-                                                  <li class="dropdown-submenu"><a class="dropdown-item" href="#">Organization</a>
-                                                  <ul class="dropdown-menu">
-                                                      <li class="dropdown-item"><a href="#" >Duplication</a></li>
-                                                      <li class="dropdown-item"><a href="#" >Consistency</a></li>
-                                                      <li class="dropdown-item"><a href="#" >Dead code</a></li>
-                                                  </ul>
-                                                </li>
-                                            </ul>
-                                          </li>
-                                      <li class="dropdown-submenu">
-                                        <a class="dropdown-item" href="#">Visual Representation</a>
-                                        <ul class="dropdown-menu">
-                                              <li class="dropdown-item"><a href="#">Bracket</a></li>
-                                              <li class="dropdown-item"><a href="#">Indentation</a></li>
-                                              <li class="dropdown-item"><a href="#">Blank line usage</a></li>
-                                              <li class="dropdown-item"><a href="#">Long line</a></li>
-                                        </ul>
-                                      </li>
-                                      <li class="dropdown-submenu">
-                                          <a class="dropdown-item" href="#">Documentation</a>
-                                          <ul class="dropdown-menu">
-                                              <li class="dropdown-submenu"><a class="dropdown-item" href="#">Supported by Language</a>
-                                                <ul class="dropdown-menu">
-                                                    <li class="dropdown-item"><a href="#">Immutable</a></li>
-                                                    <li class="dropdown-item"><a href="#">Void parameter</a></li>
-                                                    <li class="dropdown-item"><a href="#">Element Type</a></li>
-                                                </ul>
-                                              </li>
-                                                <li class="dropdown-submenu"><a class="dropdown-item" href="#">Textual</a>
-                                                <ul class="dropdown-menu">
-                                                    <li class="dropdown-item"><a href="#">Naming</a></li>
-                                                    <li class="dropdown-item"><a href="#">Comments</a></li>
-                                                    <li class="dropdown-item"><a href="#">Others</a></li>
-                                                </ul>
-                                              </li>
-                                          </ul>
-                                        </li>
-                                      
-                                    </ul>
-                                  </li>
-                                  <li class="dropdown-divider"></li>
-                                <li class="dropdown-divider"></li>
-                                <li class="dropdown-submenu">
-                                  <a  class="dropdown-item" tabindex="-1" href="#">Functional Defects</a>
-                                  <ul class="dropdown-menu">
-                                    <li class="dropdown-submenu">
-                                      <a class="dropdown-item" href="#">Interface</a>
-                                      <ul class="dropdown-menu">
-                                          <li class="dropdown-item"><a href="#">Function Call</a></li>
-                                          <li class="dropdown-item"><a href="#">Parameter</a></li>
-                                          
-                                      </ul>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a class="dropdown-item" href="#">Resource</a>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-item"><a href="#">Variable initialization</a></li>
-                                            <li class="dropdown-item"><a href="#">Memory management</a></li>
-                                            <li class="dropdown-item"><a href="#">Data and resource manipulation</a></li>
-                                        </ul>
-                                      </li>
-                                      <li class="dropdown-submenu">
-                                          <a class="dropdown-item" href="#">Logic</a>
-                                          <ul class="dropdown-menu">
-                                              <li class="dropdown-item"><a href="#">Compare</a></li>
-                                              <li class="dropdown-item"><a href="#">Compute</a></li>
-                                              <li class="dropdown-item"><a href="#">Algorithm/Performance</a></li>
-                                              
-                                                
-                                          </ul>
-                                        </li>
-                                  </ul>
-                                </li>
-                              </ul>
-                          </div>
-
-                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon left grid-item">
-                              <i class="material-icons">visibility</i>
-                            </button>
-
-                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right grid-item">
-                              <i class="material-icons">delete</i>
-                            </button>
-                        
-                          </div></div></div>
-                      
+                  <div class="marketing-content-list">
+                      <div class="marketing-content-hidden mdl-shadow--4dp">
+                        <div class="marketing-content-title inline-block-child" id= "stend">MONDAY MENU</div>
+                        <div class="marketing-content-buttons inline-block-child grid-container">
+                        <div class="dropdown left">
+                          <button class="btn btn-secondary dropdown-toggle grid-item" id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
+                            Error Reason
+                          </button>
+                          <!--ADDED DROPDOWN DYNAMICALLY -simplified -->
+                          <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" id="dropdown_panel">
+                            </ul>
+                        </div>
+                          <!-- ON THE ERROR MARKING SETUP -->
+                          <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon left grid-item">
+                            <i class="material-icons">visibility</i>
+                          </button>
+                          <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right grid-item">
+                            <i class="material-icons">delete</i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>    
               </div>
 
               <!-- LOWER LEFT BOTTOM OF THE SCREEN-->
@@ -219,14 +113,14 @@
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <!-- <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script> -->
 </script>
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase product that you want to use
-    https://firebase.google.com/docs/web/setup#config-web-app -->
-<script src="/__/firebase/6.2.3/firebase-app.js"></script>
+    https://firebase.google.com/docs/web/setup#config-web-app 
+<script src="/__/firebase/6.2.3/firebase-app.js"></script>-->
 <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
-<script src="/__/firebase/6.2.4/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
 
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -245,7 +139,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 </script>
 <script src="timeme.min.js"></script>
-<script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src= "https://code.jquery.com/jquery-3.1.0.js"></script>
 <script src= "editor.js"> </script>
 
 

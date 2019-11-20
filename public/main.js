@@ -52,6 +52,7 @@ function playPage() {
     //alert(this.id);
     var selectedLevel = this.id.charAt(this.id.length - 1);
     localStorage.setItem('selected', selectedLevel);
+    // TODO: READ DATA
     // ...
     //TODO goto new page after this and load the level:D
     window.location.href = "/editor.html";
