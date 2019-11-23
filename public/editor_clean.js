@@ -11,7 +11,7 @@
 var originalDom;
 var listInner; 
 var levelChosen; // get which level was chose
-var firebase_db; // database from firebase
+var db;
 //window.localStorage.removeItem('selected');
 var Range;
 // variables for later usage
@@ -24,7 +24,7 @@ var hints;
 originalDom = document.querySelector('.marketing-content-hidden');
 listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = localStorage.getItem('selected'); // get which level was chose
-firebase_db = firebase.database();
+db = firebase.database();
 //window.localStorage.removeItem('selected');
 Range = ace.require("ace/range").Range;
 // variables for later usage
@@ -32,6 +32,15 @@ lErrors = [];
 answers = [];
 editor = 0; 
 hints = [];
+
+// loading in page
+// need to stop when the exercise data loads
+function loader() {
+  var myVar = setTimeout(showPage, 2000);
+}
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+}
 
 //--------------------------------------------------------------------------------------------
 /**
@@ -75,70 +84,33 @@ class Err {
  * Under-Construction
  */
 class View {
-    constructor(exercises, errors) {
-        this.exercises = exercises;
-        this.errors = errors;
+    constructor(start, end) {
+        this.start = start;
+        this.end = end;
+        this.reason = "reason1";
     }
-
-    get exercises(){
-        return this._exercises;
+    get start() {
+        return this._start;
     }
-
-    set exercises( value){
-        this._exercises = value; 
+    get end() {
+        return this._end;
     }
-
-    updateExercises(){
-        // get all exercise information from database
-        var exercises = this._exercises;
-        // level chosen from the user once in the program
-        var i = levelChosen -1; 
-        // update the text in the fields by calling the "id" element
-        document.getElementById( "editor").innerHTML = exercises[i].code;
-        // css for the editor
-        editor = ace.edit( "editor");
-        document.getElementById( "editor").style.display = "block"; 
-        editor.session.setMode("ace/mode/java");
-        editor.setTheme("ace/theme/cobalt");
-        editor.setReadOnly(true);
-        editor.setFontSize(14);
-
-        // NARRATIVE 
-        // change the narrative of the editor
-        var narrative = document.getElementById( "narrative-panel");
-        narrative.innerHTML = exercises[i].narrative;
-    
-        // errors
-        var db_errors = exercises[i].errors;
-        hints = exercises[i].hints;
-        // get all errors
-        for(var i_error =0; i_error< db_errors.length; i_error ++){
-            // create the errors and the lines
-            err = new Err( db_errors[ i_error]['lines'][0], db_errors[ i_error]['lines'][1]);
-            err.reason = db_errors[ i_error]['reason'];
-            // add error to the groundtruth that you are trying to compare the results with
-            answers.push(err);
-        }
+    get reason() {
+        return this._reason;
+    }
+    set start(value) {
+        this._start = value;
+    }
+    set end(value) {
+        this._end = value;
+    }
+    set reason(value) {
+        this._reason = value;
+    }
+    toString() {
+        return "" + this.start + "-" + this.end + "-" + this.reason;
     }
 }
-
-function UE(){
-    a = firebase_db.ref('exercises').once("value", gotData, errData)    
-    function gotData(data){  return data.val(); }
-    function errData( err){  console.log(err); return []; } 
-    console.log(a);
-}
-
-// loading in page
-// need to stop when the exercise data loads
-function loader() {
-  var myVar = setTimeout(showPage, 2000);
-}
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-}
-
-
 
 //--------------------------------------------------------------------------------------------
 /**
@@ -157,7 +129,7 @@ appendGuideAndDropdown();
 
 function appendExercise(){
     // take the data once from firebase in the first call
-    firebase_db.ref('exercises').once("value", gotData, errData)
+    db.ref('exercises').once("value", gotData, errData)
     // function to show what to do with the data when the data has been taken
     function gotData( data){
 
@@ -202,7 +174,7 @@ function appendExercise(){
 // create Checklist
 function appendChecklist() {
 
-    firebase_db.ref('checklist').once("value", gotDataCheckList, errDataCheckList)
+    db.ref('checklist').once("value", gotDataCheckList, errDataCheckList)
         // function to show what to do with the data when the data has been taken
         function gotDataCheckList( data){
             // get all exercise information from database
@@ -233,7 +205,7 @@ function appendChecklist() {
 // create GUIDE
 function appendGuideAndDropdown() {
    
-    firebase_db.ref('errors').once("value", gotData, errData)
+    db.ref('errors').once("value", gotData, errData)
         // function to show what to do with the data when the data has been taken
         function gotData( data){
 
@@ -483,7 +455,7 @@ function submitSelection() {
     var scoreCalc = calculateScore( answers, lErrors);
     //alert("total score : "+ scoreCalc[0]);
     // add data to database
-    var newPostRef = firebase_db.ref('games/' + userId).push();
+    var newPostRef = db.ref('games/' + userId).push();
     newPostRef.set({
         user: userId,
         level: levelChosen,

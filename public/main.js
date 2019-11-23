@@ -5,6 +5,7 @@
 
 // set background pictures for level cards
 var imagesRef = firebase.storage().ref();
+
 var backgroundImageUrl = imagesRef.child('level-background-pictures/1.jpg').getDownloadURL();
 var img = document.getElementById('card1');
 img.src = backgroundImageUrl;
