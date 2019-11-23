@@ -68,7 +68,7 @@ class Err {
     }
 }
 
-
+// CLASS BASED IMPROVEMENT FOR BETTER READABILITY!!!!
 /**
  * VIEW CLASS
  * Contains all the components of the screen and defines the interactions with them.
@@ -157,7 +157,7 @@ appendGuideAndDropdown();
 
 function appendExercise(){
     // take the data once from firebase in the first call
-    firebase_db.ref('exercises').once("value", gotData, errData)
+    firebase_db.ref('levels').once("value", gotData, errData)
     // function to show what to do with the data when the data has been taken
     function gotData( data){
 
@@ -483,7 +483,7 @@ function submitSelection() {
     var scoreCalc = calculateScore( answers, lErrors);
     //alert("total score : "+ scoreCalc[0]);
     // add data to database
-    var newPostRef = firebase_db.ref('games/' + userId).push();
+    var newPostRef = firebase_db.ref('tas/' + userId).push();
     newPostRef.set({
         user: userId,
         level: levelChosen,
