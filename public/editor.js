@@ -126,7 +126,7 @@ function UE(){
     a = firebase_db.ref('exercises').once("value", gotData, errData)    
     function gotData(data){  return data.val(); }
     function errData( err){  console.log(err); return []; } 
-    console.log(a);
+    //console.log(a);
 }
 
 // loading in page
@@ -341,11 +341,11 @@ function addComponent(e, index, reason_value=null){
         reasons.addEventListener("change", reasonChanged); 
 
         visibility = buttons[1];
-        visibility.setAttribute("id", "v" + index);
+        visibility.setAttribute("id", "visibility_" + index);
         visibility.addEventListener("click", visibilityPressed);
 
         remover = buttons[2];
-        remover.setAttribute("id", "r" + index);
+        remover.setAttribute("id", "remover_" + index);
         remover.addEventListener("click", removePressed);
 
     } 
@@ -361,16 +361,29 @@ function addComponent(e, index, reason_value=null){
     // add button to the errors.
     list.appendChild(newNode);
     componentHandler.upgradeDom(); 
+    console.log(list);
+    console.log(lErrors);
     // if list of errors has been updated, remove the title 
     if (lErrors.length != 0) {
         document.getElementById("titleMsg").innerHTML = "";
     }
 }
 // There is a problem in update
-function reasonChanged() {
+function reasonChanged(e) {
     // get the index of the reason (I guess), and update the last of errors
-    index = this.id;
-    lErrors[index - 1].reason = this.options[this.selectedIndex].text;
+    index = e.id;
+    lErrors[index - 1].reason = e.options[e.selectedIndex].text;
+}
+
+// DOES THIS DO ITS FUNCTIONALITY??
+function removePressed() {
+
+    // get id, replace "remover_"
+    index = parseInt(this.id.replace(this.id.substring(0, 8), ""));
+    // remove the parent of the parent by calling their parent
+    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);;
+    //console.log(index);
+    lErrors[index - 1]={};
 }
 
 function visibilityPressed() {
@@ -390,28 +403,6 @@ function visibilityPressed() {
     // 
 }
 
-// DOES THIS DO ITS FUNCTIONALITY??
-function removePressed() {
-
-    // ids are in r+index form thus take the 2nd character of the id and id use it as index.
-    index = this.id;
-
-    console.log(index);
-    var totalSelection = lErrors.length;
-    //alert(lErrors.length);
-    var removed = lErrors.splice((index - 1), 1);
-    //alert(lErrors.length);
-    var Domlist = document.querySelector('.marketing-content-list');
-    console.log(Domlist);
-    //var lastChild = Domlist.lastChild;
-    //alert("child count :"+Domlist.childNodes.length);
-    //alert("innerHTML :"+Domlist.innerHTML);
-    //Domlist.innerHTML = listInner;
-    //alert("child count :"+Domlist.childNodes.length);
-    //lErrors.reverse();
-    //addListAsComponentForErrors(lErrors);
-    //cloneList.pop;
-}
 
 // CHANGE THE VALUE OF DROPDOWN MENU
 document.addEventListener('click', function(e) {
@@ -519,6 +510,9 @@ function calculateScore(answers_real, submission) {
         var containerIndex = i + 1;
         var reasonContainerId = "n" + containerIndex;
         var domElementToBeColored = document.getElementById(reasonContainerId);
+        if (domElementToBeColored === null){
+            continue;
+        }
         domElementToBeColored.style.border = "5px solid red";
         // check for each of the answers if it is there
         for (var j = 0; j < answers_copy.length; j++) {
