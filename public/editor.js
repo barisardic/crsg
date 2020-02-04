@@ -333,9 +333,10 @@ function addComponent (ListofErrors)
               var e = ListofErrors[index-1];
               var DisplayStart = e.start+1;
               var DisplayEnd = e.end+1;
-              newNode.childNodes[1].innerText = "Error Lines : "+DisplayStart+"-"+DisplayEnd;
+              newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"-"+DisplayEnd;
               newNode.style.display = "flex";
-              newNode.childNodes[1].style.setFontSize = "20px";
+              newNode.childNodes[1].style.fontSize = "xx-large";
+              
               var buttons = newNode.querySelector(".marketing-content-buttons");
               
               /* reasons = buttons.querySelector(".select2-field").querySelector(".select2");

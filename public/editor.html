@@ -2,6 +2,8 @@
 <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
         <!-- Material Design icon font -->
@@ -178,32 +180,31 @@
  
 .marketing-contents-list, .marketing-content-create{
   padding: 10px;
-  border: 5px solid rgb(52, 153, 91); 
+  border: 5px solid rgb(50, 204, 109); 
   flex-direction: row;
 }
 .marketing-content-hidden{
   padding: 5px;
   margin-top: 27px;
   display: none;
+  font-size: large;
   /* flex-direction: row; */
-   /* border: 5px solid rgb(177, 16, 226); */
+   /* border: 5px solid rgb(177, 16, 226);  */
 }
 .marketing-content-title{
-   margin-top: 2.5%;
-   box-sizing: inherit;
-   width: 100%;
+   box-sizing: content-box;
+   width: 250px;
    font-weight: bolder;
    flex-direction: row;
-   /* border: 5px solid rgb(204, 16, 57);  */
+   padding-right: 5px;
+   /* border: 5px solid rgb(204, 16, 57);   */
 }
 .marketing-content-buttons {
-    box-sizing:border-box;
-    margin-right: 70%;
-    border-color: black;
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    /* border: 5px solid rgb(214, 123, 49); */
+  box-sizing: content-box;
+  margin-left: 15px;
+    
+    font-size: large;
+    /* border: 5px solid rgb(214, 123, 49);  */
 }
 .grid-item{
   display: table-cell;
@@ -222,14 +223,16 @@ select {
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: #2c3e50;
+  background: #a6b3c0;
   background-image: none;
+  font-size: 16px;
 }
 /* Remove IE arrow */
 select {
   padding: 0 .5em;
   color: #fff;
   cursor: pointer;
+  font-size: 16px;
 }
 /* Arrow */
 /* Transition */
@@ -249,6 +252,7 @@ select {
     -webkit-border-radius: 0 6px 6px 6px;
     -moz-border-radius: 0 6px 6px;
     border-radius: 0 6px 6px 6px;
+    
 }
 
 .dropdown-submenu:hover>.dropdown-menu {
@@ -264,7 +268,7 @@ select {
     border-color: transparent;
     border-style: solid;
     border-width: 5px 0 5px 5px;
-    border-left-color: #ccc;
+    border-left-color: rgb(255, 255, 255);
     margin-top: 5px;
     margin-right: -10px;
 }
@@ -278,6 +282,8 @@ select {
 }
 .dropdown-item{
   pointer-events: auto;
+  font-size: 16px;
+
 }
 .dropdown-submenu.pull-left>.dropdown-menu {
     left: -100%;
@@ -307,7 +313,7 @@ ul{
 #titleMsg{
   text-align: center
 }
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {background-color: #ffffff;}
 </style>
 </head>
 <body>
@@ -321,10 +327,10 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                     <div class="marketing-content-list">
                         <div class="marketing-content-hidden mdl-shadow--4dp">
                            <div class="marketing-content-title inline-block-child" id= "stend">MONDAY MENU</div>
-                          <div class="marketing-content-buttons inline-block-child grid-container">
+                          <div class="marketing-content-buttons">
                           
-                            <div class="dropdown left" >
-                              <button class="btn btn-secondary dropdown-toggle grid-item" id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <div class="dropdown left" style="font-size: large" >
+                              <button class="btn btn-secondary dropdown-toggle grid-item " style="background-color: #ff0000;font-size: 20px;font-weight: bold;" id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
                                 Error Reason
                               </button>
                               <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -414,15 +420,16 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                                     </ul>
                                   </li>
                                 </ul>
-                          </div>
+                                <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon left grid-item">
+                                  <i class="material-icons">visibility</i>
+                                </button>
+    
+                                <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right grid-item">
+                                  <i class="material-icons">delete</i>
+                                </button>
+                              </div>
 
-                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon left grid-item">
-                              <i class="material-icons">visibility</i>
-                            </button>
-
-                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right grid-item">
-                              <i class="material-icons">delete</i>
-                            </button>
+                            
                             
                             
 
