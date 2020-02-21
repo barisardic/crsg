@@ -9,7 +9,7 @@ if(levelChosen==1){
   document.getElementById("narrativeText").style.display = "block";
   var editor = ace.edit("editor");
   var code = document.querySelector("editor");
-  editor.setTheme("ace/theme/cobalt");
+  editor.setTheme("ace/theme/eclipse");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
 }
@@ -18,7 +18,7 @@ else if(levelChosen ==2){
   document.getElementById("narrativeText2").style.display = "block";
   var editor = ace.edit("editor2");
   var code = document.querySelector("editor2");
-  editor.setTheme("ace/theme/cobalt");
+  editor.setTheme("ace/eclipse/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
 }
@@ -27,7 +27,7 @@ else if(levelChosen==3){
   document.getElementById("narrativeText3").style.display = "block";
   var editor = ace.edit("editor3");
   var code = document.querySelector("editor3");
-  editor.setTheme("ace/theme/cobalt");
+  editor.setTheme("ace/theme/eclipse");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -36,7 +36,7 @@ else if(levelChosen==4){
   document.getElementById("narrativeText4").style.display = "block";
   var editor = ace.edit("editor4");
   var code = document.querySelector("editor4");
-  editor.setTheme("ace/theme/cobalt");
+  editor.setTheme("ace/theme/eclipse");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -45,7 +45,7 @@ else if(levelChosen==5){
   document.getElementById("narrativeText5").style.display = "block";
   var editor = ace.edit("editor5");
   var code = document.querySelector("editor5");
-  editor.setTheme("ace/theme/cobalt");
+  editor.setTheme("ace/theme/eclipse");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -58,7 +58,7 @@ else if(levelChosen==6){
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
-editor.setFontSize(14);
+editor.setFontSize(18);
 // Initialize library and start tracking time
 TimeMe.initialize({
 	currentPageName: "play", // current page
@@ -333,8 +333,10 @@ function addComponent (ListofErrors)
               var e = ListofErrors[index-1];
               var DisplayStart = e.start+1;
               var DisplayEnd = e.end+1;
-              newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"&"+DisplayEnd;
+              newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"-"+DisplayEnd;
               newNode.style.display = "flex";
+              newNode.childNodes[1].style.fontSize = "xx-large";
+              
               var buttons = newNode.querySelector(".marketing-content-buttons");
               
               /* reasons = buttons.querySelector(".select2-field").querySelector(".select2");
@@ -434,8 +436,9 @@ function addListAsComponentForAnswers (ListofErrors)
                 var e = ListofErrors[index-1];
                 var DisplayStart = e.start+1;
                 var DisplayEnd = e.end+1;
-                newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"&"+DisplayEnd; 
+                newNode.childNodes[1].innerText = "Error Lines : "+DisplayStart+"-"+DisplayEnd; 
                 newNode.style.display = "flex";
+                newNode.childNodes[1].style.setFontSize = "20px";
                 var buttons = newNode.querySelector(".marketing-content-buttons");
                 
                /*  reasons = buttons.querySelector(".select2-field").querySelector(".select2");
@@ -477,8 +480,9 @@ function addListAsComponentForAnswers (ListofErrors)
                 var e = ListofErrors[index-1];
                 var DisplayStart = e.start+1;
                 var DisplayEnd = e.end+1;
-                newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"&"+DisplayEnd; 
+                newNode.childNodes[1].innerText = "Error Lines : "+DisplayStart+"-"+DisplayEnd; 
                 newNode.style.display = "flex";
+                newNode.childNodes[1].style.setFontSize = "20px";
                 var buttons = newNode.querySelector(".marketing-content-buttons");
                 
                /*  reasons = buttons.querySelector(".select2-field").querySelector(".select2");
