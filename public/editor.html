@@ -149,9 +149,20 @@
   z-index: 10;
   }  */
   #funcButn{
-    margin-left: 15px;
-    margin-right: 15px;
+/*margin-left: 15px;
+  margin-right: 15px;  
+  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:inherit;
+ 
   }
+  .divider{
+    width:10px;
+    height:auto;
+    display:inline-block;
+}
   .mdl-snackbar {
   background-color: rgba(6, 7, 6, 0.95);
   /* bottom: 41.6%; */
@@ -173,14 +184,14 @@
       position: absolute;
     } */
   
-    #hover {
+ /*    #hover {
   position: absolute;
   bottom: 140px;
   right: 5px;
   z-index: 10;
   height: 80px;
   width: 80px;
-  }
+  } */
  
 .marketing-contents-list, .marketing-content-create{
   padding: 10px;
@@ -444,22 +455,25 @@ tr:nth-child(even) {background-color: #ffffff;}
               </div>
               <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
                 <div class="mdl-tabs__tab-bar resizer " >
+                  <button  class=" mdl-tabs__tab material-icons funcButn" id="arrow_resizer">keyboard_arrow_up</button>
+                  <div class="divider"> </div>
+                  <button class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn " id="hover">
+                    <i class="material-icons">add</i>
+                  </button>
 
-                  
-                  <button style="font-size: 18px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="submitBtn">
-                    Submit Selection</Button >
-                    <button href="#expand-panel" class=" mdl-tabs__tab material-icons funcButn" id="arrow_resizer">keyboard_arrow_up</button>
-                <button style="font-size: 18px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="hintBtn">
-                    Hint</Button>
-                <button style="font-size: 18px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="answersBtn">
-                    See Answers</Button>
-
-                  
               </div>
                   <div class="mdl-tabs__tab-bar" >
+                    <button style="font-size: 18px" class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="submitBtn">
+                      Submit Selection</Button >
+                      <div class="divider"> </div>
                       <a href="#narrative-panel" class="mdl-tabs__tab is-active"style="font-size: 18px">Description</a>
                       <a href="#description-panel" class="mdl-tabs__tab"style="font-size: 18px">Guide</a>
                       <a href="#checkist-panel" class="mdl-tabs__tab"style="font-size: 18px">Checklist</a>
+                      <button style="font-size: 18px" class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="hintBtn">
+                        Hint</Button>
+                        <div class="divider"> </div>
+                      <button style="font-size: 18px" class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="answersBtn">
+                        See Answers</Button>
                   </div>
                   <div class="mdl-tabs__panel is-active" id="narrative-panel">
                     <ul id="narrativeText">
@@ -822,9 +836,7 @@ public class Primes{
               return totalFee;    
           }
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored " id="hover">
-                <i class="material-icons">add</i>
-              </button>
+           
             <!-- Accent-colored raised button with ripple -->
             
             <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">

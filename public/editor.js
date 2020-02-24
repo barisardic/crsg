@@ -426,13 +426,25 @@ function removePressed(){
   addListAsComponentForErrors(ListofErrors);
       //cloneList.pop;
   }
+var isGuideBig = false;
 document.getElementById('arrow_resizer').addEventListener('click',resizeGuideSection,false);
 function resizeGuideSection(){
   toResize = document.getElementById('leftBottom')
   toShrink = document.getElementById('leftTop')
-  toResize.style.height = "96%";
-  toShrink.style.height = "3%";
-  //alert("trying hard here")
+  
+  if(isGuideBig){//then we will shrink it
+    toResize.style.height = "50%";
+    toShrink.style.height = "50%";
+    isGuideBig = false;
+    document.getElementById('arrow_resizer').innerHTML ="keyboard_arrow_up"
+  }
+  else{// it small so button press should enlarge it
+    toResize.style.height = "96%";
+    toShrink.style.height = "3%";
+    //alert("trying hard here")
+    isGuideBig = true;
+   document.getElementById('arrow_resizer').innerHTML ="keyboard_arrow_down"
+  }
   componentHandler.upgradeDom();
 }
 function addListAsComponentForAnswers (ListofErrors)
