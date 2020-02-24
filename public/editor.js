@@ -426,7 +426,15 @@ function removePressed(){
   addListAsComponentForErrors(ListofErrors);
       //cloneList.pop;
   }
-
+document.getElementById('arrow_resizer').addEventListener('click',resizeGuideSection,false);
+function resizeGuideSection(){
+  toResize = document.getElementById('leftBottom')
+  toShrink = document.getElementById('leftTop')
+  toResize.style.height = "96%";
+  toShrink.style.height = "3%";
+  //alert("trying hard here")
+  componentHandler.upgradeDom();
+}
 function addListAsComponentForAnswers (ListofErrors)
             {
               var list = document.querySelector('.marketing-content-list');
