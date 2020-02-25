@@ -200,6 +200,7 @@ function lines(){
   document.getElementById('hover').addEventListener('click', getLines, false);
   
 };
+previousHighScore = 0;
 function submitSelection () {
   var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
   //alert(answer1.toString()+"**"+ListofErrors[0].toString());
@@ -218,15 +219,25 @@ function submitSelection () {
       timeSpend: timeSpentOnPage
 
     });
+    previousHighScoreToRead = "level"+String(levelChosen);
+    var highScoreRef = database.ref('users/' + userId + "/"+previousHighScoreToRead);
+    highScoreRef.on('value', function(snapshot) {
+      previousHighScore= snapshot.val();
+    });
+  //update the high score if new score is higher
+  if(scoreCalc[0]>previousHighScore){
+    var userRef = database.ref('users/' + userId + "/");
+    userRef.update({previousHighScoreToRead:scoreCalc[0]});
+  }
   noOfanswers = answers.length;
   maxScore = 3*noOfanswers;
-  var data = {
+  var gameMetaData = {
     message: "There were " +noOfanswers  +" mistakes. You got "+scoreCalc[1]+"  exactly right! Score : "+scoreCalc[0]+"/"+maxScore,
     timeout: 12000,
     actionHandler: handler,
     actionText: ' '
   };
-  snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  snackbarContainer.MaterialSnackbar.showSnackbar(gameMetaData);
   // open answers button
   var answersButton = document.getElementById("answersBtn");
   answersButton.style.opacity= 1;

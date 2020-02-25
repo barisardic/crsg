@@ -43,7 +43,13 @@ document.getElementById("submitBtn").addEventListener("click",writeUserData,fals
       cs453 :cs453Bool,
       cs415 :cs415Bool,
       cs319 :cs319Bool,
-      feedback : fb
+      feedback : fb,
+      level1: 0,
+      level2: 0,
+      level3: 0,
+      level4: 0,
+      level5: 0,
+      level6: 0
     });
     var snackbarContainer = document.querySelector('#demo-snackbar-example');
     var handler = function(event) {
