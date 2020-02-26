@@ -223,14 +223,30 @@ function submitSelection () {
     var highScoreRef = database.ref('users/' + userId + "/scores/"+previousHighScoreLevelToRead);
     highScoreRef.once('value', function(snapshot) {
       previousHighScore= snapshot.val();
-      alert("was "+previousHighScore);
+      
     });
   //update the high score if new score is higher
   
   if(scoreCalc[0]>previousHighScore){
     var userScoreRef = database.ref('users/' + userId+ "/scores");
     userScoreRef.child(previousHighScoreLevelToRead).set(scoreCalc[0]);
+    
+    userScoreRef.once('value', function(snapshot) {
+      var newHighScoreSumLocal = 0;
+      snapshot.forEach(function(childSnapshot) {
+        var levelNo = childSnapshot.key;
+        var levelScore = childSnapshot.val();
+        newHighScoreSumLocal = newHighScoreSumLocal + levelScore;
+        //alert(levelNo+"-"+levelScore);
+
+        // ...
+      });
+    var updateSum = database.ref('users/' + userId);
+    updateSum.child("highScore").set(newHighScoreSumLocal);
+    });
+    
   }
+
   noOfanswers = answers.length;
   maxScore = 3*noOfanswers;
   var gameMetaData = {
