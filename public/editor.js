@@ -200,7 +200,7 @@ function lines(){
   document.getElementById('hover').addEventListener('click', getLines, false);
   
 };
-previousHighScore = 0;
+var previousHighScore = 0;
 function submitSelection () {
   var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
   //alert(answer1.toString()+"**"+ListofErrors[0].toString());
@@ -219,15 +219,17 @@ function submitSelection () {
       timeSpend: timeSpentOnPage
 
     });
-    previousHighScoreToRead = "level"+String(levelChosen);
-    var highScoreRef = database.ref('users/' + userId + "/"+previousHighScoreToRead);
-    highScoreRef.on('value', function(snapshot) {
+    previousHighScoreLevelToRead = "level"+String(levelChosen);
+    var highScoreRef = database.ref('users/' + userId + "/"+previousHighScoreLevelToRead);
+    highScoreRef.once('value', function(snapshot) {
       previousHighScore= snapshot.val();
+      alert("was "+previousHighScore);
     });
   //update the high score if new score is higher
+  
   if(scoreCalc[0]>previousHighScore){
-    var userRef = database.ref('users/' + userId + "/");
-    userRef.update({previousHighScoreToRead:scoreCalc[0]});
+    var userRef = database.ref('users/' + userId);
+    userRef.child(previousHighScoreLevelToRead).set(scoreCalc[0]);
   }
   noOfanswers = answers.length;
   maxScore = 3*noOfanswers;
