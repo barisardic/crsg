@@ -20,10 +20,12 @@ firebase.auth().onAuthStateChanged(function(user) {
       window.location.href = "/index.html";
     }
   });
+var firstUpdate = true;
 document.getElementById("submitBtn").addEventListener("click",writeUserData,false)
 
   function writeUserData() {
     event.preventDefault();
+    
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     var name = document.getElementById("name").value;
@@ -44,13 +46,18 @@ document.getElementById("submitBtn").addEventListener("click",writeUserData,fals
       cs415 :cs415Bool,
       cs319 :cs319Bool,
       feedback : fb,
+    });
+    database.ref('users/' + userId+"/scores").set({
       level1: 0,
       level2: 0,
       level3: 0,
       level4: 0,
       level5: 0,
       level6: 0
-    });
+    }); 
+
+    
+    firstUpdate= false;
     var snackbarContainer = document.querySelector('#demo-snackbar-example');
     var handler = function(event) {
       //showSnackbarButton.style.backgroundColor = '';

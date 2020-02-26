@@ -220,7 +220,7 @@ function submitSelection () {
 
     });
     previousHighScoreLevelToRead = "level"+String(levelChosen);
-    var highScoreRef = database.ref('users/' + userId + "/"+previousHighScoreLevelToRead);
+    var highScoreRef = database.ref('users/' + userId + "/scores/"+previousHighScoreLevelToRead);
     highScoreRef.once('value', function(snapshot) {
       previousHighScore= snapshot.val();
       alert("was "+previousHighScore);
@@ -228,8 +228,8 @@ function submitSelection () {
   //update the high score if new score is higher
   
   if(scoreCalc[0]>previousHighScore){
-    var userRef = database.ref('users/' + userId);
-    userRef.child(previousHighScoreLevelToRead).set(scoreCalc[0]);
+    var userScoreRef = database.ref('users/' + userId+ "/scores");
+    userScoreRef.child(previousHighScoreLevelToRead).set(scoreCalc[0]);
   }
   noOfanswers = answers.length;
   maxScore = 3*noOfanswers;
