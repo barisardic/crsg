@@ -31,7 +31,7 @@ document.getElementById("submitBtn").addEventListener("click",writeUserData,fals
     var name = document.getElementById("name").value;
     var uni = document.getElementById("uni").value;
     var email = document.getElementById("email").value;
-
+    var initHighScore = "0";
     var fb = document.getElementById("feedback").value;
     var cs453Bool = document.getElementById("cs453").checked;
     var cs415Bool = document.getElementById("cs415").checked;
@@ -46,6 +46,7 @@ document.getElementById("submitBtn").addEventListener("click",writeUserData,fals
       cs415 :cs415Bool,
       cs319 :cs319Bool,
       feedback : fb,
+      highScore :initHighScore
     });
     database.ref('users/' + userId+"/scores").set({
       level1: 0,
