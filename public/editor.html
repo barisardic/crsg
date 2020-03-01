@@ -624,11 +624,11 @@ tr:nth-child(even) {background-color: #ffffff;}
     double principal,rate; int daysActive,accountType;
     public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
   }
-  // select here  reason is Comments
+  // select here, reason is Comments
   public static double calculateFee(Account[] accounts){
     double totalFee = 0.0;
     Account account;
-    // select here reason is Duplication
+    // select here, reason is Duplication or Consistency
     // select here
     // select here
     // select here
@@ -638,7 +638,7 @@ tr:nth-child(even) {background-color: #ffffff;}
         totalFee += .0125 * (  1.25% account.principal 
         * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
       } 
-      // select here reason is Parameter
+      // select here, reason is Parameter
       // select here
   return totalFee;    
   }</pre>

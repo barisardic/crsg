@@ -70,7 +70,7 @@ class Err {
   constructor(start, end) {
     this.start = start;
     this.end = end;
-    this.reason = "reason1";
+    this.reason = ["empty"];
   }
   get start(){
     return this._start;
@@ -97,15 +97,16 @@ class Err {
 if(levelChosen == 1){
   var answers = [];
   var answer1 = new Err(4,4);
-  answer1.reason = "Comments";
+  answer1.reason.push("Comments");
   answers[0] =answer1;
 
   var answer2 = new Err(8,11);
-  answer2.reason = "Duplication";
+  answer2.reason.push("Duplication");
+  answer2.reason.push("Consistency");
   answers[1] =answer2;
 
   var answer3 = new Err(18,19);
-  answer3.reason = "Parameter";
+  answer3.reason.push("Parameter");
   answers[2] =answer3;
 
   var hints = ["There are "+ answers.length+" defects in the code","Duplication error at lines 9-12","Parameter error at lines 19-20","Comments error at line 5"];
@@ -113,19 +114,19 @@ if(levelChosen == 1){
 else if(levelChosen == 2){
   var answers = [];
   var answer1 = new Err(29,32);
-  answer1.reason = "Duplication";
+  answer1.reason.push("Duplication");
   answers[0] =answer1;
 
   var answer2 = new Err(39,42);
-  answer2.reason = "Indentation";
+  answer2.reason.push("Indentation");
   answers[1] =answer2;
 
   var answer3 = new Err(53,53);
-  answer3.reason = "Long line";
+  answer3.reason.push("Long line");
   answers[2] =answer3;
 
   var answer4 = new Err(47,47);
-  answer4.reason = "Compare";
+  answer4.reason.push("Compare");
   answers[3] =answer4;
 
   var hints = ["There are "+ answers.length+" defects in the code","Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
@@ -133,30 +134,30 @@ else if(levelChosen == 2){
 else if(levelChosen == 3){
   var answers = [];
   var answer1 = new Err(16,16);
-  answer1.reason = "Data and resource manipulation";
+  answer1.reason.push("Data and resource manipulation");
   answers[0] =answer1;
 
   var answer2 = new Err(17,17);
-  answer2.reason = "Data and resource manipulation";
+  answer2.reason.push("Data and resource manipulation");
   answers[1] =answer2;
 
   var answer3 = new Err(29,29);
-  answer3.reason = "Compare";
+  answer3.reason.push("Compare");
   answers[2] =answer3;
   var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];  
 }
 else if(levelChosen == 4){
   var answers = [];
   var answer1 = new Err(12,12);
-  answer1.reason = "Data and resource manipulation";
+  answer1.reason.push("Data and resource manipulation");
   answers[0] =answer1;
 
   var answer2 = new Err(21,21);
-  answer2.reason = "Algorithm/Performance";
+  answer2.reason.push("Algorithm/Performance");
   answers[1] =answer2;
 
   var answer3 = new Err(30,30);
-  answer3.reason = "Data and resource manipulation";
+  answer3.reason.push("Data and resource manipulation");
   answers[2] =answer3;
 
   var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];  
@@ -164,19 +165,19 @@ else if(levelChosen == 4){
 else if(levelChosen == 5){
   var answers = [];
   var answer1 = new Err(5,5);
-  answer1.reason = "Element Type";
+  answer1.reason.push("Element Type");
   answers[0] =answer1;
 
   var answer2 = new Err(7,7);
-  answer2.reason = "Immutable";
+  answer2.reason.push("Immutable");
   answers[1] =answer2;
 
   var answer3 = new Err(9,9);
-  answer3.reason = "Compare";
+  answer3.reason.push("Compare");
   answers[2] = answer3;
 
   var answer4 = new Err(16,22);
-  answer4.reason = "Data and resource manipulation";
+  answer4.reason.push("Data and resource manipulation");
   answers[3] =answer4;
 
   var hints = ["There are "+ answers.length+" defects in the code","If a line of code is missing you should select the nearest encapsulating object structure","Is java dynamically typed?"];  
@@ -284,15 +285,20 @@ function calculateScore(answers,submission){
           var domElementToBeColored = document.getElementById(reasonContainerId);
           //alert(domElementToBeColored.innerHTML);
           domElementToBeColored.style.border = "5px solid yellow";
-          if(submission[i].reason == grandTruth[j].reason){
-            score = score+2;
-            exact++;
-            var reasonContainerId = "n"+containerIndex;
-            var domElementToBeColored = document.getElementById(reasonContainerId);
-            domElementToBeColored.style.border = "5px solid green";
-            //delete found element , give points only once
-            grandTruth.splice(j,1);
+          //alert(""+grandTruth[j].reason.length);
+          for(t =0;t<grandTruth[j].reason.length;t++){
+            
+            if(submission[i].reason == grandTruth[j].reason[t]){
+              score = score+2;
+              exact++;
+              var reasonContainerId = "n"+containerIndex;
+              var domElementToBeColored = document.getElementById(reasonContainerId);
+              domElementToBeColored.style.border = "5px solid green";
+              //delete found element , give points only once
+              grandTruth.splice(j,1);
+            }
           }
+          
         }
         
       }
