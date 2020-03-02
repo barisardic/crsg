@@ -12,6 +12,11 @@
   .title {
     justify-content: center;
   }
+  #cardPrequiz > .mdl-card__title {
+    color: #fff;
+    background: url('../assets/prequiz.png') center / cover;
+   
+  }
   #card1 > .mdl-card__title {
     color: #fff;
     background: url('../assets/1.jpg') center / cover;

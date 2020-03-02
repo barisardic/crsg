@@ -27,12 +27,18 @@ function signOutUser(){
     // An error happened.
   });
 }
+document.getElementById("PreQuizButton").addEventListener("click",playQuiz,false);
 document.getElementById("playButton1").addEventListener("click",playPage,false);
 document.getElementById("playButton2").addEventListener("click",playPage,false);
 document.getElementById("playButton3").addEventListener("click",playPage,false);
 document.getElementById("playButton4").addEventListener("click",playPage,false);
 document.getElementById("playButton5").addEventListener("click",playPage,false);
 //document.getElementById("playButton6").addEventListener("click",playPage,false); 
+function playQuiz(){
+  window.location.href = "/prequiz.html";
+}
+
+
 function playPage(){
   //alert(this.id);
   var selectedLevel = this.id.charAt(this.id.length-1);
