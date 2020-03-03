@@ -1,3 +1,65 @@
+.background {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image:  url('../assets/bg.png')
+}
+
+.station {
+  position: relative;
+  width: 923px;
+  height: 923px;
+}
+
+.station.one {
+  width: 338px !important;
+  height: 343px !important;
+  position: relative;
+  background-image: url('../assets/stations1.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.station.two {
+  width: 492px !important;
+  height: 382px !important;
+  position: relative;
+  background-image: url('../assets/stations2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.station.three {
+  width: 657px !important;
+  height: 502px !important;
+  position: relative;
+  background-image: url('../assets/stations3.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.station.four {
+  width: 923px !important;
+  height: 557px !important;
+  position: relative;
+  background-image: url('../assets/stations4.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.station.five {
+  width: 792px !important;
+  height: 807px !important;
+  position: relative;
+  background-image: url('../assets/stations5.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .demo-card-square.mdl-card {
     width: 320px;
     height: 320px;
