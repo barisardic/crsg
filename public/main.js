@@ -1,9 +1,10 @@
 // set background pictures for level cards
 var imagesRef = firebase.storage().ref();
 var backgroundImageUrl = imagesRef.child('level-background-pictures/1.jpg').getDownloadURL();
-var userEmailButton = document.getElementById("userEmail");
-
-firebase.auth().onAuthStateChanged(function (user) {
+  //var img = document.getElementById('card1');
+  //img.src = backgroundImageUrl;
+  var userEmailButton = document.getElementById("userEmail");
+firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
 
