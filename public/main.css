@@ -9,6 +9,7 @@
   background-image:  url('../assets/bg.png')
 }
 
+<<<<<<< Updated upstream
 .station {
   position: relative;
   width: 923px;
@@ -60,6 +61,75 @@
   background-position: center;
 }
 
+=======
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.station {
+  position: relative;
+  transform: scale(0.55);
+}
+
+.station.one {
+  top: 0%;
+}
+
+.station-one-btn {
+  position: relative;
+  bottom: 63%;
+  right: -137px;
+}
+
+.station.two {
+  top: 40%;
+}
+
+.station-two-btn {
+  position: relative;
+  bottom: 15%;
+  right: -218px;
+}
+
+.station.three {
+  top: -15%;
+  transform: scale(0.50);
+}
+
+.station-three-btn {
+  position: relative;
+  bottom: 64.7%;
+  right: -289px;
+}
+
+.station.four {
+  top: 10%;
+  transform: scale(0.45);
+}
+
+.station-four-btn {
+  position: relative;
+  bottom: 40.5%;
+  right: -401px;
+}
+
+.station.five {
+  top: -15%;
+}
+
+.station-five-btn {
+  position: relative;
+  bottom: 64.45%;
+  right: -371px;
+}
+
+/*********************************/
+
+>>>>>>> Stashed changes
 .demo-card-square.mdl-card {
     width: 320px;
     height: 320px;
