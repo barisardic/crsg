@@ -2870,26 +2870,6 @@ ol {
     overflow: hidden
 }
 
-.ripple-blue {
-    background: #74beff;
-}
-
-.ripple-green {
-    background: #76ff03;
-}
-
-.ripple-yellow {
-    background: #fff9c4;
-}
-
-.ripple-red {
-    background: #ff5757;
-}
-
-.ripple-purple {
-    background: #df77ff;
-}
-
 .mdl-ripple.is-animating {
     transition: transform .3s cubic-bezier(0, 0, .2, 1), width .3s cubic-bezier(0, 0, .2, 1), height .3s cubic-bezier(0, 0, .2, 1), opacity .6s cubic-bezier(0, 0, .2, 1);
     transition: transform .3s cubic-bezier(0, 0, .2, 1), width .3s cubic-bezier(0, 0, .2, 1), height .3s cubic-bezier(0, 0, .2, 1), opacity .6s cubic-bezier(0, 0, .2, 1), -webkit-transform .3s cubic-bezier(0, 0, .2, 1)

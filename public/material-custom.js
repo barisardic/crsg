@@ -650,14 +650,19 @@
                 this.element_.appendChild(rippleContainer);
 
                 if (this.element_.classList.contains(this.CssClasses_.RIPPLE_BLUE)) {
+                    this.element_.classList.remove(this.CssClasses_.RIPPLE_BLUE);
                     this.rippleElement_.classList.add(this.CssClasses_.RIPPLE_BLUE);
                 } else if (this.element_.classList.contains(this.CssClasses_.RIPPLE_GREEN)) {
+                    this.element_.classList.remove(this.CssClasses_.RIPPLE_GREEN);
                     this.rippleElement_.classList.add(this.CssClasses_.RIPPLE_GREEN);
                 } else if (this.element_.classList.contains(this.CssClasses_.RIPPLE_YELLOW)) {
+                    this.element_.classList.remove(this.CssClasses_.RIPPLE_YELLOW);
                     this.rippleElement_.classList.add(this.CssClasses_.RIPPLE_YELLOW);
                 } else if (this.element_.classList.contains(this.CssClasses_.RIPPLE_RED)) {
+                    this.element_.classList.remove(this.CssClasses_.RIPPLE_RED);
                     this.rippleElement_.classList.add(this.CssClasses_.RIPPLE_RED);
                 } else if (this.element_.classList.contains(this.CssClasses_.RIPPLE_PURPLE)) {
+                    this.element_.classList.remove(this.CssClasses_.RIPPLE_PURPLE);
                     this.rippleElement_.classList.add(this.CssClasses_.RIPPLE_PURPLE);
                 }
             }

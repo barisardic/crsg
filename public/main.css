@@ -9,6 +9,18 @@
   background-image:  url('../assets/bg.png')
 }
 
+.transparent {
+  background: #0000 !important;
+}
+
+.hover {
+  transition: box-shadow ease .6s;
+}
+
+.hover:hover {
+  box-shadow: 0 0 15px 5px rgba(255, 251, 213, 0.714);
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -26,10 +38,23 @@
   top: 0%;
 }
 
-.station-one-btn {
+.btn {
   position: relative;
+  transition: box-shadow ease .6s, background ease .6s;
+  transform: scale(.5);
+}
+
+.btn:hover {
+  background: #ffffff;
+}
+
+.station-one-btn {
   bottom: 63%;
   right: -137px;
+}
+
+.station-one-btn:hover {
+  box-shadow: 0 0 15px 15px #74beff;
 }
 
 .station.two {
@@ -37,9 +62,12 @@
 }
 
 .station-two-btn {
-  position: relative;
   bottom: 15%;
   right: -218px;
+}
+
+.station-two-btn:hover {
+  box-shadow: 0 0 15px 15px #76ff03;
 }
 
 .station.three {
@@ -48,9 +76,12 @@
 }
 
 .station-three-btn {
-  position: relative;
   bottom: 64.7%;
   right: -289px;
+}
+
+.station-three-btn:hover {
+  box-shadow: 0 0 15px 15px #fff9c4;
 }
 
 .station.four {
@@ -59,9 +90,12 @@
 }
 
 .station-four-btn {
-  position: relative;
   bottom: 40.5%;
   right: -401px;
+}
+
+.station-four-btn:hover {
+  box-shadow: 0 0 15px 15px #ff5757;
 }
 
 .station.five {
@@ -69,9 +103,32 @@
 }
 
 .station-five-btn {
-  position: relative;
   bottom: 64.45%;
   right: -371px;
+}
+
+.station-five-btn:hover {
+  box-shadow: 0 0 15px 15px #df77ff;
+}
+
+.ripple-blue {
+  background: #74beff;
+}
+
+.ripple-green {
+  background: #76ff03;
+}
+
+.ripple-yellow {
+  background: #fff9c4;
+}
+
+.ripple-red {
+  background: #ff5757;
+}
+
+.ripple-purple {
+  background: #df77ff;
 }
 
 /*********************************/
