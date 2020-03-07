@@ -6,7 +6,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image:  url('../assets/bg.png')
+  background-image: url('../assets/bg.png')
 }
 
 .transparent {
@@ -27,6 +27,10 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.container>div {
+  height: 100vh;
 }
 
 .station {
@@ -132,53 +136,60 @@
 }
 
 /*********************************/
-
 .demo-card-square.mdl-card {
-    width: 320px;
-    height: 320px;
-    float: left;
-    margin: 1rem;
-    position: relative;
-  }
-  
-  .demo-card-square.mdl-card:hover {
-    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
-  }
-  .title {
-    justify-content: center;
-  }
-  #card1 > .mdl-card__title {
-    color: #fff;
-    background: url('../assets/1.jpg') center / cover;
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
-  }
-  #card2 > .mdl-card__title {
-    color: #fff;
-    background: url('../assets/2.png') center / cover;
-  }
-  #card3 > .mdl-card__title {
-    color: #fff;
-    background: url('../assets/3.png') center / cover;
-  }
-  #card4 > .mdl-card__title {
-    color: #fff;
-    background: url('../assets/4.jpg') center / cover;
-  }
-  #card5 > .mdl-card__title {
-    color: #fff;
-    background: url('../assets/6.jpg') center / cover;
-  }
-  #card6 > .mdl-card__title {
-    color: #fff;
-    background:#fff;
-  }
-  .demo-card-square > .mdl-card__accent {
-    background: #ff9800;
-  }
-  
-  /* body {
+  width: 320px;
+  height: 320px;
+  float: left;
+  margin: 1rem;
+  position: relative;
+}
+
+.demo-card-square.mdl-card:hover {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
+}
+
+.title {
+  justify-content: center;
+}
+
+#card1>.mdl-card__title {
+  color: #fff;
+  background: url('../assets/1.jpg') center / cover;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+#card2>.mdl-card__title {
+  color: #fff;
+  background: url('../assets/2.png') center / cover;
+}
+
+#card3>.mdl-card__title {
+  color: #fff;
+  background: url('../assets/3.png') center / cover;
+}
+
+#card4>.mdl-card__title {
+  color: #fff;
+  background: url('../assets/4.jpg') center / cover;
+}
+
+#card5>.mdl-card__title {
+  color: #fff;
+  background: url('../assets/6.jpg') center / cover;
+}
+
+#card6>.mdl-card__title {
+  color: #fff;
+  background: #fff;
+}
+
+.demo-card-square>.mdl-card__accent {
+  background: #ff9800;
+}
+
+/* body {
     padding: 20px;
-    background: #fafafa; 
+    background: #fafafa;
     position: relative;
   } */
