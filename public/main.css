@@ -29,17 +29,9 @@
   overflow-y: hidden;
 }
 
+/*buttons container*/
 .container>div {
   height: 100vh;
-}
-
-.station {
-  position: relative;
-  transform: scale(0.55);
-}
-
-.station.one {
-  top: 0%;
 }
 
 .btn {
@@ -52,6 +44,31 @@
   background: #ffffff;
 }
 
+.station {
+  position: relative;
+  transform: scale(0.55);
+}
+
+/*prequiz*/
+.station.prequiz {
+  top: 0%;
+}
+
+.station-prequiz-btn {
+  bottom: 74%;
+  right: -89px;
+  transform: scale(.4);
+}
+
+.station-prequiz-btn:hover {
+  box-shadow: 0 0 15px 15px #f7ffab;
+}
+
+/*station1*/
+.station.one {
+  top: 0%;
+}
+
 .station-one-btn {
   bottom: 63%;
   right: -137px;
@@ -61,6 +78,7 @@
   box-shadow: 0 0 15px 15px #74beff;
 }
 
+/*station2*/
 .station.two {
   top: 40%;
 }
@@ -74,6 +92,7 @@
   box-shadow: 0 0 15px 15px #76ff03;
 }
 
+/*station3*/
 .station.three {
   top: -15%;
   transform: scale(0.50);
@@ -88,6 +107,7 @@
   box-shadow: 0 0 15px 15px #fff9c4;
 }
 
+/*station4*/
 .station.four {
   top: 10%;
   transform: scale(0.45);
@@ -102,6 +122,7 @@
   box-shadow: 0 0 15px 15px #ff5757;
 }
 
+/*station5*/
 .station.five {
   top: -15%;
 }
@@ -115,6 +136,22 @@
   box-shadow: 0 0 15px 15px #df77ff;
 }
 
+/*postquiz*/
+.station.postquiz {
+  top: 350%;
+}
+
+.station-postquiz-btn {
+  bottom: -276%;
+  right: -89px;
+  transform: scale(.4);
+}
+
+.station-postquiz-btn:hover {
+  box-shadow: 0 0 15px 15px #76ff03;
+}
+
+/*ripples*/
 .ripple-blue {
   background: #74beff;
 }
@@ -124,7 +161,7 @@
 }
 
 .ripple-yellow {
-  background: #fff9c4;
+  background: #fff389;
 }
 
 .ripple-red {
