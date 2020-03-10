@@ -42,14 +42,25 @@
                <div class="mdl-layout__drawer">
                   </div>
                <main class = "mdl-layout__content">    
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScSDacGjrgklUdGkUYWAVT0gKC6ytBqGtzsq76vyFa0z9t_Fw/viewform?embedded=true" style="border:1;display:block;margin:auto" width="800" height="9681" frameborder="0" marginheight="0" marginwidth="0" >Loading…</iframe>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScSDacGjrgklUdGkUYWAVT0gKC6ytBqGtzsq76vyFa0z9t_Fw/viewform?embedded=true"  style="border:1;display:block;margin:auto" width="800" height="9681" frameborder="0" marginheight="0" marginwidth="0" >Loading…</iframe>
 
                </main>
             </div>
           </div>
          
         
-
+        <script type="text/javascript">
+            var load = 0;
+            
+            document.getElementById('gform').onload = function(){
+                /*Execute on every reload on iFrame*/
+                load++;
+                if(load > 2){
+                    /*Thirdd reload is a submit*/
+                    window.location.href = "/main.html";
+                }
+            }
+        </script>        
         <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
         <!-- TODO: Add SDKs for Firebase product that you want to use
