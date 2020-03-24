@@ -620,157 +620,159 @@ tr:nth-child(even) {background-color: #ffffff;}
                 </div>
         </div>
         <pre id="editor">
-          public class Account {
-            double principal, rate;
-            int daysActive, accountType;
-            public static final int STANDARD = 0, BUDGET = 1, PREMIUM = 2, PREMIUM_PLUS = 3;
-            // select here, reason is Comments
-            public static double calculateFee(Account[] accounts) {
-                double totalFee = 0.0;
-                Account account;
-                /* select this line, reason is Duplication or Consistency
-                 this line as well
-                 this line as well*/
-                for (int i = 0; i == accounts.length; i++) {
-                    account = accounts[i];
-                    if (account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS)
-                        totalFee += .0125 * (1.25 % account.principal
-                                * Math.pow(account.rate, (account.daysActive / 365.25)) - account.principal);// interest-principal
-                }
-                /* this line as well, reason is Parameter
-                this line as well  */
-                return totalFee;
-            }
+  public class Account {
+    double principal, rate;
+    int daysActive, accountType;
+    public static final int STANDARD = 0, BUDGET = 1, PREMIUM = 2, PREMIUM_PLUS = 3;
+    // select here, reason is Comments
+    public static double calculateFee(Account[] accounts) {
+        double totalFee = 0.0;
+        Account account;
+        /* select this line, reason is Duplication or Consistency
+          this line as well
+          this line as well*/
+        for (int i = 0; i == accounts.length; i++) {
+            account = accounts[i];
+            if (account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS)
+                totalFee += .0125 * (1.25 % account.principal
+                        * Math.pow(account.rate, (account.daysActive / 365.25)) - account.principal);// interest-principal
         }
+        /* this line as well, reason is Parameter
+        this line as well  */
+        return totalFee;
+    }
+}
        </pre>
-            <div id="editor2">    // Class Declaration
-    public class Dog {
-      // Instance Variables
-      String name;
-      String breed;
-      int age;
-      String color;
-  
-      // Constructor Declaration of Class
-      public Dog(String name, String breed,
-                  int age, String color) {
-          this.name = name;
-          this.breed = breed;
-          this.age = age;
-          this.color = color;
-      }
-  
-      public String getName() {
-          return name;
-      }
-  
-      public String getBreed() {
-          return breed;
-      }
-  
-      public String getName() {
-          return name;
-      }
-  
-      public int getAge() {
-          return age;
-      }
-  
-          public String getColor() {
-              return color;
-          }
-  
-      public boolean equals(Dog dogo) {
-          return this.toString() == dogo.toString();
-      }
-  
-      public String toString() {
-          return ("Hi my name is " + this.getName() + "\n My breed,age and color are " + this.getBreed() + "," + this.getAge() + "," + this.getColor());
-      }
-  
-      public static void main(String[] args) {
-          Dog tuffy = new Dog("tuffy", "papillon", 5, "white");
-          System.out.println(tuffy.toString());
-      }
-  }
+            <div id="editor2">// Class Declaration
+  public class Dog {
+    // Instance Variables
+    String name;
+    String breed;
+    int age;
+    String color;
+
+    // Constructor Declaration of Class
+    public Dog(String name, String breed,
+                int age, String color) {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.color = color;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+        public String getColor() {
+            return color;
+        }
+
+    public boolean equals(Dog dogo) {
+        return this.toString() == dogo.toString();
+    }
+
+    public String toString() {
+        return ("Hi my name is " + this.getName() + "\n My breed,age and color are " + this.getBreed() + "," + this.getAge() + "," + this.getColor());
+    }
+
+    public static void main(String[] args) {
+        Dog tuffy = new Dog("tuffy", "papillon", 5, "white");
+        System.out.println(tuffy.toString());
+    }
+}
     
             </div>
             <pre id="editor3">
-    import java.util.ArrayList;
-    import java.util.Collections;
-    import java.util.List;
-    
-    public class ExerciseSumArray {
-        /*
-        Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
-        calculate the sum of 2 Lists, and return the result in a List.
-        For example:
-        [1, 0, 0] + [4,0] = [1,4,0]
-        [6,7] + [0] = [6,7]
-          */
-        public ArrayList<Integer> getSum(List<Integer> firstNumber, List<Integer> secondNumber) {
-            ArrayList<Integer> result = new ArrayList<Integer>();
-    
-            int carry = 0;
-            Collections.reverse(firstNumber);
-            Collections.reverse(secondNumber);
-    
-            for (int i = 0; (i &lt; Math.max(firstNumber.size(), secondNumber.size())); i++) {
-                Integer firstValue = i &lt; firstNumber.size() ? firstNumber.get(i) : null;
-                Integer secondValue = i &lt; secondNumber.size() ? secondNumber.get(i) : null;
-    
-                int res = firstValue + secondValue + carry;
-    
-                carry = 0;
-                if (res > 10) {
-                    carry = 1;
-                    res = res % 10;
-                }
-                result.add(res);
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ExerciseSumArray {
+    /*
+    Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
+    calculate the sum of 2 Lists, and return the result in a List.
+    For example:
+    [1, 0, 0] + [4,0] = [1,4,0]
+    [6,7] + [0] = [6,7]
+      */
+    public ArrayList<Integer> getSum(List<Integer> firstNumber, List<Integer> secondNumber) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+
+        int carry = 0;
+        Collections.reverse(firstNumber);
+        Collections.reverse(secondNumber);
+
+        for (int i = 0; (i &lt; Math.max(firstNumber.size(), secondNumber.size())); i++) {
+            Integer firstValue = i &lt; firstNumber.size() ? firstNumber.get(i) : null;
+            Integer secondValue = i &lt; secondNumber.size() ? secondNumber.get(i) : null;
+
+            int res = firstValue + secondValue + carry;
+
+            carry = 0;
+            if (res > 10) {
+                carry = 1;
+                res = res % 10;
             }
-    
-            if (carry >= 0)
-                result.add(carry);
-    
-            Collections.reverse(result);
-            return result;
+            result.add(res);
         }
+
+        if (carry >= 0)
+            result.add(carry);
+
+        Collections.reverse(result);
+        return result;
     }
+}
         </pre>
-            <div id="editor4">/*Java program to print the elements of a 2 D array or matrix */
-      import java.io.*;
-      
-      class Matrices {
-      
-          public static void printMatrix(int mat[][]) {
-              // Loop through all rows
-              for (int i = 0; i &lt; mat.length; i++)
-                  // Loop through all elements of current row
-                  for (int j = 0; j &lt; mat[i].length; j++)
-                      System.out.print(mat[j][i] + " ");
-          }
-      
-          public static int calcMatrixTotal(int mat[][]) {
-              int total = 0;
-              // Loop through all rows
-              for (int i = 0; i &lt; mat.length; i++)
-                  // Loop through all elements of current row
-                  for (int j = 0; j &lt; mat[i].length; j++)
-                      total = total + mat[j][i];
-              return total;
-          } 
-      
-          public static void main(String args[]) throws IOException {
-              int mat[][] = {{1, 2, 3, 4},
-                      {5, 6, 7, 8},
-                      {9, 10, 11, 12}};
-              printMatrix(mat);
-              int rows = mat[0].length;
-              int cols = mat[0].length;
-              System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
-              System.out.print("The matrix total is :" + calcMatrixTotal(mat));
-          }
-      }
+            <div id="editor4">/*Java program to print the elements of
+a 2 D array or matrix */
+
+import java.io.IOException;
+
+class Matrices {
+
+    public static void printMatrixElements(int[][] mat) {
+        // Loop through all rows
+        for (int i = 0; i &lt; mat.length; i++)
+            // Loop through all elements of current row
+            for (int j = 0; j &lt; mat[i].length; j++)
+                System.out.print(mat[i][j] + " ");
+    }
+
+    public static int calcMatrixTotal(int[][] mat) {
+        int total = 0;
+        // Loop through all rows
+        for (int i = 0; i &lt; mat.length; i++)
+            // Loop through all elements of current row
+            for (int j = 0; j &lt; mat[i].length; j++)
+                total = total + mat[j][i];
+        return total;
+    }
+
+    public static void main(String[] args) throws IOException {
+        int[][] mat = {{1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}};
+        printMatrixElements(mat);
+        int rows = mat[0].length;
+        int cols = mat[0].length;
+        System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
+        System.out.println("The matrix total is :" + calcMatrixTotal(mat));
+    }
+}
 
             </div>
             <div id="editor5">

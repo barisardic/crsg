@@ -150,14 +150,18 @@ else if(levelChosen == 4){
   var answers = [];
   var answer1 = new Err(12,12);
   answer1.reason.push("Data and resource manipulation");
+  answer1.reason.push("Algorithm/Performance");
   answers[0] =answer1;
 
   var answer2 = new Err(21,21);
   answer2.reason.push("Algorithm/Performance");
+  answer2.reason.push("Data and resource manipulation");
   answers[1] =answer2;
 
-  var answer3 = new Err(28,28);
+  var answer3 = new Err(31,31);
   answer3.reason.push("Data and resource manipulation");
+  answer3.reason.push("Compute");
+  answer3.reason.push("Variable initialisation");
   answers[2] =answer3;
 
   var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];  
