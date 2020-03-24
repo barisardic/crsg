@@ -64,7 +64,27 @@ TimeMe.initialize({
 	currentPageName: "play", // current page
 	idleTimeoutInSeconds: 600 // seconds
     });
+// Executes the first 5 times a user leaves the page
+TimeMe.callWhenUserLeaves(function(){
+  console.log("The user is not currently viewing the page!");
+  console.time("inactive");
+  start = new Date().getTime();
+}, 5);
 
+// Executes every time a user returns
+TimeMe.callWhenUserReturns(function(){
+  console.log("The user has come back!");
+  console.timeEnd("inactive");
+  elapsed = new Date().getTime() - start;
+  //alert("You have been away for :"+ elapsed+"miliseconds!");
+  var userAwayData = {
+    message: "You have been away for :"+ elapsed+" miliseconds!",
+    timeout: 10000,
+    actionHandler: handler,
+    actionText: ' '
+  };
+  snackbarContainer.MaterialSnackbar.showSnackbar(userAwayData);
+},5);
 // custom error object for user to select/save the errors in the code.
 class Err {
   constructor(start, end) {
