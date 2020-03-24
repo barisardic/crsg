@@ -75,10 +75,10 @@ TimeMe.callWhenUserLeaves(function(){
 TimeMe.callWhenUserReturns(function(){
   console.log("The user has come back!");
   console.timeEnd("inactive");
-  elapsed = new Date().getTime() - start;
-  //alert("You have been away for :"+ elapsed+"miliseconds!");
+  elapsed = (new Date().getTime() - start)/1000;
+  //alert("You have been away for :"+ elapsed+" seconds!");
   var userAwayData = {
-    message: "You have been away for :"+ elapsed+" miliseconds!",
+    message: "You have been away for : "+ elapsed+" seconds!",
     timeout: 10000,
     actionHandler: handler,
     actionText: ' '
@@ -133,7 +133,7 @@ if(levelChosen == 1){
 }
 else if(levelChosen == 2){
   var answers = [];
-  var answer1 = new Err(25,26);
+  var answer1 = new Err(25,27);
   answer1.reason.push("Duplication");
   answers[0] =answer1;
 
@@ -147,6 +147,7 @@ else if(levelChosen == 2){
 
   var answer4 = new Err(38,38);
   answer4.reason.push("Compare");
+  answer4.reason.push("Data and resource manipulation");
   answers[3] =answer4;
 
   var hints = ["There are "+ answers.length+" defects in the code","Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
