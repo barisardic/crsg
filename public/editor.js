@@ -168,19 +168,20 @@ else if(levelChosen == 4){
 }
 else if(levelChosen == 5){
   var answers = [];
-  var answer1 = new Err(5,5);
+  var answer1 = new Err(7,7);
   answer1.reason.push("Element Type");
+  answer1.reason.push("Variable initialisation");
   answers[0] =answer1;
 
-  var answer2 = new Err(7,7);
+  var answer2 = new Err(9,9);
   answer2.reason.push("Immutable");
   answers[1] =answer2;
 
-  var answer3 = new Err(9,9);
+  var answer3 = new Err(11,11);
   answer3.reason.push("Compare");
   answers[2] = answer3;
 
-  var answer4 = new Err(16,22);
+  var answer4 = new Err(18,24);
   answer4.reason.push("Data and resource manipulation");
   answers[3] =answer4;
 
