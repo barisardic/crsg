@@ -2814,7 +2814,7 @@ ol {
 .mdl-color-text--white {
     color: #fff !important
 }
-
+/*GOOGLE'S DANG LAZY COLOURS HERE!!!!!*/
 .mdl-color--primary {
     background-color: rgb(0, 150, 136) !important
 }
@@ -6644,9 +6644,11 @@ fieldset[disabled] .mdl-switch .mdl-switch__ripple-container .mdl-ripple,
     overflow: hidden
 }
 
+/*
 .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
     color: rgba(0, 0, 0, .87)
 }
+*/
 
 .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
     height: 2px;

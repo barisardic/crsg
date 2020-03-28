@@ -9,7 +9,7 @@ if(levelChosen==1){
   document.getElementById("narrativeText").style.display = "block";
   var editor = ace.edit("editor");
   var code = document.querySelector("editor");
-  editor.setTheme("ace/theme/eclipse");
+  editor.setTheme("ace/theme/dracula2");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
 }
@@ -18,7 +18,7 @@ else if(levelChosen ==2){
   document.getElementById("narrativeText2").style.display = "block";
   var editor = ace.edit("editor2");
   var code = document.querySelector("editor2");
-  editor.setTheme("ace/eclipse/cobalt");
+  editor.setTheme("ace/theme/dracula2");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
 }
@@ -27,7 +27,7 @@ else if(levelChosen==3){
   document.getElementById("narrativeText3").style.display = "block";
   var editor = ace.edit("editor3");
   var code = document.querySelector("editor3");
-  editor.setTheme("ace/theme/eclipse");
+  editor.setTheme("ace/theme/dracula2");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -36,7 +36,7 @@ else if(levelChosen==4){
   document.getElementById("narrativeText4").style.display = "block";
   var editor = ace.edit("editor4");
   var code = document.querySelector("editor4");
-  editor.setTheme("ace/theme/eclipse");
+  editor.setTheme("ace/theme/dracula2");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -45,7 +45,7 @@ else if(levelChosen==5){
   document.getElementById("narrativeText5").style.display = "block";
   var editor = ace.edit("editor5");
   var code = document.querySelector("editor5");
-  editor.setTheme("ace/theme/eclipse");
+  editor.setTheme("ace/theme/dracula2");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -54,7 +54,7 @@ else if(levelChosen==6){
   document.getElementById("narrativeText5").style.display = "block";
   var editor = ace.edit("editor6");
   var code = document.querySelector("editor6");
-  editor.setTheme("ace/theme/cobalt");
+  editor.setTheme("ace/theme/dracula2");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }

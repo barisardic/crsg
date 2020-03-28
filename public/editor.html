@@ -1,122 +1,149 @@
 <html lang="en">
+
 <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
-        <!-- Material Design icon font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<title>Play</title>
-<style type="text/css" media="screen">
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-    /* body {
-        background: rgb(175, 182, 181); 
-         position: relative; 
-    }  */
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+  <link rel="stylesheet" href="material-custom.css" />
+  <script src="material-custom.js"></script>
+  <!-- Material Design icon font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <title>Play</title>
+  <style type="text/css" media="screen">
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #282a36;
+      position: relative;
+    }
+
     #editor {
-        float: right ;
-        display: none; 
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 50%;
+      float: right;
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 50%;
     }
+
     #editor2 {
-        float: right ;
-        display: none; 
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 50%;
-        /* border: 5px solid rgb(226, 9, 20); */
+      float: right;
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 50%;
+      /* border: 5px solid rgb(226, 9, 20); */
     }
+
     #editor3 {
-        float: right ;
-        display: none; 
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 50%;
-        /* border: 5px solid rgb(226, 9, 20); */
+      float: right;
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 50%;
+      /* border: 5px solid rgb(226, 9, 20); */
     }
+
     #editor4 {
-        float: right ;
-        display: none; 
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 50%;
-        /* border: 5px solid rgb(226, 9, 20); */
+      float: right;
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 50%;
+      /* border: 5px solid rgb(226, 9, 20); */
     }
+
     #editor5 {
-        float: right ;
-        display: none; 
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 50%;
-        /* border: 5px solid rgb(226, 9, 20); */
+      float: right;
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 50%;
+      /* border: 5px solid rgb(226, 9, 20); */
     }
+
     #editor6 {
       display: none;
-        float: right ;
-        display: none; 
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 50%;
-        /* border: 5px solid rgb(226, 9, 20); */
+      float: right;
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 50%;
+      /* border: 5px solid rgb(226, 9, 20); */
     }
-    #narrativeText{
+
+    #narrativeText {
       display: none;
     }
-    #narrativeText2{
+
+    #narrativeText2 {
       display: none;
     }
-    #narrativeText3{
+
+    #narrativeText3 {
       display: none;
     }
-    #narrativeText4{
+
+    #narrativeText4 {
       display: none;
     }
-    #narrativeText5{
+
+    #narrativeText5 {
       display: none;
     }
+
     i.icon-black {
-    color: black;
-}
+      color: black;
+    }
+
     #description {
-        position: absolute;
-        /* border: 5px solid rgb(52, 153, 91); */
-        top: 0;
-        right: 50%;
-        bottom: 0;
-        left: 0;
-}
-    
-    #leftTop{
+      position: absolute;
+      /*border: 5px solid rgb(52, 153, 91);*/
+      top: 0;
+      right: 50%;
+      bottom: 0;
+      left: 0;
+    }
+
+    #leftTop {
+      background: url('../assets/pcb2.png') center / cover;
+      color: white;
       height: 50%;
       width: 100%;
       position: absolute;
       overflow: auto;
       float: left;
-       /* border: 5px solid rgb(199, 202, 11);      */
+      /* border: 5px solid rgb(199, 202, 11);      */
     }
-    #leftBottom{
+
+    #leftBottom {
+      color: white;
       position: absolute;
       /* border: 5px solid #E18728; */
       bottom: 0px;
@@ -124,7 +151,8 @@
       overflow: auto;
 
     }
-  /*    #submitBtn{
+
+    /*    #submitBtn{
   position: absolute;
   bottom: 45.6%;
   height: 40px;
@@ -148,43 +176,46 @@
   left: 41%;
   z-index: 10;
   }  */
-  #funcButn{
-/*margin-left: 15px;
+    #funcButn {
+      /*margin-left: 15px;
   margin-right: 15px;  
   */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height:inherit;
- 
-  }
-  .divider{
-    width:10px;
-    height:auto;
-    display:inline-block;
-}
-  .mdl-snackbar {
-  background-color: rgba(6, 7, 6, 0.95);
-  /* bottom: 41.6%; */
-  left: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: inherit;
 
-}
+    }
 
-.mdl-snackbar__icon {
-  color: #ffffff;
-  padding: 13px 0 0 24px;
-}
+    .divider {
+      width: 10px;
+      height: auto;
+      display: inline-block;
+    }
 
-.mdl-snackbar__action {
-  color: #ffffff;
-}
-  /*   #leftMid{
+    .mdl-snackbar {
+      background-color: rgba(6, 7, 6, 0.95);
+      /* bottom: 41.6%; */
+      left: 400px;
+
+    }
+
+    .mdl-snackbar__icon {
+      color: #ffffff;
+      padding: 13px 0 0 24px;
+    }
+
+    .mdl-snackbar__action {
+      color: #ffffff;
+    }
+
+    /*   #leftMid{
       margin-left:7px; 
       margin-top:71%;
       position: absolute;
     } */
-  
- /*    #hover {
+
+    /*    #hover {
   position: absolute;
   bottom: 140px;
   right: 5px;
@@ -192,434 +223,518 @@
   height: 80px;
   width: 80px;
   } */
- 
-.marketing-contents-list, .marketing-content-create{
-  padding: 10px;
-  border: 5px solid rgb(50, 204, 109); 
-  flex-direction: row;
-}
-.marketing-content-hidden{
-  padding: 5px;
-  margin-top: 27px;
-  display: none;
-  font-size: large;
-  /* flex-direction: row; */
-   /* border: 5px solid rgb(177, 16, 226);  */
-}
-.marketing-content-title{
-   box-sizing: content-box;
-   width: 250px;
-   font-weight: bolder;
-   flex-direction: row;
-   padding-right: 5px;
-   /* border: 5px solid rgb(204, 16, 57);   */
-}
-.marketing-content-buttons {
-  box-sizing: content-box;
-  margin-left: 15px;
-    
-    font-size: large;
-    /* border: 5px solid rgb(214, 123, 49);  */
-}
-.grid-item{
-  display: table-cell;
-}
-.inline-block-child {
-  display: inline-block;
-}
-/* .dropdown{
+
+    .marketing-contents-list,
+    .marketing-content-create {
+      padding: 10px;
+      border: 5px solid rgb(50, 204, 109);
+      flex-direction: row;
+    }
+
+    .marketing-content-hidden {
+      padding: 5px;
+      margin-top: 27px;
+      display: none;
+      font-size: large;
+      /* flex-direction: row; */
+      /* border: 5px solid rgb(177, 16, 226);  */
+    }
+
+    .marketing-content-title {
+      box-sizing: content-box;
+      width: 250px;
+      font-weight: bolder;
+      flex-direction: row;
+      padding-right: 5px;
+      /* border: 5px solid rgb(204, 16, 57);   */
+    }
+
+    .marketing-content-buttons {
+      box-sizing: content-box;
+      margin-left: 15px;
+
+      font-size: large;
+      /* border: 5px solid rgb(214, 123, 49);  */
+    }
+
+    .grid-item {
+      display: table-cell;
+    }
+
+    .inline-block-child {
+      display: inline-block;
+    }
+
+    /* .dropdown{
   border: 5px solid rgb(59, 37, 189);
 } */
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  outline: 0;
-  box-shadow: none;
-  border: 0 !important;
-  background: #a6b3c0;
-  background-image: none;
-  font-size: 16px;
-}
-/* Remove IE arrow */
-select {
-  padding: 0 .5em;
-  color: #fff;
-  cursor: pointer;
-  font-size: 16px;
-}
-/* Arrow */
-/* Transition */
-.select:hover::after {
-  color: #f39c12;
-}
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: 0;
+      box-shadow: none;
+      border: 0 !important;
+      background: #a6b3c0;
+      background-image: none;
+      font-size: 16px;
+    }
 
-.dropdown-submenu {
-    position: relative;
-}
+    /* Remove IE arrow */
+    select {
+      padding: 0 .5em;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-.dropdown-submenu>.dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -6px;
-    margin-left: -1px;
-    -webkit-border-radius: 0 6px 6px 6px;
-    -moz-border-radius: 0 6px 6px;
-    border-radius: 0 6px 6px 6px;
-    
-}
+    /* Arrow */
+    /* Transition */
+    .select:hover::after {
+      color: #f39c12;
+    }
 
-.dropdown-submenu:hover>.dropdown-menu {
-    display: block;
-}
+    .dropdown-submenu {
+      position: relative;
+    }
 
-.dropdown-submenu>a:after {
-    display: block;
-    content: " ";
-    float: right;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 5px 0 5px 5px;
-    border-left-color: rgb(255, 255, 255);
-    margin-top: 5px;
-    margin-right: -10px;
-}
+    .dropdown-submenu>.dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -6px;
+      margin-left: -1px;
+      -webkit-border-radius: 0 6px 6px 6px;
+      -moz-border-radius: 0 6px 6px;
+      border-radius: 0 6px 6px 6px;
 
-.dropdown-submenu:hover>a:after {
-    border-left-color: #fff;
-}
+    }
 
-.dropdown-submenu.pull-left {
-    float: none;
-}
-.dropdown-item{
-  pointer-events: auto;
-  font-size: 16px;
+    .dropdown-submenu:hover>.dropdown-menu {
+      display: block;
+    }
 
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
-    -webkit-border-radius: 6px 0 6px 6px;
-    -moz-border-radius: 6px 0 6px 6px;
-    border-radius: 6px 0 6px 6px;
-}
-p{
-  line-height:1.6;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding:1em;
-    font-size: large;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
+    .dropdown-submenu>a:after {
+      display: block;
+      content: " ";
+      float: right;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 5px 0 5px 5px;
+      border-left-color: rgb(255, 255, 255);
+      margin-top: 5px;
+      margin-right: -10px;
+    }
 
-th, td {
-  text-align: center;
-  padding: 8px;
-}
-ul{
-  list-style-type: square;
-}
+    .dropdown-submenu:hover>a:after {
+      border-left-color: #fff;
+    }
 
-#titleMsg{
-  text-align: center
-}
-tr:nth-child(even) {background-color: #ffffff;}
+    .dropdown-submenu.pull-left {
+      float: none;
+    }
 
-</style>
+    .dropdown-item {
+      pointer-events: auto;
+      font-size: 16px;
+
+    }
+
+    .dropdown-submenu.pull-left>.dropdown-menu {
+      left: -100%;
+      margin-left: 10px;
+      -webkit-border-radius: 6px 0 6px 6px;
+      -moz-border-radius: 6px 0 6px 6px;
+      border-radius: 6px 0 6px 6px;
+    }
+
+    .arrow_resizer {
+      background-color: #fff;
+    }
+
+    .submitBtn {
+      background-color: #fff;
+    }
+
+    .descTab {
+      color: #ffff;
+    }
+
+    .guideTab {
+      color: #ffff;
+    }
+
+    .checktab {
+      color: #ffff;
+    }
+
+    p {
+      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 1em;
+      font-size: large;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+    }
+
+    ul {
+      list-style-type: square;
+    }
+
+    #titleMsg {
+      text-align: center;
+      color: #799dff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+  </style>
 </head>
+
 <body>
-<div class="container" id="container">
-        <div id="description">
-            <div class="mdl-layout__drawer-button " onclick="history.back()"><i class="material-icons" style="color:red">arrow_back</i></div>
-            <h3 id="titleMsg" style="font-size: 26px">Defects you find will go here!</h3>
-            <div class="util" id="leftTop"> 
-            
-                       
-                    <div class="marketing-content-list">
-                        <div class="marketing-content-hidden mdl-shadow--4dp">
-                           <div class="marketing-content-title inline-block-child" id= "stend">MONDAY MENU</div>
-                          <div class="marketing-content-buttons">
-                          
-                            <div class="dropdown left" style="font-size: large" >
-                              <button class="btn btn-secondary dropdown-toggle grid-item " style="background-color: #ff0000;font-size: 20px;font-weight: bold;" id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
-                                Error Reason
-                              </button>
-                              <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                  <li class="dropdown-submenu">
-                                      <a  class="dropdown-item"  tabindex="-1" href="#">Evolvability Defects</a>
-                                      <ul class="dropdown-menu">
-                                          <li class="dropdown-submenu">
-                                              <a class="dropdown-item" href="#">Structure</a>
-                                              <ul class="dropdown-menu">
-                                                  <li class="dropdown-submenu"><a class="dropdown-item" href="#">Solution Approach</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-item"><a href="#" >Semantic duplication</a></li>
-                                                        <li class="dropdown-item"><a href="#" >Semantic dead code</a></li>
-                                                    </ul>
-                                                  </li>
-                                                    <li class="dropdown-submenu"><a class="dropdown-item" href="#">Organization</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-item"><a href="#" >Duplication</a></li>
-                                                        <li class="dropdown-item"><a href="#">Consistency</a></li>
-                                                        <li class="dropdown-item"><a href="#" >Dead code</a></li>
-                                                    </ul>
-                                                  </li>
-                                              </ul>
-                                            </li>
-                                        <li class="dropdown-submenu">
-                                          <a class="dropdown-item" href="#">Visual Representation</a>
-                                          <ul class="dropdown-menu">
-                                                <li class="dropdown-item"><a href="#">Bracket</a></li>
-                                                <li class="dropdown-item"><a href="#">Indentation</a></li>
-                                                <li class="dropdown-item"><a href="#">Blank line usage</a></li>
-                                                <li class="dropdown-item"><a href="#">Long line</a></li>
-                                          </ul>
-                                        </li>
-                                        <li class="dropdown-submenu">
-                                            <a class="dropdown-item" href="#">Documentation</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-submenu"><a class="dropdown-item" href="#">Supported by Language</a>
-                                                  <ul class="dropdown-menu">
-                                                      <li class="dropdown-item"><a href="#">Immutable</a></li>
-                                                      <li class="dropdown-item"><a href="#">Void parameter</a></li>
-                                                      <li class="dropdown-item"><a href="#">Element Type</a></li>
-                                                  </ul>
-                                                </li>
-                                                  <li class="dropdown-submenu"><a class="dropdown-item" href="#">Textual</a>
-                                                  <ul class="dropdown-menu">
-                                                      <li class="dropdown-item"><a href="#">Naming</a></li>
-                                                      <li class="dropdown-item"><a href="#">Comments</a></li>
-                                                      <li class="dropdown-item"><a href="#">Others</a></li>
-                                                  </ul>
-                                                </li>
-                                            </ul>
-                                          </li>
-                                        
-                                      </ul>
-                                    </li>
-                                    <li class="dropdown-divider"></li>
-                                  <li class="dropdown-divider"></li>
-                                  <li class="dropdown-submenu">
-                                    <a  class="dropdown-item" tabindex="-1" href="#">Functional Defects</a>
-                                    <ul class="dropdown-menu">
-                                      <li class="dropdown-submenu">
-                                        <a class="dropdown-item" href="#">Interface</a>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-item"><a href="#">Function Call</a></li>
-                                            <li class="dropdown-item"><a href="#">Parameter</a></li>
-                                            
-                                        </ul>
-                                      </li>
-                                      <li class="dropdown-submenu">
-                                          <a class="dropdown-item" href="#">Resource</a>
-                                          <ul class="dropdown-menu">
-                                              <li class="dropdown-item"><a href="#">Variable initialization</a></li>
-                                              <li class="dropdown-item"><a href="#">Memory management</a></li>
-                                              <li class="dropdown-item"><a href="#">Data and resource manipulation</a></li>
-                                          </ul>
-                                        </li>
-                                        <li class="dropdown-submenu">
-                                            <a class="dropdown-item" href="#">Logic</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-item"><a href="#">Compare</a></li>
-                                                <li class="dropdown-item"><a href="#">Compute</a></li>
-                                                <li class="dropdown-item"><a href="#">Algorithm/Performance</a></li>
-                                                
-                                                  
-                                            </ul>
-                                          </li>
-                                    </ul>
-                                  </li>
-                                </ul>
-                                <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon left grid-item">
-                                  <i class="material-icons">visibility</i>
-                                </button>
-    
-                                <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right grid-item">
-                                  <i class="material-icons">delete</i>
-                                </button>
-                              </div>
+  <div class="container" id="container">
+    <div id="description">
+      <div class="mdl-layout__drawer-button " onclick="history.back()"><i class="material-icons"
+          style="color:red">arrow_back</i></div>
+      <h3 id="titleMsg" style="font-size: 26px">Defects you find will go here!</h3>
+      <div class="util" id="leftTop">
 
-                            
-                            
-                            
 
-                          </div></div></div>
-                      
-              </div>
-              <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
-                <div class="mdl-tabs__tab-bar resizer " >
-                  <button  class=" mdl-tabs__tab material-icons funcButn" id="arrow_resizer">keyboard_arrow_up</button>
-                  <div class="divider"> </div>
-                  <a class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn " id="hover">
-                    <i class="material-icons">add</i>
-                  </a>
+        <div class="marketing-content-list">
+          <div class="marketing-content-hidden mdl-shadow--4dp">
+            <div class="marketing-content-title inline-block-child" id="stend">MONDAY MENU</div>
+            <div class="marketing-content-buttons">
 
-              </div>
-                  <div class="mdl-tabs__tab-bar" >
-                    <button style="font-size: 18px" class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="submitBtn">
-                      Submit Selection</Button >
-                      <div class="divider"> </div>
-                      <a href="#narrative-panel" class="mdl-tabs__tab is-active"style="font-size: 18px">Description</a>
-                      <a href="#description-panel" class="mdl-tabs__tab"style="font-size: 18px">Guide</a>
-                      <a href="#checkist-panel" class="mdl-tabs__tab"style="font-size: 18px">Checklist</a>
-                      <button style="font-size: 18px" class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="hintBtn">
-                        Hint</Button>
-                        <div class="divider"> </div>
-                      <button style="font-size: 18px" class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn" id="answersBtn">
-                        See Answers</Button>
-                  </div>
-                  <div class="mdl-tabs__panel is-active" id="narrative-panel">
-                    <ul id="narrativeText">
-                      <p>Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away by giving a quick glance to the <strong> GUIDE</strong>. Than you can review the code.</p>
-                      <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the right corner below.
-                          It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
-                       <p> Remember to make use of your <strong>checklist</strong> and <strong>guide</strong> . If you are not sure about the 
-                          type of defect that you have found or how to select it, you should refer
-                           back to the guide.
-                                                                                  -Bilsen Team </p>
-                                                                                    
-                    </ul>
-                    <ul id="narrativeText2">
-                        <p>This level will be your first real taste of the game. This level consists of a simple java class
-                          with code smells and even defects. Go and find them! As always select the error reasons carefully and reasonably in order to
-                          get more points. 
-                        </p>
-                                                                                      
-                      </ul>
-                      <ul id="narrativeText3">
-                          <p>Thing are getting more serious. In this level you are reviewing a very simple arithmetic operation implemented on 
-                            arrays however in order to get a high score you need to pay close attention to the operations performed and their 
-                            validity. 
-                          </p>
-                                                                                        
-                        </ul>
-                        <ul id="narrativeText4">
-                            <p> <strong>Congratulations for making it this far! </strong>
-                              You are now dealing with a program performing matrix operations. While working with matrixes things can always
-                              go wrong and defect can hide under your nose for a long time. <strong> So be careful. </strong>  
-                               </p>
-                                                                                          
-                          </ul>
-                          <ul id="narrativeText5">
-                             <p>Last level of the experiment is <strong>HERE</strong> and about prime numbers!! </p> 
-                              <p>
-                                  PS: <strong>If a line of code is missing you should select the nearest encapsulating object structure, eg the nearest curly brackets, for example if a return statement is 
-                                      missing inside an "if" statement you should select the whole if statement. The reason of the defect for such cases should be "Data and resource manipulation"</strong>  
-                              </p>
-                            
+              <div class="dropdown left" style="font-size: large">
+                <button class="btn btn-secondary dropdown-toggle grid-item "
+                  style="background-color: #ff0000;font-size: 20px;font-weight: bold;" id="asiButton" type="button"
+                  data-toggle="dropdown" aria-expanded="false">
+                  Error Reason
+                </button>
+                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                  <li class="dropdown-submenu">
+                    <a class="dropdown-item" tabindex="-1" href="#">Evolvability Defects</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="#">Structure</a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu"><a class="dropdown-item" href="#">Solution Approach</a>
+                            <ul class="dropdown-menu">
+                              <li class="dropdown-item"><a href="#">Semantic duplication</a></li>
+                              <li class="dropdown-item"><a href="#">Semantic dead code</a></li>
                             </ul>
-                  </div>
-                  <div class="mdl-tabs__panel" id="description-panel">
-                    <img src = "assets/defects picture.png"  />
-                    <ul style="font-size: medium">
-                      <li><u> <strong>False Positives :</strong>  Instances where you think you have found a defect when there isn't any are false positives. False positives are unwanted in the code review process. You should double check your defect list before submitting to avoid false positives. </u></li>
-                       <h2 align="center" title="These type of defects increase maintanance effort and decrease understandibility of code.">Evolvability Defects</h2> 
-                      <li><strong>Semantic duplication :</strong>  There are two sections in the code that are not the same but they perform the same task.</li>
+                          </li>
+                          <li class="dropdown-submenu"><a class="dropdown-item" href="#">Organization</a>
+                            <ul class="dropdown-menu">
+                              <li class="dropdown-item"><a href="#">Duplication</a></li>
+                              <li class="dropdown-item"><a href="#">Consistency</a></li>
+                              <li class="dropdown-item"><a href="#">Dead code</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="#">Visual Representation</a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="#">Bracket</a></li>
+                          <li class="dropdown-item"><a href="#">Indentation</a></li>
+                          <li class="dropdown-item"><a href="#">Blank line usage</a></li>
+                          <li class="dropdown-item"><a href="#">Long line</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="#">Documentation</a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu"><a class="dropdown-item" href="#">Supported by Language</a>
+                            <ul class="dropdown-menu">
+                              <li class="dropdown-item"><a href="#">Immutable</a></li>
+                              <li class="dropdown-item"><a href="#">Void parameter</a></li>
+                              <li class="dropdown-item"><a href="#">Element Type</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu"><a class="dropdown-item" href="#">Textual</a>
+                            <ul class="dropdown-menu">
+                              <li class="dropdown-item"><a href="#">Naming</a></li>
+                              <li class="dropdown-item"><a href="#">Comments</a></li>
+                              <li class="dropdown-item"><a href="#">Others</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
 
-                       <li><strong>Semantic dead code :</strong> A piece of code that the program executes which does not perform any meaningful task.</li>
-                        
-                       <li><strong>Duplication :</strong> The exact replica of this code exists in the project.</li>
-                        
-                       <li><strong>Consistency :</strong> When something is achieveable with multiple ways or styles, you should select one of them and use only that for consistency. For example if you are naming your variables as camel case, you should not change it arbitrarily.  </li>
-                        
-                       <li><strong>Dead Code :</strong> A piece of code in the program which is never executed.</li>
-                        
-                       <li><strong>Bracket :</strong> Unnecessary or inconsistent usage of brackets. </li>
-                        
-                       <li><strong>Indentation :</strong> Indentation of a certain code piece is not compliant with the rest of code.</li>
-                        
-                       <li><strong>Blank line usage :</strong> Empty lines usually indicate a separation of functionality thus they are commonly founded in places where single responsibility principle is violated. </li>
-                        
-                       <li><strong>Long line :</strong> Unnaturally long lines of code makes programs harder to read and debug, they might also make you miss code reuse opportunities.</li>
-                       
-                       <li><strong>Immutable :</strong> An immutable object is an object that can not be changed once its created.  </li>
-                       
-                       <li><strong>Void Parameter :</strong> Null never should be a parameter to an object since it does not contribute to anything. The right way is to make 2 versions of the method one with the object parameter and the second with no parameters. </li>
-                        
-                       <li><strong>Element Type :</strong> Suboptimal usage of element (variable) type assignments. </li>
-                        
-                       <li><strong>Naming :</strong> Inconsistent or irrelevant naming.</li>
-                        
-                       <li><strong>Comments:</strong> Comments that are completely unnecessary or wrong. </li>
-                      <h2 align="center" title="These type of defects prevent the code from working correctly." >Functional Defects</h2>
-                       <li><strong>Function Call :</strong> Improper or unnecessary function call, we should extend this to include middle man functions or multi responsibility methods.</li>
-                        
-                       <li><strong>Parameter :</strong> Too many or unnecessary parameters, wrong choice of parameters, perhaps even null parameters.</li>
-                        
-                       <li><strong>Variable initialization :</strong> Unnecessary dummy initializations, maybe some variable should have been declared as final or vica versa. </li>
-                        
-                       <li><strong>Memory management :</strong> Very common in some languages, not so common in others. </li>
-                        
-                       <li><strong>Data and Resource Manipulation :</strong> This is the most general type of functional errors. If you have found a functional error that you cant assign to any other type than consider this one. Perhaps the code is going to throw a NPE. These type of errors belongs in this category.</li>
-                        
-                       <li><strong>Compare :</strong> Any errors made while utilizing "&lt;",”>””=” type of operators are of this type.</li>
-                        
-                       <li><strong>Compute :</strong> These are the errors which are mathematics related rather than programming.</li>
-                        
-                       <li><strong>Algorithm/Performance :</strong> Obvious design choices that makes the program “significantly” inefficient memory or speed wise.
                     </ul>
-                  </div>
-                  <div class="mdl-tabs__panel"style="overflow-x:auto;" id="checkist-panel">
-                    
-                        <table>
-                            <tbody>
-                             <tr>
-                              <td>Use Intention-Revealing Names</td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Pick one word per concept</td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Use Solution/Problem Domain Names </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Classes should be small!</td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Functions should be small! </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Do one Thing </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Don't Repeat Yourself (Avoid Duplication) </li></td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Explain yourself in code </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Make sure the code formatting is applied </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Use Exceptions rather than Return codes </td>
-                              
-                             </tr>
-                             <tr>
-                              <td>Don't return Null </td>
-                             </tr>
-                            </tbody>
-                           </table>
-                    
-                  </div>
-                </div>
+                  </li>
+                  <li class="dropdown-divider"></li>
+                  <li class="dropdown-divider"></li>
+                  <li class="dropdown-submenu">
+                    <a class="dropdown-item" tabindex="-1" href="#">Functional Defects</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="#">Interface</a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="#">Function Call</a></li>
+                          <li class="dropdown-item"><a href="#">Parameter</a></li>
+
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="#">Resource</a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="#">Variable initialization</a></li>
+                          <li class="dropdown-item"><a href="#">Memory management</a></li>
+                          <li class="dropdown-item"><a href="#">Data and resource manipulation</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="#">Logic</a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="#">Compare</a></li>
+                          <li class="dropdown-item"><a href="#">Compute</a></li>
+                          <li class="dropdown-item"><a href="#">Algorithm/Performance</a></li>
+
+
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon left grid-item">
+                  <i class="material-icons">visibility</i>
+                </button>
+
+                <button class="mdl-button mdl-js-button mdl-button--primary mdl-button--icon right grid-item">
+                  <i class="material-icons">delete</i>
+                </button>
+              </div>
+
+
+
+
+
+            </div>
+          </div>
         </div>
-        <pre id="editor">
+
+      </div>
+      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
+        <div class="mdl-tabs__tab-bar resizer ">
+          <button class=" mdl-tabs__tab material-icons funcButn" id="arrow_resizer">keyboard_arrow_up</button>
+          <div class="divider"> </div>
+          <a class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn "
+            id="hover">
+            <i class="material-icons">add</i>
+          </a>
+
+        </div>
+        <div class="mdl-tabs__tab-bar">
+          <button style="font-size: 18px"
+            class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn"
+            id="submitBtn">
+            Submit Selection</button>
+          <div class="divider"> </div>
+          <a href="#narrative-panel" class="mdl-tabs__tab is-active descTab" style="font-size: 18px">Description</a>
+          <a href="#description-panel" class="mdl-tabs__tab guideTab" style="font-size: 18px">Guide</a>
+          <a href="#checkist-panel" class="mdl-tabs__tab checkTab" style="font-size: 18px">Checklist</a>
+          <button style="font-size: 18px"
+            class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn"
+            id="hintBtn">
+            Hint</Button>
+          <div class="divider"> </div>
+          <button style="font-size: 18px"
+            class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn"
+            id="answersBtn">
+            See Answers</button>
+        </div>
+        <div class="mdl-tabs__panel is-active" id="narrative-panel">
+          <ul id="narrativeText">
+            <p>Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can start right away
+              by giving a quick glance to the <strong> GUIDE</strong>. Than you can review the code.</p>
+            <p><strong> When you have found a defect, select the line(s) it is in. Than press the add button in the
+                right corner below.
+                It will be added to your defect list, from there you can select the reason for the defect. </strong></p>
+            <p> Remember to make use of your <strong>checklist</strong> and <strong>guide</strong> . If you are not sure
+              about the
+              type of defect that you have found or how to select it, you should refer
+              back to the guide.
+              -Bilsen Team </p>
+
+          </ul>
+          <ul id="narrativeText2">
+            <p>This level will be your first real taste of the game. This level consists of a simple java class
+              with code smells and even defects. Go and find them! As always select the error reasons carefully and
+              reasonably in order to
+              get more points.
+            </p>
+
+          </ul>
+          <ul id="narrativeText3">
+            <p>Thing are getting more serious. In this level you are reviewing a very simple arithmetic operation
+              implemented on
+              arrays however in order to get a high score you need to pay close attention to the operations performed
+              and their
+              validity.
+            </p>
+
+          </ul>
+          <ul id="narrativeText4">
+            <p> <strong>Congratulations for making it this far! </strong>
+              You are now dealing with a program performing matrix operations. While working with matrixes things can
+              always
+              go wrong and defect can hide under your nose for a long time. <strong> So be careful. </strong>
+            </p>
+
+          </ul>
+          <ul id="narrativeText5">
+            <p>Last level of the experiment is <strong>HERE</strong> and about prime numbers!! </p>
+            <p>
+              PS: <strong>If a line of code is missing you should select the nearest encapsulating object structure, eg
+                the nearest curly brackets, for example if a return statement is
+                missing inside an "if" statement you should select the whole if statement. The reason of the defect for
+                such cases should be "Data and resource manipulation"</strong>
+            </p>
+
+          </ul>
+        </div>
+        <div class="mdl-tabs__panel" id="description-panel">
+          <img src="assets/defects picture.png" />
+          <ul style="font-size: medium">
+            <li><u> <strong>False Positives :</strong> Instances where you think you have found a defect when there
+                isn't any are false positives. False positives are unwanted in the code review process. You should
+                double check your defect list before submitting to avoid false positives. </u></li>
+            <h2 align="center"
+              title="These type of defects increase maintanance effort and decrease understandibility of code.">
+              Evolvability Defects</h2>
+            <li><strong>Semantic duplication :</strong> There are two sections in the code that are not the same but
+              they perform the same task.</li>
+
+            <li><strong>Semantic dead code :</strong> A piece of code that the program executes which does not perform
+              any meaningful task.</li>
+
+            <li><strong>Duplication :</strong> The exact replica of this code exists in the project.</li>
+
+            <li><strong>Consistency :</strong> When something is achieveable with multiple ways or styles, you should
+              select one of them and use only that for consistency. For example if you are naming your variables as
+              camel case, you should not change it arbitrarily. </li>
+
+            <li><strong>Dead Code :</strong> A piece of code in the program which is never executed.</li>
+
+            <li><strong>Bracket :</strong> Unnecessary or inconsistent usage of brackets. </li>
+
+            <li><strong>Indentation :</strong> Indentation of a certain code piece is not compliant with the rest of
+              code.</li>
+
+            <li><strong>Blank line usage :</strong> Empty lines usually indicate a separation of functionality thus they
+              are commonly founded in places where single responsibility principle is violated. </li>
+
+            <li><strong>Long line :</strong> Unnaturally long lines of code makes programs harder to read and debug,
+              they might also make you miss code reuse opportunities.</li>
+
+            <li><strong>Immutable :</strong> An immutable object is an object that can not be changed once its created.
+            </li>
+
+            <li><strong>Void Parameter :</strong> Null never should be a parameter to an object since it does not
+              contribute to anything. The right way is to make 2 versions of the method one with the object parameter
+              and the second with no parameters. </li>
+
+            <li><strong>Element Type :</strong> Suboptimal usage of element (variable) type assignments. </li>
+
+            <li><strong>Naming :</strong> Inconsistent or irrelevant naming.</li>
+
+            <li><strong>Comments:</strong> Comments that are completely unnecessary or wrong. </li>
+            <h2 align="center" title="These type of defects prevent the code from working correctly.">Functional Defects
+            </h2>
+            <li><strong>Function Call :</strong> Improper or unnecessary function call, we should extend this to include
+              middle man functions or multi responsibility methods.</li>
+
+            <li><strong>Parameter :</strong> Too many or unnecessary parameters, wrong choice of parameters, perhaps
+              even null parameters.</li>
+
+            <li><strong>Variable initialization :</strong> Unnecessary dummy initializations, maybe some variable should
+              have been declared as final or vica versa. </li>
+
+            <li><strong>Memory management :</strong> Very common in some languages, not so common in others. </li>
+
+            <li><strong>Data and Resource Manipulation :</strong> This is the most general type of functional errors. If
+              you have found a functional error that you cant assign to any other type than consider this one. Perhaps
+              the code is going to throw a NPE. These type of errors belongs in this category.</li>
+
+            <li><strong>Compare :</strong> Any errors made while utilizing "&lt;",”>””=” type of operators are of this
+              type.</li>
+
+            <li><strong>Compute :</strong> These are the errors which are mathematics related rather than programming.
+            </li>
+
+            <li><strong>Algorithm/Performance :</strong> Obvious design choices that makes the program “significantly”
+              inefficient memory or speed wise.
+          </ul>
+        </div>
+        <div class="mdl-tabs__panel" style="overflow-x:auto;" id="checkist-panel">
+
+          <table>
+            <tbody>
+              <tr>
+                <td>Use Intention-Revealing Names</td>
+
+              </tr>
+              <tr>
+                <td>Pick one word per concept</td>
+
+              </tr>
+              <tr>
+                <td>Use Solution/Problem Domain Names </td>
+
+              </tr>
+              <tr>
+                <td>Classes should be small!</td>
+
+              </tr>
+              <tr>
+                <td>Functions should be small! </td>
+
+              </tr>
+              <tr>
+                <td>Do one Thing </td>
+
+              </tr>
+              <tr>
+                <td>Don't Repeat Yourself (Avoid Duplication) </li>
+                </td>
+
+              </tr>
+              <tr>
+                <td>Explain yourself in code </td>
+
+              </tr>
+              <tr>
+                <td>Make sure the code formatting is applied </td>
+
+              </tr>
+              <tr>
+                <td>Use Exceptions rather than Return codes </td>
+
+              </tr>
+              <tr>
+                <td>Don't return Null </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <pre id="editor">
   public class Account {
     double principal,rate; int daysActive,accountType;
     public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
@@ -642,71 +757,72 @@ tr:nth-child(even) {background-color: #ffffff;}
       // select here
   return totalFee;    
   }</pre>
-            <div id="editor2">    // Class Declaration
-    public class Dog 
-    { 
-      // Instance Variables 
-      String name; 
-      String breed; 
-      int age; 
-      String color; 
-    
-      // Constructor Declaration of Class 
-      public Dog(String name, String breed, 
-              int age, String color) 
-      { 
-        this.name = name; 
-        this.breed = breed; 
-        this.age = age; 
-        this.color = color; 
+    <div id="editor2"> // Class Declaration
+      public class Dog
+      {
+      // Instance Variables
+      String name;
+      String breed;
+      int age;
+      String color;
+
+      // Constructor Declaration of Class
+      public Dog(String name, String breed,
+      int age, String color)
+      {
+      this.name = name;
+      this.breed = breed;
+      this.age = age;
+      this.color = color;
       }
 
-      public String getName() 
-      { 
-        return name; 
+      public String getName()
+      {
+      return name;
       }
 
-      public String getBreed() 
-      { 
-        return breed; 
+      public String getBreed()
+      {
+      return breed;
       }
 
-      public String getName() 
-      { 
-        return name; 
+      public String getName()
+      {
+      return name;
       }
 
-      public int getAge() 
-      { 
-        return age; 
+      public int getAge()
+      {
+      return age;
       }
 
-          public String getColor() 
-          { 
-            return color; 
-          }
+      public String getColor()
+      {
+      return color;
+      }
 
-      @Override     
+      @Override
       public boolean equals(Dog dogo)
       {
-        return this.toString == dogo.toString; 
-      }
-    
-      @Override
-      public String toString() 
-      { 
-        return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+ ","+ this.getColor()); 
+      return this.toString == dogo.toString;
       }
 
-      public static void main(String[] args) 
-      { 
-        Dog tuffy = new Dog("tuffy","papillon", 5, "white"); 
-        System.out.println(tuffy.toString()); 
-      }   
-    }
-    
-            </div>
-            <pre id="editor3">
+      @Override
+      public String toString()
+      {
+      return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," + this.getAge()+
+      ","+ this.getColor());
+      }
+
+      public static void main(String[] args)
+      {
+      Dog tuffy = new Dog("tuffy","papillon", 5, "white");
+      System.out.println(tuffy.toString());
+      }
+      }
+
+    </div>
+    <pre id="editor3">
 public class ExerciseSumArray {
     /*
     Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
@@ -744,159 +860,161 @@ public class ExerciseSumArray {
     }
 }
         </pre>
-            <div id="editor4">
-    // Java program to print the elements of 
-    // a 2 D array or matrix 
-    import java.io.*; 
-    class Matrixes { 
-      
-      public static void printMatrix(int mat[][]) 
-      { 
-      // Loop through all rows 
-      for (int i = 0; i &lt; mat.length; i++) 
-        // Loop through all elements of current row 
-        for (int j = 0; j &lt; mat[i].length; j++) 
-            System.out.print(mat[j][i] + " "); 
-      } 
-      public static int calcMatrixTotal(int mat[][]) 
-      { 
-      int total = 0;
-      // Loop through all rows 
-      for (int i = 0; i &lt; mat.length; i++) 
-        // Loop through all elements of current row 
-        for (int j = 0; j&lt;mat[i].length; j++) 
-            total = total + mat[j][i];
-      return total;
-      } 
-      public static void main(String args[]) throws IOException 
-      { 
-        int mat[][] = { { 1, 2, 3, 4 }, 
-                        { 5, 6, 7, 8 }, 
-                        { 9, 10, 11, 12 } }; 
-        printMatrix(mat);
-        int rows = primes[0].length; 
-        int cols = primes[0].length;
-        System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
-        System.out.print("The matrix total is :"+calcMatrixTotal(mat));
-      } 
-    } 
+    <div id="editor4">
+      // Java program to print the elements of
+      // a 2 D array or matrix
+      import java.io.*;
+      class Matrixes {
 
-            </div>
-            <div id="editor5">
-public class Primes{
-  public static void main(String[] args) throws Exception {
-      
+      public static void printMatrix(int mat[][])
+      {
+      // Loop through all rows
+      for (int i = 0; i &lt; mat.length; i++)
+      // Loop through all elements of current row
+      for (int j = 0; j &lt; mat[i].length; j++)
+      System.out.print(mat[j][i] + " ");
+      }
+      public static int calcMatrixTotal(int mat[][])
+      {
+      int total = 0;
+      // Loop through all rows
+      for (int i = 0; i &lt; mat.length; i++)
+      // Loop through all elements of current row
+      for (int j = 0; j&lt;mat[i].length; j++)
+      total = total + mat[j][i];
+      return total;
+      }
+      public static void main(String args[]) throws IOException
+      {
+      int mat[][] = { { 1, 2, 3, 4 },
+      { 5, 6, 7, 8 },
+      { 9, 10, 11, 12 } };
+      printMatrix(mat);
+      int rows = primes[0].length;
+      int cols = primes[0].length;
+      System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
+      System.out.print("The matrix total is :"+calcMatrixTotal(mat));
+      }
+      }
+
+    </div>
+    <div id="editor5">
+      public class Primes{
+      public static void main(String[] args) throws Exception {
+
       final int twoToThePowerThirty = 1073741824;
       List listOfPrimes = new ArrayList();
       String title = "Printing all integer prime numbers";
       title.toUpperCase();
       System.out.println(title);
       for (int number = largestPrimeSoFar; number&lt;=Integer.MAX_VALUE; number++){
-          if (isPrime(number)) {
-              System.out.println(number);
-              listOfPrimes.add(number);
-          }
+      if (isPrime(number)) {
+      System.out.println(number);
+      listOfPrimes.add(number);
+      }
       }
       int isLarger = (listOfPrimes.get(listOfPrimes.size()-1)>twoToThePowerThirty) ? 1 : 0;
       switch (isLarger) {
-        case false:
-          System.out.print("Largest prime integer is not bigger than 2^30");
-        case true:
-          System.out.print("Largest prime integer is bigger than 2^30");
-          break;
+      case false:
+      System.out.print("Largest prime integer is not bigger than 2^30");
+      case true:
+      System.out.print("Largest prime integer is bigger than 2^30");
+      break;
       }
-  }
-  /*
-    * Prime number is not divisible by any number other than 1 and itself
-    * @return true if number is prime
-    */
-  public static boolean isPrime(int number) {
+      }
+      /*
+      * Prime number is not divisible by any number other than 1 and itself
+      * @return true if number is prime
+      */
+      public static boolean isPrime(int number) {
       for (int i = 2; i &lt; number; i++) {
-          if (number % i == 0) {
-              return false; // number is divisible so its not prime
-          }
+      if (number % i == 0) {
+      return false; // number is divisible so its not prime
+      }
       }
       return true; // number is prime now
-  }
-}
-            </div>
-            <div id="editor6">public class Account {
-              double principal6,rate; int daysActive,accountType;
-              public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-           } 
-           public static double calculateFee(Account[] accounts){
-               double totalFee = 0.0;
-               Account account;
-               for (int i=0;i == accounts.length;i++) {
-                   account=accounts[i];
-                   if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
-                       totalFee += .0125 * (  1.25% broker fee
-                   account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-              } 
-              return totalFee;    
-          }
-            </div>
-           
-            <!-- Accent-colored raised button with ripple -->
-            
-            <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-              <div class="mdl-snackbar__icon">
-                  <i class="material-icons">extension</i>
-              </div>
-              <div class="mdl-snackbar__text"></div>
-              <button class="mdl-snackbar__action" type="button"></button>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Your results!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>      
-</div>
-<script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-<!-- <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script> -->
-</script>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+      }
+      }
+    </div>
+    <div id="editor6">public class Account {
+      double principal6,rate; int daysActive,accountType;
+      public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
+      }
+      public static double calculateFee(Account[] accounts){
+      double totalFee = 0.0;
+      Account account;
+      for (int i=0;i == accounts.length;i++) {
+      account=accounts[i];
+      if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS )
+      totalFee += .0125 * ( 1.25% broker fee
+      account.principal * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
+      }
+      return totalFee;
+      }
+    </div>
 
-<!-- TODO: Add SDKs for Firebase product that you want to use
+    <!-- Accent-colored raised button with ripple -->
+
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__icon">
+        <i class="material-icons">extension</i>
+      </div>
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Your results!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script> -->
+  </script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase product that you want to use
     https://firebase.google.com/docs/web/setup#config-web-app -->
-<script src="/__/firebase/6.2.3/firebase-app.js"></script>
-<script src="/__/firebase/6.2.3/firebase-auth.js"></script>
-<script src="/__/firebase/6.2.4/firebase-storage.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+  <script src="/__/firebase/6.2.3/firebase-app.js"></script>
+  <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
+  <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
 
-<script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-// Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
-    authDomain: "crsg-protoype.firebaseapp.com",
-    databaseURL: "https://crsg-protoype.firebaseio.com",
-    projectId: "crsg-protoype",
-    storageBucket: "crsg-protoype.appspot.com",
-    messagingSenderId: "438209695879",
-    appId: "1:438209695879:web:41b459953d567130"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-</script>
-<script src="timeme.min.js"></script>
-<script src = "https://code.jquery.com/jquery-3.1.0.js"></script>
-<script src= "editor.js"> </script>
+  <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
+      authDomain: "crsg-protoype.firebaseapp.com",
+      databaseURL: "https://crsg-protoype.firebaseio.com",
+      projectId: "crsg-protoype",
+      storageBucket: "crsg-protoype.appspot.com",
+      messagingSenderId: "438209695879",
+      appId: "1:438209695879:web:41b459953d567130"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="timeme.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="editor.js"> </script>
 </body>
+
 </html>
