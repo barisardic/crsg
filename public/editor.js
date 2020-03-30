@@ -9,7 +9,7 @@ if(levelChosen==1){
   document.getElementById("narrativeText").style.display = "block";
   var editor = ace.edit("editor");
   var code = document.querySelector("editor");
-  editor.setTheme("ace/theme/dracula2");
+  editor.setTheme("ace/theme/eclipse");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
 }
@@ -18,7 +18,7 @@ else if(levelChosen ==2){
   document.getElementById("narrativeText2").style.display = "block";
   var editor = ace.edit("editor2");
   var code = document.querySelector("editor2");
-  editor.setTheme("ace/theme/dracula2");
+  editor.setTheme("ace/eclipse/cobalt");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);
 }
@@ -27,7 +27,7 @@ else if(levelChosen==3){
   document.getElementById("narrativeText3").style.display = "block";
   var editor = ace.edit("editor3");
   var code = document.querySelector("editor3");
-  editor.setTheme("ace/theme/dracula2");
+  editor.setTheme("ace/theme/eclipse");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -36,7 +36,7 @@ else if(levelChosen==4){
   document.getElementById("narrativeText4").style.display = "block";
   var editor = ace.edit("editor4");
   var code = document.querySelector("editor4");
-  editor.setTheme("ace/theme/dracula2");
+  editor.setTheme("ace/theme/eclipse");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -45,7 +45,7 @@ else if(levelChosen==5){
   document.getElementById("narrativeText5").style.display = "block";
   var editor = ace.edit("editor5");
   var code = document.querySelector("editor5");
-  editor.setTheme("ace/theme/dracula2");
+  editor.setTheme("ace/theme/eclipse");
   editor.session.setMode("ace/mode/java");
   editor.setReadOnly(true);  
 }
@@ -54,8 +54,8 @@ else if(levelChosen==6){
   document.getElementById("narrativeText5").style.display = "block";
   var editor = ace.edit("editor6");
   var code = document.querySelector("editor6");
-  editor.setTheme("ace/theme/dracula2");
-  editor.session.setMode("ace/mode/java");
+  editor.setTheme("ace/theme/cobalt");
+  editor.session.setMode("ace/mode/java");ğ
   editor.setReadOnly(true);  
 }
 editor.setFontSize(18);
@@ -64,7 +64,27 @@ TimeMe.initialize({
 	currentPageName: "play", // current page
 	idleTimeoutInSeconds: 600 // seconds
     });
+// Executes the first 5 times a user leaves the page
+TimeMe.callWhenUserLeaves(function(){
+  console.log("The user is not currently viewing the page!");
+  console.time("inactive");
+  start = new Date().getTime();
+}, 5);
 
+// Executes every time a user returns
+TimeMe.callWhenUserReturns(function(){
+  console.log("The user has come back!");
+  console.timeEnd("inactive");
+  elapsed = (new Date().getTime() - start)/1000;
+  //alert("You have been away for :"+ elapsed+" seconds!");
+  var userAwayData = {
+    message: "You have been away for : "+ elapsed+" seconds!",
+    timeout: 10000,
+    actionHandler: handler,
+    actionText: ' '
+  };
+  snackbarContainer.MaterialSnackbar.showSnackbar(userAwayData);
+},5);
 // custom error object for user to select/save the errors in the code.
 class Err {
   constructor(start, end) {
@@ -100,12 +120,12 @@ if(levelChosen == 1){
   answer1.reason.push("Comments");
   answers[0] =answer1;
 
-  var answer2 = new Err(8,11);
+  var answer2 = new Err(8,10);
   answer2.reason.push("Duplication");
   answer2.reason.push("Consistency");
   answers[1] =answer2;
 
-  var answer3 = new Err(18,19);
+  var answer3 = new Err(17,18);
   answer3.reason.push("Parameter");
   answers[2] =answer3;
 
@@ -113,35 +133,36 @@ if(levelChosen == 1){
 }
 else if(levelChosen == 2){
   var answers = [];
-  var answer1 = new Err(29,32);
+  var answer1 = new Err(25,27);
   answer1.reason.push("Duplication");
   answers[0] =answer1;
 
-  var answer2 = new Err(39,42);
+  var answer2 = new Err(3,34);
   answer2.reason.push("Indentation");
   answers[1] =answer2;
 
-  var answer3 = new Err(53,53);
+  var answer3 = new Err(42,42);
   answer3.reason.push("Long line");
   answers[2] =answer3;
 
-  var answer4 = new Err(47,47);
+  var answer4 = new Err(38,38);
   answer4.reason.push("Compare");
+  answer4.reason.push("Data and resource manipulation");
   answers[3] =answer4;
 
   var hints = ["There are "+ answers.length+" defects in the code","Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
 }
 else if(levelChosen == 3){
   var answers = [];
-  var answer1 = new Err(16,16);
+  var answer1 = new Err(20,20);
   answer1.reason.push("Data and resource manipulation");
   answers[0] =answer1;
 
-  var answer2 = new Err(17,17);
+  var answer2 = new Err(21,21);
   answer2.reason.push("Data and resource manipulation");
   answers[1] =answer2;
 
-  var answer3 = new Err(29,29);
+  var answer3 = new Err(33,33);
   answer3.reason.push("Compare");
   answers[2] =answer3;
   var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];  
@@ -150,33 +171,38 @@ else if(levelChosen == 4){
   var answers = [];
   var answer1 = new Err(12,12);
   answer1.reason.push("Data and resource manipulation");
+  answer1.reason.push("Algorithm/Performance");
   answers[0] =answer1;
 
   var answer2 = new Err(21,21);
   answer2.reason.push("Algorithm/Performance");
+  answer2.reason.push("Data and resource manipulation");
   answers[1] =answer2;
 
-  var answer3 = new Err(30,30);
+  var answer3 = new Err(31,31);
   answer3.reason.push("Data and resource manipulation");
+  answer3.reason.push("Compute");
+  answer3.reason.push("Variable initialisation");
   answers[2] =answer3;
 
   var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];  
 }
 else if(levelChosen == 5){
   var answers = [];
-  var answer1 = new Err(5,5);
+  var answer1 = new Err(7,7);
   answer1.reason.push("Element Type");
+  answer1.reason.push("Variable initialisation");
   answers[0] =answer1;
 
-  var answer2 = new Err(7,7);
+  var answer2 = new Err(9,9);
   answer2.reason.push("Immutable");
   answers[1] =answer2;
 
-  var answer3 = new Err(9,9);
+  var answer3 = new Err(11,11);
   answer3.reason.push("Compare");
   answers[2] = answer3;
 
-  var answer4 = new Err(16,22);
+  var answer4 = new Err(18,24);
   answer4.reason.push("Data and resource manipulation");
   answers[3] =answer4;
 
