@@ -20,7 +20,7 @@ $(window).on('resize', function (){
 });
 
 $('.carousel').carousel({
-  interval: 6000,
+  interval: false,
   pause: "false"
 });
 var editor = ace.edit("editor");
