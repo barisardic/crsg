@@ -100,7 +100,7 @@
             position: relative;
             color: white;
             margin: auto;
-            top: 100px;
+            top: 80px;
             /* border:1px solid black; */
         }
         
@@ -125,18 +125,32 @@
             transform: scale(.5);
             padding: 0.3%;
             left: 50%;
-            transform: translate(-50%, 300%);;
+            transform: translate(-50%, 250%);;
             background-color: transparent; 
             border: transparent !important;
-            color: #fff;         
+            color: #fff;
+                    
         }
-
+        .backBtn{
+            position: relative;
+            transition: box-shadow ease .6s, background ease .6s;
+            transform: scale(.5);
+            left: 50%;
+            transform: translate(-50%,100%);
+            background-color: transparent; 
+            border: transparent !important;
+            color: #fff;          
+        }
         .hover {
             transition: box-shadow ease cubic-bezier(1, 0, 0, 1);
             transition: background-color ease cubic-bezier(1, 0, 0, 1);
         }
 
         .editorBtn:hover{
+            /* box-shadow: 0 0 3px 3px #64144c; */
+            background-color:  #64144c; 
+        }
+        .backBtn:hover{
             /* box-shadow: 0 0 3px 3px #64144c; */
             background-color:  #64144c; 
         }
@@ -174,7 +188,13 @@
          .ace_active-line_tuto {
            background: #07f843
         }
+        .header{
+            background-color: #282a36;
+        }
     </style>
+
+    
+    
     <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -183,9 +203,10 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <!-- Wrapper for slides -->
-        <div class="carousel-inner">
+        <div class="carousel-inner ">
             <!-- slide 1 -->
                 <div class="carousel-item">
+                    <button id="backBtn" class="backBtn"> <h3>Back to Game!</h3></button>
                     <img src='../assets/evolvability.png'>
                     <h2 class="topText">EVOLVABILITY > <span class="VR"> VISUAL REPRESENTATION</span> > INDENTATION</h2>
                     <button id="editorBtn" class="editorBtn"> <h3>SHOW THE DEFECT!</h3></button>

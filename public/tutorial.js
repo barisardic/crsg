@@ -26,6 +26,12 @@ $('.carousel').carousel({
   interval: false,
   pause: "false"
 });
+// back button
+document.getElementById("backBtn").addEventListener("click",goBack,false);
+function goBack(){
+  window.location.href= "/main.html";
+}
+
 ///// tutorial 1
 var editor = ace.edit("editor");
 editor.session.setMode("ace/mode/java");
@@ -66,4 +72,3 @@ function editorBtnPressed2(){
 var rng = new Range(3,0,4,0);
 editor2.session.addMarker(rng,"ace_step","screen",false);
 }
-
