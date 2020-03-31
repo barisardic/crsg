@@ -1,3 +1,6 @@
+//import range
+var Range = ace.require("ace/range").Range;
+
 var $item = $('.carousel-item'); 
 var $wHeight = $(window).height();
 $item.eq(0).addClass('active');
@@ -27,3 +30,6 @@ var editor = ace.edit("editor");
 editor.session.setMode("ace/mode/java");
 editor.setReadOnly(true);
 editor.setTheme("ace/theme/dracula2");
+//line marker functionality
+var rng = new Range(3,0,4,0);
+editor.session.addMarker(rng,"ace_active-line","screen",false);
