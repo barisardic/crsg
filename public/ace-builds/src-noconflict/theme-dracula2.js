@@ -26,7 +26,7 @@ box-shadow: 0 0 3px 0px #282a36;\
 border-radius: 2px\
 }\
 .ace-dracula .ace_marker-layer .ace_step {\
-background: rgb(198, 219, 174)\
+background: rgb(198, 219, 0)\
 }\
 .ace-dracula .ace_marker-layer .ace_bracket {\
 margin: -1px 0 0 -1px;\
@@ -34,6 +34,9 @@ border: 1px solid #a29709\
 }\
 .ace-dracula .ace_marker-layer .ace_active-line {\
 background: #64144c\
+}\
+.ace-dracula .ace_marker-layer .ace_active-line_tuto {\
+background-color: rgb(198, 219, 174)\
 }\
 .ace-dracula .ace_gutter-active-line {\
 background-color: #64144c\

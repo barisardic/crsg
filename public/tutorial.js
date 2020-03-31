@@ -32,4 +32,30 @@ editor.setReadOnly(true);
 editor.setTheme("ace/theme/dracula2");
 //line marker functionality
 var rng = new Range(3,0,4,0);
-editor.session.addMarker(rng,"ace_active-line","screen",false);
+editor.session.addMarker(rng,"ace_step","screen",false);
+////////
+var editor2 = ace.edit("editor2");
+editor2.session.setMode("ace/mode/java");
+editor2.setReadOnly(true);
+editor2.setTheme("ace/theme/dracula2");
+//line marker functionality
+var rng = new Range(3,0,4,0);
+editor2.session.addMarker(rng,"ace_step","screen",false);
+//////
+var editor3 = ace.edit("editor3");
+editor3.session.setMode("ace/mode/java");
+editor3.setReadOnly(true);
+editor3.setTheme("ace/theme/dracula2");
+//line marker functionality
+var rng = new Range(3,0,4,0);
+editor3.session.addMarker(rng,"ace_step","screen",false);
+
+//button listener
+document.getElementById("editorBtn").addEventListener("click",editorBtnPressed,false);
+function editorBtnPressed(){
+  alert("im here!");
+}
+document.getElementById("editorBtn2").addEventListener("click",editorBtnPressed2,false);
+function editorBtnPressed2(){
+  alert("im here too!");
+}

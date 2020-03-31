@@ -39,7 +39,28 @@
             font-size: 15;
             margin: auto;
         }
-
+        #editor2 {
+            width: 800px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-size: 15;
+            margin: auto;
+        }
+        #editor3 {
+            width: 800px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-size: 15;
+            margin: auto;
+        }
         .SA{
             color: #ff8686;
         }
@@ -80,8 +101,8 @@
             top: 100px;
             /* border:1px solid black; */
         }
-
-        .editorDiv  {
+        
+        .editorDiv {
             width: 100%;
             height: 400px;
             /* background-image: url('../assets/pcb2.png'); */
@@ -94,7 +115,16 @@
             /* border:10px solid red; */
             margin: auto;
         }
-
+        .editorBtn{
+            position: relative;
+            height: 80px;
+            width: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 2%;
+            padding-bottom: 2%;
+            top: 2%;
+        }
         .typeImg {
             position: relative;
             height: 100px;
@@ -121,6 +151,9 @@
            padding-top: 10px;
            padding-bottom: 10px;
        }
+         .ace_active-line_tuto {
+           background: #07f843
+        }
     </style>
     <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
         <!-- Indicators -->
@@ -132,19 +165,20 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <!-- slide 1 -->
-                <div class="carousel-item" border:1px solid black;>
+                <div class="carousel-item">
                     <img src='../assets/evolvability.png'>
                     <h2 class="topText">EVOLVABILITY > <span class="VR"> VISUAL REPRESENTATION</span> > INDENTATION</h2>
                     <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                     <div class="editorDiv">
-                        <div id="editor" class="editor1">public static int badIndent(int n1, int n2){
+                        <div id="editor" class="editor">public static int badIndent(int n1, int n2){
     int min;
-    if(n1 < n2)
+    if(n1 &lt; n2)
                                 return n2;
     return n1;
 }
                         </div>
+                    <button id="editorBtn" class="editorBtn">Hello</button>
                     </div>
                     
                     <div class="tutorial-info carousel-caption">
@@ -155,49 +189,53 @@
                 </div>
             
             <!-- slide 2 -->
-            <div class="carousel-item">
-                <img src='../assets/evolvability.png'>
-                    <h2 class="topText">EVOLVABILITY > VISUAL REPRESENTATION > INDENTATION</h2>
+                <div class="carousel-item">
+                    <img src='../assets/evolvability.png'>
+                        <h2 class="topText">EVOLVABILITY > VISUAL REPRESENTATION > INDENTATION</h2>
+                        <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                        <div class="editorDiv">
+                            <div id="editor2" class="editor">public static int badIndent(int n1, int n2){
+            int min;
+            if(n1 &lt; n2)
+                                        return n2;
+            return n1;
+        }
+                            </div>
+                        </div>
+                        <button id="editorBtn2" class="editorBtn">Hello</button>
+                        <div class="tutorial-info carousel-caption">
+                            <div><h1>VISUAL REPRESENTATION</h1></div>
+                            <div class="typeImg"><img  src='../assets/evolvability.png'></div>
+                            <div style="padding-bottom: 20px;"><h5>Defects that make the code harder to read for humans,such as very long lines, bad indentation, redundant brackets or untimely blank lines.</h5></div>
+                        </div>
+                </div>
+            <!-- slide 3 -->
+                <div class="carousel-item">
+                    <img src='../assets/evolvability.png'>
+                    <h2 class="topText">EVOLVABILITY > <span class="VR"> VISUAL REPRESENTATION</span> > INDENTATION</h2>
                     <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                     <div class="editorDiv">
-                        <div id="editor" class="editor2">public static int badIndent(int n1, int n2){
-        int min;
-        if(n1 < n2)
-                                    return n2;
-        return n1;
+                        <div id="editor3" class="editor">public static int badIndent(int n1, int n2){
+    int min;
+    if(n1 &lt; n2)
+                                return n2;
+    return n1;
     }
                         </div>
                     </div>
                     
                     <div class="tutorial-info carousel-caption">
-                        <div><h1>VISUAL REPRESENTATION</h1></div>
+                        <div><h1 class="VR">VISUAL REPRESENTATION</h1></div>
                         <div class="typeImg"><img  src='../assets/evolvability.png'></div>
-                        <div style="padding-bottom: 20px;"><h5>Defects that make the code harder to read for humans,such as very long lines, bad indentation, redundant brackets or untimely blank lines.</h5></div>
+                        <div style="padding-bottom: 20px;"><h5>Defects that make the code harder to read for humans,such as very long lines, bad indentation, redundant brackets or untimely blank lines.</h5></div>     
                     </div>
-            </div>
-            <!-- slide 3 -->
-            <div class="carousel-item">
-                <img src='../assets/evolvability.png'>
-                    <h2 class="topText">EVOLVABILITY > VISUAL REPRESENTATION > INDENTATION</h2>
-                    <img class="d-block w-100" data-color=#282a36 alt="Second Image">
-
-                    <div class="editorDiv">
-                        <div id="editor">function foo(items) {
-                            var x = "All this is syntax highlighted";
-                            return x;
-                            }
-                        </div>
-                    </div>
-                    
-                    <div class="tutorial-info carousel-caption">
-                        <div><h1>VISUAL REPRESENTATION</h1></div>
-                        <div class="typeImg"><img  src='../assets/evolvability.png'></div>
-                        <div style="padding-bottom: 20px;"><h5>Defects that make the code harder to read for humans,such as very long lines, bad indentation, redundant brackets or untimely blank lines.</h5></div> 
-                    </div>
-            </div>
-
+                </div>
         </div>
+                
+
+    
         <!-- Controls -->
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
