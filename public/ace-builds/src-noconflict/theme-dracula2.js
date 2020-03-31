@@ -26,7 +26,7 @@ box-shadow: 0 0 3px 0px #282a36;\
 border-radius: 2px\
 }\
 .ace-dracula .ace_marker-layer .ace_step {\
-background: rgb(198, 219, 0)\
+background: #2a8500\
 }\
 .ace-dracula .ace_marker-layer .ace_bracket {\
 margin: -1px 0 0 -1px;\

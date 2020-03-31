@@ -2,10 +2,12 @@
 
 <head>
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="material-custom.css" />
+    <script src="material-custom.js"></script>
     <!-- Material Design icon font -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Main Stylesheet -->
@@ -105,8 +107,9 @@
         .editorDiv {
             width: 100%;
             height: 400px;
-            /* background-image: url('../assets/pcb2.png'); */
+            background-image: url('../assets/pcb4.png');
             background-color: #626262;
+            background-position: center;
             position: absolute;
             top: 0;
             bottom: 0;
@@ -115,16 +118,29 @@
             /* border:10px solid red; */
             margin: auto;
         }
+
         .editorBtn{
             position: relative;
-            height: 80px;
-            width: 150px;
+            transition: box-shadow ease .6s, background ease .6s;
+            transform: scale(.5);
+            padding: 0.3%;
             left: 50%;
-            transform: translateX(-50%);
-            padding-top: 2%;
-            padding-bottom: 2%;
-            top: 2%;
+            transform: translate(-50%, 300%);;
+            background-color: transparent; 
+            border: transparent !important;
+            color: #fff;         
         }
+
+        .hover {
+            transition: box-shadow ease cubic-bezier(1, 0, 0, 1);
+            transition: background-color ease cubic-bezier(1, 0, 0, 1);
+        }
+
+        .editorBtn:hover{
+            /* box-shadow: 0 0 3px 3px #64144c; */
+            background-color:  #64144c; 
+        }
+
         .typeImg {
             position: relative;
             height: 100px;
@@ -168,6 +184,7 @@
                 <div class="carousel-item">
                     <img src='../assets/evolvability.png'>
                     <h2 class="topText">EVOLVABILITY > <span class="VR"> VISUAL REPRESENTATION</span> > INDENTATION</h2>
+                    <button id="editorBtn" class="editorBtn"> <h3>SHOW THE DEFECT!</h3></button>
                     <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                     <div class="editorDiv">
@@ -178,7 +195,7 @@
     return n1;
 }
                         </div>
-                    <button id="editorBtn" class="editorBtn">Hello</button>
+                    
                     </div>
                     
                     <div class="tutorial-info carousel-caption">
@@ -192,6 +209,7 @@
                 <div class="carousel-item">
                     <img src='../assets/evolvability.png'>
                         <h2 class="topText">EVOLVABILITY > VISUAL REPRESENTATION > INDENTATION</h2>
+                        <button id="editorBtn" class="editorBtn"> <h3>SHOW THE DEFECT!</h3></button>
                         <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                         <div class="editorDiv">
@@ -202,8 +220,9 @@
             return n1;
         }
                             </div>
+                            <button id="editorBtn2" class="editorBtn">Hello Again!</button>
                         </div>
-                        <button id="editorBtn2" class="editorBtn">Hello</button>
+                       
                         <div class="tutorial-info carousel-caption">
                             <div><h1>VISUAL REPRESENTATION</h1></div>
                             <div class="typeImg"><img  src='../assets/evolvability.png'></div>
