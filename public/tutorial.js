@@ -26,4 +26,4 @@ $('.carousel').carousel({
 var editor = ace.edit("editor");
 editor.session.setMode("ace/mode/java");
 editor.setReadOnly(true);
-editor.setTheme("ace/theme/chaos");
+editor.setTheme("ace/theme/dracula2");
