@@ -28,6 +28,8 @@ function signOutUser() {
     // An error happened.
   });
 }
+tutorialBtn
+document.getElementById("tutorialBtn").addEventListener("click",playTutorial,false);
 document.getElementById("PreQuizButton").addEventListener("click",playPreQuiz,false);
 document.getElementById("playButton1").addEventListener("click", playPage, false);
 document.getElementById("playButton2").addEventListener("click", playPage, false);
@@ -36,6 +38,9 @@ document.getElementById("playButton4").addEventListener("click", playPage, false
 document.getElementById("playButton5").addEventListener("click", playPage, false);
 document.getElementById("PostQuizButton").addEventListener("click",playPostQuiz,false);
 //document.getElementById("playButton6").addEventListener("click",playPage,false);
+function playTutorial(){
+  window.location.href = "/tutorial.html";
+}
 function playPreQuiz(){
   window.location.href = "/prequiz.html";
 }
