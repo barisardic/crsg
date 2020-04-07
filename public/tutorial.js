@@ -26,8 +26,14 @@ $('.carousel').carousel({
   interval: false,
   pause: "false"
 });
-// back button
-document.getElementById("backBtn").addEventListener("click", goBack, false);
+// back button as a single listener
+//document.getElementById("backBtn").addEventListener("click", goBack, false);
+// since we have many back buttons lets do it via "event bubling"
+$("button").on("click", function(event) {
+  if($(this).hasClass('backBtn')){
+    goBack();
+  }
+});
 
 function goBack() {
   window.location.href = "/main.html";
