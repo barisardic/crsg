@@ -83,7 +83,7 @@ editor7.setTheme("ace/theme/dracula2");
 document.getElementById("editorBtn").addEventListener("click", editorBtnPressed, false);
 
 function editorBtnPressed() {
-  var rng = new Range(4, 0, 5, 0);
+  var rng = new Range(3, 0, 4, 0);
   editor.session.addMarker(rng, "ace_step", "screen", false);
 
   var newText = "        return n2;\n";
@@ -94,10 +94,10 @@ function editorBtnPressed() {
 document.getElementById("editorBtn2").addEventListener("click", editorBtnPressed2, false);
 
 function editorBtnPressed2() {
-  var rng = new Range(2, 0, 3, 0);
+  var rng = new Range(5, 0, 6, 0);
   editor2.session.addMarker(rng, "ace_step", "screen", false);
 
-  var newText = "    if (n1 == n2)\n";
+  var newText = "";
   editor2.session.replace(rng, newText);
   document.getElementById("editorBtn2").disabled = true;
 }
@@ -105,10 +105,10 @@ function editorBtnPressed2() {
 document.getElementById("editorBtn3").addEventListener("click", editorBtnPressed3, false);
 
 function editorBtnPressed3() {
-  var rng = new Range(2, 0, 3, 0);
+  var rng = new Range(4, 0, 6, 0);
   editor3.session.addMarker(rng, "ace_step", "screen", false);
 
-  var newText = "    if (n1 == n2)\n";
+  var newText = "";
   editor3.session.replace(rng, newText);
   document.getElementById("editorBtn3").disabled = true;
 }

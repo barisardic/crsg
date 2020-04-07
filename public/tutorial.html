@@ -235,14 +235,16 @@
                 <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                 <div class="editorDiv">
-                    <div id="editor" class="editor"></div>//this function returns the bigger of its two parameters
+                    <div id="editor" class="editor">//this function returns the bigger of its two parameters
 public static int returnBigger(int n1, int n2){
-    int min;
     if(n1 < n2)
                                 return n2;
     return n1;
 }
+                    </div>
+
                 </div>
+
                 <div class="tutorial-info carousel-caption">
                     <div>
                         <h1 class="VR">VISUAL REPRESENTATION</h1>
@@ -267,10 +269,11 @@ public static int returnBigger(int n1, int n2){
                 <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                 <div class="editorDiv">
-                    <div id="editor2" class="editor">//this function returns 
-public static int returnSecondIfDifferent(int n1, int n2){
-    if (1 == 0)
-        return n1;
+                    <div id="editor2" class="editor">//this function returns the bigger of its two parameters
+public static int returnBigger(int n1, int n2){
+    if(n1 < n2)
+        return n2;
+    return n1;
     return n2;
 }
                     </div>
@@ -303,13 +306,15 @@ public static int returnSecondIfDifferent(int n1, int n2){
                 <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                 <div class="editorDiv">
-                    <div id="editor3" class="editor">//solution approach
-public static int multiply(int n1, int n2){
-    if (n1 == n2){
-        n1--;
+                    <div id="editor3" class="editor">//this function returns the bigger of its two parameters
+public static int returnBigger(int n1, int n2){
+    if(n1 < n2)
+    {
         n1++;
+        n1--;
+        return n2;
     }
-    return n1*n2;
+    return n1;
 }
                     </div>
 
@@ -340,7 +345,14 @@ public static int multiply(int n1, int n2){
                 <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                 <div class="editorDiv">
-                    <div id="editor4" class="editor">CODE
+                    <div id="editor4" class="editor">//this checks the length of a string and returns true if it is longer than 7 characters
+public static boolean checkPasswordLength(string n){
+    if(n.length() > 7)
+    {
+        return true;
+    }
+    return false;
+}
                     </div>
 
                 </div>
@@ -351,7 +363,10 @@ public static int multiply(int n1, int n2){
                     </div>
                     <div class="typeImg"><img src='../assets/evolvability.png'></div>
                     <div style="padding-bottom: 20px;">
-                        <h5>EXPLANATION.</h5>
+                        <h5>Defects in and outside the code that occur due to bad documentation habits, but 
+                            aren't read by the language. Examples include inconsistent naming, use of magical 
+                            numbers (that can be replaced more meaningful text based names), misleading or 
+                            unnecessary comments and et cetera.</h5>
                     </div>
                 </div>
             </div>
@@ -379,7 +394,9 @@ public static int multiply(int n1, int n2){
                     </div>
                     <div class="typeImg"><img src='../assets/functional.png'></div>
                     <div style="padding-bottom: 20px;">
-                        <h5>EXPLANATION.</h5>
+                        <h5>Defects that are due to mistakes made with data, variables, or other resources' initialization, 
+                            manipulation, and release. Such as incorrect/suboptimal variable initializations and forgetting 
+                            to release memory space after use.</h5>
                     </div>
                 </div>
             </div>
@@ -407,7 +424,8 @@ public static int multiply(int n1, int n2){
                     </div>
                     <div class="typeImg"><img src='../assets/functional.png'></div>
                     <div style="padding-bottom: 20px;">
-                        <h5>EXPLANATION.</h5>
+                        <h5>Defects that revole around faulty logic statements, such as illogical comparisons, mathematical 
+                            errors and the use of obviously inefficient algorithms/black boxes.</h5>
                     </div>
                 </div>
             </div>
@@ -435,7 +453,8 @@ public static int multiply(int n1, int n2){
                     </div>
                     <div class="typeImg"><img src='../assets/functional.png'></div>
                     <div style="padding-bottom: 20px;">
-                        <h5>EXPLANATION.</h5>
+                        <h5>Defects that are cases of bad interactivity between other software parts, such as bad imports, 
+                            unnecessary or broken function calls, or even too many parameters on functions and et cetera.</h5>
                     </div>
                 </div>
             </div>
