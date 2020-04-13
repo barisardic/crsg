@@ -45,6 +45,9 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner ">
@@ -159,6 +162,42 @@ public static int returnBigger(int n1, int n2){
                 </div>
             </div>
             <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 8 -->
+            <div class="carousel-item">
+                <button id="backBtn" class="backBtn">
+                    <h3>Back to Game!</h3>
+                </button>
+                <h2 class="topText">EVOLVABILITY > <span class="SbL"> SUPPORTED BY LANGUAGE</span> > ELEMENT TYPE</h2>
+                <button id="editorBtn8" class="editorBtn">
+                    <h3>SHOW THE DEFECT!</h3>
+                </button>
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor8" class="editor">//this function returns true if the input number equals 5
+public static boolean isFive(string n1){
+    int n2 = 5;
+    if(int(n1) == n2)
+        return true;
+    return false;
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="SbL">SUPPORTED BY LANGUAGE</h1>
+                    </div>
+                    <div class="typeImg"><img src='../assets/evolvability.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5>Defects that happen due to bad manipulation of variables, such as illogical/suboptimal 
+                            element types in a scope, void valued parameters and variables that are created as 
+                            immutable where they shouldn't.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
             <!-- slide 4 -->
             <div class="carousel-item">
                 <button id="backBtn" class="backBtn">
@@ -209,7 +248,13 @@ public static boolean checkPasswordLength(string n){
                 <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                 <div class="editorDiv">
-                    <div id="editor5" class="editor">//CODE
+                    <div id="editor5" class="editor">//this class is a person with an age
+public class Person {
+    static Date dateOfBirth;
+    public Person(date birthday) {
+        dateOfBirth = birthday;
+    }
+}
                     </div>
 
                 </div>
@@ -232,14 +277,24 @@ public static boolean checkPasswordLength(string n){
                 <button id="backBtn" class="backBtn">
                     <h3>Back to Game!</h3>
                 </button>
-                <h2 class="topText">FUNCTIONAL > <span class="Logic"> LOGIC</span> > COMPARE</h2>
+                <h2 class="topText">FUNCTIONAL > <span class="Logic"> LOGIC</span> > ALGORITHM/PERFORMANCE</h2>
                 <button id="editorBtn6" class="editorBtn">
                     <h3>SHOW THE DEFECT!</h3>
                 </button>
                 <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                 <div class="editorDiv">
-                    <div id="editor6" class="editor">CODE
+                    <div id="editor6" class="editor">//this function reads a file f
+public String readFile(File f) {
+    StringBuilder sb = new StringBuilder();
+    try {
+        readFileHelper(f, sb);//a code segment that can throw an IO exception
+    }
+    catch (IOException e) {
+        throw e;
+    }
+    return sb.toString();
+}
                     </div>
 
                 </div>
@@ -261,14 +316,17 @@ public static boolean checkPasswordLength(string n){
                 <button id="backBtn" class="backBtn">
                     <h3>Back to Game!</h3>
                 </button>
-                <h2 class="topText">FUNCTIONAL > <span class="Interface"> INTERFACE</span> > FUNCTION CALL</h2>
+                <h2 class="topText">FUNCTIONAL > <span class="Interface"> INTERFACE</span> > PARAMETER</h2>
                 <button id="editorBtn7" class="editorBtn">
                     <h3>SHOW THE DEFECT!</h3>
                 </button>
                 <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                 <div class="editorDiv">
-                    <div id="editor7" class="editor">//CODE
+                    <div id="editor7" class="editor">//this function computes n1 when input 2 integers n1 and n2
+void compute(int n1, int n2){
+    computeHelper(n1);
+}
                     </div>
 
                 </div>

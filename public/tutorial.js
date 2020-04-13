@@ -83,6 +83,11 @@ editor7.session.setMode("ace/mode/java");
 editor7.setReadOnly(true);
 editor7.setTheme("ace/theme/dracula2");
 
+////// tutorial 8
+var editor8 = ace.edit("editor8");
+editor8.session.setMode("ace/mode/java");
+editor8.setReadOnly(true);
+editor8.setTheme("ace/theme/dracula2");
 //
 //button listeners
 // 1
@@ -123,10 +128,16 @@ document.getElementById("editorBtn4").addEventListener("click", editorBtnPressed
 
 function editorBtnPressed4() {
   var rng = new Range(2, 0, 3, 0);
-  editor4.session.addMarker(rng, "ace_step", "screen", false);
+  editor4.session.addMarker(new Range(3, 0, 4, 0), "ace_step", "screen", false);
 
-  var newText = "    if (n1 == n2)\n";
+  var newText = "    if (n.length() > MAX_PASSWORD_SIZE)\n";
   editor4.session.replace(rng, newText);
+
+  var rng2 = new Range(1, 0, 2, 0);
+  editor4.session.addMarker(rng2, "ace_step", "screen", false);
+
+  var newText2 = "public static final int MAX_PASSWORD_SIZE = 7;\npublic static boolean checkPasswordLength(string n){)\n";
+  editor4.session.replace(rng2, newText2);
   document.getElementById("editorBtn4").disabled = true;
 }
 // 5
@@ -136,7 +147,7 @@ function editorBtnPressed5() {
   var rng = new Range(2, 0, 3, 0);
   editor5.session.addMarker(rng, "ace_step", "screen", false);
 
-  var newText = "    if (n1 == n2)\n";
+  var newText = "    Date dateOfBirth;\n";
   editor5.session.replace(rng, newText);
   document.getElementById("editorBtn5").disabled = true;
 }
@@ -144,21 +155,32 @@ function editorBtnPressed5() {
 document.getElementById("editorBtn6").addEventListener("click", editorBtnPressed6, false);
 
 function editorBtnPressed6() {
-  var rng = new Range(2, 0, 3, 0);
+  var rng = new Range(1, 0, 19, 0);//the whole function maaaan
   editor6.session.addMarker(rng, "ace_step", "screen", false);
 
-  var newText = "    if (n1 == n2)\n";
+  var newText = "public String readFile(File f) throws IOException{\n    StringBuilder sb = new StringBuilder();\n    readFileHelper(f, sb);//a code segment that can throw an IO exception\n    return sb.toString();\n}\n";
   editor6.session.replace(rng, newText);
   document.getElementById("editorBtn6").disabled = true;
 }
 // 7
-document.getElementById("editorBtn7").addEventListener("click", editorBtnPressed3, false);
+document.getElementById("editorBtn7").addEventListener("click", editorBtnPressed7, false);
 
 function editorBtnPressed7() {
-  var rng = new Range(2, 0, 3, 0);
+  var rng = new Range(1, 0, 2, 0);
   editor7.session.addMarker(rng, "ace_step", "screen", false);
 
-  var newText = "    if (n1 == n2)\n";
+  var newText = "void compute(int n1){\n";
   editor7.session.replace(rng, newText);
   document.getElementById("editorBtn7").disabled = true;
+}
+// 8
+document.getElementById("editorBtn8").addEventListener("click", editorBtnPressed8, false);
+
+function editorBtnPressed8() {
+  var rng = new Range(1, 0, 2, 0);
+  editor8.session.addMarker(rng, "ace_step", "screen", false);
+
+  var newText = "public static boolean isFive(int n1){\n";
+  editor8.session.replace(rng, newText);
+  document.getElementById("editorBtn8").disabled = true;
 }
