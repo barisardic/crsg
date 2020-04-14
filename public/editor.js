@@ -58,7 +58,7 @@ else if(levelChosen==6){
   editor.session.setMode("ace/mode/java");ğ
   editor.setReadOnly(true);  
 }
-editor.setFontSize(18);
+editor.setFontSize(16);
 // Initialize library and start tracking time
 TimeMe.initialize({
 	currentPageName: "play", // current page
@@ -460,7 +460,7 @@ function addComponent (ListofErrors)
               var DisplayEnd = e.end+1;
               newNode.childNodes[1].innerHTML = "Error Lines : "+DisplayStart+"-"+DisplayEnd;
               newNode.style.display = "flex";
-              newNode.childNodes[1].style.fontSize = "xx-large";
+              newNode.childNodes[1].style.fontSize = "large";
               
               var buttons = newNode.querySelector(".marketing-content-buttons");
               
@@ -583,7 +583,7 @@ function addListAsComponentForAnswers (ListofErrors)
                 var DisplayEnd = e.end+1;
                 newNode.childNodes[1].innerText = "Error Lines : "+DisplayStart+"-"+DisplayEnd; 
                 newNode.style.display = "flex";
-                newNode.childNodes[1].style.setFontSize = "20px";
+                newNode.childNodes[1].style.setFontSize = "12px";
                 var buttons = newNode.querySelector(".marketing-content-buttons");
                 
                /*  reasons = buttons.querySelector(".select2-field").querySelector(".select2");
@@ -627,7 +627,7 @@ function addListAsComponentForAnswers (ListofErrors)
                 var DisplayEnd = e.end+1;
                 newNode.childNodes[1].innerText = "Error Lines : "+DisplayStart+"-"+DisplayEnd; 
                 newNode.style.display = "flex";
-                newNode.childNodes[1].style.setFontSize = "20px";
+                newNode.childNodes[1].style.setFontSize = "12px";
                 var buttons = newNode.querySelector(".marketing-content-buttons");
                 
                /*  reasons = buttons.querySelector(".select2-field").querySelector(".select2");
