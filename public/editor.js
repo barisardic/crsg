@@ -210,6 +210,55 @@ else if(levelChosen == 5){
 }
 var ListofErrors = [];
 
+words = ["first word","second word","third word"];
+guruCount = 0 ;
+
+document.getElementById('guru').addEventListener('click',openGuruModal, false);
+function openGuruModal(){
+  alert("Here guru guru");
+  editor.renderer.setShowGutter(false);
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById('guru_modal').classList.add("visible");
+}
+
+/* $(".js-open-modal").click(function(){
+  $(".guru_modal").addClass("visible");
+}); */
+
+document.getElementById("guruSays").innerText = words[0]
+
+document.getElementById('js-close-modal').addEventListener('click',closeGuruModal, false);
+function closeGuruModal(){
+  editor.renderer.setShowGutter(true);
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById('guru_modal').classList.remove("visible");
+}
+/* $(".js-close-modal").click(function(){
+  $(".guru_modal").classList.remove("visible");
+}); */
+document.getElementById('guru_modal').addEventListener('click',clickedOnGuru,false);
+function clickedOnGuru(){
+  guruCount = guruCount +1;
+  document.getElementById('guru_modal').classList.add("toBlue");
+  document.getElementById("guruSays").innerText = words[guruCount%3];
+}
+
+/* $(".guru_modal").click(function(){
+  guruCount = guruCount +1;
+  $(".guru_modal").addClass("toBlue");
+  document.getElementById("guruSays").innerText = words[guruCount%3];
+}); */
+
+$(document).click(function(event) {
+  //if you click on anything except the modal itself or the "open modal" link, close the modal
+  if (!$(event.target).closest(".guru_modal,.js-open-modal").length) {
+    editor.renderer.setShowGutter(true);
+    document.getElementById("overlay").style.display = "none";
+    $("body").find(".guru_modal").removeClass("visible");
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', lines, false);
 function lines(){
   function getLines () {
@@ -598,3 +647,4 @@ function addListAsComponentForAnswers (ListofErrors)
               //alert(visibility.innerHTML);
               
             }
+

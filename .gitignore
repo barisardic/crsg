@@ -63,3 +63,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+public/guru.css.map
+
+public/guru.scss

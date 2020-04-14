@@ -1,6 +1,7 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="guru.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
@@ -400,11 +401,37 @@
     tr:nth-child(even) {
       background-color: #ffffff;
     }
+    #overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
   </style>
 </head>
 
 <body>
+  <div id="overlay">
+    <div class="guru_modal" id="guru_modal">
+      <div class="guru_modal__header" id="guru_modal__header">
+        modal header
+        <a href="#" class="js-close-modal" id="js-close-modal">X</a>
+      </div>
+      <p id="guruSays">
+        hey there, I'm the guru
+      </p>
+    
+    </div>
+  </div>
   <div class="container" id="container">
+    
     <div id="description">
       <div class="mdl-layout__drawer-button " onclick="history.back()"><i class="material-icons"
           style="color:red">arrow_back</i></div>
@@ -530,11 +557,13 @@
       </div>
       <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
         <div class="mdl-tabs__tab-bar resizer ">
+          <button href="#" class="js-open-modal mdl-tabs__tab mdl-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="guru">Guru</button>
+          <div class="divider"> </div>
           <button class=" mdl-tabs__tab material-icons funcButn" id="arrow_resizer">keyboard_arrow_up</button>
           <div class="divider"> </div>
           <a class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn "
             id="hover">
-            <i class="material-icons">add</i>
+            <i class="">+</i>
           </a>
 
         </div>
@@ -963,7 +992,7 @@ public class ExerciseSumArray {
       <button class="mdl-snackbar__action" type="button"></button>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <!-- <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -981,7 +1010,7 @@ public class ExerciseSumArray {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   </div>
   <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
