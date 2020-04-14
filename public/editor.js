@@ -130,6 +130,9 @@ if(levelChosen == 1){
   answers[2] =answer3;
 
   var hints = ["There are "+ answers.length+" defects in the code","Duplication error at lines 9-12","Parameter error at lines 19-20","Comments error at line 5"];
+  var GurusWords = ["Accept that many programming decisions are opinions. Discuss tradeoffs, which you prefer, and reach a resolution quickly.",
+  "Ask good questions; don't make demands. ('What do you think about naming this :user_id?')",
+  "Good questions avoid judgment and avoid assumptions about the author's perspective."];
 }
 else if(levelChosen == 2){
   var answers = [];
@@ -151,6 +154,9 @@ else if(levelChosen == 2){
   answers[3] =answer4;
 
   var hints = ["There are "+ answers.length+" defects in the code","Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
+  var GurusWords = ["Ask for clarification. ('I didn't understand. Can you clarify?')",
+  "Avoid selective ownership of code. ('mine", "not mine", "yours')",
+  "Avoid using terms that could be seen as referring to personal traits. ('dumb', 'stupid'). Assume everyone is intelligent and well-meaning."];
 }
 else if(levelChosen == 3){
   var answers = [];
@@ -165,7 +171,10 @@ else if(levelChosen == 3){
   var answer3 = new Err(33,33);
   answer3.reason.push("Compare");
   answers[2] =answer3;
-  var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];  
+  var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];
+  var GurusWords = ["Be explicit. Remember people don't always understand your intentions online.",
+  "Be humble. ('I'm not sure - let's look it up.')",
+  "Don't use hyperbole. ('always', 'never', 'endlessly', 'nothing')"];  
 }
 else if(levelChosen == 4){
   var answers = [];
@@ -185,7 +194,10 @@ else if(levelChosen == 4){
   answer3.reason.push("Variable initialisation");
   answers[2] =answer3;
 
-  var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];  
+  var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];
+  var GurusWords = ["Don't use sarcasm.",
+  "Keep it real. If emoji, animated gifs, or humor aren't you, don't force them. If they are, use them with aplomb.",
+  "Talk synchronously (e.g. chat, screensharing, in person) if there are too many 'I didn't understand' or 'Alternative solution:' comments. Post a follow-up comment summarizing the discussion."];    
 }
 else if(levelChosen == 5){
   var answers = [];
@@ -206,16 +218,19 @@ else if(levelChosen == 5){
   answer4.reason.push("Data and resource manipulation");
   answers[3] =answer4;
 
-  var hints = ["There are "+ answers.length+" defects in the code","If a line of code is missing you should select the nearest encapsulating object structure","Is java dynamically typed?"];  
+  var hints = ["There are "+ answers.length+" defects in the code","If a line of code is missing you should select the nearest encapsulating object structure","Is java dynamically typed?"];
+  var GurusWords = ["Communicate which ideas you feel strongly about and those you don't.",
+  "Identify ways to simplify the code while still solving the problem.",
+  "If discussions turn too philosophical or academic, move the discussion offline to a regular Friday afternoon technique discussion. In the meantime, let the author make the final decision on alternative implementations."];      
 }
 var ListofErrors = [];
 
-words = ["first word","second word","third word"];
+
 guruCount = 0 ;
 
 document.getElementById('guru').addEventListener('click',openGuruModal, false);
 function openGuruModal(){
-  alert("Here guru guru");
+  //alert("Here guru guru");
   editor.renderer.setShowGutter(false);
   document.getElementById("overlay").style.display = "block";
   document.getElementById('guru_modal').classList.add("visible");
@@ -225,7 +240,7 @@ function openGuruModal(){
   $(".guru_modal").addClass("visible");
 }); */
 
-document.getElementById("guruSays").innerText = words[0]
+document.getElementById("guruSays").innerText = GurusWords[0]
 
 document.getElementById('js-close-modal').addEventListener('click',closeGuruModal, false);
 function closeGuruModal(){
@@ -240,7 +255,7 @@ document.getElementById('guru_modal').addEventListener('click',clickedOnGuru,fal
 function clickedOnGuru(){
   guruCount = guruCount +1;
   document.getElementById('guru_modal').classList.add("toBlue");
-  document.getElementById("guruSays").innerText = words[guruCount%3];
+  document.getElementById("guruSays").innerText = GurusWords[guruCount%3];
 }
 
 /* $(".guru_modal").click(function(){
