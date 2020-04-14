@@ -88,6 +88,18 @@ var editor8 = ace.edit("editor8");
 editor8.session.setMode("ace/mode/java");
 editor8.setReadOnly(true);
 editor8.setTheme("ace/theme/dracula2");
+
+////// tutorial 9
+var editor9 = ace.edit("editor9");
+editor9.session.setMode("ace/mode/java");
+editor9.setReadOnly(true);
+editor9.setTheme("ace/theme/dracula2");
+
+////// tutorial 10
+var editor10 = ace.edit("editor10");
+editor10.session.setMode("ace/mode/java");
+editor10.setReadOnly(true);
+editor10.setTheme("ace/theme/dracula2");
 //
 //button listeners
 // 1
@@ -119,7 +131,7 @@ function editorBtnPressed3() {
   var rng = new Range(4, 0, 6, 0);
   editor3.session.addMarker(rng, "ace_step", "screen", false);
 
-  var newText = "";
+  var newText = "\n \n";
   editor3.session.replace(rng, newText);
   document.getElementById("editorBtn3").disabled = true;
 }
@@ -183,4 +195,30 @@ function editorBtnPressed8() {
   var newText = "public static boolean isFive(int n1){\n";
   editor8.session.replace(rng, newText);
   document.getElementById("editorBtn8").disabled = true;
+}
+// 9
+document.getElementById("editorBtn9").addEventListener("click", editorBtnPressed9, false);
+
+function editorBtnPressed9() {
+  var rng = new Range(3, 0, 4, 0);
+  editor9.session.addMarker(rng, "ace_step", "screen", false);
+
+  var newText = "if (firstName != null && firstName.equals(lastName)) {\n";
+  editor9.session.replace(rng, newText);
+  document.getElementById("editorBtn9").disabled = true;
+}
+// 10
+document.getElementById("editorBtn10").addEventListener("click", editorBtnPressed10, false);
+
+function editorBtnPressed10() {
+  var rng = new Range(0, 0, 1, 0);
+  editor10.session.addMarker(rng, "ace_step", "screen", false);
+  var newText = "for (i = 0; i < 10; i++, j++) {\n";
+
+  var rng2 = new Range(2, 0, 3, 0);
+  var newText2 = "\n";
+
+  editor10.session.replace(rng, newText);
+  editor10.session.replace(rng2, newText2);
+  document.getElementById("editorBtn10").disabled = true;
 }

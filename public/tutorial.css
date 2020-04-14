@@ -88,6 +88,28 @@
     font-size: 15;
     margin: auto;
 }
+#editor9 {
+    width: 800px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 15;
+    margin: auto;
+}
+#editor10 {
+    width: 800px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 15;
+    margin: auto;
+}
 .SA {
     color: #ff8686;
 }
