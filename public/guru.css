@@ -11,8 +11,8 @@
     box-sizing: border-box;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     color: white;
-    border:10px solid #626262;
-    border-radius: 20px;
+    border:1vw solid #626262;
+    border-radius: 1vw;
     background-image: url('../assets/pcb4.png');
 }
 
@@ -37,6 +37,11 @@
 }
 
 #gurusays{
+    width: 100%;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 1vw;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -55,25 +60,34 @@
 }
 .guru.portrait{
     position: relative;
-    border:10px solid #626262;
-    border-radius: 20px;
+    max-width: 90%;
+    min-width: 30%;
+    height: 90%;
+    background-size: contain;
+    top: 4%;
+    left: 1%;
+    border:1vw solid #626262;
+    border-radius: 1vw;
 }
 
-.container{
+.guru.container{
+    position: relative;
+    height: 90%;
+    max-width: 90%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: hidden;
     overflow-y: hidden;
     background: #282a36;
-    border:10px  #626262;
-    border-radius: 20px;
+    border:1vw  #626262;
+    border-radius: 1vw;
 }
 
 /* GIANT-ASS CHEAT! */
-/* .js-close-modal{
+.js-close-modal{
     color: transparent;
     border-color: transparent;
     background-color: transparent;  
-} */
+}
 /*# sourceMappingURL=guru.css.map */

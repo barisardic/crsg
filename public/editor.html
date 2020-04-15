@@ -403,7 +403,7 @@
         }
 
         #overlay {
-            position: fixed;
+            position: relative;
             /* Sit on top of the page content */
             display: none;
             /* Hidden by default */
@@ -417,7 +417,7 @@
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.5);
             /* Black background with opacity */
-            z-index: 2;
+            z-index: 7;
             /* Specify a stack order in case you're using a different order for other elements */
             cursor: pointer;
             /* Add a pointer on hover */
@@ -430,9 +430,9 @@
         <div class="guru_modal" id="guru_modal">
             <div class="guru_modal__header" id="guru_modal__header">
             </div>
-            <div class="container">
+            <div class="guru container">
                 <img class=" guru portrait" src='../assets/astroHappyAnim.gif' />
-                <p id="guruSays" class=" line-1 guruSays">
+                <p id="guruSays" class="guruSays">
                     hey there, I'm the guru
                 </p>
             </div>
