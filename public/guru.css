@@ -1,29 +1,46 @@
 .guru_modal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  width: 60%;
-  height: 50%;
-  text-align: center;
-  box-sizing: border-box;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
-  .guru_modal.visible {
-    display: block; }
-  .guru_modal.toBlue {
-    background: #ccc; }
+    display: none;
+    position: relative;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -85%);
+    background: #282a36;
+    width: 60%;
+    height: 40%;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    border:10px solid #626262;
+    border-radius: 20px;
+    background-image: url('../assets/pcb4.png');
+}
+
+.guru_modal.visible {
+    display: block;
+}
+
+.guru_modal.toBlue {
+    background: #282a36;
+    background-image: url('../assets/pcb4.png');
+}
 
 .guru_modal__header {
-  color: white;
-  background: #333;
-  line-height: 50px;
-  text-align: center;
-  position: relative;
-  height: 50px;
-  box-sizing: border-box; }
-  .guru_modal__header a {
+    color: white;
+    background: #282a36;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+    height: 6%;
+    box-sizing: border-box;
+    background-image: url('../assets/pcb4.png');
+}
+
+#gurusays{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.guru_modal__header a {
     position: absolute;
     top: 0;
     right: 0;
@@ -33,7 +50,30 @@
     display: block;
     padding: 0 20px;
     font-size: 16px;
-    background: #555;
-    height: 100%; }
+    background: #ff0000;
+    height: 100%;
+}
+.guru.portrait{
+    position: relative;
+    border:10px solid #626262;
+    border-radius: 20px;
+}
 
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background: #282a36;
+    border:10px  #626262;
+    border-radius: 20px;
+}
+
+/* GIANT-ASS CHEAT! */
+/* .js-close-modal{
+    color: transparent;
+    border-color: transparent;
+    background-color: transparent;  
+} */
 /*# sourceMappingURL=guru.css.map */

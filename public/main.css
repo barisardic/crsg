@@ -59,12 +59,23 @@
   right: -89px;
   transform: scale(.4);
 }
+
+.station-prequiz-btn:hover {
+  box-shadow: 0 0 15px 15px #f7ffab;
+}
+
+/*tutorial*/
+.station.tutorial {
+  top: 0%;
+}
+
 .station-tutorial-btn {
   bottom: 112%;
   right: -121px;
   transform: scale(.4);
 }
-.station-prequiz-btn:hover {
+
+.station-tutorial-btn:hover {
   box-shadow: 0 0 15px 15px #f7ffab;
 }
 
