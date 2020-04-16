@@ -15,7 +15,9 @@
     border-radius: 1vw;
     background-image: url('../assets/pcb4.png');
 }
-
+.guru_modal:hover{
+    cursor: help;
+}
 .guru_modal.visible {
     display: block;
 }
