@@ -226,7 +226,7 @@ else if(levelChosen == 5){
 }
 var ListofErrors = [];
 
-
+//gurus code start here!
 guruCount = 0 ;
 
 document.getElementById('guru').addEventListener('click',openGuruModal, false);
@@ -241,7 +241,7 @@ function openGuruModal(){
   $(".guru_modal").addClass("visible");
 }); */
 
-document.getElementById("guruSays").innerText = GurusWords[0]
+//document.getElementById("guruSays").innerText = GurusWords[0]
 
 document.getElementById('js-close-modal').addEventListener('click',closeGuruModal, false);
 function closeGuruModal(){
@@ -254,9 +254,21 @@ function closeGuruModal(){
 }); */
 document.getElementById('guru_modal').addEventListener('click',clickedOnGuru,false);
 function clickedOnGuru(){
-  guruCount = guruCount +1;
+  
   document.getElementById('guru_modal').classList.add("toBlue");
-  document.getElementById("guruSays").innerText = GurusWords[guruCount%3];
+  document.getElementById("guruSays").innerHTML = "";
+  var str = GurusWords[guruCount%3];
+  // this jquery snippet is for the typewriter effect, if you dont want it, dont reset innerhtml set it to GurusWords. 
+  var spans = '<span>' + str.split('').join('</span><span>') + '</span>';
+$(spans).hide().appendTo('.guruSays').each(function (i) {
+    $(this).delay(50 * i).css({
+        display: 'inline',
+        opacity: 0
+    }).animate({
+        opacity: 1
+    }, 100);
+});
+guruCount = guruCount +1;
 }
 
 /* $(".guru_modal").click(function(){
