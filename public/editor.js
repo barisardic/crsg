@@ -259,6 +259,8 @@ function displayGuruImage(){
     document.guruPortrait.src = '../assets/'+ guruArray[num];
 }
 
+var typeSound = document.getElementById("guruType");
+
 
 document.getElementById('guru_modal').addEventListener('click',clickedOnGuru,false);
 function clickedOnGuru(){
@@ -270,6 +272,7 @@ function clickedOnGuru(){
   // this jquery snippet is for the typewriter effect, if you dont want it, dont reset innerhtml set it to GurusWords. 
   var spans = '<span>' + str.split('').join('</span><span>') + '</span>';
 $(spans).hide().appendTo('.guruSays').each(function (i) {
+    typeSound.play();
     $(this).delay(50 * i).css({
         display: 'inline',
         opacity: 0
@@ -291,8 +294,9 @@ $(document).click(function(event) {
   if (!$(event.target).closest(".guru_modal,.js-open-modal").length) {
     editor.renderer.setShowGutter(true);
     document.getElementById("overlay").style.display = "none";
+    typeSound.stop();
     $("body").find(".guru_modal").removeClass("visible");
-  }
+  } 
 });
 
 
