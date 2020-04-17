@@ -252,9 +252,18 @@ function closeGuruModal(){
 /* $(".js-close-modal").click(function(){
   $(".guru_modal").classList.remove("visible");
 }); */
+var guruArray = ["astroAlertAnim.gif", "astroCuriousAnim.gif", "astroHappyAnim.gif"];
+
+function displayGuruImage(){
+    var num = Math.floor(Math.random() * 3); // 0...6
+    document.guruPortrait.src = '../assets/'+ guruArray[num];
+}
+
+
 document.getElementById('guru_modal').addEventListener('click',clickedOnGuru,false);
 function clickedOnGuru(){
-  
+  displayGuruImage();
+   
   document.getElementById('guru_modal').classList.add("toBlue");
   document.getElementById("guruSays").innerHTML = "";
   var str = GurusWords[guruCount%3];
