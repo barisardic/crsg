@@ -114,12 +114,16 @@ if(editorBtnPressedList[0] == 0){
   var newText = "        return n2;\n";
   editor.session.replace(rng, newText);
   document.getElementById("editorBtnText").innerText = "SHOW THE DEFECT";
+  document.getElementById("caption").style.display = "none";
+  document.getElementById("exp").style.display = "block";
   editorBtnPressedList[0] = 1;
 }
 else{
     editor.undo();
     editor.session.removeMarker(markerID);
     document.getElementById("editorBtnText").innerText = "SHOW THE SOLUTION";
+    document.getElementById("caption").style.display = "block";
+    document.getElementById("exp").style.display = "none";
     editorBtnPressedList[0] = 0;
 }
   
@@ -135,6 +139,8 @@ function editorBtnPressed2() {
         var newText = "";
         editor2.session.replace(rng, newText);
         document.getElementById("editorBtnText2").innerText = "SHOW THE DEFECT";
+        document.getElementById("caption2").style.display = "none";
+        document.getElementById("exp2").style.display = "block";
         editorBtnPressedList[1] = 1;
     }
     else{
@@ -142,6 +148,8 @@ function editorBtnPressed2() {
         editor2.undo();
         editor2.session.removeMarker(markerID);
         document.getElementById("editorBtnText2").innerText = "SHOW THE SOLUTION";
+        document.getElementById("caption2").style.display = "block";
+        document.getElementById("exp2").style.display = "none"
         editorBtnPressedList[1] = 0;
     }
   
@@ -157,12 +165,16 @@ function editorBtnPressed3() {
         var newText = "\n \n";
         editor3.session.replace(rng, newText);
         document.getElementById("editorBtnText3").innerText = "SHOW THE DEFECT";
+        document.getElementById("caption3").style.display = "none";
+        document.getElementById("exp3").style.display = "block";
         editorBtnPressedList[2] = 1;
     }
     else{
         editor3.undo();
         editor3.session.removeMarker(markerID);
         document.getElementById("editorBtnText3").innerText = "SHOW THE SOLUTION";
+        document.getElementById("caption3").style.display = "block";
+        document.getElementById("exp3").style.display = "none";
         editorBtnPressedList[2] = 0;
     }
   
@@ -184,6 +196,8 @@ function editorBtnPressed4() {
         var newText2 = "public static final int MAX_PASSWORD_SIZE = 7;\npublic static boolean checkPasswordLength(string n){)\n";
         editor4.session.replace(rng2, newText2);
         document.getElementById("editorBtnText4").innerText = "SHOW THE DEFECT";
+        document.getElementById("caption4").style.display = "none";
+        document.getElementById("exp4").style.display = "block";
         editorBtnPressedList[3] = 1;
     }else{
         editor4.undo();
@@ -191,6 +205,8 @@ function editorBtnPressed4() {
         editor4.undo();
         editor4.session.removeMarker(markerID2);
         document.getElementById("editorBtnText4").innerText = "SHOW THE SOLUTION";
+        document.getElementById("caption4").style.display = "block";
+        document.getElementById("exp4").style.display = "none";
         editorBtnPressedList[3] = 0;
     }
   
@@ -206,12 +222,16 @@ function editorBtnPressed5() {
         var newText = "    Date dateOfBirth;\n";
         editor5.session.replace(rng, newText);
         document.getElementById("editorBtnText5").innerText = "SHOW THE DEFECT";
+        document.getElementById("caption5").style.display = "none";
+        document.getElementById("exp5").style.display = "block";
         editorBtnPressedList[4] = 1;
     }
     else{
         editor5.undo();
         editor5.session.removeMarker(markerID);
         document.getElementById("editorBtnText5").innerText = "SHOW THE SOLUTION";
+        document.getElementById("caption5").style.display = "block";
+        document.getElementById("exp5").style.display = "none";
         editorBtnPressedList[4] = 0;
     }
   
@@ -227,11 +247,15 @@ function editorBtnPressed6() {
         var newText = "public String readFile(File f) throws IOException{\n    StringBuilder sb = new StringBuilder();\n    readFileHelper(f, sb);//a code segment that can throw an IO exception\n    return sb.toString();\n}\n";
         editor6.session.replace(rng, newText);
         document.getElementById("editorBtnText6").innerText = "SHOW THE DEFECT";
+        document.getElementById("caption6").style.display = "none";
+        document.getElementById("exp6").style.display = "block";
         editorBtnPressedList[5] = 1;
     }else{
         editor6.undo();
         editor6.session.removeMarker(markerID);
         document.getElementById("editorBtnText6").innerText = "SHOW THE SOLUTION";
+        document.getElementById("caption6").style.display = "block";
+        document.getElementById("exp6").style.display = "none";
         editorBtnPressedList[5] = 0;
     }
   
@@ -247,12 +271,16 @@ function editorBtnPressed7() {
         var newText = "void compute(int n1){\n";
         editor7.session.replace(rng, newText);
         document.getElementById("editorBtnText7").innerText = "SHOW THE DEFECT";
+        document.getElementById("caption7").style.display = "none";
+         document.getElementById("exp7").style.display = "block";
         editorBtnPressedList[6] = 1;
     }
     else{
         editor7.undo();
         editor7.session.removeMarker(markerID);
         document.getElementById("editorBtnText7").innerText = "SHOW THE SOLUTION";
+        document.getElementById("caption7").style.display = "block";
+        document.getElementById("exp7").style.display = "none";
         editorBtnPressedList[6] = 0;
     }
   
@@ -268,12 +296,16 @@ function editorBtnPressed8() {
     var newText = "public static boolean isFive(int n1){\n";
     editor8.session.replace(rng, newText);
     document.getElementById("editorBtnText8").innerText = "SHOW THE DEFECT";
+    document.getElementById("caption8").style.display = "none";
+    document.getElementById("exp8").style.display = "block";
     editorBtnPressedList[7] = 1;
   }
   else{
     editor8.undo();
     editor8.session.removeMarker(markerID);
     document.getElementById("editorBtnText8").innerText = "SHOW THE SOLUTION";
+    document.getElementById("caption8").style.display = "block";
+    document.getElementById("exp8").style.display = "none";
     editorBtnPressedList[7] = 0;
   }
   
@@ -289,12 +321,16 @@ function editorBtnPressed9() {
         var newText = "if (firstName != null && firstName.equals(lastName)) {\n";
         editor9.session.replace(rng, newText);
         document.getElementById("editorBtnText9").innerText = "SHOW THE DEFECT";
+        document.getElementById("caption9").style.display = "none";
+        document.getElementById("exp9").style.display = "block";
         editorBtnPressedList[8] = 1;
     }
     else{
     editor9.undo();
     editor9.session.removeMarker(markerID);
     document.getElementById("editorBtnText9").innerText = "SHOW THE SOLUTION";
+    document.getElementById("caption9").style.display = "block";
+    document.getElementById("exp9").style.display = "none";
     editorBtnPressedList[8] = 0;
     }
   
@@ -314,6 +350,8 @@ function editorBtnPressed10() {
         editor10.session.replace(rng, newText);
         editor10.session.replace(rng2, newText2);
         document.getElementById("editorBtnText10").innerText = "SHOW THE DEFECT";
+        document.getElementById("caption10").style.display = "none";
+        document.getElementById("exp10").style.display = "block";
         editorBtnPressedList[9] = 1;
     }
     else{
@@ -321,6 +359,8 @@ function editorBtnPressed10() {
         editor10.undo();
         editor10.session.removeMarker(markerID);
         document.getElementById("editorBtnText10").innerText = "SHOW THE SOLUTION";
+        document.getElementById("caption10").style.display = "block";
+        document.getElementById("exp10").style.display = "none";
         editorBtnPressedList[9] = 0;
     }
   

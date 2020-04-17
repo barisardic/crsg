@@ -165,7 +165,9 @@
     /* border:10px solid red; */
     margin: auto;
 }
-
+.tutorial-explanation{
+    display: none;
+}
 .editorBtn {
     position: relative;
     transition: box-shadow ease .6s, background ease .6s;
