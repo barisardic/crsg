@@ -102,123 +102,226 @@ editor10.setReadOnly(true);
 editor10.setTheme("ace/theme/dracula2");
 //
 //button listeners
+var editorBtnPressedList = [0,0,0,0,0,0,0,0,0,0];
+
 // 1
 document.getElementById("editorBtn").addEventListener("click", editorBtnPressed, false);
 
 function editorBtnPressed() {
+if(editorBtnPressedList[0] == 0){
   var rng = new Range(3, 0, 4, 0);
-  editor.session.addMarker(rng, "ace_step", "screen", false);
-
+  markerID = editor.session.addMarker(rng, "ace_step", "screen", false);
   var newText = "        return n2;\n";
   editor.session.replace(rng, newText);
-  document.getElementById("editorBtn").disabled = true;
+  document.getElementById("editorBtnText").innerText = "SHOW THE DEFECT";
+  editorBtnPressedList[0] = 1;
+}
+else{
+    editor.undo();
+    editor.session.removeMarker(markerID);
+    document.getElementById("editorBtnText").innerText = "SHOW THE SOLUTION";
+    editorBtnPressedList[0] = 0;
+}
+  
 }
 // 2
 document.getElementById("editorBtn2").addEventListener("click", editorBtnPressed2, false);
 
 function editorBtnPressed2() {
-  var rng = new Range(5, 0, 6, 0);
-  editor2.session.addMarker(rng, "ace_step", "screen", false);
-
-  var newText = "";
-  editor2.session.replace(rng, newText);
-  document.getElementById("editorBtn2").disabled = true;
+    if(editorBtnPressedList[1] == 0){
+        var rng = new Range(5, 0, 6, 0);
+        markerID= editor2.session.addMarker(rng, "ace_step", "screen", false);
+        alert("if"+markerID);
+        var newText = "";
+        editor2.session.replace(rng, newText);
+        document.getElementById("editorBtnText2").innerText = "SHOW THE DEFECT";
+        editorBtnPressedList[1] = 1;
+    }
+    else{
+        alert("else"+markerID);
+        editor2.undo();
+        editor2.session.removeMarker(markerID);
+        document.getElementById("editorBtnText2").innerText = "SHOW THE SOLUTION";
+        editorBtnPressedList[1] = 0;
+    }
+  
 }
 // 3
 document.getElementById("editorBtn3").addEventListener("click", editorBtnPressed3, false);
 
 function editorBtnPressed3() {
-  var rng = new Range(4, 0, 6, 0);
-  editor3.session.addMarker(rng, "ace_step", "screen", false);
+    if(editorBtnPressedList[2] == 0){
+        var rng = new Range(4, 0, 6, 0);
+        markerID = editor3.session.addMarker(rng, "ace_step", "screen", false);
 
-  var newText = "\n \n";
-  editor3.session.replace(rng, newText);
-  document.getElementById("editorBtn3").disabled = true;
+        var newText = "\n \n";
+        editor3.session.replace(rng, newText);
+        document.getElementById("editorBtnText3").innerText = "SHOW THE DEFECT";
+        editorBtnPressedList[2] = 1;
+    }
+    else{
+        editor3.undo();
+        editor3.session.removeMarker(markerID);
+        document.getElementById("editorBtnText3").innerText = "SHOW THE SOLUTION";
+        editorBtnPressedList[2] = 0;
+    }
+  
 }
 // 4
 document.getElementById("editorBtn4").addEventListener("click", editorBtnPressed4, false);
 
 function editorBtnPressed4() {
-  var rng = new Range(2, 0, 3, 0);
-  editor4.session.addMarker(new Range(3, 0, 4, 0), "ace_step", "screen", false);
+    if(editorBtnPressedList[3] == 0){
+        var rng = new Range(2, 0, 3, 0);
+        markerID = editor4.session.addMarker(new Range(3, 0, 4, 0), "ace_step", "screen", false);
 
-  var newText = "    if (n.length() > MAX_PASSWORD_SIZE)\n";
-  editor4.session.replace(rng, newText);
+        var newText = "    if (n.length() > MAX_PASSWORD_SIZE)\n";
+        editor4.session.replace(rng, newText);
 
-  var rng2 = new Range(1, 0, 2, 0);
-  editor4.session.addMarker(rng2, "ace_step", "screen", false);
+        var rng2 = new Range(1, 0, 2, 0);
+        markerID2 = editor4.session.addMarker(rng2, "ace_step", "screen", false);
 
-  var newText2 = "public static final int MAX_PASSWORD_SIZE = 7;\npublic static boolean checkPasswordLength(string n){)\n";
-  editor4.session.replace(rng2, newText2);
-  document.getElementById("editorBtn4").disabled = true;
+        var newText2 = "public static final int MAX_PASSWORD_SIZE = 7;\npublic static boolean checkPasswordLength(string n){)\n";
+        editor4.session.replace(rng2, newText2);
+        document.getElementById("editorBtnText4").innerText = "SHOW THE DEFECT";
+        editorBtnPressedList[3] = 1;
+    }else{
+        editor4.undo();
+        editor4.session.removeMarker(markerID);
+        editor4.undo();
+        editor4.session.removeMarker(markerID2);
+        document.getElementById("editorBtnText4").innerText = "SHOW THE SOLUTION";
+        editorBtnPressedList[3] = 0;
+    }
+  
 }
 // 5
 document.getElementById("editorBtn5").addEventListener("click", editorBtnPressed5, false);
 
 function editorBtnPressed5() {
-  var rng = new Range(2, 0, 3, 0);
-  editor5.session.addMarker(rng, "ace_step", "screen", false);
-
-  var newText = "    Date dateOfBirth;\n";
-  editor5.session.replace(rng, newText);
-  document.getElementById("editorBtn5").disabled = true;
+    if(editorBtnPressedList[4] == 0){
+        var rng = new Range(2, 0, 3, 0);
+        markerID = editor5.session.addMarker(rng, "ace_step", "screen", false);
+      
+        var newText = "    Date dateOfBirth;\n";
+        editor5.session.replace(rng, newText);
+        document.getElementById("editorBtnText5").innerText = "SHOW THE DEFECT";
+        editorBtnPressedList[4] = 1;
+    }
+    else{
+        editor5.undo();
+        editor5.session.removeMarker(markerID);
+        document.getElementById("editorBtnText5").innerText = "SHOW THE SOLUTION";
+        editorBtnPressedList[4] = 0;
+    }
+  
 }
 // 6
 document.getElementById("editorBtn6").addEventListener("click", editorBtnPressed6, false);
 
 function editorBtnPressed6() {
-  var rng = new Range(1, 0, 19, 0);//the whole function maaaan
-  editor6.session.addMarker(rng, "ace_step", "screen", false);
-
-  var newText = "public String readFile(File f) throws IOException{\n    StringBuilder sb = new StringBuilder();\n    readFileHelper(f, sb);//a code segment that can throw an IO exception\n    return sb.toString();\n}\n";
-  editor6.session.replace(rng, newText);
-  document.getElementById("editorBtn6").disabled = true;
+    if(editorBtnPressedList[5] == 0){
+        var rng = new Range(1, 0, 19, 0);//the whole function maaaan
+        markerID = editor6.session.addMarker(rng, "ace_step", "screen", false);
+      
+        var newText = "public String readFile(File f) throws IOException{\n    StringBuilder sb = new StringBuilder();\n    readFileHelper(f, sb);//a code segment that can throw an IO exception\n    return sb.toString();\n}\n";
+        editor6.session.replace(rng, newText);
+        document.getElementById("editorBtnText6").innerText = "SHOW THE DEFECT";
+        editorBtnPressedList[5] = 1;
+    }else{
+        editor6.undo();
+        editor6.session.removeMarker(markerID);
+        document.getElementById("editorBtnText6").innerText = "SHOW THE SOLUTION";
+        editorBtnPressedList[5] = 0;
+    }
+  
 }
 // 7
 document.getElementById("editorBtn7").addEventListener("click", editorBtnPressed7, false);
 
 function editorBtnPressed7() {
-  var rng = new Range(1, 0, 2, 0);
-  editor7.session.addMarker(rng, "ace_step", "screen", false);
-
-  var newText = "void compute(int n1){\n";
-  editor7.session.replace(rng, newText);
-  document.getElementById("editorBtn7").disabled = true;
+    if(editorBtnPressedList[6] == 0){
+        var rng = new Range(1, 0, 2, 0);
+        markerID = editor7.session.addMarker(rng, "ace_step", "screen", false);
+      
+        var newText = "void compute(int n1){\n";
+        editor7.session.replace(rng, newText);
+        document.getElementById("editorBtnText7").innerText = "SHOW THE DEFECT";
+        editorBtnPressedList[6] = 1;
+    }
+    else{
+        editor7.undo();
+        editor7.session.removeMarker(markerID);
+        document.getElementById("editorBtnText7").innerText = "SHOW THE SOLUTION";
+        editorBtnPressedList[6] = 0;
+    }
+  
 }
 // 8
 document.getElementById("editorBtn8").addEventListener("click", editorBtnPressed8, false);
 
 function editorBtnPressed8() {
   var rng = new Range(1, 0, 2, 0);
-  editor8.session.addMarker(rng, "ace_step", "screen", false);
+  if(editorBtnPressedList[7] == 0){
+    markerID = editor8.session.addMarker(rng, "ace_step", "screen", false);
 
-  var newText = "public static boolean isFive(int n1){\n";
-  editor8.session.replace(rng, newText);
-  document.getElementById("editorBtn8").disabled = true;
+    var newText = "public static boolean isFive(int n1){\n";
+    editor8.session.replace(rng, newText);
+    document.getElementById("editorBtnText8").innerText = "SHOW THE DEFECT";
+    editorBtnPressedList[7] = 1;
+  }
+  else{
+    editor8.undo();
+    editor8.session.removeMarker(markerID);
+    document.getElementById("editorBtnText8").innerText = "SHOW THE SOLUTION";
+    editorBtnPressedList[7] = 0;
+  }
+  
 }
 // 9
 document.getElementById("editorBtn9").addEventListener("click", editorBtnPressed9, false);
 
 function editorBtnPressed9() {
-  var rng = new Range(3, 0, 4, 0);
-  editor9.session.addMarker(rng, "ace_step", "screen", false);
-
-  var newText = "if (firstName != null && firstName.equals(lastName)) {\n";
-  editor9.session.replace(rng, newText);
-  document.getElementById("editorBtn9").disabled = true;
+    if(editorBtnPressedList[8] == 0){
+        var rng = new Range(3, 0, 4, 0);
+        markerID = editor9.session.addMarker(rng, "ace_step", "screen", false);
+      
+        var newText = "if (firstName != null && firstName.equals(lastName)) {\n";
+        editor9.session.replace(rng, newText);
+        document.getElementById("editorBtnText9").innerText = "SHOW THE DEFECT";
+        editorBtnPressedList[8] = 1;
+    }
+    else{
+    editor9.undo();
+    editor9.session.removeMarker(markerID);
+    document.getElementById("editorBtnText9").innerText = "SHOW THE SOLUTION";
+    editorBtnPressedList[8] = 0;
+    }
+  
 }
 // 10
 document.getElementById("editorBtn10").addEventListener("click", editorBtnPressed10, false);
 
 function editorBtnPressed10() {
-  var rng = new Range(0, 0, 1, 0);
-  editor10.session.addMarker(rng, "ace_step", "screen", false);
-  var newText = "for (i = 0; i < 10; i++, j++) {\n";
+    if(editorBtnPressedList[9] == 0){
+        var rng = new Range(0, 0, 1, 0);
+        markerID = editor10.session.addMarker(rng, "ace_step", "screen", false);
+        var newText = "for (i = 0; i < 10; i++, j++) {\n";
 
-  var rng2 = new Range(2, 0, 3, 0);
-  var newText2 = "\n";
+        var rng2 = new Range(2, 0, 3, 0);
+        var newText2 = "\n";
 
-  editor10.session.replace(rng, newText);
-  editor10.session.replace(rng2, newText2);
-  document.getElementById("editorBtn10").disabled = true;
+        editor10.session.replace(rng, newText);
+        editor10.session.replace(rng2, newText2);
+        document.getElementById("editorBtnText10").innerText = "SHOW THE DEFECT";
+        editorBtnPressedList[9] = 1;
+    }
+    else{
+        editor10.undo();
+        editor10.undo();
+        editor10.session.removeMarker(markerID);
+        document.getElementById("editorBtnText10").innerText = "SHOW THE SOLUTION";
+        editorBtnPressedList[9] = 0;
+    }
+  
 }
