@@ -131,14 +131,14 @@ function editorBtnPressed2() {
     if(editorBtnPressedList[1] == 0){
         var rng = new Range(5, 0, 6, 0);
         markerID= editor2.session.addMarker(rng, "ace_step", "screen", false);
-        alert("if"+markerID);
+        //alert("if"+markerID);
         var newText = "";
         editor2.session.replace(rng, newText);
         document.getElementById("editorBtnText2").innerText = "SHOW THE DEFECT";
         editorBtnPressedList[1] = 1;
     }
     else{
-        alert("else"+markerID);
+        //alert("else"+markerID);
         editor2.undo();
         editor2.session.removeMarker(markerID);
         document.getElementById("editorBtnText2").innerText = "SHOW THE SOLUTION";
