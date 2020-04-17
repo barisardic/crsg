@@ -62,6 +62,7 @@
 }
 .guru.portrait{
     position: relative;
+    object-fit: cover;
     max-width: 90%;
     min-width: 30%;
     height: 90%;
