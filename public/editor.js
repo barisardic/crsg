@@ -90,7 +90,7 @@ class Err {
   constructor(start, end) {
     this.start = start;
     this.end = end;
-    this.reason = ["empty"];
+    this.reason = [];
   }
   get start(){
     return this._start;
@@ -619,6 +619,7 @@ function addListAsComponentForAnswers (ListofErrors)
                 reasons2 = buttons.querySelector(".btn-secondary");
                 reasons2.disabled = true;
                 reasons2.setAttribute("id","c"+index);
+                //index-1 to start from the 0 index in answers[].
                 reasons2.innerHTML = answers[index-1].reason;
 
                 visibility = buttons.getElementsByTagName("button")[1];
