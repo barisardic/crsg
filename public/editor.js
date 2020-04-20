@@ -273,6 +273,9 @@ function clickedOnGuru(){
   var spans = '<span>' + str.split('').join('</span><span>') + '</span>';
 $(spans).hide().appendTo('.guruSays').each(function (i) {
     typeSound.play();
+    //typeSound.playbackRate=2*(str.length/218);
+    //typeSound.loop = true;
+ 
     $(this).delay(50 * i).css({
         display: 'inline',
         opacity: 0
@@ -280,6 +283,7 @@ $(spans).hide().appendTo('.guruSays').each(function (i) {
         opacity: 1
     }, 100);
 });
+
 guruCount = guruCount +1;
 }
 
@@ -294,7 +298,7 @@ $(document).click(function(event) {
   if (!$(event.target).closest(".guru_modal,.js-open-modal").length) {
     editor.renderer.setShowGutter(true);
     document.getElementById("overlay").style.display = "none";
-    typeSound.stop();
+    typeSound.pause();
     $("body").find(".guru_modal").removeClass("visible");
   } 
 });
@@ -470,7 +474,7 @@ function answersPressed(){
     endLine = answers[i].end + 1;
 
     var rng = new Range(startingLine,0,endLine,0);
-    editor.session.addMarker(rng,"ace_active-line","screen",false);
+    editor.session.addMarker(rng,"ace_step","screen",false);
   }
 }
 
@@ -557,7 +561,7 @@ function visibilityPressed(){
     //alert(startingLine+"**"+endLine);
     //editor.addSelectionMarker(rng);
     //editor.updateSelectionMarkers();
-    editor.session.addMarker(rng,"ace_active-line","fullLine");
+    editor.session.addMarker(rng,"ace_step","screen");
 }
   
 function removePressed(){
