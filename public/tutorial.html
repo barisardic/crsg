@@ -77,7 +77,8 @@ public static int returnBigger(int n1, int n2){
                 <div class="tutorial-info carousel-caption">
                     <div>
                         <h1 class="VR" id="caption">VISUAL REPRESENTATION</h1>
-                        <h4 class="tutorial-explanation" id="exp">The explanation</h4>
+                        <h4 class="tutorial-explanation VR" id="exp">The marked return statement is overly indented. It should be raised back 
+                                                                    up enough to be only 1 tab indented from its parent if statement.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/evolvability.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -113,7 +114,8 @@ public static int returnBigger(int n1, int n2){
                 <div class="tutorial-info carousel-caption">
                     <div>
                         <h1 class="Organization" id="caption2">ORGANIZATION</h1>
-                        <h4 class="tutorial-explanation" id="exp2">The explanation2</h4>
+                        <h4 class="tutorial-explanation Organization" id="exp2">The third return statement cannot be reached, making it dead 
+                                                                                code. It should be removed.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/evolvability.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -154,7 +156,9 @@ public static int returnBigger(int n1, int n2){
                 <div class="tutorial-info carousel-caption">
                     <div>
                         <h1 class="SA" id="caption3">SOLUTION APPROACH</h1>
-                        <h4 class="tutorial-explanation" id="exp3">The explanation3</h4>
+                        <h4 class="tutorial-explanation SA" id="exp3">n1 is decremented right after being incremented: Since it runs but does 
+                                                                    not serve any funtional purpose, it is semantic dead code. It should be 
+                                                                    removed unless its dysfunctionality can be fixed.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/evolvability.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -170,7 +174,7 @@ public static int returnBigger(int n1, int n2){
                 <button id="backBtn" class="backBtn">
                     <h3>Back to Game!</h3>
                 </button>
-                <h2 class="topText">EVOLVABILITY > <span class="SbL"> SUPPORTED BY LANGUAGE</span> > ELEMENT TYPE</h2>
+                <h2 class="topText">EVOLVABILITY > <span class="SbL"> VARIABLE MANIPULATION</span> > ELEMENT TYPE</h2>
                 <button id="editorBtn8" class="editorBtn">
                     <h3 id="editorBtnText8">SHOW THE SOLUTION</h3>
                 </button>
@@ -178,7 +182,7 @@ public static int returnBigger(int n1, int n2){
 
                 <div class="editorDiv">
                     <div id="editor8" class="editor">//this function returns true if the input number equals 5
-public static boolean isFive(string n1){
+public static boolean isFive(String n1){
     int n2 = 5;
     if(int(n1) == n2)
         return true;
@@ -190,8 +194,10 @@ public static boolean isFive(string n1){
 
                 <div class="tutorial-info carousel-caption">
                     <div>
-                        <h1 class="SbL" id="caption8">SUPPORTED BY LANGUAGE</h1>
-                        <h4 class="tutorial-explanation" id="exp8">The explanation8</h4>
+                        <h1 class="SbL" id="caption8">VARIABLE MANIPULATION</h1>
+                        <h4 class="tutorial-explanation SbL" id="exp8">n1 might not be an integer, potentially breaking the integer typecast at 
+                                                                    the comparison with n2, showing this to be a case of bad element typing. 
+                                                                    Parameter n1 should be an integer, not a string.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/evolvability.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -207,7 +213,7 @@ public static boolean isFive(string n1){
                 <button id="backBtn" class="backBtn">
                     <h3>Back to Game!</h3>
                 </button>
-                <h2 class="topText">EVOLVABILITY > <span class="Textual"> TEXTUAL</span> > NAMING</h2>
+                <h2 class="topText">EVOLVABILITY > <span class="Textual"> DOCUMENTATION</span> > NAMING</h2>
                 <button id="editorBtn4" class="editorBtn">
                     <h3 id="editorBtnText4">SHOW THE SOLUTION</h3>
                 </button>
@@ -215,7 +221,7 @@ public static boolean isFive(string n1){
 
                 <div class="editorDiv">
                     <div id="editor4" class="editor">//this checks the length of a string and returns true if it is longer than 7 characters
-public static boolean checkPasswordLength(string n){
+public static boolean checkPasswordLength(String n){
     if(n.length() > 7)
     {
         return true;
@@ -228,8 +234,11 @@ public static boolean checkPasswordLength(string n){
 
                 <div class="tutorial-info carousel-caption">
                     <div>
-                        <h1 class="Textual" id="caption4">TEXTUAL</h1>
-                        <h4 class="tutorial-explanation" id="exp4">The explanation4</h4>
+                        <h1 class="Textual" id="caption4">DOCUMENTATION</h1>
+                        <h4 class="tutorial-explanation Textual" id="exp4">7 is a nondescript, magic number, suggesting that it can be better 
+                                                                        described with a name. Numbers (usually those besides 0 and 1) 
+                                                                        should be assigned to variables, or to constants when they are not 
+                                                                        supposed to change.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/evolvability.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -267,7 +276,8 @@ public class Person {
                 <div class="tutorial-info carousel-caption">
                     <div>
                         <h1 class="Resource" id="caption5">RESOURCE</h1>
-                        <h4 class="tutorial-explanation" id="exp5">The explanation5</h4>
+                        <h4 class="tutorial-explanation Resource" id="exp5">Every object that is of the class Person has the same age because of this
+                                                                        bad data manipulation practice. To fix it, dateOfBirth should not be static.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/functional.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -277,20 +287,20 @@ public class Person {
                     </div>
                 </div>
             </div>
-
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
             <!-- slide 9 -->
             <div class="carousel-item">
                 <button id="backBtn" class="backBtn">
                     <h3>Back to Game!</h3>
                 </button>
-                <h2 class="topText">FUNCTIONAL > <span class="Interface"> LOGIC</span> > COMPARE</h2>
+                <h2 class="topText">FUNCTIONAL > <span class="Logic"> LOGIC</span> > COMPARE</h2>
                 <button id="editorBtn9" class="editorBtn">
                     <h3 id="editorBtnText9">SHOW THE SOLUTION</h3>
                 </button>
                 <img class="d-block w-100" data-color=#282a36 alt="Second Image">
 
                 <div class="editorDiv">
-                    <div id="editor9" class="editor">String firstName = getFirstName(); // String overrides equals
+                    <div id="editor9" class="editor">String firstName = getFirstName(); // String overrides .equals()
 String lastName = getLastName();
                         
 if (firstName == lastName){
@@ -303,8 +313,10 @@ if (firstName == lastName){
 
                 <div class="tutorial-info carousel-caption">
                     <div>
-                        <h1 class="Interface" id="caption9">LOGIC</h1>
-                        <h4 class="tutorial-explanation" id="exp9">The explanation9</h4>
+                        <h1 class="Logic" id="caption9">LOGIC</h1>
+                        <h4 class="tutorial-explanation Logic" id="exp9">Nonprimitives in Java cannot be compared with the standard comparison 
+                                                                        operators. As the String class's "equals" function is already overriden, it 
+                                                                        should be used for comparisons instead.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/functional.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -313,13 +325,13 @@ if (firstName == lastName){
                     </div>
                 </div>
             </div>
-
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
             <!-- slide 10 -->
             <div class="carousel-item">
                 <button id="backBtn" class="backBtn">
                     <h3>Back to Game!</h3>
                 </button>
-                <h2 class="topText">FUNCTIONAL > <span class="Interface"> LOGIC</span> > COMPUTE</h2>
+                <h2 class="topText">FUNCTIONAL > <span class="Logic"> LOGIC</span> > COMPUTE</h2>
                 <button id="editorBtn10" class="editorBtn">
                     <h3 id="editorBtnText10">SHOW THE SOLUTION</h3>
                 </button>
@@ -336,8 +348,9 @@ if (firstName == lastName){
 
                 <div class="tutorial-info carousel-caption">
                     <div>
-                        <h1 class="Interface" id="caption10">LOGIC</h1>
-                        <h4 class="tutorial-explanation" id="exp10">The explanation10</h4>
+                        <h1 class="Logic" id="caption10">LOGIC</h1>
+                        <h4 class="tutorial-explanation Logic" id="exp10">i being incremented inside a for loop is a bad computation practice for 
+                                                                        for loops. i should be incremented inside the for statement itself.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/functional.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -347,7 +360,6 @@ if (firstName == lastName){
                 </div>
             </div>
 
-            
             <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
             <!-- slide 6 -->
             <div class="carousel-item">
@@ -379,7 +391,9 @@ public String readFile(File f) {
                 <div class="tutorial-info carousel-caption">
                     <div>
                         <h1 class="Logic" id="caption6">LOGIC</h1>
-                        <h4 class="tutorial-explanation" id="exp6">The explanation6</h4>
+                        <h4 class="tutorial-explanation Logic" id="exp6">It is both a bad practice and a detriment to algorithm performance when an 
+                            exception is caught and nothing is done with it. The function should be marked as throwing an exception in its 
+                            prototype.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/functional.png'></div>
                     <div style="padding-bottom: 20px;">
@@ -412,7 +426,9 @@ void compute(int n1, int n2){
                 <div class="tutorial-info carousel-caption">
                     <div>
                         <h1 class="Interface" id="caption7">INTERFACE</h1>
-                        <h4 class="tutorial-explanation" id="exp7">The explanation7</h4>
+                        <h4 class="tutorial-explanation Interface" id="exp7">Despite having no use, due to how Java works, the parameter n2 must always be 
+                                                                            passed to be able to call the function, making n2 a bad parameter. n2 should be 
+                                                                            removed to fix this bad practice.</h4>
                     </div>
                     <div class="typeImg"><img src='../assets/functional.png'></div>
                     <div style="padding-bottom: 20px;">

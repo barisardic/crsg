@@ -122,23 +122,23 @@
     color: #e9ff86;
 }
 
-.SbL {
+.SbL {/*used to be "supported by language", now used in "variable manipulation"*/
     color: #86ff96;
 }
 
-.Textual {
+.Textual {/*used to be "textual", now used in "documentation"*/
     color: #86ffe5;
 }
 
-.Interface {
+.Resource {
     color: #86a6ff;
 }
 
-.Resource {
+.Logic {
     color: #ac86ff;
 }
 
-.Logic {
+.Interface {
     color: #ff86f9;
 }
 
