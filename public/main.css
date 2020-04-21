@@ -2,12 +2,28 @@ body {
     margin: 0;
     height: 100vh;
     background: rgb(27, 27, 27);
+    cursor: none;
+}
+
+.cursorImage {
+    width: 64px;
+    height: 64px;
+    top: -32px;
+    left: -32px;
+    position: absolute;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    margin-top: -22px;
+    margin-left: -22px;
+    z-index: 7;
+    transform: rotate(-45deg);
+    pointer-events: none;
 }
 
 .cursor {
     width: 20px;
     height: 20px;
-    border: 1px solid white;
+    border: 2px solid white;
     border-radius: 50%;
     position: absolute;
     transition-duration: 200ms;
@@ -62,7 +78,7 @@ body {
 
 .expand {
     animation: cursorAnim3 .5s forwards;
-    border: 1px solid red;
+    border: 1px solid #4040f9;
 }
 
 .background {
@@ -111,6 +127,7 @@ p {
   position: relative;
   transition: box-shadow ease .6s, background ease .6s;
   transform: scale(.5);
+  cursor: none;
 }
 
 .btn:hover {
