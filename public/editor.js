@@ -131,7 +131,9 @@ if(levelChosen == 1){
   answers[2] =answer3;
 
   var hints = ["There are "+ answers.length+" defects in the code","Duplication error at lines 9-12","Parameter error at lines 19-20","Comments error at line 5"];
-  var GurusWords = ["Accept that many programming decisions are opinions. Discuss tradeoffs, which you prefer, and reach a resolution quickly.",
+  var GurusWords = ["Better Pull Requests lead to better reviews. Make sure commit messages and PR descriptions are informative.",
+  "Prior to the code review, use a static-code analyzer tool to eliminate errors detectable by machines. Automate to save time.",
+  "Accept that many programming decisions are opinions. Discuss tradeoffs, which you prefer, and reach a resolution quickly.",
   "Ask good questions; don't make demands. ('What do you think about naming this :user_id?')",
   "Good questions avoid judgment and avoid assumptions about the author's perspective."];
 }
@@ -155,8 +157,10 @@ else if(levelChosen == 2){
   answers[3] =answer4;
 
   var hints = ["There are "+ answers.length+" defects in the code","Focus on the styling aspects of the code","Consider looking for string equality violations","Copy pasting is harmful"];
-  var GurusWords = ["Ask for clarification. ('I didn't understand. Can you clarify?')",
-  "Avoid selective ownership of code. ('mine", "not mine", "yours')",
+  var GurusWords = ["As a reviewer, you are there to review code not to update the author’s code.",
+  "No matter how senior the developer is, everyone needs to review and be reviewed. Include everyone in the code review process.",
+  "Ask for clarification. ('I didn't understand. Can you clarify?')",
+  "Avoid selective ownership of code. ('mine', 'not mine', 'yours')",
   "Avoid using terms that could be seen as referring to personal traits. ('dumb', 'stupid'). Assume everyone is intelligent and well-meaning."];
 }
 else if(levelChosen == 3){
@@ -173,9 +177,11 @@ else if(levelChosen == 3){
   answer3.reason.push("Compare");
   answers[2] =answer3;
   var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to comparisons","Sadly, mistakes can be repeted ","There are some things in OO languages that are always more dangerous"];
-  var GurusWords = ["Be explicit. Remember people don't always understand your intentions online.",
-  "Be humble. ('I'm not sure - let's look it up.')",
-  "Don't use hyperbole. ('always', 'never', 'endlessly', 'nothing')"];  
+  var GurusWords = ["You should not merge code while the discussions are still taking place.",
+    "Offer alternative implementations, but assume the author already considered them. ('What do you think about using a custom validator here?')",
+    "Be explicit. Remember people don't always understand your intentions online.",
+    "Be humble. ('I'm not sure - let's look it up.')",
+    "Don't use hyperbole. ('always', 'never', 'endlessly', 'nothing')"];  
 }
 else if(levelChosen == 4){
   var answers = [];
@@ -196,7 +202,9 @@ else if(levelChosen == 4){
   answers[2] =answer3;
 
   var hints = ["There are "+ answers.length+" defects in the code","Pay close attention to indexes","How does java handle 2D arrays?"];
-  var GurusWords = ["Don't use sarcasm.",
+  var GurusWords = ["The best person to review the code should be the person in your team who is likely to find errors in that code.",
+  "Seek to understand the author's perspective.",
+  "Don't use sarcasm.",
   "Keep it real. If emoji, animated gifs, or humor aren't you, don't force them. If they are, use them with aplomb.",
   "Talk synchronously (e.g. chat, screensharing, in person) if there are too many 'I didn't understand' or 'Alternative solution:' comments. Post a follow-up comment summarizing the discussion."];    
 }
@@ -220,7 +228,9 @@ else if(levelChosen == 5){
   answers[3] =answer4;
 
   var hints = ["There are "+ answers.length+" defects in the code","If a line of code is missing you should select the nearest encapsulating object structure","Is java dynamically typed?"];
-  var GurusWords = ["Communicate which ideas you feel strongly about and those you don't.",
+  var GurusWords = ["If you don’t have time or expertise for the review, do let the author know, so that another reviewer could be assigned to the code review.",
+  "Sign off on the pull request with a thumbs up or 'Ready to merge' comment.",
+  "Communicate which ideas you feel strongly about and those you don't.",
   "Identify ways to simplify the code while still solving the problem.",
   "If discussions turn too philosophical or academic, move the discussion offline to a regular Friday afternoon technique discussion. In the meantime, let the author make the final decision on alternative implementations."];      
 }
@@ -268,7 +278,7 @@ function clickedOnGuru(){
    
   document.getElementById('guru_modal').classList.add("toBlue");
   document.getElementById("guruSays").innerHTML = "";
-  var str = GurusWords[guruCount%3];
+  var str = GurusWords[guruCount%GurusWords.length];
   // this jquery snippet is for the typewriter effect, if you dont want it, dont reset innerhtml set it to GurusWords. 
   var spans = '<span>' + str.split('').join('</span><span>') + '</span>';
 $(spans).hide().appendTo('.guruSays').each(function (i) {
