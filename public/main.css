@@ -1,3 +1,6 @@
+body{
+    cursor: url('../assets/menuicon2.png'),auto ;
+} 
 .background {
   margin: 0;
   padding: 0;
