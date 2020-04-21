@@ -55,6 +55,45 @@ p {
   transform: scale(0.55);
 }
 
+.preq {
+    transform: translateY(-15%);
+    text-align: center;
+}
+
+.tut {
+    transform: translateY(55%);
+    text-align: center;
+}
+
+.stat1 {
+    transform: translateY(-75%);
+    text-align: center;
+}
+
+.stat2 {
+    transform: translateY(-340%);
+    text-align: center;
+}
+
+.stat3 {
+    transform: translateY(-315%);
+    text-align: center;
+}
+
+.stat4 {
+    transform: translateY(-605%);
+    text-align: center;
+}
+
+.stat5 {
+    transform: translateY(-405%);
+    text-align: center;
+}
+
+.postq {
+    transform: translateY(210%);
+    text-align: center;
+}
 /*prequiz*/
 .station.prequiz {
   top: 0%;
