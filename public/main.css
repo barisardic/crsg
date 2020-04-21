@@ -8,6 +8,12 @@
   height: 100vh;
   background-image: url('../assets/bg.png')
 }
+h2 {
+    color: white;
+  }
+p {
+    color: white;
+  }
 
 .transparent {
   background: #0000 !important;
