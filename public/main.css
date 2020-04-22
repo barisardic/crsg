@@ -2,7 +2,15 @@ body {
     margin: 0;
     height: 100vh;
     background: rgb(27, 27, 27);
-    cursor: none;
+    
+}
+
+.clicked {
+    opacity: 0.5;
+    width: 50px !important;
+    height: 50px !important;
+    margin-top: -15px !important;
+    margin-left: -15px !important;
 }
 
 .cursorImage {
@@ -11,7 +19,7 @@ body {
     top: -32px;
     left: -32px;
     position: absolute;
-    transition-duration: 200ms;
+    transition-duration: 100ms;
     transition-timing-function: ease-out;
     margin-top: -22px;
     margin-left: -22px;
@@ -20,13 +28,17 @@ body {
     transform: rotate(-30deg);
 }
 
+.cursor:active {
+    color: transparent;
+}
+
 .cursor {
     width: 20px;
     height: 20px;
     border: 2px solid white;
     border-radius: 50%;
     position: absolute;
-    transition-duration: 200ms;
+    transition-duration: 100ms;
     transition-timing-function: ease-out;
     animation: cursorAnim .5s infinite alternate;
     pointer-events: none;
@@ -111,7 +123,43 @@ p {
 .hover:hover {
   box-shadow: 0 0 15px 5px rgba(255, 251, 213, 0.714);
 }
-.outer:hover .btn { box-shadow: 0 0 15px 15px rgba(255, 251, 213, 0.714); transition: box-shadow ease .6s;}
+
+.outer .btn {
+    transition: box-shadow ease .6s, background ease .6s;
+}
+
+.outer:hover .btn { 
+    background: #ffffff;
+}
+
+.outer.preqCol:hover .btn {
+    box-shadow: 0 0 15px 15px #f7ffab;
+}
+
+.outer.stat1Col:hover .btn {
+    box-shadow: 0 0 15px 15px #74beff;
+}
+
+.outer.stat2Col:hover .btn {
+    box-shadow: 0 0 15px 15px #76ff03;
+}
+
+.outer.stat3Col:hover .btn {
+    box-shadow: 0 0 15px 15px #fff9c4;
+}
+
+.outer.stat4Col:hover .btn {
+    box-shadow: 0 0 15px 15px #ff5757;
+}
+
+.outer.stat5Col:hover .btn {
+    box-shadow: 0 0 15px 15px #df77ff;
+}
+
+.outer.postqCol:hover .btn {
+    box-shadow: 0 0 15px 15px #76ff03;
+}
+
 .container {
   display: flex;
   flex-direction: row;

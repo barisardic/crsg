@@ -96,8 +96,10 @@ document.addEventListener('mousemove', e => {
 
 document.addEventListener('click', () => {
     cursor.classList.add("expand");
+    cursorImage.classList.add("clicked");
 
     setTimeout(() => {
         cursor.classList.remove("expand");
+        cursorImage.classList.remove("clicked");
     }, 500)
 })
