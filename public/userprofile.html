@@ -1,202 +1,219 @@
 <html>
-   <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
-        <!-- Material Design icon font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <!--Main Stylesheet -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
-        <link rel="stylesheet" href="profile.css" />
-        <script src="score.js"></script>
-   </head>
-   
-   <body>
-    <div class="mdl-layout__container"> 
-      <div class = "mdl-layout mdl-js-layout mdl-layout--fixed-header">
-         <header class = "mdl-layout__header">
-            <div class = "mdl-layout__header-row"> 
-                <div class="mdl-layout__drawer">
-        </div>     
-               <span class = "mdl-layout-title">CRSG</span> 
-               <div class="mdl-layout-spacer"></div>  
-               <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="/main.html">Main</a>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="userEmail" onclick="window.location.href='/userprofile.html'">
-                
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="signout3">
-                        Sign Out
-                    </button>
-                  </nav>       
-            </div>
-                   
-         </header>     
-         <div class="mdl-layout__drawer">
-            </div>
-         <main class = "mdl-layout__content">    
-            <div class = "mdl-tabs mdl-js-tabs">
-               <div class = "mdl-tabs__tab-bar">
-                  <a href = "#tab1-panel" class = "mdl-tabs__tab is-active">Profile</a>
-                  <!-- <a href = "#tab2-panel" class = "mdl-tabs__tab">Badges</a>
-                  <a href = "#tab3-panel" class = "mdl-tabs__tab">Leaderboards</a> -->
-               </div>
-            
-               <div class = "mdl-tabs__panel is-active" id = "tab1-panel">
-                  <p> <div class="container">
-                        <!--  <h1 class="brand"><span></span> Web Design</h1> -->
-                         <div class="wrapper animated bounceInLeft">
-                           <div class="company-info">
-                             <h2>BILSEN</h2>
-                             <ul>
-                               <li><i class="fa fa-road"></i> Bilkent University</li>
-                               <li><i class="fa fa-phone"></i> EA527</li>
-                               <li><i class="fa fa-envelope"></i> bilsen.apps@gmail.com</li>
-                             </ul>
-                           </div>
-                           <div class="contact">
-                             <form >
-                             <h3>Your Information</h3>
-                             <p>
-                                    <div class="container2">
-                                            <h4>Classes :</h4>
-                                            <ul class="ks-cboxtags">
-                                              <li><input type="checkbox" id="cs453" value="Rainbow Dash"><label for="cs453">CS453</label></li>
-                                              <li><input type="checkbox" id="cs415" value="Baby Moondancer"><label for="cs415">CS415</label></li>
-                                              <li><input type="checkbox" id="cs319" value="Medley"><label for="cs319">CS319</label></li>
-                                            </ul>
-                                          
-                                          </div>
-                             </p>
-                             <p>
-                                 <label>University</label>
-                                 <input type="text" name="uni" id="uni">
-                               </p>
-                               <p>
-                                 <label>Contact Email</label>
-                                 <input type="email" name="email" id="email">
-                               </p>
-                               <p>
-                                 <label>Name</label>
-                                 <input type="text" name="name" id="name">
-                               </p>
-                               <p class="full">
-                                 <label>Feedback</label>
-                                 <textarea name="message" rows="5" id="feedback"></textarea>
-                               </p>
-                               <p class="full" id="submitBtn">
-                                 <button>Submit</button>
-                               </p>
-                             </form>
-                           </div>
-                         </div>
-                       </div>
 
-                  </p>
-               </div>
-            
-               <div class = "mdl-tabs__panel" id = "tab2-panel">
-                <section id="page">
-                  <div id='score'></div>
-                  <input id="slider" type="range" min="0" max="4200" value="225" oninput="updateScore(this.value)" />
-                  <br/><br/>
-            
-                  <div id='scorecard'>
-            
-                    <div id='icon'></div>
-                    <h3>John Doe</h3>
-                    Level: {level} <br/>
-                    Status: {status}<br/>
-                    <i>'{quote}'</i>
-            
-                    <div class='score'>
-                      Score: {score} <br/>
-                      Level score: {levelscore}/{leveltotal} <br/>
-                      Total progress: {totalprogress}% <br/>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--Main Stylesheet -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+    <link rel="stylesheet" href="profile.css" />
+    <script src="score.js"></script>
+</head>
+
+<body class="background">
+    <div class="mdl-layout__container ">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header transparent">
+                <div class="mdl-layout__header-row">
+                    <div class="mdl-layout__drawer">
                     </div>
-                    <progress max="100" value="{levelprogress}"></progress>
-                    
-                  </div>
-                  <br/>
-                  <br/><br/><br/>
-                </section>
-               </div>
-            
-               <div class = "mdl-tabs__panel" id = "tab3-panel">
-                <p> <div class="container">
-                  <!--  <h1 class="brand"><span></span> Web Design</h1> -->
-                   <div class="wrapper animated bounceInLeft">
-                     <div class="company-info">
-                      <section id="page">
-                        <div id='score'></div>
-                        <input id="slider" type="range" min="0" max="4200" value="225" oninput="updateScore(this.value)" />
-                        <br/><br/>
-                  
-                        <div id='scorecard'>
-                  
-                          <div id='icon'></div>
-                          <h3>John Doe</h3>
-                          Level: {level} <br/>
-                          Status: {status}<br/>
-                          <i>'{quote}'</i>
-                  
-                          <div class='score'>
-                            Score: {score} <br/>
-                            Level score: {levelscore}/{leveltotal} <br/>
-                            Total progress: {totalprogress}% <br/>
-                          </div>
-                          <progress max="100" value="{levelprogress}"></progress>
-                          
-                        </div>
-                        <br/>
-                        <br/><br/><br/>
-                      </section>
-                     </div>
-                     <div class="contact">
-                       <form >
-                       <h3>Your Information</h3>
-                       <p>
-                              <div class="container2">
-                                      <h4>Classes :</h4>
-                                      <ul class="ks-cboxtags">
-                                        <li><input type="checkbox" id="cs453" value="Rainbow Dash"><label for="cs453">CS453</label></li>
-                                        <li><input type="checkbox" id="cs415" value="Baby Moondancer"><label for="cs415">CS415</label></li>
-                                        <li><input type="checkbox" id="cs319" value="Medley"><label for="cs319">CS319</label></li>
-                                      </ul>
-                                    
-                                    </div>
-                       </p>
-                       <p>
-                           <label>University</label>
-                           <input type="text" name="uni" id="uni">
-                         </p>
-                         <p>
-                           <label>Contact Email</label>
-                           <input type="email" name="email" id="email">
-                         </p>
-                         <p>
-                           <label>Name</label>
-                           <input type="text" name="name" id="name">
-                         </p>
-                         <p class="full">
-                           <label>Feedback</label>
-                           <textarea name="message" rows="5" id="feedback"></textarea>
-                         </p>
-                         <p class="full" id="submitBtn">
-                           <button>Submit</button>
-                         </p>
-                       </form>
-                     </div>
-                   </div>
-                 </div>
+                    <span class="mdl-layout_title title" style="font-size: 27px">Code Review Serious Game</span>
+                    <div class="mdl-layout-spacer"></div>
+                    <nav class="mdl-navigation">
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" href="/main.html">Main</a>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" id="userEmail"
+                            onclick="window.location.href='/userprofile.html'">
 
-            </p>
-               </div>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" id="signout3">
+                            Sign Out
+                        </button>
+                    </nav>
+                </div>
+
+            </header>
+            <div class="mdl-layout__drawer">
             </div>
-         </main>
-      </div>
+            <main class="mdl-layout__content">
+                <div class="mdl-tabs mdl-js-tabs">
+                    <div class="mdl-tabs__tab-bar">
+                        <a href="#tab1-panel" class="mdl-tabs__tab is-active profileTab">Profile</a>
+                        <!-- <a href = "#tab2-panel" class = "mdl-tabs__tab">Badges</a>
+                  <a href = "#tab3-panel" class = "mdl-tabs__tab">Leaderboards</a> -->
+                    </div>
+
+                    <div class="mdl-tabs__panel is-active" id="tab1-panel">
+                        <p>
+                            <div class="container">
+                                <!--  <h1 class="brand"><span></span> Web Design</h1> -->
+                                <div class="wrapper animated bounceInLeft">
+                                    <div class="company-info">
+                                        <h2>BILSEN</h2>
+                                        <ul>
+                                            <li><i class="fa fa-road"></i> Bilkent University</li>
+                                            <li><i class="fa fa-phone"></i> EA527</li>
+                                            <li><i class="fa fa-envelope"></i> bilsen.apps@gmail.com</li>
+                                        </ul>
+                                    </div>
+                                    <div class="contact">
+                                        <form>
+                                            <h3>Your Information</h3>
+                                            <p>
+                                                <div class="container2">
+                                                    <h4>Classes :</h4>
+                                                    <ul class="ks-cboxtags">
+                                                        <li><input type="checkbox" id="cs453"
+                                                                value="Rainbow Dash"><label for="cs453">CS453</label>
+                                                        </li>
+                                                        <li><input type="checkbox" id="cs415"
+                                                                value="Baby Moondancer"><label for="cs415">CS415</label>
+                                                        </li>
+                                                        <li><input type="checkbox" id="cs319" value="Medley"><label
+                                                                for="cs319">CS319</label></li>
+                                                    </ul>
+
+                                                </div>
+                                            </p>
+                                            <p>
+                                                <label>University</label>
+                                                <input type="text" name="uni" id="uni">
+                                            </p>
+                                            <p>
+                                                <label>Contact Email</label>
+                                                <input type="email" name="email" id="email">
+                                            </p>
+                                            <p>
+                                                <label>Name</label>
+                                                <input type="text" name="name" id="name">
+                                            </p>
+                                            <p class="full">
+                                                <label>Feedback</label>
+                                                <textarea name="message" rows="5" id="feedback"></textarea>
+                                            </p>
+                                            <p class="full" id="submitBtn">
+                                                <button>Submit</button>
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </p>
+                    </div>
+
+                    <div class="mdl-tabs__panel" id="tab2-panel">
+                        <section id="page">
+                            <div id='score'></div>
+                            <input id="slider" type="range" min="0" max="4200" value="225"
+                                oninput="updateScore(this.value)" />
+                            <br /><br />
+
+                            <div id='scorecard'>
+
+                                <div id='icon'></div>
+                                <h3>John Doe</h3>
+                                Level: {level} <br />
+                                Status: {status}<br />
+                                <i>'{quote}'</i>
+
+                                <div class='score'>
+                                    Score: {score} <br />
+                                    Level score: {levelscore}/{leveltotal} <br />
+                                    Total progress: {totalprogress}% <br />
+                                </div>
+                                <progress max="100" value="{levelprogress}"></progress>
+
+                            </div>
+                            <br />
+                            <br /><br /><br />
+                        </section>
+                    </div>
+
+                    <div class="mdl-tabs__panel" id="tab3-panel">
+                        <p>
+                            <div class="container">
+                                <!--  <h1 class="brand"><span></span> Web Design</h1> -->
+                                <div class="wrapper animated bounceInLeft">
+                                    <div class="company-info">
+                                        <section id="page">
+                                            <div id='score'></div>
+                                            <input id="slider" type="range" min="0" max="4200" value="225"
+                                                oninput="updateScore(this.value)" />
+                                            <br /><br />
+
+                                            <div id='scorecard'>
+
+                                                <div id='icon'></div>
+                                                <h3>John Doe</h3>
+                                                Level: {level} <br />
+                                                Status: {status}<br />
+                                                <i>'{quote}'</i>
+
+                                                <div class='score'>
+                                                    Score: {score} <br />
+                                                    Level score: {levelscore}/{leveltotal} <br />
+                                                    Total progress: {totalprogress}% <br />
+                                                </div>
+                                                <progress max="100" value="{levelprogress}"></progress>
+
+                                            </div>
+                                            <br />
+                                            <br /><br /><br />
+                                        </section>
+                                    </div>
+                                    <div class="contact">
+                                        <form>
+                                            <h3>Your Information</h3>
+                                            <p>
+                                                <div class="container2">
+                                                    <h4>Classes :</h4>
+                                                    <ul class="ks-cboxtags">
+                                                        <li><input type="checkbox" id="cs453"
+                                                                value="Rainbow Dash"><label for="cs453">CS453</label>
+                                                        </li>
+                                                        <li><input type="checkbox" id="cs415"
+                                                                value="Baby Moondancer"><label for="cs415">CS415</label>
+                                                        </li>
+                                                        <li><input type="checkbox" id="cs319" value="Medley"><label
+                                                                for="cs319">CS319</label></li>
+                                                    </ul>
+
+                                                </div>
+                                            </p>
+                                            <p>
+                                                <label>University</label>
+                                                <input type="text" name="uni" id="uni">
+                                            </p>
+                                            <p>
+                                                <label>Contact Email</label>
+                                                <input type="email" name="email" id="email">
+                                            </p>
+                                            <p>
+                                                <label>Name</label>
+                                                <input type="text" name="name" id="name">
+                                            </p>
+                                            <p class="full">
+                                                <label>Feedback</label>
+                                                <textarea name="message" rows="5" id="feedback"></textarea>
+                                            </p>
+                                            <p class="full" id="submitBtn">
+                                                <button>Submit</button>
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
     <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
         <div class="mdl-snackbar__icon">
@@ -204,8 +221,8 @@
         </div>
         <div class="mdl-snackbar__text"></div>
         <button class="mdl-snackbar__action" type="button"></button>
-      </div>
- <!--    <script>
+    </div>
+    <!--    <script>
 
 			// setup	
 			var score = new Score();
@@ -245,15 +262,15 @@
 		</script> -->
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
-        <!-- TODO: Add SDKs for Firebase product that you want to use
+    <!-- TODO: Add SDKs for Firebase product that you want to use
             https://firebase.google.com/docs/web/setup#config-web-app -->
-        <script src="/__/firebase/6.2.3/firebase-app.js"></script>
-        <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
-        <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+    <script src="/__/firebase/6.2.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
+    <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
 
-        <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script>
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
@@ -266,9 +283,10 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        </script>
-        <script src = "https://code.jquery.com/jquery-3.1.0.js"></script>   
-    <script src= "userprofile.js"> </script>
-    
-   </body>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="userprofile.js"> </script>
+
+</body>
+
 </html>

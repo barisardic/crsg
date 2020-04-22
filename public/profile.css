@@ -1,282 +1,353 @@
-*{
-    box-sizing: unset;
-  }
-  
-  body{
+.transparent {
+    background: #0000 !important;
+}
 
-    color:#485e74;
-    line-height:1.6;
+.hover {
+    transition: box-shadow ease .6s;
+}
+
+.hover:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 251, 213, 0.714);
+
+}
+
+.profileTab {
+    color: white !important;
+}
+
+.mdl-tabs__tab.is-active:after {
+    background: #64144c !important;
+}
+
+* {
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    box-sizing: unset;
+}
+
+body {
+
+    color: #74485e;
+    line-height: 1.6;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding:1em;
-  }
-  
-  .container{
-    margin-left:auto;
-    margin-right:auto;
-    padding:1em;
-  }
-  
-  ul{
-    list-style: none;
-    padding:0;
-  }
-  
-  .brand{
-    text-align: center;
-  }
-  
-  .brand span{
-    color:#fff;
-  }
-  
-  .wrapper{
-    box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
-  }
-  
-  .wrapper > *{
     padding: 1em;
-  }
-  
-  .company-info{
-    background:#c9e6ff;
-  }
-  
-  .company-info h3, .company-info ul{
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.brand {
     text-align: center;
-    margin:0 0 1rem 0;
-  }
-  
-  .contact{
-    background:#f9feff;
-  }
-  
-  /* FORM STYLES */
-  .contact form{
+}
+
+.brand span {
+    color: #fff;
+}
+
+.wrapper {
+    box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
+}
+
+.wrapper>* {
+    padding: 1em;
+}
+
+.company-info {
+    background-image: url('../assets/pcb4.png');
+    border:1vw solid #626262;
+
+}
+
+.company-info h3,
+.company-info ul {
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.contact {
+    background: #626262;
+}
+
+/* FORM STYLES */
+.contact form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap:20px;
-  }
-  
-  .contact form label{
-    display:block;
-  }
-  
-  .contact form p{
-    margin:0;
-  }
-  
-  .contact form .full{
-    grid-column: 1 / 3;
-  }
-  
-  .contact form button, .contact form textarea{
-    width:100%;
-    padding:1em;
-    border:1px solid #c9e6ff;
-  }
-  
-  .contact form button{
-    background:#c9e6ff;
-    border:0;
-    text-transform: uppercase;
-  }
-  
-  .contact form button:hover,.contact form button:focus{
-    background:#92bde7;
-    color:#fff;
-    outline:0;
-   /*  transition: background-color 1s ease-out;  */
-  }
-  
-  /* LARGE SCREENS */
-  @media(min-width:700px){
-    .wrapper{
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-    }
-  
-    .wrapper > *{
-      padding:2em;
-    }
-  
-    .company-info h3, .company-info ul, .brand{
-      text-align: left;
-    }
-  }
-  
-.container2 {
-  max-width: 640px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 13px;
+    grid-gap: 20px;
 }
 
- ul.ks-cboxtags {
-  list-style: none;
-  padding: 20px;
+.contact form label {
+    display: block;
 }
-ul.ks-cboxtags li{
-display: inline;
+
+.contact form p {
+    margin: 0;
 }
-ul.ks-cboxtags li label{
-  display: inline-block;
-  background-color: rgba(255, 255, 255, .9);
-  border: 2px solid rgba(139, 139, 139, .3);
-  color: #adadad;
-  border-radius: 25px;
-  white-space: nowrap;
-  margin: 3px 0px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: all .2s;
+
+.contact form .full {
+    grid-column: 1 / 3;
+}
+
+.contact form button,
+.contact form textarea {
+    color: #626262;
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #c9e6ff;
+}
+
+.contact form button {
+    background: #64144c;
+    border: 0;
+    color: white;
+    text-transform: uppercase;
+}
+
+.contact form button:hover,
+.contact form button:focus {
+    background-color: #fff;
+    color: #64144c;
+    outline: 0;
+    /*  transition: background-color 1s ease-out;  */
+}
+
+/* LARGE SCREENS */
+@media(min-width:700px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .wrapper>* {
+        padding: 2em;
+    }
+
+    .company-info h3,
+    .company-info ul,
+    .brand {
+        text-align: left;
+    }
+}
+
+.container2 {
+    max-width: 640px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+}
+
+ul.ks-cboxtags {
+    list-style: none;
+    padding: 20px;
+}
+
+ul.ks-cboxtags li {
+    display: inline;
 }
 
 ul.ks-cboxtags li label {
-  padding: 8px 12px;
-  cursor: pointer;
+    display: inline-block;
+    background-color: #64144c;
+    ;
+    /* border: 2px solid rgba(139, 139, 139, .3); */
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 12px;
+    cursor: pointer;
 }
 
 ul.ks-cboxtags li label::before {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  font-size: 12px;
-  padding: 2px 6px 2px 2px;
-  content: "\f067";
-  transition: transform .3s ease-in-out;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
 }
 
-ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
-  content: "\f00c";
-  transform: rotate(-360deg);
-  transition: transform .3s ease-in-out;
+ul.ks-cboxtags li input[type="checkbox"]:checked+label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
 }
 
-ul.ks-cboxtags li input[type="checkbox"]:checked + label {
-  border: 2px solid #1bdbf8;
-  background-color: #12bbd4;
-  color: #fff;
-  transition: all .2s;
+ul.ks-cboxtags li input[type="checkbox"]:checked+label {
+    background-color: #ffffff;
+    color: #64144c;
+    transition: all .2s;
 }
 
 ul.ks-cboxtags li input[type="checkbox"] {
-display: absolute;
+    display: absolute;
 }
+
 ul.ks-cboxtags li input[type="checkbox"] {
-position: absolute;
-opacity: 0;
+    position: absolute;
+    opacity: 0;
 }
-ul.ks-cboxtags li input[type="checkbox"]:focus + label {
-border: 2px solid #e9a1ff;
+
+ul.ks-cboxtags li input[type="checkbox"]:focus+label {
+    border: 2px solid #e9a1ff;
 }
-#page{
-  display: inline-block;
-  width: 300px;
+
+#page {
+    display: inline-block;
+    width: 300px;
 }
+
 .mdl-snackbar {
-  background-color: rgba(6, 7, 6, 0.95);
+    background-color: rgba(6, 7, 6, 0.95);
 }
 
 .mdl-snackbar__icon {
-  color: #ffffff;
-  padding: 13px 0 0 24px;
+    color: #ffffff;
+    padding: 13px 0 0 24px;
 }
 
 .mdl-snackbar__action {
-  color: #ffffff;
+    color: #ffffff;
 }
-h1{
-  font-weight: 100;
-  font-size: 4.5em;
-  margin-bottom:0;
-  margin-top:0.5em;
+
+h1 {
+    font-weight: 100;
+    font-size: 4.5em;
+    margin-bottom: 0;
+    margin-top: 0.5em;
 }
-h2{
-  font-weight: 300;
-  font-size: 0.85em;
-  color: #999;
-  margin-bottom:4em;
+
+h2 {
+    font-size: 2em;
+    color: rgb(255, 255, 255);
+    margin-bottom: 4em;
+    font-weight: bold;
 
 }
-#scorecard{
-  text-align: left;
-  padding:20px;
-  background: #26a69a;
-  color:#FFF;
-  margin-bottom:10px;
+
+#scorecard {
+    text-align: left;
+    padding: 20px;
+    background: #26a69a;
+    color: #FFF;
+    margin-bottom: 10px;
 }
-#status{
-  transition:opacity .2s ease-in-out;
-  border-radius: 10px;
-  opacity:0;
-  height:40px;
-  height:40px;
-  line-height: 40px;
-  background:rgb(27, 230, 152);
+
+#status {
+    transition: opacity .2s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+    height: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: rgb(27, 230, 152);
 }
-#status.show{
-  opacity:1;
+
+#status.show {
+    opacity: 1;
 }
-i{
-  font-size: .75em;
-  color: #888;
+
+i {
+    font-size: .75em;
+    color: #888;
 }
-a{
-  color:#3D9970;
+
+a {
+    color: #3D9970;
 }
-.score{
-  clear: both;
-  margin-bottom:10px;
-  font-size: 0.85em;
+
+.score {
+    clear: both;
+    margin-bottom: 10px;
+    font-size: 0.85em;
 }
-#score{
-  font-size: 1em;
-  width:280px;
-  height:80px;
-  line-height: 40px;
-  color: #999;
-  background: #EEE;
-  display: inline-block;
-  border-radius: 20px;
-  margin-bottom: 10px;
+
+#score {
+    font-size: 1em;
+    width: 280px;
+    height: 80px;
+    line-height: 40px;
+    color: #999;
+    background: #EEE;
+    display: inline-block;
+    border-radius: 20px;
+    margin-bottom: 10px;
 }
-h3{
-  margin:0;
-  padding:0;
+
+h3 {
+    margin: 0;
+    padding: 0;
 }
-#icon{
-  background: #FFF;
-  width:200px;
-  height:200px;
-  color:black;
-  font-size: 4em;
-  text-align: center;
-  line-height: 100px;
-  float:left;
-  margin-right:10px;
-  margin-bottom:10px;
+
+#icon {
+    background: #FFF;
+    width: 200px;
+    height: 200px;
+    color: black;
+    font-size: 4em;
+    text-align: center;
+    line-height: 100px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
-input, progress{
-  width:100%;
+
+input,
+progress {
+    width: 100%;
 }
+
 progress[value] {
-  -webkit-appearance: none;
-  appearance: none;
-  height:20px;
-}         
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+}
+
 progress[value]::-webkit-progress-bar {
-  background-color: #666;
-  border-radius: 0px;
-  overflow: hidden;
-} 
+    background-color: #666;
+    border-radius: 0px;
+    overflow: hidden;
+}
+
 progress[value]::-webkit-progress-value {
-  background: #3D9970;
-  border-radius: 0px; 
+    background: #3D9970;
+    border-radius: 0px;
+}
+
+.background {
+    background-image: url('../assets/bg.png');
+}
+
+#uni {
+    color: #626262;
+}
+
+#email {
+    color: #626262;
+}
+
+#name {
+    color: #626262;
 }
