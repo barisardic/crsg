@@ -75,6 +75,24 @@ document.addEventListener('mousemove', e => {
     cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
     cursorImage.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
 })
+/* cursorImage.setAttribute("style", "transform: rotate("+ Math.atan(e.movementY/e.movementX)* (180/Math.PI) + "deg);")
+document.addEventListener('mousemove', e => {
+    if(e.movementX == 0 && e.movementY > 0){//down
+        cursorImage.setAttribute("style", "transform: rotate(180deg);")
+    }
+    if(e.movementX == 0 && e.movementY < 0){//up
+        cursorImage.setAttribute("style", "transform: rotate(0deg);")
+    }
+    if(e.movementX > 0 && e.movementY == 0){//right
+        cursorImage.setAttribute("style", "transform: rotate(90deg);")
+    }
+    if(e.movementX < 0 && e.movementY == 0){//left
+        cursorImage.setAttribute("style", "transform: rotate(-90deg);")
+    }
+    else{
+        cursorImage.setAttribute("style", "transform: rotate(-90deg);")
+    }
+}) */
 
 document.addEventListener('click', () => {
     cursor.classList.add("expand");
