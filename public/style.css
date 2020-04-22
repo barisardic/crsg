@@ -1,3 +1,15 @@
+.transparent {
+    background: #0000 !important;
+}
+
+.hover {
+    transition: box-shadow ease .6s;
+}
+
+.hover:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 251, 213, 0.714);
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
@@ -33,7 +45,9 @@
 body {
   margin: 0;
   padding: 0;
-  background: #DDD;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/bg.png');
   font-size: 16px;
   color: #222;
   font-family: 'Roboto', sans-serif;
@@ -45,7 +59,8 @@ body {
   margin: 5% auto;
   width: 900px;
   height: 400px;
-  background: #FFF;
+  background: #626262;
+  color: white;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -91,8 +106,8 @@ input[type="password"] {
 }
 input[type="text"]:focus,
 input[type="password"]:focus {
-  border-bottom: 2px solid #16a085;
-  color: #16a085;
+  border-bottom: 2px solid #64144c;
+  color: #64144c;
   transition: 0.2s ease;
 }
 input[type="text2"],
@@ -112,15 +127,15 @@ input[type="password2"] {
 }
 input[type="text2"]:focus,
 input[type="password2"]:focus {
-  border-bottom: 2px solid #16a085;
-  color: #16a085;
+  border-bottom: 2px solid #64144c;
+  color: #64144c;
   transition: 0.2s ease;
 }
 input[type="submit"] {
   margin-top: 28px;
   width: 120px;
   height: 32px;
-  background: #16a085;
+  background: #64144c;
   border: none;
   border-radius: 2px;
   color: #FFF;
@@ -150,7 +165,7 @@ input[type="submit"]:active {
   left: 280px;
   width: 40px;
   height: 40px;
-  background: #DDD;
+  background: #282a36;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   line-height: 40px;
@@ -162,7 +177,7 @@ input[type="submit"]:active {
   left: 580px;
   width: 40px;
   height: 40px;
-  background: #DDD;
+  background: #282a36;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   line-height: 40px;
@@ -186,6 +201,7 @@ input[type="submit"]:active {
   display: block;
   margin-bottom: 40px;
   font-size: 28px;
+  line-height: 30px;
   color: #FFF;
   text-align: center;
 }
