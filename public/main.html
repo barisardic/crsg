@@ -16,10 +16,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
 
     <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="guru.css" />
 </head>
 
 <body>
     <div class="background"></div>
+    
     <div class="mdl-layout mdl-js-layout">
         <header class="mdl-layout__header transparent">
             <div class="mdl-layout-icon"></div>
@@ -56,8 +58,26 @@
         </div>
        
         <!--STATIONS-->
+        <div id="overlay">
+            <div class="guru_modal" id="guru_modal">
+                <div class="guru_modal__header" id="guru_modal__header">
+                </div>
+                <div class="guru container">
+                    <img class=" guru portrait" name="guruPortrait" src='../assets/astroHappyAnim.gif' />
+                    <audio id="guruType" src="../sounds/type.mp3"></audio>
+                    <p id="guruSays" class="guruSays noselect" style="line-height: 1.6;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    padding: 1em;
+                    font-size: large;">
+                         Oh hi, this is my code review journal! I keep useful notes for myself here!
+                    </p>
+                </div>
+                <button href="#" class="js-close-modal" id="js-close-modal"></button>
+            </div>
+        </div>
         <div class="container">
             <!--STATIONQUIZ0-->
+            
             <div id="outer" class="outer preqCol">
                 <div style="height: 139px;">
                     <img class="station prequiz" src='../assets/quiz.png' />

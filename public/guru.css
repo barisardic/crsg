@@ -36,6 +36,7 @@
     height: 6%;
     box-sizing: border-box;
     background-image: url('../assets/pcb4.png');
+    
 }
 
 #gurusays{
@@ -45,8 +46,8 @@
     margin-right: 2%;
     font-size: 1vw;
     font-family: 'Courier New', Courier, monospace;
-}
 
+}
 .guru_modal__header a {
     position: absolute;
     top: 0;

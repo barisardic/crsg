@@ -43,6 +43,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
     //alert("hello");
     // ...
+    localStorage.setItem('selected', -1);
     window.location.href = "/main.html";
   } else {
     // User is signed out.
