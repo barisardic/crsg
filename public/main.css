@@ -5,6 +5,26 @@ body {
     cursor: none;
 }
 
+.guruButtonContainer{
+    position: relative;
+    height: 1vh;
+    max-width: 5vw;
+    margin-left: 5%;
+}
+
+.guruButton {
+    position: absolute;
+    height: 5vw;
+    width: 5vw;
+    font-size: 1vw;
+    margin-top: 600%;
+    text-align: center;
+    border-radius: 100%;
+    border:1vw  #626262;
+    background: #282a36 !important;
+    z-index: 6;
+}
+
 .clicked {
     opacity: 0.5;
     width: 50px !important;
@@ -19,11 +39,9 @@ body {
     top: -32px;
     left: -32px;
     position: absolute;
-    transition-duration: 100ms;
-    transition-timing-function: ease-out;
     margin-top: -22px;
     margin-left: -22px;
-    z-index: 7;
+    z-index: 8 ;
     pointer-events: none;
     transform: rotate(-30deg);
 }
@@ -38,11 +56,9 @@ body {
     border: 2px solid white;
     border-radius: 50%;
     position: absolute;
-    transition-duration: 100ms;
-    transition-timing-function: ease-out;
     animation: cursorAnim .5s infinite alternate;
     pointer-events: none;
-    z-index: 6;
+    z-index: 7;
 }
 
 .cursor::after {
@@ -117,11 +133,12 @@ p {
 }
 
 .hover {
-  transition: box-shadow ease .6s;
+  transition: box-shadow ease .6s, background ease .6s;
 }
 
 .hover:hover {
   box-shadow: 0 0 15px 5px rgba(255, 251, 213, 0.714);
+  background: rgba(255, 251, 213, 0.714) !important;
 }
 
 .outer .btn {

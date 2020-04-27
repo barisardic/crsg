@@ -112,6 +112,7 @@ if(localStorage.getItem('selected')==-1){
     window.onload = openGuruModal();
 }
 
+document.getElementById('guruButton').addEventListener('click', openGuruModal, false);
 
 function openGuruModal() {
     //alert("Here guru guru");
