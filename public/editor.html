@@ -1,6 +1,7 @@
 <!DOCTYPE html lang="en">
 
 <head>
+    <link rel="stylesheet" href="editor.css" />
     <link rel="stylesheet" href="guru.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
@@ -22,407 +23,7 @@
     </script>
     <title>Play</title>
     <style type="text/css" media="screen">
-        *,
-        *:before,
-        *:after {
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #282a36;
-            position: relative;
-        }
-
-        #editor {
-            float: right;
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 50%;
-        }
-
-        #editor2 {
-            float: right;
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 50%;
-            /* border: 5px solid rgb(226, 9, 20); */
-        }
-
-        #editor3 {
-            float: right;
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 50%;
-            /* border: 5px solid rgb(226, 9, 20); */
-        }
-
-        #editor4 {
-            float: right;
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 50%;
-            /* border: 5px solid rgb(226, 9, 20); */
-        }
-
-        #editor5 {
-            float: right;
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 50%;
-            /* border: 5px solid rgb(226, 9, 20); */
-        }
-
-        #editor6 {
-            display: none;
-            float: right;
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 50%;
-            /* border: 5px solid rgb(226, 9, 20); */
-        }
-
-        #narrativeText {
-            display: none;
-        }
-
-        #narrativeText2 {
-            display: none;
-        }
-
-        #narrativeText3 {
-            display: none;
-        }
-
-        #narrativeText4 {
-            display: none;
-        }
-
-        #narrativeText5 {
-            display: none;
-        }
-
-        i.icon-black {
-            color: black;
-        }
-
-        #description {
-            position: absolute;
-            /*border: 5px solid rgb(52, 153, 91);*/
-            top: 0;
-            right: 50%;
-            bottom: 0;
-            left: 0;
-        }
-
-        #leftTop {
-            background: url('../assets/pcb2.png') center / cover;
-            color: white;
-            height: 50%;
-            width: 100%;
-            position: absolute;
-            overflow: auto;
-            float: left;
-            /* border: 5px solid rgb(199, 202, 11);      */
-        }
-
-        #leftBottom {
-            color: white;
-            position: absolute;
-            /* border: 5px solid #E18728; */
-            bottom: 0px;
-            height: 50%;
-            overflow: auto;
-            
-        }
-
-        /*    #submitBtn{
-  position: absolute;
-  bottom: 45.6%;
-  height: 40px;
-  left: 2%;
-  z-index: 10;
-  }
-  #hintBtn{
-  position: absolute;
-  bottom: 45.6%;
-  height: 40px;
-  left: 36%;
-  z-index: 10;
-  }
-  #answersBtn{
-  pointer-events: none;
-  opacity: 0.65; 
-  cursor: not-allowed;
-  position: absolute;
-  bottom: 45.6%;
-  height: 40px;
-  left: 41%;
-  z-index: 10;
-  }  */
-        #funcButn {
-            /*margin-left: 15px;
-  margin-right: 15px;  
-  */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: inherit;
-
-        }
-
-        .divider {
-            width: 10px;
-            height: auto;
-            display: inline-block;
-        }
-
-        .mdl-snackbar {
-            background-color: rgba(6, 7, 6, 0.95);
-            /* bottom: 41.6%; */
-            left: 400px;
-
-        }
-
-        .mdl-snackbar__icon {
-            color: #ffffff;
-            padding: 13px 0 0 24px;
-        }
-
-        .mdl-snackbar__action {
-            color: #ffffff;
-        }
-
-        /*   #leftMid{
-      margin-left:7px; 
-      margin-top:71%;
-      position: absolute;
-    } */
-
-        /*    #hover {
-  position: absolute;
-  bottom: 140px;
-  right: 5px;
-  z-index: 10;
-  height: 80px;
-  width: 80px;
-  } */
-
-        .marketing-contents-list,
-        .marketing-content-create {
-            padding: 10px;
-            border: 5px solid rgb(50, 204, 109);
-            flex-direction: row;
-        }
-
-        .marketing-content-hidden {
-            padding: 5px;
-            margin-top: 27px;
-            display: none;
-            font-size: large;
-            /* flex-direction: row; */
-            /* border: 5px solid rgb(177, 16, 226);  */
-        }
-
-        .marketing-content-title {
-            box-sizing: content-box;
-            width: 250px;
-            font-weight: bolder;
-            flex-direction: row;
-            padding-right: 5px;
-            /* border: 5px solid rgb(204, 16, 57);   */
-        }
-
-        .marketing-content-buttons {
-            box-sizing: content-box;
-            margin-left: 15px;
-
-            font-size: large;
-            /* border: 5px solid rgb(214, 123, 49);  */
-        }
-
-        .grid-item {
-            display: table-cell;
-        }
-
-        .inline-block-child {
-            display: inline-block;
-        }
-
-        /* .dropdown{
-  border: 5px solid rgb(59, 37, 189);
-} */
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -ms-appearance: none;
-            appearance: none;
-            outline: 0;
-            box-shadow: none;
-            border: 0 !important;
-            background: #a6b3c0;
-            background-image: none;
-            font-size: 16px;
-        }
-
-        /* Remove IE arrow */
-        select {
-            padding: 0 .5em;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        /* Arrow */
-        /* Transition */
-        .select:hover::after {
-            color: #f39c12;
-        }
-
-        .dropdown-submenu {
-            position: relative;
-        }
-
-        .dropdown-submenu>.dropdown-menu {
-            top: 0;
-            left: 100%;
-            margin-top: -6px;
-            margin-left: -1px;
-            -webkit-border-radius: 0 6px 6px 6px;
-            -moz-border-radius: 0 6px 6px;
-            border-radius: 0 6px 6px 6px;
-
-        }
-
-        .dropdown-submenu:hover>.dropdown-menu {
-            display: block;
-        }
-
-        .dropdown-submenu>a:after {
-            display: block;
-            content: " ";
-            float: right;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-style: solid;
-            border-width: 5px 0 5px 5px;
-            border-left-color: rgb(255, 255, 255);
-            margin-top: 5px;
-            margin-right: -10px;
-        }
-
-        .dropdown-submenu:hover>a:after {
-            border-left-color: #fff;
-        }
-
-        .dropdown-submenu.pull-left {
-            float: none;
-        }
-
-        .dropdown-item {
-            pointer-events: auto;
-            font-size: 16px;
-
-        }
-
-        .dropdown-submenu.pull-left>.dropdown-menu {
-            left: -100%;
-            margin-left: 10px;
-            -webkit-border-radius: 6px 0 6px 6px;
-            -moz-border-radius: 6px 0 6px 6px;
-            border-radius: 6px 0 6px 6px;
-        }
-
-        .arrow_resizer {
-            background-color: #fff;
-        }
-
-        .submitBtn {
-            background-color: #fff;
-        }
-
-        .descTab {
-            color: #ffff;
-        }
-
-        .guideTab {
-            color: #ffff;
-        }
-
-        .checktab {
-            color: #ffff;
-        }
-
-        p {
-            line-height: 1.6;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 1em;
-            font-size: large;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            text-align: center;
-            padding: 8px;
-            color: #fff;
-        }
-
-        ul {
-            list-style-type: square;
-        }
-
-        #titleMsg {
-            text-align: center;
-            color: #799dff;
-        }
-
-        tr:nth-child(even) {
-            background-color: rgb(144,145,148);
-        }
-
-        #overlay {
-            position: relative;
-            /* Sit on top of the page content */
-            display: none;
-            /* Hidden by default */
-            width: 100%;
-            /* Full width (cover the whole page) */
-            height: 100%;
-            /* Full height (cover the whole page) */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Black background with opacity */
-            z-index: 7;
-            /* Specify a stack order in case you're using a different order for other elements */
-            cursor: pointer;
-            /* Add a pointer on hover */
-        }
+        
     </style>
 </head>
 
@@ -829,12 +430,12 @@
             </div>
         </div>
         <pre id="editor">
-  public class Account {
+public class Account {
     double principal,rate; int daysActive,accountType;
     public static final int STANDARD = 0, BUDGET=1,PREMIUM=2, PREMIUM_PLUS = 3;
-  }
-  // select here, reason is Comments
-  public static double calculateFee(Account[] accounts){
+}
+// select here, reason is Comments
+public static double calculateFee(Account[] accounts){
     double totalFee = 0.0;
     Account account;
     // select here, reason is Duplication or Consistency
@@ -842,79 +443,67 @@
     // select here
     // select here
     for (int i=0;i == accounts.length;i++) {
-      account=accounts[i];
-      if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
+        account=accounts[i];
+        if ( account.accountType == Account.PREMIUM || account.accountType == Account.PREMIUM_PLUS ) 
         totalFee += .0125 * (  1.25% account.principal 
         * Math.pow(account.rate,(account.daysActive/365.25))- account.principal);// interest-principal
-      } 
-      // select here, reason is Parameter
-      // select here
-  return totalFee;    
-  }</pre>
+    } 
+    // select here, reason is Parameter
+    // select here
+return totalFee;    
+}</pre>
         <div id="editor2"> // Class Declaration
-            public class Dog
-            {
-            // Instance Variables
-            String name;
-            String breed;
-            int age;
-            String color;
+public class Dog {
+    // Instance Variables
+    String name;
+    String breed;
+    int age;
+    String color;
 
-            // Constructor Declaration of Class
-            public Dog(String name, String breed,
-            int age, String color)
-            {
-            this.name = name;
-            this.breed = breed;
-            this.age = age;
-            this.color = color;
-            }
+    // Constructor Declaration of Class
+    public Dog(String name, String breed,
+        int age, String color) {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.color = color;
+    }
 
-            public String getName()
-            {
+    public String getName() {
+        return name;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+        public String getName() {
             return name;
-            }
+        }
 
-            public String getBreed()
-            {
-            return breed;
-            }
+    public int getAge() {
+        return age;
+    }
 
-            public String getName()
-            {
-            return name;
-            }
+    public String getColor() {
+        return color;
+    }
 
-            public int getAge()
-            {
-            return age;
-            }
+    @Override
+    public boolean equals(Dog dogo) {
+        return this.toString == dogo.toString;
+    }
 
-            public String getColor()
-            {
-            return color;
-            }
+    @Override
+    public String toString() {
+        return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," +this.getAge()+","+ this.getColor());
+    }
 
-            @Override
-            public boolean equals(Dog dogo)
-            {
-            return this.toString == dogo.toString;
-            }
-
-            @Override
-            public String toString()
-            {
-            return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," +
-            this.getAge()+
-            ","+ this.getColor());
-            }
-
-            public static void main(String[] args)
-            {
-            Dog tuffy = new Dog("tuffy","papillon", 5, "white");
-            System.out.println(tuffy.toString());
-            }
-            }
+    public static void main(String[] args) {
+        Dog tuffy = new Dog("tuffy","papillon", 5, "white");
+        System.out.println(tuffy.toString());
+    }
+  }
 
         </div>
         <pre id="editor3">
@@ -956,80 +545,80 @@ public class ExerciseSumArray {
 }
         </pre>
         <div id="editor4">
-            // Java program to print the elements of
-            // a 2 D array or matrix
-            import java.io.*;
-            class Matrixes {
+// Java program to print the elements of
+// a 2 D array or matrix
+import java.io.*;
+class Matrixes {
 
-            public static void printMatrix(int mat[][])
-            {
-            // Loop through all rows
-            for (int i = 0; i &lt; mat.length; i++)
-            // Loop through all elements of current row
-            for (int j = 0; j &lt; mat[i].length; j++)
-            System.out.print(mat[j][i] + " ");
-            }
-            public static int calcMatrixTotal(int mat[][])
-            {
-            int total = 0;
-            // Loop through all rows
-            for (int i = 0; i &lt; mat.length; i++)
-            // Loop through all elements of current row
-            for (int j = 0; j&lt;mat[i].length; j++)
+public static void printMatrix(int mat[][])
+{
+    // Loop through all rows
+    for (int i = 0; i &lt; mat.length; i++)
+    // Loop through all elements of current row
+    for (int j = 0; j &lt; mat[i].length; j++)
+    System.out.print(mat[j][i] + " ");
+}
+public static int calcMatrixTotal(int mat[][])
+{
+    int total = 0;
+    // Loop through all rows
+    for (int i = 0; i &lt; mat.length; i++)
+        // Loop through all elements of current row
+        for (int j = 0; j&lt;mat[i].length; j++)
             total = total + mat[j][i];
-            return total;
-            }
-            public static void main(String args[]) throws IOException
-            {
-            int mat[][] = { { 1, 2, 3, 4 },
-            { 5, 6, 7, 8 },
-            { 9, 10, 11, 12 } };
-            printMatrix(mat);
-            int rows = primes[0].length;
-            int cols = primes[0].length;
-            System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
-            System.out.print("The matrix total is :"+calcMatrixTotal(mat));
-            }
-            }
+return total;
+}
+public static void main(String args[]) throws IOException
+{
+    int mat[][] = { { 1, 2, 3, 4 },
+                    { 5, 6, 7, 8 },
+                   { 9, 10, 11, 12 } };
+    printMatrix(mat);
+    int rows = primes[0].length;
+    int cols = primes[0].length;
+    System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
+    System.out.print("The matrix total is :"+calcMatrixTotal(mat));
+}
+}
 
         </div>
         <div id="editor5">
-            public class Primes{
-            public static void main(String[] args) throws Exception {
+public class Primes{
+    public static void main(String[] args) throws Exception {
 
-            final int twoToThePowerThirty = 1073741824;
-            List listOfPrimes = new ArrayList();
-            String title = "Printing all integer prime numbers";
-            title.toUpperCase();
-            System.out.println(title);
-            for (int number = largestPrimeSoFar; number&lt;=Integer.MAX_VALUE; number++){
+        final int twoToThePowerThirty = 1073741824;
+        List listOfPrimes = new ArrayList();
+        String title = "Printing all integer prime numbers";
+        title.toUpperCase();
+        System.out.println(title);
+        for (int number = largestPrimeSoFar; number&lt;=Integer.MAX_VALUE; number++){
             if (isPrime(number)) {
-            System.out.println(number);
-            listOfPrimes.add(number);
+                System.out.println(number);
+                listOfPrimes.add(number);
             }
-            }
-            int isLarger = (listOfPrimes.get(listOfPrimes.size()-1)>twoToThePowerThirty) ? 1 : 0;
-            switch (isLarger) {
+        }
+        int isLarger = (listOfPrimes.get(listOfPrimes.size()-1)>twoToThePowerThirty) ? 1 : 0;
+        switch (isLarger) {
             case false:
-            System.out.print("Largest prime integer is not bigger than 2^30");
+                System.out.print("Largest prime integer is not bigger than 2^30");
             case true:
-            System.out.print("Largest prime integer is bigger than 2^30");
-            break;
-            }
-            }
-            /*
-            * Prime number is not divisible by any number other than 1 and itself
-            * @return true if number is prime
-            */
-            public static boolean isPrime(int number) {
-            for (int i = 2; i &lt; number; i++) {
+                System.out.print("Largest prime integer is bigger than 2^30");
+                break;
+        }
+    }
+    /*
+    * Prime number is not divisible by any number other than 1 and itself
+    * @return true if number is prime
+    */
+    public static boolean isPrime(int number) {
+        for (int i = 2; i &lt; number; i++) {
             if (number % i == 0) {
-            return false; // number is divisible so its not prime
+                return false; // number is divisible so its not prime
             }
-            }
-            return true; // number is prime now
-            }
-            }
+        }
+    return true; // number is prime now
+    }
+}
         </div>
         <div id="editor6">public class Account {
             double principal6,rate; int daysActive,accountType;
