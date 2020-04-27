@@ -1,6 +1,7 @@
 var originalDom = document.querySelector('.marketing-content-hidden');
 var listInner = document.querySelector('.marketing-content-list').innerHTML;
 levelChosen = localStorage.getItem('selected');
+console.log(""+levelChosen);
 //window.localStorage.removeItem('selected');
 var Range = ace.require("ace/range").Range;
 
@@ -418,8 +419,10 @@ function calculateScore(answers, submission) {
                     //alert(domElementToBeColored.innerHTML);
                     domElementToBeColored.style.border = "5px solid yellow";
                     //alert(""+grandTruth[j].reason.length);
+                    console.log("grandlen "+grandTruth.length+"-"+grandTruth);
+                    console.log(""+grandTruth[j].reason+"len"+ grandTruth[j].reason.length);
                     for (t = 0; t < grandTruth[j].reason.length; t++) {
-
+                    
                         if (submission[i].reason == grandTruth[j].reason[t]) {
                             score = score + 2;
                             exact++;
@@ -428,7 +431,13 @@ function calculateScore(answers, submission) {
                             domElementToBeColored.style.border = "5px solid green";
                             //delete found element , give points only once
                             grandTruth.splice(j, 1);
+                            
                         }
+                        if(grandTruth.length==0 || grandTruth.length==j){
+                            console.log("no more answers to eval");
+                            break;
+                        }
+                        
                     }
 
                 }
