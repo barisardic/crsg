@@ -137,11 +137,11 @@ $(document).click(function (event) {
 });
 var guruArray = ["astroAlertAnim.gif", "astroCuriousAnim.gif", "astroHappyAnim.gif"];
 guruCount = 0;
-var GurusWords = ["If you don’t have time or expertise for the review, do let the author know, so that another reviewer could be assigned to the code review.",
-        "Sign off on the pull request with a thumbs up or 'Ready to merge' comment.",
-        "Communicate which ideas you feel strongly about and those you don't.",
-        "Identify ways to simplify the code while still solving the problem.",
-        "If discussions turn too philosophical or academic, move the discussion offline to a regular Friday afternoon technique discussion. In the meantime, let the author make the final decision on alternative implementations."
+var GurusWords = ["I’m Stella, an astronaut, and this is my ship, the Crane! I bought the Crane a short time ago in hopes of travelling across the galaxy, buuuut since I spent all my earnings to buy the Crane, I’m… broke now.",
+        "After drifting a while in space, a nearby spaceport thankfully noticed and tractored me in. There, I learned the engineers that are working on the travel relay had some problems, and needed someone to review their code. Seeing this as an opportunity, I asked to help them if they agreed to supply me with fuel for my travels, and they accepted!",
+        "Fortunately, I am a master code reviewer! Oh who am I kidding - I never listened to Professor Ferragus’ lessons, I’m doomed! Wait, what is this under the control console?",
+        "Okay okay, I found a code review manual, that’s good. If I can understand what it’s saying, I can review all the shabby code in the relay infrastructure in a jiffy, and be on my merry way!",
+        "Because I’m very forgetful, I’ll be noting the code review tips I come across on this log. Maybe with these reminders I can work better together as a team with the other engineers at the relay!"
     ];
 document.getElementById('guru_modal').addEventListener('click', clickedOnGuru, false);
 
