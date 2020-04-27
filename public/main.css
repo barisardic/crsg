@@ -5,6 +5,16 @@ body {
     cursor: none;
 }
 
+.musicContainer {
+    position: fixed;
+    left: 5vw;
+    top: 40vw;
+}
+
+.music {
+    color: #282a36 !important;
+}
+
 .guruButtonContainer{
     position: relative;
     height: 1vh;

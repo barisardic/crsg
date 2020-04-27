@@ -173,3 +173,6 @@ function displayGuruImage() {
     var num = Math.floor(Math.random() * 3); // 0...6
     document.guruPortrait.src = '../assets/' + guruArray[num];
 }
+
+//sound
+var typeSound = document.getElementById("menuMusic");
