@@ -4,17 +4,26 @@ document.getElementById("signUp").addEventListener("click",newUser,false);
 function newUser(){
   var newUserPassword = document.getElementById("sign-up-password").value;
   var retypedNewUserPassword = document.getElementById("sign-up-password-re").value;
-  var newUserName = document.getElementById("sign-up-username").value;
-  var newUserEmail = document.getElementById("sign-up-email").value;
+  window.newUserName = document.getElementById("sign-up-username").value;
+  window.newUserEmail = document.getElementById("sign-up-email").value;
   //TODO check retyped password
   if(newUserPassword===retypedNewUserPassword){
-    firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      alert(errorMessage);
-      // ...
-    });
+    console.log("pos 0");
+    firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).then(
+        (user)=>{
+       // here you can use either the returned user object or       firebase.auth().currentUser. I will use the returned user object
+          if(user){
+            
+          }
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert("Unsuccesful " +errorMessage)
+        
+        // ...
+      });
   }
   else{
     alert("Passwords you have entered do not match!");
@@ -43,6 +52,31 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
     //alert("hello");
     // ...
+    if (
+        firebase.auth().currentUser.metadata.creationTime ===
+        firebase.auth().currentUser.metadata.lastSignInTime
+      ) {
+          // sign up
+            userId= user.uid;
+            console.log("pos 1");
+            var database = firebase.database();
+            database.ref('users/' + userId).set({
+              username: window.newUserName,
+              email: window.newUserEmail,
+              highScore :0
+            });
+            database.ref('users/' + userId+"/scores").set({
+              level1: 0,
+              level2: 0,
+              level3: 0,
+              level4: 0,
+              level5: 0,
+              level6: 0
+            }); 
+            console.log("pos 2");
+      } else {
+          // login
+      }
     localStorage.setItem('selected', -1);
     window.location.href = "/main.html";
   } else {
@@ -52,11 +86,11 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 //sign out
-document.getElementById("signOut").addEventListener("click",signOutUser,false);
+/* document.getElementById("signOut").addEventListener("click",signOutUser,false);
 function signOutUser(){
   firebase.auth().signOut().then(function() {
   }).catch(function(error) {
     
   });
   
-}
+} */
