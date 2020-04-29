@@ -536,9 +536,9 @@ function addComponent(ListofErrors) {
     componentHandler.upgradeDom();
     //alert(visibility.innerHTML);
 
-    if (ListofErrors.length != 0) {
+/*     if (ListofErrors.length != 0) {
         document.getElementById("titleMsg").innerHTML = "";
-    }
+    } */
 
 }
 var closestByClass = function (el, clazz) {
@@ -709,9 +709,9 @@ function addListAsComponentForErrors(ListofErrors) {
         //list.insertBefore(newNode, mc.nextSibling);
         list.appendChild(newNode);
     }
-    if (ListofErrors.length == 0) {
+/*     if (ListofErrors.length == 0) {
         document.getElementById("titleMsg").innerHTML = '<h3 id="titleMsg">Defects you find will go here!</h3>';
-    }
+    } */
     componentHandler.upgradeDom();
     //alert(visibility.innerHTML);
 
