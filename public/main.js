@@ -62,7 +62,7 @@ function playPage() {
 
 function toProfile() {
   //alert("go");
-  window.location.href = "/userprofile.html";
+  //window.location.href = "/userprofile.html";
 }
 /* $('#playButton,#pro2,#pro3').addEventListener("click",playPage,false); 
 function playPage(){
