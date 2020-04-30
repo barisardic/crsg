@@ -72,13 +72,28 @@ firebase.auth().onAuthStateChanged(function(user) {
               level4: 0,
               level5: 0,
               level6: 0
-            }); 
+            });
+            database.ref('users/' + userId+"/scores").set({
+                level1: 0,
+                level2: 0,
+                level3: 0,
+                level4: 0,
+                level5: 0,
+                level6: 0
+              });
+              database.ref('users/' + userId+"/answersSeen").set({
+                level1: 0,
+                level2: 0,
+                level3: 0,
+                level4: 0,
+                level5: 0,
+                level6: 0
+              }); 
             console.log("pos 2");
-      } else {
-          // login
+            
       }
-    localStorage.setItem('selected', -1);
-    window.location.href = "/main.html";
+      localStorage.setItem('selected', -1);
+      window.location.href = "/main.html";
   } else {
     // User is signed out.
     // ...

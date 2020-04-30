@@ -56,6 +56,29 @@ if (levelChosen == 1) {
     editor.setReadOnly(true);
 }
 editor.setFontSize(16);
+// if user saw answers to a level disable the submit button
+// first check if the asnwers to the level are seen or not in submission button listener
+//var answersSeenBefore = 0;
+/* firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        //var user = firebase.auth().currentUser;
+        //var userId = user.uid;
+        var userId = firebase.auth().currentUser.uid;
+        alert(uid);
+        var database = firebase.database();
+        answersSeenLevelToRead = "level" + String(levelChosen);
+            var seenRef = database.ref('users/' + userId + "/answersSeen/" + answersSeenLevelToRead);
+            seenRef.once('value', function (snapshot) {
+                answersSeenBefore = snapshot.val();
+        });
+        if(answersSeenBefore == 1){
+            alert("You saw the answers therefore can not submit again");
+        }
+    } else {
+      // No user is signed in.
+    }
+  }); */
+
 // Initialize library and start tracking time
 TimeMe.initialize({
     currentPageName: "play", // current page
@@ -334,69 +357,85 @@ function lines() {
 
 };
 var previousHighScore = 0;
-
 function submitSelection() {
-    var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
-    //alert(answer1.toString()+"**"+ListofErrors[0].toString());
-    var scoreCalc = calculateScore(answers, ListofErrors);
-    //alert("total score : "+ scoreCalc[0]);
     var user = firebase.auth().currentUser;
     var userId = user.uid;
-    //todo finsd out boolean returning checkbox value
     var database = firebase.database();
-    var newPostRef = database.ref('games/' + userId).push();
-    newPostRef.set({
-        user: userId,
-        level: levelChosen,
-        submission: ListofErrors,
-        score: scoreCalc[0],
-        timeSpend: timeSpentOnPage
-
+    answersSeenLevelToRead = "level" + String(levelChosen);
+     var seenRef = database.ref('users/' + userId + "/answersSeen/" + answersSeenLevelToRead);
+        seenRef.once('value', function (snapshot) {
+            answersSeenBefore = snapshot.val();
+            evaluateSelection(answersSeenBefore);
     });
-    previousHighScoreLevelToRead = "level" + String(levelChosen);
-    var highScoreRef = database.ref('users/' + userId + "/scores/" + previousHighScoreLevelToRead);
-    highScoreRef.once('value', function (snapshot) {
-        previousHighScore = snapshot.val();
-
-    });
-    //update the high score if new score is higher
-
-    if (scoreCalc[0] > previousHighScore) {
-        var userScoreRef = database.ref('users/' + userId + "/scores");
-        userScoreRef.child(previousHighScoreLevelToRead).set(scoreCalc[0]);
-
-        userScoreRef.once('value', function (snapshot) {
-            var newHighScoreSumLocal = 0;
-            snapshot.forEach(function (childSnapshot) {
-                var levelNo = childSnapshot.key;
-                var levelScore = childSnapshot.val();
-                newHighScoreSumLocal = newHighScoreSumLocal + levelScore;
-                //alert(levelNo+"-"+levelScore);
-
-                // ...
-            });
-            var updateSum = database.ref('users/' + userId);
-            updateSum.child("highScore").set(newHighScoreSumLocal);
-        });
-
-    }
-
-    noOfanswers = answers.length;
-    maxScore = 3 * noOfanswers;
-    var gameMetaData = {
-        message: "There were " + noOfanswers + " mistakes. You got " + scoreCalc[1] + "  exactly right! Score : " + scoreCalc[0] + "/" + maxScore,
-        timeout: 12000,
-        actionHandler: handler,
-        actionText: ' '
-    };
-    snackbarContainer.MaterialSnackbar.showSnackbar(gameMetaData);
-    // open answers button
-    var answersButton = document.getElementById("answersBtn");
-    answersButton.style.opacity = 1;
-    answersButton.style.cursor = "auto";
-    answersButton.style.pointerEvents = "all";
+    
+    
 }
+function evaluateSelection(seen){
+    if(seen == 1){
+        alert("You saw the answers therefore can not submit again");
+    }
+    else{
+        var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+        //alert(answer1.toString()+"**"+ListofErrors[0].toString());
+        var scoreCalc = calculateScore(answers, ListofErrors);
+        //alert("total score : "+ scoreCalc[0]);
+        var user = firebase.auth().currentUser;
+        var userId = user.uid;
+        var database = firebase.database();
+        var newPostRef = database.ref('games/' + userId).push();
+        newPostRef.set({
+            user: userId,
+            level: levelChosen,
+            submission: ListofErrors,
+            score: scoreCalc[0],
+            timeSpend: timeSpentOnPage
 
+        });
+        previousHighScoreLevelToRead = "level" + String(levelChosen);
+        var highScoreRef = database.ref('users/' + userId + "/scores/" + previousHighScoreLevelToRead);
+        highScoreRef.once('value', function (snapshot) {
+            previousHighScore = snapshot.val();
+
+        });
+        //update the high score if new score is higher
+
+        if (scoreCalc[0] > previousHighScore) {
+            var userScoreRef = database.ref('users/' + userId + "/scores");
+            userScoreRef.child(previousHighScoreLevelToRead).set(scoreCalc[0]);
+
+            userScoreRef.once('value', function (snapshot) {
+                var newHighScoreSumLocal = 0;
+                snapshot.forEach(function (childSnapshot) {
+                    var levelNo = childSnapshot.key;
+                    var levelScore = childSnapshot.val();
+                    newHighScoreSumLocal = newHighScoreSumLocal + levelScore;
+                    //alert(levelNo+"-"+levelScore);
+
+                    // ...
+                });
+                var updateSum = database.ref('users/' + userId);
+                updateSum.child("highScore").set(newHighScoreSumLocal);
+            });
+
+        }
+
+        noOfanswers = answers.length;
+        maxScore = 3 * noOfanswers;
+        var gameMetaData = {
+            message: "There were " + noOfanswers + " mistakes. You got " + scoreCalc[1] + "  exactly right! Score : " + scoreCalc[0] + "/" + maxScore,
+            timeout: 12000,
+            actionHandler: handler,
+            actionText: ' '
+        };
+        snackbarContainer.MaterialSnackbar.showSnackbar(gameMetaData);
+        // open answers button
+        var answersButton = document.getElementById("answersBtn");
+        answersButton.style.opacity = 1;
+        answersButton.style.cursor = "auto";
+        answersButton.style.pointerEvents = "all";
+    }
+        //todo finsd out boolean returning checkbox value
+}
 
 function calculateScore(answers, submission) {
     var grandTruth = answers.slice();
@@ -498,6 +537,12 @@ function answersPressed() {
         var rng = new Range(startingLine, 0, endLine, 0);
         editor.session.addMarker(rng, "ace_step", "screen", false);
     }
+    answersSeenLevelToRead = "level" + String(levelChosen);
+    var database = firebase.database();
+    var user = firebase.auth().currentUser;
+    var userId = user.uid;
+    var seenRef = database.ref('users/' + userId + "/answersSeen/" + answersSeenLevelToRead);
+    seenRef.set("1");
 }
 
 
