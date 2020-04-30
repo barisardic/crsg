@@ -58,26 +58,9 @@ if (levelChosen == 1) {
 editor.setFontSize(16);
 // if user saw answers to a level disable the submit button
 // first check if the asnwers to the level are seen or not in submission button listener
-//var answersSeenBefore = 0;
-/* firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        //var user = firebase.auth().currentUser;
-        //var userId = user.uid;
-        var userId = firebase.auth().currentUser.uid;
-        alert(uid);
-        var database = firebase.database();
-        answersSeenLevelToRead = "level" + String(levelChosen);
-            var seenRef = database.ref('users/' + userId + "/answersSeen/" + answersSeenLevelToRead);
-            seenRef.once('value', function (snapshot) {
-                answersSeenBefore = snapshot.val();
-        });
-        if(answersSeenBefore == 1){
-            alert("You saw the answers therefore can not submit again");
-        }
-    } else {
-      // No user is signed in.
-    }
-  }); */
+
+// open Stella when the level DOM is finished loading:
+window.onload = openGuruModal();
 
 // Initialize library and start tracking time
 TimeMe.initialize({
