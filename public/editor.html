@@ -820,12 +820,12 @@ public class Dog {
 
     @Override
     public boolean equals(Dog dogo) {
-        return this.toString == dogo.toString;
+        return this.toString() == dogo.toString();
     }
 
     @Override
     public String toString() {
-        return("Hi my name is "+ this.getName()+ ".\nMy breed,age and color are " + this.getBreed()+"," +this.getAge()+","+ this.getColor());
+        return("Hi my name is "+ getName()+ ". My breed,age and color are " + this.getBreed()+"," +this.getAge()+","+ this.getColor());
     }
 
     public static void main(String[] args) {
@@ -837,23 +837,24 @@ public class Dog {
         </div>
         <pre id="editor3">
 public class ExerciseSumArray {
-    /*
-    Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
-    calculate the sum of 2 Lists, and return the result in a List.
-    For example:
-    [1, 0, 0] + [4,0] = [1,4,0]
-    [6,7] + [0] = [6,7]
+    /**
+    * Given 2 Lists representing numbers (e.g., [3,4] = 34, [9,8] = 98),
+    * calculate the sum of 2 Lists, and return the result in a List without modifiying the parameters.
+    * For example:
+    * [1, 0, 0] + [4,0] = [1,4,0]
+    * [6,7] + [0] = [6,7]
       */
     public ArrayList<Integer> getSum(List<Integer> firstNumber, List<Integer> secondNumber ){
         ArrayList<Integer> result = new ArrayList<Integer>();
 
         int carry = 0;
+        List<Integer> secondNumCopy = secondNumber;
         Collections.reverse(firstNumber);
-        Collections.reverse(secondNumber);
+        Collections.reverse(secondNumCopy);
 
-        for (int i = 0; (i &lt Math.max(firstNumber.size(), secondNumber.size())); i ++){
+        for (int i = 0; (i &lt Math.max(firstNumber.size(), secondNumCopy.size())); i ++){
             Integer firstValue = i &lt firstNumber.size() ? firstNumber.get(i) : null;
-            Integer secondValue = i &lt secondNumber.size() ? secondNumber.get(i) : null;
+            Integer secondValue = i &lt secondNumCopy.size() ? secondNumCopy.get(i) : null;
 
             int res = firstValue + secondValue + carry;
 
@@ -874,10 +875,10 @@ public class ExerciseSumArray {
 }
         </pre>
         <div id="editor4">
-// Java program to print the elements of
-// a 2 D array or matrix
+/** Java program to print the elements of
+ a 2 D array or matrix */
 import java.io.*;
-class Matrixes {
+class Matrices {
 
 public static void printMatrix(int mat[][])
 {
@@ -942,7 +943,7 @@ public class Primes{
     public static boolean isPrime(int number) {
         for (int i = 2; i &lt; number; i++) {
             if (number % i == 0) {
-                return false; // number is divisible so its not prime
+                return false; // number is divisible so it's not prime
             }
         }
     return true; // number is prime now

@@ -168,17 +168,22 @@ if (levelChosen == 1) {
     ];
 } else if (levelChosen == 3) {
     var answers = [];
-    var answer1 = new Err(16, 16);
+    var answer1 = new Err(17, 17);
     answer1.reason.push("Data and resource manipulation");
     answers[0] = answer1;
 
-    var answer2 = new Err(17, 17);
+    var answer2 = new Err(18, 18);
     answer2.reason.push("Data and resource manipulation");
     answers[1] = answer2;
 
-    var answer3 = new Err(29, 29);
+    var answer3 = new Err(30, 30);
     answer3.reason.push("Compare");
     answers[2] = answer3;
+
+    var answer4 = new Err(13, 13);
+    answer4.reason.push("Data and resource manipulation");
+    answers[3] = answer4;
+
     var hints = ["There are " + answers.length + " defects in the code", "Pay close attention to comparisons", "Sadly, mistakes can be repeted ", "There are some things in OO languages that are always more dangerous"];
     var GurusWords = ["You should not merge code while the discussions are still taking place.",
         "Offer alternative implementations, but assume the author already considered them. ('What do you think about using a custom validator here?')",
