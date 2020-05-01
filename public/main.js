@@ -160,7 +160,7 @@ function clickedOnGuru() {
         //typeSound.playbackRate=2*(str.length/218);
         //typeSound.loop = true;
 
-        $(this).delay(50 * i).css({
+        $(this).delay(5 * i).css({
             display: 'inline',
             opacity: 0
         }).animate({

@@ -303,10 +303,10 @@ function clickedOnGuru() {
     var spans = '<span>' + str.split('').join('</span><span>') + '</span>';
     $(spans).hide().appendTo('.guruSays').each(function (i) {
         typeSound.play();
-        //typeSound.playbackRate=2*(str.length/218);
+        typeSound.playbackRate=11;
         //typeSound.loop = true;
 
-        $(this).delay(50 * i).css({
+        $(this).delay(5 * i).css({
             display: 'inline',
             opacity: 0
         }).animate({
