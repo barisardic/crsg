@@ -300,12 +300,12 @@ function clickedOnGuru() {
     document.getElementById("guruSays").innerHTML = "";
     var str = GurusWords[guruCount % GurusWords.length];
     // this jquery snippet is for the typewriter effect, if you dont want it, dont reset innerhtml set it to GurusWords. 
-    var spans = '<span>' + str.split('').join('</span><span>') + '</span>';
+    var spans = '<span >' + str.split('').join('</span ><span>') + '</span>';
     $(spans).hide().appendTo('.guruSays').each(function (i) {
         typeSound.play();
         typeSound.playbackRate=11;
         //typeSound.loop = true;
-
+        $(this).addClass( "guruSaid" );
         $(this).delay(5 * i).css({
             display: 'inline',
             opacity: 0
@@ -324,8 +324,10 @@ function clickedOnGuru() {
 }); */
 
 $(document).click(function (event) {
+    
     //if you click on anything except the modal itself or the "open modal" link, close the modal
-    if (!$(event.target).closest(".guru_modal,.js-open-modal").length) {
+    //console.log(event.target);
+    if (!$(event.target).closest(".guru_modal,.js-open-modal,.guruSays,.guru,.guruSaid").length) {
         editor.renderer.setShowGutter(true);
         document.getElementById("overlay").style.display = "none";
         typeSound.pause();
