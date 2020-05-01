@@ -129,7 +129,7 @@ function closeGuruModal() {
 }
 $(document).click(function (event) {
     //if you click on anything except the modal itself or the "open modal" link, close the modal
-    if (!$(event.target).closest(".guru_modal,.js-open-modal").length) {
+    if (!$(event.target).closest(".guru_modal,.js-open-modal,.guruSays,.guru,.guruSaid").length) {
         //editor.renderer.setShowGutter(true);
         document.getElementById("overlay").style.display = "none";
         typeSound.pause();
@@ -159,7 +159,7 @@ function clickedOnGuru() {
         typeSound.play();
         typeSound.playbackRate=5;
         //typeSound.loop = true;
-
+        $(this).addClass( "guruSaid" );
         $(this).delay(5 * i).css({
             display: 'inline',
             opacity: 0
