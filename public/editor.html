@@ -65,7 +65,7 @@
                         <div class="marketing-content-title inline-block-child" id="stend">MONDAY MENU</div>
                         <div class="marketing-content-buttons">
 
-                            <div class="dropdown left" style="font-size: large">
+                            <div class="dropdown left" style="font-size: large; ">
                                 <button class="btn btn-secondary dropdown-toggle grid-item"
                                     style="background-color: rgb(255, 82, 82);font-size: 14px;font-weight: bold;"
                                     id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -81,9 +81,9 @@
                                                     <li class="dropdown-submenu"><a class="dropdown-item"
                                                             href="#">Solution Approach</a>
                                                         <ul class="dropdown-menu">
-                                                            <li class="dropdown-item"><a href="#">Semantic
+                                                            <li class="dropdown-item" style="z-index: 15;" ><a href="#">Semantic
                                                                     duplication</a></li>
-                                                            <li class="dropdown-item"><a href="#">Semantic dead code</a>
+                                                            <li class="dropdown-item" style="z-index: 15;" ><a href="#">Semantic dead code</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -921,7 +921,7 @@ public class Primes{
         String title = "Printing all integer prime numbers";
         title.toUpperCase();
         System.out.println(title);
-        for (int number = largestPrimeSoFar; number&lt;=Integer.MAX_VALUE; number++){
+        for (int number = 3; number&lt;=Integer.MAX_VALUE; number=number+2){
             if (isPrime(number)) {
                 System.out.println(number);
                 listOfPrimes.add(number);
