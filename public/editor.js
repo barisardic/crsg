@@ -235,6 +235,14 @@ if (levelChosen == 1) {
     answer4.reason.push("Data and resource manipulation");
     answers[3] = answer4;
 
+    var answer5 = new Err(29, 29);
+    answer5.reason.push("Algorithm/Performance");
+    answers[4] = answer5;
+
+    var answer6 = new Err(28, 35);
+    answer6.reason.push("Compare");
+    answers[5] = answer6;
+
     var hints = ["There are " + answers.length + " defects in the code", "If a line of code is missing you should select the nearest encapsulating object structure", "Is java dynamically typed?"];
     var GurusWords = ["If you don’t have time or expertise for the review, do let the author know, so that another reviewer could be assigned to the code review.",
         "Sign off on the pull request with a thumbs up or 'Ready to merge' comment.",
