@@ -65,7 +65,7 @@ window.onload = openGuruModal();
 // Initialize library and start tracking time
 TimeMe.initialize({
     currentPageName: "play", // current page
-    idleTimeoutInSeconds: 600 // seconds
+    idleTimeoutInSeconds: 3600 // seconds
 });
 // Executes the first 5 times a user leaves the page
 TimeMe.callWhenUserLeaves(function () {
@@ -80,13 +80,16 @@ TimeMe.callWhenUserReturns(function () {
     console.timeEnd("inactive");
     elapsed = (new Date().getTime() - start) / 1000;
     //alert("You have been away for :"+ elapsed+" seconds!");
-    var userAwayData = {
-        message: "You have been away for : " + elapsed + " seconds!",
-        timeout: 10000,
-        actionHandler: handler,
-        actionText: ' '
-    };
-    snackbarContainer.MaterialSnackbar.showSnackbar(userAwayData);
+    if(elapsed>60){
+        var userAwayData = {
+            message: "You have been away for : " + elapsed + " seconds!",
+            timeout: 10000,
+            actionHandler: handler,
+            actionText: ' '
+        };
+        snackbarContainer.MaterialSnackbar.showSnackbar(userAwayData); 
+    }
+    
 }, 5);
 // custom error object for user to select/save the errors in the code.
 class Err {
