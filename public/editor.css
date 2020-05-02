@@ -111,8 +111,11 @@
         #leftTop {
             background: url('../assets/pcb2.png') center / cover;
             color: white;
-            height: 50%;
+            border: solid 0.5vw #626262;
+            border-radius: 1vw;
+            height: 40%;
             width: 100%;
+
             position: absolute;
             overflow: auto;
             float: left;
@@ -120,6 +123,9 @@
         }
 
         #leftBottom {
+            background-color: #282a36;
+            border: solid 0.5vw #626262;
+            border-radius: 1vw;
             color: white;
             position: absolute;
             /* border: 5px solid #E18728; */
@@ -127,6 +133,37 @@
             height: 50%;
             overflow: auto;
             
+        }
+
+        .editorBtn:hover {
+            box-shadow: 0 0 3px 3px #fff;
+            background-color: #fff;
+            color: #64144c;
+        }
+
+        .editorBtn {
+
+            padding: 1vh 1vw;
+            transition: box-shadow ease .6s, background ease .6s;
+            line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+            border: transparent !important;
+            color: #282a36;
+            background-color: #64144c;
+        
+        }
+
+        .tabBtn:hover {
+            background-color: #626262;
+            color: #282a36;
+        }
+
+        .tabBtn {
+            padding: 1vh 1vw;
+            transition: background ease .6s;
+            line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+            border: transparent !important;
+            color: #ffffff;
+            background-color: transparent;
         }
 
         /*    #submitBtn{
@@ -204,7 +241,7 @@
         .marketing-contents-list,
         .marketing-content-create {
             padding: 10px;
-            border: 5px solid rgb(50, 204, 109);
+            border: 5px solid rgb(1, 83, 32);
             flex-direction: row;
         }
 

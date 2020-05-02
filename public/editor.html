@@ -45,21 +45,22 @@
     </div>
 
 
-    <div class="container" id="container">
+    <div class="container" id="container" style=" display: flex; flex-direction: column;">
 
         <div id="description">
-            <!-- MUSIC -->
-        <div class= "musicContainer" style="margin:0 auto; width:300px; margin-top: 1%;">
-            <audio controls autoplay loop>
-                <source src="../sounds/editorTranquility.mp3" type="audio/mpeg" />
-            </audio>
-        </div>
-            <div class="mdl-layout__drawer-button mdl-button--fab mdl-js-button mdl-js-ripple-effect" onclick="history.back()"><i class="material-icons"
-                    style="color:rgb(255, 82, 82);">arrow_back</i></div>
-            <h3 id="titleMsg" style="font-size: 20px; text-align: center;">Defects you find will go here!<br/></h3>
+            <div class="util" id="leftTopDesc">
+                <!-- MUSIC -->
+                <div class= "musicContainer" style="margin:0 auto; width:300px; margin-top: 1%;">
+                    <audio controls autoplay loop class="music">
+                        <source src="../sounds/editorTranquility.mp3" type="audio/mpeg" />
+                    </audio>
+                </div>
+                <div class="mdl-layout__drawer-button mdl-button--fab mdl-js-button mdl-js-ripple-effect" onclick="history.back()"><i class="material-icons"
+                        style="color:#64144c;">arrow_back</i></div>
+                <h3 id="titleMsg" style="font-size: 20px; text-align: center;">Defects you find will go here!<br/></h3>
+            </div>
+
             <div class="util" id="leftTop">
-
-
                 <div class="marketing-content-list">
                     <div class="marketing-content-hidden mdl-shadow--4dp">
                         <div class="marketing-content-title inline-block-child" id="stend">MONDAY MENU</div>
@@ -67,7 +68,7 @@
 
                             <div class="dropdown left" style="font-size: large; ">
                                 <button class="btn btn-secondary dropdown-toggle grid-item"
-                                    style="background-color: rgb(255, 82, 82);font-size: 14px;font-weight: bold;"
+                                    style="background-color: #64144c;font-size: 14px;font-weight: bold;"
                                     id="asiButton" type="button" data-toggle="dropdown" aria-expanded="false">
                                     Error Reason
                                 </button>
@@ -181,40 +182,39 @@
                 </div>
 
             </div>
-            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="leftBottom">
-                <div class="mdl-tabs__tab-bar resizer ">
+            <div class="mdl-tabs mdl-js-tabs" id="leftBottom">
+                <div class="mdl-tabs__tab-bar  ">
                     <button href="#"
-                        class="js-open-modal mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                        class="js-open-modal mdl-tabs__tab editorBtn"
                         id="guru" style="font-size: large;">Log</button>
                     <div class="divider"> </div>
-                    <button class=" mdl-tabs__tab material-icons mdl-js-button funcButn"
+                    <button class=" mdl-tabs__tab material-icons editorBtn funcButn"
                         id="arrow_resizer" style="font-size: xx-large;">keyboard_arrow_up</button>
                     <div class="divider"> </div>
-                    <a class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn "
-                        id="hover">
-                        <i class="" style="font-size: xx-large;">+</i>
-                    </a>
+                    <button class="mdl-tabs__tab editorBtn funcButn" style="font-size: xx-large;"
+                        id="hover">+
+                    </button>
 
                 </div>
                 <div class="mdl-tabs__tab-bar">
                     <button style="font-size: 18px"
-                        class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn"
+                        class="mdl-tabs__tab  mdl-js-ripple-effect editorBtn funcButn"
                         id="submitBtn">
                         Submit Selection</button>
                     <div class="divider"> </div>
-                    <a href="#narrative-panel" class="mdl-tabs__tab mdl-js-button is-active descTab"
+                    <a href="#narrative-panel" class="mdl-tabs__tab tabBtn is-active descTab"
                         style="font-size: 18px">Description</a>
-                    <a href="#description-panel" class="mdl-tabs__tab mdl-js-button guideTab"
+                    <a href="#description-panel" class="mdl-tabs__tab tabBtn guideTab"
                         style="font-size: 18px">Guide</a>
-                    <a href="#checkist-panel" class="mdl-tabs__tab mdl-js-button checkTab"
+                    <a href="#checkist-panel" class="mdl-tabs__tab tabBtn checkTab"
                         style="font-size: 18px">Checklist</a>
                     <button style="font-size: 18px"
-                        class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn"
+                        class="mdl-tabs__tab  mdl-js-ripple-effect editorBtn funcButn"
                         id="hintBtn">
                         Hint</Button>
                     <div class="divider"> </div>
                     <button style="font-size: 18px"
-                        class="mdl-tabs__tab mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent funcButn"
+                        class="mdl-tabs__tab  mdl-js-ripple-effect editorBtn funcButn"
                         id="answersBtn">
                         See Answers</button>
                 </div>
