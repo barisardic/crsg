@@ -57,8 +57,8 @@ body {
 #login-box {
   position: relative;
   margin: 5% auto;
-  width: 900px;
-  height: 400px;
+  width: 31%;
+  height: 40%;
   background: #626262;
   color: white;
   border-radius: 2px;
@@ -172,6 +172,7 @@ input[type="submit"]:active {
   text-align: center;
 }
 .or2 {
+    display: none;
   position: absolute;
   top: 180px;
   left: 580px;
@@ -184,6 +185,7 @@ input[type="submit"]:active {
   text-align: center;
 }
 .right {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;

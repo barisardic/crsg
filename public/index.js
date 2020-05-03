@@ -20,7 +20,7 @@ function newUser(){
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        alert("Unsuccesful " +errorMessage)
+        alert("Unsuccessful. " +errorMessage)
         
         // ...
       });
