@@ -108,6 +108,13 @@
             left: 0;
         }
 
+        #leftTopDesc {
+            /* border: 5px solid #E18728; */
+            bottom: 0px;
+            height: 10%;
+            overflow: auto;
+        }
+
         #leftTop {
             background: url('../assets/pcb2.png') center / cover;
             color: white;
@@ -115,8 +122,6 @@
             border-radius: 1vw;
             height: 40%;
             width: 100%;
-
-            position: absolute;
             overflow: auto;
             float: left;
             /* border: 5px solid rgb(199, 202, 11);      */
@@ -127,7 +132,6 @@
             border: solid 0.5vw #626262;
             border-radius: 1vw;
             color: white;
-            position: absolute;
             /* border: 5px solid #E18728; */
             bottom: 0px;
             height: 50%;
@@ -147,7 +151,7 @@
             transition: box-shadow ease .6s, background ease .6s;
             line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
             border: transparent !important;
-            color: #282a36;
+            color: #ffffff;
             background-color: #64144c;
         
         }
