@@ -3169,7 +3169,7 @@ input.mdl-button[type="submit"] {
 }
 
 .mdl-button--primary.mdl-button--primary {
-    color: rgb(0, 150, 136)
+    color: #799dff
 }
 
 .mdl-button--primary.mdl-button--primary .mdl-ripple {
@@ -6634,8 +6634,9 @@ fieldset[disabled] .mdl-switch .mdl-switch__ripple-container .mdl-ripple,
     position: relative;
     display: block;
     text-decoration: none;
-    height: 48px;
-    line-height: 48px;
+    height: 100%;
+    width: 100%;
+    /* line-height: 48px; */
     text-align: center;
     font-weight: 500;
     font-size: 14px;
@@ -6658,7 +6659,7 @@ fieldset[disabled] .mdl-switch .mdl-switch__ripple-container .mdl-ripple,
     bottom: 0;
     left: 0;
     position: absolute;
-    background: rgb(0, 150, 136);
+    background: #799dff;
     -webkit-animation: border-expand .2s cubic-bezier(.4, 0, .4, 1).01s alternate forwards;
     animation: border-expand .2s cubic-bezier(.4, 0, .4, 1).01s alternate forwards;
     transition: all 1s cubic-bezier(.4, 0, 1, 1)
