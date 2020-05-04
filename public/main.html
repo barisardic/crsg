@@ -1,263 +1,237 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
 
-<head>
-    <title>Code Review Serious Game by Bilsen</title>
+   <head>
+      <title>Code Review Serious Game by Bilsen</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="material-custom.css" />
-    <script src="material-custom.js"></script>
-    <!-- Material Design icon font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!--Main Stylesheet -->
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" rel="stylesheet"
-        id="bootstrap-css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="material-custom.css" />
+      <script src="material-custom.js"></script>
+      <!-- Material Design icon font -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <!--Main Stylesheet -->
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <link rel="stylesheet" href="semantic-custom.css" id="bootstrap-css">
+      <script src="semantic-custom.js"></script>
 
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="guru.css" />
-    <link rel="icon" href="../assets/cursor1.png">
+      <link rel="stylesheet" href="main.css" />
+      <link rel="stylesheet" href="guru.css" />
+      <link rel="icon" href="../assets/cursor1.png">
 
-    <style>
-        /* width */
+      <style>
+         /* width */
         ::-webkit-scrollbar {
             width: 10px;
         }
 
         /* Track */
         ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+            background: #f1f1f1;
         }
-        
+
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: #888; 
+            background: #888;
         }
 
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
-            background: #555; 
+            background: #555;
         }
     </style>
-</head>
+   </head>
 
-<body>
-    <div class="background"></div>
+   <body>
+      <div class="background"></div>
 
-    <div class="mdl-layout mdl-js-layout">
-        <header class="mdl-layout__header transparent">
+      <div class="mdl-layout mdl-js-layout">
+         <header class="mdl-layout__header transparent">
             <div class="mdl-layout-icon"></div>
             <div class="mdl-layout__header-row">
 
-                <span class="mdl-layout_title title" style="font-size: 27px">Code Review Serious Game</span>
-                <!-- <div class="mdl-layout-spacer"></div> -->
-                <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation">
-                    <!-- <a class="mdl-navigation__link" href="#">Nav link 1</a> -->
+               <span class="mdl-layout_title title" style="font-size: 27px">Code Review Serious Game</span>
+               <!-- <div class="mdl-layout-spacer"></div> -->
+               <div class="mdl-layout-spacer"></div>
+               <nav class="mdl-navigation">
+                  <!-- <a class="mdl-navigation__link" href="#">Nav link 1</a> -->
 
-                    <button
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" style="cursor: none;"
-                        id="leaderBoard" onclick="window.location.href='/leaderboard.html'">
-                        Leaderboard
-                    </button>
-                    <button
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" style="cursor: none;"
-                        id="userEmail" 
-                        >
-                        Profile
-                    </button>
-                    <button
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" style="cursor: none;"
-                        id="signout2">
-                        Sign Out
-                    </button>
-                </nav>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" style="cursor: none;" id="leaderBoard" onclick="window.location.href='/leaderboard.html'">
+                     Leaderboard
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" style="cursor: none;" id="userEmail">
+                     Profile
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" style="cursor: none;" id="signout2">
+                     Sign Out
+                  </button>
+               </nav>
             </div>
-        </header>
+         </header>
 
 
-        <!--  <div class="mdl-layout__drawer">
+         <!--  <div class="mdl-layout__drawer">
         </div> -->
-        <div>
+         <div>
             <img class="cursorImage" src='../assets/cursor1.png' />
             <div class="cursor">
             </div>
-        </div>
+         </div>
 
-        <!-- GURU -->
-        <div class="guruButtonContainer">
-            <button href="#"
-                class="js-open-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored guruButton hover"
-                id="guruButton">
-                Log
+         <!-- GURU -->
+         <div class="guruButtonContainer">
+            <button href="#" class="js-open-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored guruButton hover" id="guruButton">
+               Log
             </button>
-        </div>
+         </div>
 
-        <div id="overlay">
+         <div id="overlay">
             <div class="guru_modal" id="guru_modal">
-                <div class="guru_modal__header" id="guru_modal__header">
-                </div>
-                <div class="guru container">
-                    <img class=" guru portrait" name="guruPortrait" src='../assets/astroHappyAnim.gif' />
-                    <audio id="guruType" src="../sounds/type.mp3"></audio>
-                    <p id="guruSays" class="guruSays noselect">
-                        Oh hello!
-                    </p>
-                </div>
-                <button href="#" class="js-close-modal" id="js-close-modal"></button>
+               <div class="guru_modal__header" id="guru_modal__header">
+               </div>
+               <div class="guru container">
+                  <img class=" guru portrait" name="guruPortrait" src='../assets/astroHappyAnim.gif' />
+                  <audio id="guruType" src="../sounds/type.mp3"></audio>
+                  <p id="guruSays" class="guruSays noselect">
+                     Oh hello!
+                  </p>
+               </div>
+               <button href="#" class="js-close-modal" id="js-close-modal"></button>
             </div>
-        </div>
-        <div class="container">
+         </div>
+         <div class="container">
 
 
             <!--STATIONS-->
             <!--STATIONQUIZ0-->
 
             <div id="outer" class="outer preqCol">
-                <div style="height: 139px;">
-                    <img class="station prequiz" src='../assets/quiz.png' />
-                    <button
-                        class=" btn station-prequiz-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-yellow"
-                        id="PreQuizButton">
-                    </button>
-                    <!-- <div class="mdl-tooltip" for="PreQuizButton">
+               <div style="height: 139px;">
+                  <img class="station prequiz" src='../assets/quiz.png' />
+                  <button class=" btn station-prequiz-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-yellow" id="PreQuizButton">
+                  </button>
+                  <!-- <div class="mdl-tooltip" for="PreQuizButton">
                         <strong>Pre-Quiz </strong><br>A quiz to test your mettle <br>before going into the game.
                     </div> -->
-                </div>
-                <div class="ui message page  preq" style="margin-left: 10px; background: none;">
-                    <h2 class="ui">Pre-Quiz</h2>
-                    <p class="stationMessage">A quiz to test your mettle before going into the game.</p>
-                </div>
+               </div>
+               <div class="ui message page preq" style="margin-left: 10px; background: none;">
+                  <h2 class="ui">Pre-Quiz</h2>
+                  <p class="stationMessage">A quiz to test your mettle before going into the game.</p>
+               </div>
             </div>
             <!--STATIONTUTORIAL-->
             <div class="outer preqCol">
-                <div style="height: 139px">
-                    <img class="station prequiz" src='../assets/tutorial.png' />
-                    <button
-                        class=" btn station-tutorial-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-yellow"
-                        id="tutorialBtn">
-                    </button>
-                    <!-- <div class="mdl-tooltip" for="tutorialBtn">
+               <div style="height: 139px">
+                  <img class="station prequiz" src='../assets/tutorial.png' />
+                  <button class=" btn station-tutorial-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-yellow" id="tutorialBtn">
+                  </button>
+                  <!-- <div class="mdl-tooltip" for="tutorialBtn">
                         <strong>The Tutorial </strong><br> This will get you <br> started with the concept of code
                         review.
                     </div> -->
-                </div>
-                <div class="ui message page  tut" style="margin-left: 10px; background: none;">
-                    <h2 class="ui">The Tutorial</h2>
-                    <p class="stationMessage">This will get you started with the concept of code review.</p>
-                </div>
+               </div>
+               <div class="ui message page tut" style="margin-left: 10px; background: none;">
+                  <h2 class="ui">The Tutorial</h2>
+                  <p class="stationMessage">This will get you started with the concept of code review.</p>
+               </div>
             </div>
             <!--STATION1-->
             <div class="outer stat1Col">
-                <div style="height: 343px">
-                    <img class="station one" src='../assets/stations1.png' />
-                    <button
-                        class=" btn station-one-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-blue"
-                        id="playButton1">
-                    </button>
-                    <!-- <div class="mdl-tooltip" for="playButton1">
+               <div style="height: 343px">
+                  <img class="station one" src='../assets/stations1.png' />
+                  <button class=" btn station-one-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-blue" id="playButton1">
+                  </button>
+                  <!-- <div class="mdl-tooltip" for="playButton1">
                         <strong>Level 0 </strong><br>This is the starting level <br>to get familiar with the game
                         mechanics.
                     </div> -->
-                </div>
-                <div class="ui message page  stat1" style="margin-left: 10px; background: none;">
-                    <h2 class="ui">Level 0</h2>
-                    <p class="stationMessage">This is the starting level to get familiar with the mechanics of the game.
-                    </p>
-                </div>
+               </div>
+               <div class="ui message page stat1" style="margin-left: 10px; background: none;">
+                  <h2 class="ui">Level 0</h2>
+                  <p class="stationMessage">This is the starting level to get familiar with the mechanics of the game.
+                  </p>
+               </div>
             </div>
             <!--STATION2-->
             <div class="outer stat2Col">
-                <div style="height: 438px">
-                    <img class="station two" src='../assets/stations2.png' />
-                    <button
-                        class="btn station-two-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-green"
-                        id="playButton2">
-                    </button>
-                    <!-- <div class="mdl-tooltip" for="playButton2">
+               <div style="height: 438px">
+                  <img class="station two" src='../assets/stations2.png' />
+                  <button class="btn station-two-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-green" id="playButton2">
+                  </button>
+                  <!-- <div class="mdl-tooltip" for="playButton2">
                         <strong>Level 1 </strong><br>This is the first level to <br>start finding easy, real errors.
                     </div> -->
-                </div>
-                <div class="ui message page  stat2" style="margin-left: 10px; background: none;">
-                    <h2 class="ui">Level 1</h2>
-                    <p class="stationMessage">This is the first level to start finding easy, real errors.</p>
-                </div>
+               </div>
+               <div class="ui message page stat2" style="margin-left: 10px; background: none;">
+                  <h2 class="ui">Level 1</h2>
+                  <p class="stationMessage">This is the first level to start finding easy, real errors.</p>
+               </div>
             </div>
             <!--STATION3-->
             <div class="outer stat3Col">
-                <div style="height: 558px">
-                    <img class="station three" src='../assets/stations3.png' />
-                    <button
-                        class="btn station-three-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-yellow"
-                        id="playButton3">
-                    </button>
-                    <!-- <div class="mdl-tooltip" for="playButton3">
+               <div style="height: 558px">
+                  <img class="station three" src='../assets/stations3.png' />
+                  <button class="btn station-three-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-yellow" id="playButton3">
+                  </button>
+                  <!-- <div class="mdl-tooltip" for="playButton3">
                         <strong>Level 2 </strong><br>Things are getting serious!
                     </div> -->
-                </div>
-                <div class="ui message page  stat3" style="margin-left: 10px; background: none;">
-                    <h2 class="ui">Level 2</h2>
-                    <p class="stationMessage">Things are getting serious!</p>
-                </div>
+               </div>
+               <div class="ui message page stat3" style="margin-left: 10px; background: none;">
+                  <h2 class="ui">Level 2</h2>
+                  <p class="stationMessage">Things are getting serious!</p>
+               </div>
             </div>
             <!--STATION4-->
             <div class="outer stat4Col">
-                <div style="height: 630px">
-                    <img class="station four" src='../assets/stations4.png' />
-                    <button
-                        class="btn station-four-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-red"
-                        id="playButton4">
-                    </button>
-                    <!-- <div class="mdl-tooltip" for="playButton4">
+               <div style="height: 630px">
+                  <img class="station four" src='../assets/stations4.png' />
+                  <button class="btn station-four-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-red" id="playButton4">
+                  </button>
+                  <!-- <div class="mdl-tooltip" for="playButton4">
                         <strong>Level 3 </strong><br>This is a proper challenge <br>for anyone!
                     </div> -->
-                </div>
-                <div class="ui message page  stat4" style="margin-left: 10px; background: none;">
-                    <h2 class="ui">Level 3</h2>
-                    <p class="stationMessage">This is a proper challenge for anyone who dares!</p>
-                </div>
+               </div>
+               <div class="ui message page stat4" style="margin-left: 10px; background: none;">
+                  <h2 class="ui">Level 3</h2>
+                  <p class="stationMessage">This is a proper challenge for anyone who dares!</p>
+               </div>
             </div>
             <!--STATION5-->
             <div class="outer stat5Col">
-                <div style="height: 863px">
-                    <img class="station five" src='../assets/stations5.png' />
-                    <button
-                        class="btn station-five-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-purple"
-                        id="playButton5">
-                    </button>
-                    <!-- <div class="mdl-tooltip" for="playButton5">
+               <div style="height: 863px">
+                  <img class="station five" src='../assets/stations5.png' />
+                  <button class="btn station-five-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-purple" id="playButton5">
+                  </button>
+                  <!-- <div class="mdl-tooltip" for="playButton5">
                         <strong>Level 4 </strong><br>This is for the masters <br>of code review!
                     </div> -->
-                </div>
-                <div class="ui message page  stat5" style="margin-left: 10px; background: none;">
-                    <h2 class="ui">Level 4</h2>
-                    <p class="stationMessage">This is for the masters of code review!</p>
-                </div>
+               </div>
+               <div class="ui message page stat5" style="margin-left: 10px; background: none;">
+                  <h2 class="ui">Level 4</h2>
+                  <p class="stationMessage">This is for the masters of code review!</p>
+               </div>
             </div>
             <!--STATIONQUIZ2-->
             <div class="outer postqCol">
-                <div style="height: 139px">
-                    <img class="station postquiz" src='../assets/quiz2.png' />
-                    <button
-                        class=" btn station-postquiz-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-green"
-                        id="PostQuizButton">
-                    </button>
-                    <!-- <div class="mdl-tooltip" for="PostQuizButton">
+               <div style="height: 139px">
+                  <img class="station postquiz" src='../assets/quiz2.png' />
+                  <button class=" btn station-postquiz-btn mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect ripple-green" id="PostQuizButton">
+                  </button>
+                  <!-- <div class="mdl-tooltip" for="PostQuizButton">
                         <strong>Post-Quiz </strong><br>A quiz to see how far <br> you've come after the game.
                     </div> -->
-                </div>
-                <div class="ui message page  postq" style="margin-left: 10px; background: none;">
-                    <h2 class="ui">Post-Quiz</h2>
-                    <p class="stationMessage">A quiz to see how far you've come after the game.</p>
-                </div>
+               </div>
+               <div class="ui message page postq" style="margin-left: 10px; background: none;">
+                  <h2 class="ui">Post-Quiz</h2>
+                  <p class="stationMessage">A quiz to see how far you've come after the game.</p>
+               </div>
             </div>
 
             <!-- MUSIC -->
-            <div class= "musicContainer" style="margin:0 auto;width:100px;"  style="cursor: none;">
-                <audio controls autoplay loop>
-                    <source src="../sounds/mainMenuSpacialHarvest.mp3" type="audio/mpeg"/>
-                </audio>
+            <div class="musicContainer" style="margin:0 auto;width:100px;" style="cursor: none;">
+               <audio controls autoplay loop>
+                  <source src="../sounds/mainMenuSpacialHarvest.mp3" type="audio/mpeg" />
+               </audio>
             </div>
 
             <!--
@@ -372,33 +346,33 @@
             </a>
         </div>
       </div> -->
-        </div>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+         </div>
+         <!-- The core Firebase JS SDK is always required and must be listed first -->
+         <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
-        <!-- TODO: Add SDKs for Firebase product that you want to use
+         <!-- TODO: Add SDKs for Firebase product that you want to use
             https://firebase.google.com/docs/web/setup#config-web-app -->
-        <script src="/__/firebase/6.2.3/firebase-app.js"></script>
-        <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
-        <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+         <script src="/__/firebase/6.2.3/firebase-app.js"></script>
+         <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
+         <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
 
-        <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script>
+         <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+         <script>
             // Your web app's Firebase configuration
             var firebaseConfig = {
-                apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
-                authDomain: "crsg-protoype.firebaseapp.com",
-                databaseURL: "https://crsg-protoype.firebaseio.com",
-                projectId: "crsg-protoype",
-                storageBucket: "crsg-protoype.appspot.com",
-                messagingSenderId: "438209695879",
-                appId: "1:438209695879:web:41b459953d567130"
+               apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
+               authDomain: "crsg-protoype.firebaseapp.com",
+               databaseURL: "https://crsg-protoype.firebaseio.com",
+               projectId: "crsg-protoype",
+               storageBucket: "crsg-protoype.appspot.com",
+               messagingSenderId: "438209695879",
+               appId: "1:438209695879:web:41b459953d567130"
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
-        </script>
-        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-        <script src="main.js"> </script>
-</body>
+         </script>
+         <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+         <script src="main.js"> </script>
+   </body>
 
 </html>
