@@ -144,7 +144,7 @@ i.icon-black {
   bottom: 0px;
   height: 50%;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .vertical {
