@@ -295,6 +295,12 @@ function editorBtnPressed8() {
 
     var newText = "public static boolean isFive(int n1){\n";
     editor8.session.replace(rng, newText);
+    
+    var rng2 = new Range(3, 0, 4, 0);
+    var newText2 = "    if(n1 == n2)\n";
+    editor8.session.replace(rng2, newText2);
+    markerID2 = editor8.session.addMarker(rng2, "ace_step", "screen", false);
+    
     document.getElementById("editorBtnText8").innerText = "SHOW THE DEFECT";
     document.getElementById("caption8").style.display = "none";
     document.getElementById("exp8").style.display = "block";
@@ -302,7 +308,9 @@ function editorBtnPressed8() {
   }
   else{
     editor8.undo();
+    editor8.undo();
     editor8.session.removeMarker(markerID);
+    editor8.session.removeMarker(markerID2);
     document.getElementById("editorBtnText8").innerText = "SHOW THE SOLUTION";
     document.getElementById("caption8").style.display = "block";
     document.getElementById("exp8").style.display = "none";
