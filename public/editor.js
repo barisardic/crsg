@@ -141,7 +141,8 @@ if (levelChosen == 1) {
         "Prior to the code review, use a static-code analyzer tool to eliminate errors detectable by machines. Automate to save time.",
         "Accept that many programming decisions are opinions. Discuss tradeoffs, which you prefer, and reach a resolution quickly.",
         "Ask good questions; don't make demands. ('What do you think about naming this :user_id?')",
-        "Good questions avoid judgment and avoid assumptions about the author's perspective."
+        "Good questions avoid judgment and avoid assumptions about the author's perspective.",
+        "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
 } else if (levelChosen == 2) {
     var answers = [];
@@ -167,7 +168,8 @@ if (levelChosen == 1) {
         "No matter how senior the developer is, everyone needs to review and be reviewed. Include everyone in the code review process.",
         "Ask for clarification. ('I didn't understand. Can you clarify?')",
         "Avoid selective ownership of code. ('mine', 'not mine', 'yours')",
-        "Avoid using terms that could be seen as referring to personal traits. ('dumb', 'stupid'). Assume everyone is intelligent and well-meaning."
+        "Avoid using terms that could be seen as referring to personal traits. ('dumb', 'stupid'). Assume everyone is intelligent and well-meaning.",
+        "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
 } else if (levelChosen == 3) {
     var answers = [];
@@ -192,7 +194,8 @@ if (levelChosen == 1) {
         "Offer alternative implementations, but assume the author already considered them. ('What do you think about using a custom validator here?')",
         "Be explicit. Remember people don't always understand your intentions online.",
         "Be humble. ('I'm not sure - let's look it up.')",
-        "Don't use hyperbole. ('always', 'never', 'endlessly', 'nothing')"
+        "Don't use hyperbole. ('always', 'never', 'endlessly', 'nothing')",
+        "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
 } else if (levelChosen == 4) {
     var answers = [];
@@ -217,7 +220,8 @@ if (levelChosen == 1) {
         "Seek to understand the author's perspective.",
         "Don't use sarcasm.",
         "Keep it real. If emoji, animated gifs, or humor aren't you, don't force them. If they are, use them with aplomb.",
-        "Talk synchronously (e.g. chat, screensharing, in person) if there are too many 'I didn't understand' or 'Alternative solution:' comments. Post a follow-up comment summarizing the discussion."
+        "Talk synchronously (e.g. chat, screensharing, in person) if there are too many 'I didn't understand' or 'Alternative solution:' comments. Post a follow-up comment summarizing the discussion.",
+        "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
 } else if (levelChosen == 5) {
     var answers = [];
@@ -251,7 +255,8 @@ if (levelChosen == 1) {
         "Sign off on the pull request with a thumbs up or 'Ready to merge' comment.",
         "Communicate which ideas you feel strongly about and those you don't.",
         "Identify ways to simplify the code while still solving the problem.",
-        "If discussions turn too philosophical or academic, move the discussion offline to a regular Friday afternoon technique discussion. In the meantime, let the author make the final decision on alternative implementations."
+        "If discussions turn too philosophical or academic, move the discussion offline to a regular Friday afternoon technique discussion. In the meantime, let the author make the final decision on alternative implementations.",
+        "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
 }
 var ListofErrors = [];
