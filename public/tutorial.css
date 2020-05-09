@@ -1,6 +1,6 @@
 #editor {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -12,7 +12,7 @@
 
 #editor2 {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -24,7 +24,7 @@
 
 #editor3 {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -35,7 +35,7 @@
 }
 #editor4 {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -46,7 +46,7 @@
 }
 #editor5 {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -57,7 +57,7 @@
 }
 #editor6 {
     width: 800px;
-    height: 240px;
+    height: 80%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -68,7 +68,7 @@
 }
 #editor7 {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -79,7 +79,7 @@
 }
 #editor8 {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -90,7 +90,7 @@
 }
 #editor9 {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -101,7 +101,7 @@
 }
 #editor10 {
     width: 800px;
-    height: 200px;
+    height: 70%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -153,7 +153,7 @@
 
 .editorDiv {
     width: 100%;
-    height: 400px;
+    height: 40%;
     background-image: url('../assets/pcb4.png');
     background-color: #626262;
     background-position: center;
@@ -175,7 +175,6 @@
     padding: 0.3%;
     left: 50%;
     transform: translate(-50%, 250%);
-    ;
     border: transparent !important;
     color: #282a36;
     background-color: #64144c;
@@ -221,6 +220,8 @@
     width: 100px;
     left: 50%;
     transform: translateX(-50%);
+    /* margin-left: auto;
+    margin-right: auto; */
     /* border:1px solid black; */
 }
 
@@ -250,4 +251,19 @@
 
 .header {
     background-color: #282a36;
+}
+
+.carouselBtn {
+    height: 50px!important;
+    width: 50px!important;
+    background-color: #799dff!important;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.carousel-control-next-icon {
+    background-size: 50% 50%!important;
+}
+.carousel-control-prev-icon {
+    background-size: 50% 50%!important;
 }
