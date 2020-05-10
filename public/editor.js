@@ -7,7 +7,7 @@ var Range = ace.require("ace/range").Range;
 
 if (levelChosen == 1) {
     document.getElementById("editor").style.display = "block";
-    document.getElementById("narrativeText").style.display = "block";
+    document.getElementById("narrativeText1").style.display = "block";
     var editor = ace.edit("editor");
     var code = document.querySelector("editor");
     editor.setTheme("ace/theme/dracula2");
@@ -135,7 +135,7 @@ if (levelChosen == 1) {
     var answer3 = new Err(18, 19);
     answer3.reason.push("Parameter");
     answers[2] = answer3;
-
+    
     var hints = ["There are " + answers.length + " defects in the code", "Duplication error at lines 9-12", "Parameter error at lines 19-20", "Comments error at line 5"];
     var GurusWords = ["Better Pull Requests lead to better reviews. Make sure commit messages and PR descriptions are informative.",
         "Prior to the code review, use a static-code analyzer tool to eliminate errors detectable by machines. Automate to save time.",
@@ -144,6 +144,8 @@ if (levelChosen == 1) {
         "Good questions avoid judgment and avoid assumptions about the author's perspective.",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
+    answersExplnatation = ["Hello", "Is it me", "That you are looking for"];
+    
 } else if (levelChosen == 2) {
     var answers = [];
     var answer1 = new Err(25, 27);
@@ -171,6 +173,7 @@ if (levelChosen == 1) {
         "Avoid using terms that could be seen as referring to personal traits. ('dumb', 'stupid'). Assume everyone is intelligent and well-meaning.",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
+    answersExplnatation = "hello";
 } else if (levelChosen == 3) {
     var answers = [];
     var answer1 = new Err(17, 17);
@@ -197,6 +200,7 @@ if (levelChosen == 1) {
         "Don't use hyperbole. ('always', 'never', 'endlessly', 'nothing')",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
+    answersExplnatation = "hello";
 } else if (levelChosen == 4) {
     var answers = [];
     var answer1 = new Err(12, 12);
@@ -223,6 +227,7 @@ if (levelChosen == 1) {
         "Talk synchronously (e.g. chat, screensharing, in person) if there are too many 'I didn't understand' or 'Alternative solution:' comments. Post a follow-up comment summarizing the discussion.",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
+    answersExplnatation = "hello";
 } else if (levelChosen == 5) {
     var answers = [];
     var answer1 = new Err(5, 5);
@@ -258,6 +263,7 @@ if (levelChosen == 1) {
         "If discussions turn too philosophical or academic, move the discussion offline to a regular Friday afternoon technique discussion. In the meantime, let the author make the final decision on alternative implementations.",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
+    answersExplnatation = "hello";
 }
 var ListofErrors = [];
 
@@ -544,6 +550,10 @@ function answersPressed() {
         editor.session.addMarker(rng, "ace_step", "screen", false);
     }
     answersSeenLevelToRead = "level" + String(levelChosen);
+    // Change level description with the answers explanations:
+    document.getElementById("narrativeText"+levelChosen).innerHTML = "";
+    createAnswerExpTable(answersExplnatation);
+    // tell DB that the user has seen the answers to this level of the game.
     var database = firebase.database();
     var user = firebase.auth().currentUser;
     var userId = user.uid;
@@ -551,7 +561,18 @@ function answersPressed() {
     seenRef.set("1");
 }
 
+function createAnswerExpTable(tableData) {
+    var table = document.createElement('table');
+    var row = {};
 
+    for(i =0 ; i<tableData.length;i++){
+        row = table.insertRow(i);
+        cell = row.insertCell(0);
+        cell.innerHTML= tableData[i];
+    }
+    document.getElementById("narrativeText"+levelChosen).appendChild(table);
+  }
+  
 function addComponent(ListofErrors) {
     var list = document.querySelector('.marketing-content-list');
     var mc = document.querySelector('.marketing-content-hidden');

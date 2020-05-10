@@ -77,24 +77,44 @@ body {
     */
 }
 
-#narrativeText {
+#narrativeText1 {
   display: none;
+  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1em;
+  font-size: large;
 }
 
 #narrativeText2 {
   display: none;
+  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1em;
+  font-size: large;
 }
 
 #narrativeText3 {
   display: none;
+  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1em;
+  font-size: large;
 }
 
 #narrativeText4 {
   display: none;
+  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1em;
+  font-size: large;
 }
 
 #narrativeText5 {
   display: none;
+  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1em;
+  font-size: large;
 }
 
 i.icon-black {
