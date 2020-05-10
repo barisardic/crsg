@@ -45,6 +45,7 @@ var editor = ace.edit("editor");
 editor.session.setMode("ace/mode/java");
 editor.setReadOnly(true);
 editor.setTheme("ace/theme/dracula2");
+editor.setFontSize(17);
 //line marker functionality
 
 //////// tutorial 2
@@ -52,55 +53,64 @@ var editor2 = ace.edit("editor2");
 editor2.session.setMode("ace/mode/java");
 editor2.setReadOnly(true);
 editor2.setTheme("ace/theme/dracula2");
+editor2.setFontSize(17);
 
 ////// tutorial 3
 var editor3 = ace.edit("editor3");
 editor3.session.setMode("ace/mode/java");
 editor3.setReadOnly(true);
 editor3.setTheme("ace/theme/dracula2");
+editor3.setFontSize(17);
 
 ////// tutorial 4
 var editor4 = ace.edit("editor4");
 editor4.session.setMode("ace/mode/java");
 editor4.setReadOnly(true);
 editor4.setTheme("ace/theme/dracula2");
+editor4.setFontSize(17);
 
 ////// tutorial 5
 var editor5 = ace.edit("editor5");
 editor5.session.setMode("ace/mode/java");
 editor5.setReadOnly(true);
 editor5.setTheme("ace/theme/dracula2");
+editor5.setFontSize(17);
 
 ////// tutorial 6
 var editor6 = ace.edit("editor6");
 editor6.session.setMode("ace/mode/java");
 editor6.setReadOnly(true);
 editor6.setTheme("ace/theme/dracula2");
+editor6.setFontSize(17);
 
 ////// tutorial 7
 var editor7 = ace.edit("editor7");
 editor7.session.setMode("ace/mode/java");
 editor7.setReadOnly(true);
 editor7.setTheme("ace/theme/dracula2");
+editor7.setFontSize(17);
 
 ////// tutorial 8
 var editor8 = ace.edit("editor8");
 editor8.session.setMode("ace/mode/java");
 editor8.setReadOnly(true);
 editor8.setTheme("ace/theme/dracula2");
+editor8.setFontSize(17);
 
 ////// tutorial 9
 var editor9 = ace.edit("editor9");
 editor9.session.setMode("ace/mode/java");
 editor9.setReadOnly(true);
 editor9.setTheme("ace/theme/dracula2");
+editor9.setFontSize(17);
 
 ////// tutorial 10
 var editor10 = ace.edit("editor10");
 editor10.session.setMode("ace/mode/java");
 editor10.setReadOnly(true);
 editor10.setTheme("ace/theme/dracula2");
-//
+editor10.setFontSize(17);
+
 //button listeners
 var editorBtnPressedList = [0,0,0,0,0,0,0,0,0,0];
 

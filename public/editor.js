@@ -55,7 +55,7 @@ if (levelChosen == 1) {
     ğ
     editor.setReadOnly(true);
 }
-editor.setFontSize(16);
+editor.setFontSize(18);
 // if user saw answers to a level disable the submit button
 // first check if the asnwers to the level are seen or not in submission button listener
 

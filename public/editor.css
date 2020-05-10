@@ -439,7 +439,7 @@ ul {
 }
 
 tr:nth-child(even) {
-  background-color: rgb(144, 145, 148);
+  background-color: #626262;
 }
 
 #overlay {
