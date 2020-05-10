@@ -435,48 +435,37 @@
                <table>
                   <tbody>
                      <tr>
-                        <td>Use Intention-Revealing Names</td>
-
+                        <td>1) Check line lengths, indentation and parentheses</td>
                      </tr>
                      <tr>
-                        <td>Pick one word per concept</td>
-
+                        <td>2) Trace names for consistency and meaning/relevance</td>
                      </tr>
                      <tr>
-                        <td>Use Solution/Problem Domain Names </td>
-
+                        <td>3) Check for the use of magic numbers</td>
                      </tr>
                      <tr>
-                        <td>Classes should be small!</td>
-
+                        <td>4) Check classes and functions for length and clarity</td>
                      </tr>
                      <tr>
-                        <td>Functions should be small! </td>
-
+                        <td>5) Trace functional mmodules for functional exclusivity<br>(modules should not have side effects)</td>
                      </tr>
                      <tr>
-                        <td>Do one Thing </td>
-
+                        <td>6) Check for literal and semantic duplications</td>
                      </tr>
                      <tr>
-                        <td>Don't Repeat Yourself (Avoid Duplication) </li>
-                        </td>
-
+                        <td>6) Check for literal and semantic duplications</td>
                      </tr>
                      <tr>
-                        <td>Explain yourself in code </td>
-
+                        <td>7) Check code for documentations and comments</td>
                      </tr>
                      <tr>
-                        <td>Make sure the code formatting is applied </td>
-
+                        <td>8) Check for dangling memory</td>
                      </tr>
                      <tr>
-                        <td>Use Exceptions rather than Return codes </td>
-
+                        <td>9) Check computations for correctness</td>
                      </tr>
                      <tr>
-                        <td>Don't return Null </td>
+                        <td>10) Check for redundant performance sinks<br>(Empty catch cases, dead loops, null returns etc.)</td>
                      </tr>
                   </tbody>
                </table>
@@ -500,8 +489,8 @@
 //See how sometimes some defects can be classified in more than one way above.
 //You can only choose one of them if the case is as such, but both would be true.
 //If you get both the line(s) and the class for a defect correct, it'll be ==>
-//marked green when submitted. If the line(s) are right but the class is not ==>
-//==> it'll be marked yellow. If none are right, it'll be marked red!
+//marked GREEN when submitted. If the line(s) are right but the class is not ==>
+//==> it'll be marked YELLOW. If none are right, it'll be marked RED!
 //The below defect is actually a "Parameter" defect, but try choosing another.
     select starting from this line,
     to here! Choose "Consistency" as the defect reason!
