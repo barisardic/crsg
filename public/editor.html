@@ -65,7 +65,7 @@
          <div class="util" id="leftTopDesc">
             <!-- MUSIC -->
             <div class="musicContainer" style="margin:0 auto; width:300px; margin-top: 1%;">
-               <audio controls autoplay loop class="music">
+               <audio controls loop class="music">
                   <source src="../sounds/editorTranquility.mp3" type="audio/mpeg" />
                </audio>
             </div>
@@ -828,58 +828,58 @@
 /**/hddssdyyyyssyshy^yshdhhhhhhhhhhhhhhhyyyyyhddhyyhyyyyyyso^^oosyssyyso^\/**/
 /**/dddyyhyossosyssyohhhdhhhhhhyyhhhhhyyyhhhhdddhyyyssyyysooooosssyyyso^/:/**/
 /**/dddddddddddddddddddddhhhhhhhhhhhhhhdhdddddhhyyssssyysssssssyyyyyyso^\\/**/</pre>
-      <div id="editor2"> // Class Declaration
-         public class Dog {
-         // Instance Variables
-         String name;
-         String breed;
-         int age;
-         String color;
+      <div id="editor2">// Class Declaration
+public class Dog {
+    // Instance Variables
+    String name;
+    String breed;
+    int age;
+    String color;
 
-         // Constructor Declaration of Class
-         public Dog(String name, String breed,
-         int age, String color) {
-         this.name = name;
-         this.breed = breed;
-         this.age = age;
-         this.color = color;
-         }
+    // Constructor Declaration of Class
+    public Dog(String name, String breed,
+    int age, String color) {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.color = color;
+    }
 
-         public String getName() {
-         return name;
-         }
+    public String getName() {
+        return name;
+    }
 
-         public String getBreed() {
-         return breed;
-         }
+    public String getBreed() {
+        return breed;
+    }
 
-         public String getName() {
-         return name;
-         }
+    public String getName() {
+        return name;
+    }
 
-         public int getAge() {
-         return age;
-         }
+    public int getAge() {
+        return age;
+    }
 
-         public String getColor() {
-         return color;
-         }
+        public String getColor() {
+            return color;
+        }
 
-         @Override
-         public boolean equals(Dog dogo) {
-         return this.toString() == dogo.toString();
-         }
+    @Override
+    public boolean equals(Dog dogo) {
+        return this.toString() == dogo.toString();
+    }
 
-         @Override
-         public String toString() {
-         return("Hi my name is "+ getName()+ ". My breed,age and color are " + this.getBreed()+"," +this.getAge()+","+ this.getColor());
-         }
+    @Override
+    public String toString() {
+        return("Hi my name is "+ getName()+ ". My breed,age and color are " + this.getBreed()+"," +this.getAge()+","+ this.getColor());
+    }
 
-         public static void main(String[] args) {
-         Dog tuffy = new Dog("tuffy","papillon", 5, "white");
-         System.out.println(tuffy.toString());
-         }
-         }
+    public static void main(String[] args) {
+        Dog tuffy = new Dog("tuffy","papillon", 5, "white");
+        System.out.println(tuffy.toString());
+    }
+}
 
       </div>
       <pre id="editor3">
@@ -922,80 +922,80 @@ public class ExerciseSumArray {
 }
         </pre>
       <div id="editor4">
-         /** Java program to print the elements of
-         a 2 D array or matrix */
-         import java.io.*;
-         class Matrices {
-
-         public static void printMatrix(int mat[][])
-         {
-         // Loop through all rows
-         for (int i = 0; i &lt; mat.length; i++)
-         // Loop through all elements of current row
-         for (int j = 0; j &lt; mat[i].length; j++)
-         System.out.print(mat[j][i] + " ");
-         }
-         public static int calcMatrixTotal(int mat[][])
-         {
-         int total = 0;
-         // Loop through all rows
-         for (int i = 0; i &lt; mat.length; i++)
-         // Loop through all elements of current row
-         for (int j = 0; j&lt;mat[i].length; j++)
-         total = total + mat[j][i];
-         return total;
-         }
-         public static void main(String args[]) throws IOException
-         {
-         int mat[][] = { { 1, 2, 3, 4 },
-         { 5, 6, 7, 8 },
-         { 9, 10, 11, 12 } };
-         printMatrix(mat);
-         int rows = mat.length;
-         int cols = mat.length;
-         System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
-         System.out.print("The matrix total is :"+calcMatrixTotal(mat));
-         }
-         }
+/** Java program to print the elements of
+a 2 D array or matrix */
+import java.io.*;
+class Matrices 
+{
+    public static void printMatrix(int mat[][])
+    {
+        // Loop through all rows
+        for (int i = 0; i &lt; mat.length; i++)
+            // Loop through all elements of current row
+            for (int j = 0; j &lt; mat[i].length; j++)
+                System.out.print(mat[j][i] + " ");
+    }
+    public static int calcMatrixTotal(int mat[][])
+    {
+        int total = 0;
+        // Loop through all rows
+        for (int i = 0; i &lt; mat.length; i++)
+            // Loop through all elements of current row
+            for (int j = 0; j&lt;mat[i].length; j++)
+                total = total + mat[j][i];
+        return total;
+    }
+    public static void main(String args[]) throws IOException
+    {
+        int mat[][] = { { 1, 2, 3, 4 },
+                        { 5, 6, 7, 8 },
+                        { 9, 10, 11, 12 } };
+        printMatrix(mat);
+        int rows = mat.length;
+        int cols = mat.length;
+        System.out.printf("The matrix has %s rows and %d columns %n", rows, cols);
+        System.out.print("The matrix total is :"+calcMatrixTotal(mat));
+    }
+}
 
       </div>
       <div id="editor5">
-         public class Primes{
-         public static void main(String[] args) throws Exception {
+public class Primes{
+    public static void main(String[] args) throws Exception {
 
-         final int twoToThePowerThirty = 1073741824;
-         List listOfPrimes = new ArrayList();
-         String title = "Printing all integer prime numbers";
-         title.toUpperCase();
-         System.out.println(title);
-         for (int number = 3; number&lt;=Integer.MAX_VALUE; number=number+2){
-         if (isPrime(number)) {
-         System.out.println(number);
-         listOfPrimes.add(number);
-         }
-         }
-         int isLarger = (listOfPrimes.get(listOfPrimes.size()-1)>twoToThePowerThirty) ? 1 : 0;
-         switch (isLarger) {
-         case false:
-         System.out.print("Largest prime integer is not bigger than 2^30");
-         case true:
-         System.out.print("Largest prime integer is bigger than 2^30");
-         break;
-         }
-         }
-         /*
-         * Prime number is not divisible by any number other than 1 and itself
-         * should handle all integers , @return true if number is prime
-         */
-         public static boolean isPrime(int number) {
-         for (int i = 2; i &lt; number; i++) {
-         if (number % i == 0) {
-         return false; // number is divisible so it's not prime
-         }
-         }
-         return true; // number is prime now
-         }
-         }
+        final int twoToThePowerThirty = 1073741824;
+        List listOfPrimes = new ArrayList();
+        String title = "Printing all integer prime numbers";
+        title.toUpperCase();
+        System.out.println(title);
+        for (int number = 3; number&lt;=Integer.MAX_VALUE; number=number+2){
+            if (isPrime(number)) {
+                System.out.println(number);
+                listOfPrimes.add(number);
+            }
+        }
+        int isLarger = (listOfPrimes.get(listOfPrimes.size()-1)>twoToThePowerThirty) ? 1 : 0;
+        switch (isLarger) {
+            case false:
+                System.out.print("Largest prime integer is not bigger than 2^30");
+            case true:
+                System.out.print("Largest prime integer is bigger than 2^30");
+            break;
+        }
+    }
+    /*
+    * Prime number is not divisible by any number other than 1 and itself
+    * should handle all integers , @return true if number is prime
+    */
+    public static boolean isPrime(int number) {
+        for (int i = 2; i &lt; number; i++) {
+            if (number % i == 0) {
+                return false; // number is divisible so it's not prime
+            }
+        }
+        return true; // number is prime now
+    }
+}
       </div>
       <div id="editor6">public class Account {
          double principal6,rate; int daysActive,accountType;
