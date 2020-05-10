@@ -144,7 +144,7 @@ if (levelChosen == 1) {
         "Good questions avoid judgment and avoid assumptions about the author's perspective.",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
-    answersExplnatation = ["Hello", "Is it me", "That you are looking for"];
+    answersExplnatation = ["Once you press <strong>SEE ANSWERS</strong>, explanations for the defects’ reasons will be written here, so do not forget to check this tab when you are confused about the nature of the answers!"];
     
 } else if (levelChosen == 2) {
     var answers = [];
@@ -173,7 +173,11 @@ if (levelChosen == 1) {
         "Avoid using terms that could be seen as referring to personal traits. ('dumb', 'stupid'). Assume everyone is intelligent and well-meaning.",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
-    answersExplnatation = "hello";
+    answersExplnatation = ["<strong>Line 26-28</strong><br> The same function already exists above.", 
+                            "<strong>Line 34-36</strong><br> The indentation of the getColor() method is wrong with an extra tab.",
+                            "<strong>Line 40-40</strong><br> You should not use '==' (equality operator) to compare these strings as they compare the reference of the string, i.e. whether they are the same object or not.",
+                            "<strong>Line 45-45</strong><br> This line is too long. It can be easily made into a multi-line statement using line breaks.",
+                            ];
 } else if (levelChosen == 3) {
     var answers = [];
     var answer1 = new Err(17, 17);
@@ -200,7 +204,11 @@ if (levelChosen == 1) {
         "Don't use hyperbole. ('always', 'never', 'endlessly', 'nothing')",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
-    answersExplnatation = "hello";
+    answersExplnatation = ["<strong>Line 14-14</strong><br> Collections.reverse() would permanently manipulate the parameter. Instead, parameters should be copied before performing such operations to avoid bad data manipulations.",
+                            "<strong>Line 18-18</strong><br> In the case the if statement rejects, the integer is set to null. Assigning null to variables is a bad data manipulation practice and should be avoided in favour of more type-friendly alternatives.",
+                            "<strong>Line 19-19</strong><br> Defect identical to that at line 18.",
+                            "<strong>Line 31-31</strong><br> Carry cannot be equal to 0. The wrong comparison operator is being used."
+                            ];
 } else if (levelChosen == 4) {
     var answers = [];
     var answer1 = new Err(12, 12);
@@ -227,7 +235,10 @@ if (levelChosen == 1) {
         "Talk synchronously (e.g. chat, screensharing, in person) if there are too many 'I didn't understand' or 'Alternative solution:' comments. Post a follow-up comment summarizing the discussion.",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
-    answersExplnatation = "hello";
+    answersExplnatation = ["<strong>Line 13-13</strong><br> In the given parameter, i is the row index, j is the column index. They should be swapped in order to retrieve matrix values in the correct order and avoid bad data placement.",
+                            "<strong>Line 22-22</strong><br> Defect identical to that at line 13.",
+                            "<strong>Line 32-32</strong><br> Indexing is wrong, the column number should be determined by mat[0].length to avoid miscomputing the column.",
+                            ];
 } else if (levelChosen == 5) {
     var answers = [];
     var answer1 = new Err(5, 5);
@@ -263,7 +274,13 @@ if (levelChosen == 1) {
         "If discussions turn too philosophical or academic, move the discussion offline to a regular Friday afternoon technique discussion. In the meantime, let the author make the final decision on alternative implementations.",
         "----------- >>END OF TRANSMISSION!<<----------- Click out of the log to return to the editor!"
     ];
-    answersExplnatation = "hello";
+    answersExplnatation = ["<strong>Line 6-6</strong><br> listOfPrimes is not provided with an element type for its elements, therefore it would accept unintended types.",
+                            "<strong>Line 8-8</strong><br> 'String' is an immutable type in Java, to perform a manipulation operation we need an assignment in the likes of 'a = a.upperCase();'.",
+                            "<strong>Line 10-10</strong><br> ‘number’ overflows back to 0 when Integer.MAX_VALUE is reached, making the for loop begin again. This causes the for statement to loop indefinitely due to a broken comparison.",
+                            "<strong>Line 17-23</strong><br> The first switch case misses a break, which causes the program to print ‘Largest prime integer is bigger than 2^30’ in addition to ‘Largest prime integer is not bigger than 2^30’ whenever just the latter is meant to be printed, which is a mismanagement of data flow.",
+                            "<strong>Line 29-36</strong><br> ‘isPrime’ does not check ‘number’ below 2, and marks it as a prime, making this a bad comparison.",
+                            "<strong>Line 30-30</strong><br> The loop counting all the way up to ‘number’ is a wasteful/suboptimal algorithm, since counting just up to the square root of ‘number’ is enough.",
+                            ];
 }
 var ListofErrors = [];
 
