@@ -891,11 +891,11 @@ public class ExerciseSumArray {
     * [1, 0, 0] + [4,0] = [1,4,0]
     * [6,7] + [0] = [6,7]
       */
-    public ArrayList<Integer> getSum(List<Integer> firstNumber, List<Integer> secondNumber ){
-        ArrayList<Integer> result = new ArrayList<Integer>();
+    public ArrayList&lt; Integer > getSum(List&lt; Integer > firstNumber, List&lt; Integer > secondNumber ){
+        ArrayList&lt; Integer > result = new ArrayList&lt; Integer >();
 
         int carry = 0;
-        List<Integer> secondNumCopy = secondNumber;
+        ArrayList&lt; Integer > secondNumCopy = new ArrayList&lt;>(secondNumber);
         Collections.reverse(firstNumber);
         Collections.reverse(secondNumCopy);
 
