@@ -482,3 +482,35 @@ tr:nth-child(even) {
   cursor: pointer;
   /* Add a pointer on hover */
 }
+
+.SA {
+    color: #ff8686;
+}
+
+.Organization {
+    color: #ffd186;
+}
+
+.VR {
+    color: #e9ff86;
+}
+
+.SbL {/*used to be "supported by language", now used in "variable manipulation"*/
+    color: #86ff96;
+}
+
+.Textual {/*used to be "textual", now used in "documentation"*/
+    color: #86ffe5;
+}
+
+.Resource {
+    color: #86a6ff;
+}
+
+.Logic {
+    color: #ac86ff;
+}
+
+.Interface {
+    color: #ff8686;
+}

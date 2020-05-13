@@ -475,7 +475,7 @@ function calculateScore(answers, submission) {
         var containerIndex = i + 1;
         var reasonContainerId = "n" + containerIndex;
         var domElementToBeColored = document.getElementById(reasonContainerId);
-        domElementToBeColored.style.border = "5px solid red";
+        domElementToBeColored.style.background = "#ff000088";
         for (var j = 0; j < grandTruth.length; j++) {
 
             if (submission[i].start == grandTruth[j].start) {
@@ -485,7 +485,7 @@ function calculateScore(answers, submission) {
                     var reasonContainerId = "n" + containerIndex;
                     var domElementToBeColored = document.getElementById(reasonContainerId);
                     //alert(domElementToBeColored.innerHTML);
-                    domElementToBeColored.style.border = "5px solid yellow";
+                    domElementToBeColored.style.background = "#fbff0088";
                     //alert(""+grandTruth[j].reason.length);
                     console.log("grandlen "+grandTruth.length+"-"+grandTruth);
                     console.log(""+grandTruth[j].reason+"len"+ grandTruth[j].reason.length);
@@ -496,7 +496,7 @@ function calculateScore(answers, submission) {
                             exact++;
                             var reasonContainerId = "n" + containerIndex;
                             var domElementToBeColored = document.getElementById(reasonContainerId);
-                            domElementToBeColored.style.border = "5px solid green";
+                            domElementToBeColored.style.background = "#00ff2a88";
                             //delete found element , give points only once
                             grandTruth.splice(j, 1);
                             

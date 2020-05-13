@@ -90,11 +90,11 @@
                                  <li class="dropdown-submenu">
                                     <a class="dropdown-item" href="#">Structure</a>
                                     <ul class="dropdown-menu">
-                                       <li class="dropdown-submenu"><a class="dropdown-item" href="#">Solution Approach</a>
+                                       <li class="dropdown-submenu SA"><a class="dropdown-item" href="#">Solution Approach</a>
                                           <ul class="dropdown-menu">
-                                             <li class="dropdown-item" style="z-index: 15;"><a href="#">Semantic
+                                             <li class="dropdown-item SA" style="z-index: 15;"><a href="#">Semantic
                                                    duplication</a></li>
-                                             <li class="dropdown-item" style="z-index: 15;"><a href="#">Semantic dead code</a>
+                                             <li class="dropdown-item SA" style="z-index: 15;"><a href="#">Semantic dead code</a>
                                              </li>
                                           </ul>
                                        </li>
@@ -300,24 +300,24 @@
                             Evolvability Defects</h2></td>
                        </tr>
                        <tr>
-                          <td><strong>Semantic duplication</strong><br>
+                          <td><strong class="SA">Semantic duplication</strong><br>
                             There are two sections in the code that are not the same but they perform the same 
                             task.</td>
   
                        </tr>
                        <tr>
-                          <td><strong>Semantic dead code</strong><br>
+                          <td><strong class="SA">Semantic dead code</strong><br>
                             A piece of code that the program executes which does
                             not perform any meaningful task.</td>
   
                        </tr>
                        <tr>
-                          <td><strong>Duplication</strong><br>
+                          <td><strong class="Organization">Duplication</strong><br>
                             The exact replica of this code exists in the project.</td>
   
                        </tr>
                        <tr>
-                          <td><strong>Consistency</strong><br>
+                          <td><strong class="Organization">Consistency</strong><br>
                             When something is achieveable with multiple ways or styles,
                             you should
                             select one of them and use only that for consistency. For example if you are naming your
@@ -325,47 +325,47 @@
                             camel case, you should not change it arbitrarily. </td>
                        </tr>
                        <tr>
-                          <td><strong>Dead Code</strong><br>
+                          <td><strong class="Organization">Dead Code</strong><br>
                             A piece of code in the program which is never executed.</li>
                           </td>
                        </tr>
                        <tr>
-                          <td><strong>Bracket</strong><br>
+                          <td><strong class="VR">Bracket</strong><br>
                             Unnecessary or inconsistent usage of brackets. </td>
                        </tr>
                        <tr>
-                          <td><strong>Indentation</strong><br>
+                          <td><strong class="VR">Indentation</strong><br>
                             Indentation of a certain code piece is not compliant with the
                             rest of
                             code.</td>
                        </tr>
                        <tr>
-                          <td><strong>Blank line</strong><br>
+                          <td><strong class="VR">Blank line</strong><br>
                             Empty lines usually indicate a separation of
                             functionality thus they
                             are commonly founded in places where single responsibility principle is violated.</td>
                        </tr>
                        <tr>
-                          <td><strong>Long line</strong><br>
+                          <td><strong class="VR">Long line</strong><br>
                             Unnaturally long lines of code makes programs harder to read
                             and debug,
                             they might also make you miss code reuse opportunities.</td>
                        </tr>
                        <tr>
-                        <td><strong>Naming</strong><br>
+                        <td><strong class="Textual">Naming</strong><br>
                             Inconsistent or irrelevant naming.</td>
                        </tr>
                        <tr>
-                        <td><strong>Comments</strong><br>
+                        <td><strong class="Textual">Comments</strong><br>
                             Comments that are completely unnecessary or wrong. </td>
                        </tr>
                        <tr>
-                        <td><strong>Immutable</strong><br>
+                        <td><strong class="SbL">Immutable</strong><br>
                             An immutable object is an object that can not be changed once
                             its created.</td>
                      </tr>
                      <tr>
-                        <td><strong>Void Parameter</strong><br>
+                        <td><strong class="SbL">Void Parameter</strong><br>
                             Null never should be a parameter to an object since it
                             does not
                             contribute to anything. The right way is to make 2 versions of the method one with the
@@ -373,7 +373,7 @@
                             and the second with no parameters.</td>
                      </tr>
                      <tr>
-                        <td><strong>Element Type</strong><br>
+                        <td><strong class="SbL">Element Type</strong><br>
                             Suboptimal usage of element (variable) type assignments.</td>
                      </tr>
                      <tr>
@@ -381,47 +381,47 @@
                             Functional Defects</h2></td>
                      </tr>
                      <tr>
-                        <td><strong>Function Call</strong><br>
+                        <td><strong class="Interface">Function Call</strong><br>
                             Improper or unnecessary function call, we should extend
                             this to include
                             middle man functions or multi responsibility methods.</td>
                      </tr>
                      <tr>
-                        <td><strong>Parameter</strong><br>
+                        <td><strong class="Interface">Parameter</strong><br>
                             Too many or unnecessary parameters, wrong choice of parameters,
                             perhaps
                             even null parameters.</td>
                      </tr>
                      <tr>
-                        <td><strong>Variable initialization</strong><br>
+                        <td><strong class="Resource">Variable initialization</strong><br>
                             Unnecessary dummy initializations, maybe some
                             variable should
                             have been declared as final or vica versa. </td>
                      </tr>
                      <tr>
-                        <td><strong>Memory management</strong><br>
+                        <td><strong class="Resource">Memory management</strong><br>
                             Very common in some languages, not so common in others.
                             Very hard to observe in languages where manual memory allocation is not allowed.</td>
                      </tr>
                      <tr>
-                        <td><strong>Data and Resource Manipulation</strong><br>
+                        <td><strong class="Resource">Data and Resource Manipulation</strong><br>
                             Defects that are due to mistakes made with 
                             data, variables, or other resources' initialization, manipulation, and release. Such as 
                             incorrect/suboptimal variable initializations and forgetting to release memory space after use.</td>
                      </tr>
                      <tr>
-                        <td><strong>Compare</strong><br>
+                        <td><strong class="Logic">Compare</strong><br>
                             Any errors made while utilizing "&lt;",”>””=” type of operators
                             are of this
                             type.</td>
                      </tr>
                      <tr>
-                        <td><strong>Compute</strong><br>
+                        <td><strong class="Logic">Compute</strong><br>
                             These are the errors which are mathematics related rather than
                             programming.</td>
                      </tr>
                      <tr>
-                        <td><strong>Algorithm/Performance</strong><br>
+                        <td><strong class="Logic">Algorithm/Performance</strong><br>
                             Obvious design choices that makes the program
                             “significantly”
                             inefficient memory or speed wise.</td>
