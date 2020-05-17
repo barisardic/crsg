@@ -491,7 +491,7 @@ function calculateScore(answers, submission) {
                     console.log(""+grandTruth[j].reason+"len"+ grandTruth[j].reason.length);
                     for (t = 0; t < grandTruth[j].reason.length; t++) {
                     
-                        if (submission[i].reason == grandTruth[j].reason[t]) {
+                        if (submission[i].reason.replace(/\s+/g, '') == grandTruth[j].reason[t].replace(/\s+/g, '')) {
                             score = score + 2;
                             exact++;
                             var reasonContainerId = "n" + containerIndex;
@@ -555,6 +555,10 @@ document.addEventListener('click', function (e) {
 document.getElementById('answersBtn').addEventListener('click', answersPressed, false);
 
 function answersPressed() {
+    var userAck = confirm("If you see the answers, you can not submit again!");
+    if(userAck == false){
+        return;
+    }
     var Domlist = document.querySelector('.marketing-content-list');
     Domlist.innerHTML = listInner;
     //alert("child count :"+Domlist.childNodes.length);
@@ -576,6 +580,13 @@ function answersPressed() {
     var userId = user.uid;
     var seenRef = database.ref('users/' + userId + "/answersSeen/" + answersSeenLevelToRead);
     seenRef.set("1");
+    // auto show the new description panel
+    /* var myTabs = document.getElementById('leftBottom');
+    var mdlTabs = myTabs.MaterialTabs;
+    // give tab index 
+    mdlTabs.setTab(document.getElementById('dTab')); */
+    console.log("im here");
+    document.getElementById("dTab").click();
 }
 
 function createAnswerExpTable(tableData) {
