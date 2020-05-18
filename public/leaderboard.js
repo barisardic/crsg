@@ -30,7 +30,7 @@ var userTopScoresref = firebase.database().ref('users/').orderByChild('highScore
 userTopScoresref.on("value", snap => {
   snap.forEach(function (childSnap) {
     window.userNames.unshift(childSnap.child("username").val());
-    window.userUnis.unshift(childSnap.child("university").val());
+    //window.userUnis.unshift(childSnap.child("university").val());
     window.userScores.unshift(childSnap.child("highScore").val());
     
    });
@@ -39,7 +39,7 @@ userTopScoresref.on("value", snap => {
       place = document.getElementById((i+1).toString()).children;
       //alert(place[0]);
       place[1].innerText= userNames[i];
-      place[2].innerText= userUnis[i];
-      place[3].innerText= userScores[i];
+      //place[2].innerText= userUnis[i];
+      place[2].innerText= userScores[i];
     }
 });

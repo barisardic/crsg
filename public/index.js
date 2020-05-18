@@ -58,42 +58,58 @@ firebase.auth().onAuthStateChanged(function(user) {
       ) {
           // sign up
             userId= user.uid;
-            console.log("pos 1");
+            console.log("pos 1"+userId);
             var database = firebase.database();
+            /* database.ref('users/' + userId+"/scores").set({
+                level1: 0,
+                level2: 0,
+                level3: 0,
+                level4: 0,
+                level5: 0,
+                level6: 0
+              }); */
+              /* database.ref('users/' + userId+"/answersSeen").set({
+                  level1: 0,
+                  level2: 0,
+                  level3: 0,
+                  level4: 0,
+                  level5: 0,
+                  level6: 0
+              });  */
             database.ref('users/' + userId).set({
               username: window.newUserName,
               email: window.newUserEmail,
-              highScore :0
-            });
-            database.ref('users/' + userId+"/scores").set({
-              level1: 0,
-              level2: 0,
-              level3: 0,
-              level4: 0,
-              level5: 0,
-              level6: 0
-            });
-            database.ref('users/' + userId+"/scores").set({
+              highScore :0,
+              answersSeen: {
                 level1: 0,
                 level2: 0,
                 level3: 0,
                 level4: 0,
                 level5: 0,
                 level6: 0
-              });
-              database.ref('users/' + userId+"/answersSeen").set({
+              },
+              scores:{
                 level1: 0,
                 level2: 0,
                 level3: 0,
                 level4: 0,
                 level5: 0,
                 level6: 0
-              }); 
+              }
+            }).then(function(){
+            localStorage.setItem('selected', -1);
+            window.location.href = "/main.html";
+            });   
+            
             console.log("pos 2");
             
       }
-      localStorage.setItem('selected', -1);
-      window.location.href = "/main.html";
+      else{
+        localStorage.setItem('selected', -1);
+        window.location.href = "/main.html";
+      }
+      /* localStorage.setItem('selected', -1);
+      window.location.href = "/main.html"; */
   } else {
     // User is signed out.
     // ...
