@@ -906,7 +906,7 @@ public class ExerciseSumArray {
             int res = firstValue + secondValue + carry;
 
             carry = 0;
-            if (res > 10){
+            if (res >= 10){
                 carry = 1;
                 res = res % 10;
             }
