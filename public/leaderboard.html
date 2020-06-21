@@ -1,146 +1,152 @@
 <html>
-   <head>
-        <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"> 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
-        <!-- Material Design icon font -->
-        
-        <!--Main Stylesheet -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
-        <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
-        <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
-        <link rel=”stylesheet” href="https://unpkg.com/material-components-web/dist/material-components-web.min.css">
-        <script src="https://unpkg.com/material-components-web/dist/material-components-web.min.js"></script>
-      
 
-   </head>
-   
-   <body>
-        <style>
-        body {
-          background: linear-gradient(0.50turn, #009688, #005178, #009688);
-        }  
-        #leader{
-        top:50%;
-        left: 50%;
-        width: 50%;
-        height: 50%;
-        transform: translate3d(-50%,-50%, 0);
-        position: absolute;
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <!-- Material Design icon font -->
+
+    <!--Main Stylesheet -->
+    <link rel="icon" href="../assets/cursor1.png">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+    <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+    <link rel=”stylesheet” href="https://unpkg.com/material-components-web/dist/material-components-web.min.css">
+    <script src="https://unpkg.com/material-components-web/dist/material-components-web.min.js"></script>
+
+    <link rel="stylesheet" href="leaderboard.css" />
+
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
-        td {
-        font-weight: bolder;
-        text-transform: uppercase;
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
         }
-        .mdl-data-table{
-          background-color:azure;
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
         }
-        </style>
-       <div class="mdl-layout__container"> 
-        <div class = "mdl-layout mdl-js-layout mdl-layout--fixed-header">
-           <header class = "mdl-layout__header">
-              <div class = "mdl-layout__header-row"> 
-                  <div class="mdl-layout__drawer">
-          </div>     
-                 <span class = "mdl-layout-title">CRSG</span> 
-                 <div class="mdl-layout-spacer"></div>  
-                 <nav class="mdl-navigation">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="toMain" onclick="window.location.href='/main.html'">
-                        Main Menu
-                    </button>
-                      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="userEmail" onclick="window.location.href='/userprofile.html'">
-                  
-                      </button>
-                      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="signout3">
-                          Sign Out
-                      </button>
-                    </nav>       
-              </div>
-                     
-           </header>     
-           <div class="mdl-layout__drawer">
-              </div>
-           <main class = "mdl-layout__content">    
-            <table class="mdl-data-table mdl-js-data-table" id="leader">
-                <thead>
-                  <tr class="mdl-shadow--16dp">
-                    <th class="mdl-data-table__cell--non-numeric" >Place</th>
-                    <th>Name</th>
-                    <th>University</th>
-                    <th>Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr id="1" class="mdl-shadow--8dp" >
-                    <td class="mdl-data-table__cell--non-numeric " >1.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr id="2" class="mdl-shadow--8dp">
-                    <td class="mdl-data-table__cell--non-numeric" >2.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr> 
-                  <tr id="3" class="mdl-shadow--8dp">
-                    <td class="mdl-data-table__cell--non-numeric" >3.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr id="4" class="mdl-shadow--4dp">
-                    <td class="mdl-data-table__cell--non-numeric" >4.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr id="5" class="mdl-shadow--4dp" >
-                    <td class="mdl-data-table__cell--non-numeric" >5.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr id="6">
-                    <td class="mdl-data-table__cell--non-numeric" >6.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr id="7">
-                    <td class="mdl-data-table__cell--non-numeric" >7.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr id="8">
-                    <td class="mdl-data-table__cell--non-numeric" >8.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr id="9">
-                    <td class="mdl-data-table__cell--non-numeric" >9.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr id="10">
-                    <td class="mdl-data-table__cell--non-numeric">10.</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                </tbody>
-              </table>
-           </main>
+    </style>
+</head>
+
+<body>
+    <div class="mdl-layout__container">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header transparent">
+                <div class="mdl-layout__header-row">
+                   
+                    <span class="mdl-layout_title title" style="font-size: 27px">Code Review Serious Game</span>
+                    <div class="mdl-layout-spacer"></div>
+                    <nav class="mdl-navigation">
+                        <button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover"
+                            id="toMain" onclick="window.location.href='/main.html'">
+                            Main Menu
+                        </button>
+                        <button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover"
+                            id="userEmail">
+
+                        </button>
+                        <button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover"
+                            id="signout3">
+                            Sign Out
+                        </button>
+                    </nav>
+                </div>
+
+            </header>
+            <main class="mdl-layout__content">
+                <table class="mdl-data-table mdl-js-data-table" id="leader">
+                    <thead>
+                        <tr class="mdl-shadow--16dp">
+                            <th class="mdl-data-table__cell--non-numeric">Place</th>
+                            <th>Name</th>
+                            
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="1" class="mdl-shadow--8dp">
+                            <td class="mdl-data-table__cell--non-numeric ">1.</td>
+                            <td>-</td>
+                            
+                            <td>-</td>
+                        </tr>
+                        <tr id="2" class="mdl-shadow--8dp">
+                            <td class="mdl-data-table__cell--non-numeric">2.</td>
+                            <td>-</td>
+                            
+                            <td>-</td>
+                        </tr>
+                        <tr id="3" class="mdl-shadow--8dp">
+                            <td class="mdl-data-table__cell--non-numeric">3.</td>
+                            <td>-</td>
+                            
+                            <td>-</td>
+                        </tr>
+                        <tr id="4" class="mdl-shadow--4dp">
+                            <td class="mdl-data-table__cell--non-numeric">4.</td>
+                            <td>-</td>
+                            
+                            <td>-</td>
+                        </tr>
+                        <tr id="5" class="mdl-shadow--4dp">
+                            <td class="mdl-data-table__cell--non-numeric">5.</td>
+                            <td>-</td>
+                           
+                            <td>-</td>
+                        </tr>
+                        <tr id="6">
+                            <td class="mdl-data-table__cell--non-numeric">6.</td>
+                            <td>-</td>
+                            
+                            <td>-</td>
+                        </tr>
+                        <tr id="7">
+                            <td class="mdl-data-table__cell--non-numeric">7.</td>
+                            <td>-</td>
+                            
+                            <td>-</td>
+                        </tr>
+                        <tr id="8">
+                            <td class="mdl-data-table__cell--non-numeric">8.</td>
+                            <td>-</td>
+                            
+                            <td>-</td>
+                        </tr>
+                        <tr id="9">
+                            <td class="mdl-data-table__cell--non-numeric">9.</td>
+                            <td>-</td>
+                            
+                            <td>-</td>
+                        </tr>
+                        <tr id="10">
+                            <td class="mdl-data-table__cell--non-numeric">10.</td>
+                            <td>-</td>
+                           
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
         </div>
-      </div>
-     
+    </div>
 
 
 
@@ -150,17 +156,18 @@
 
 
 
-      <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
-        <!-- TODO: Add SDKs for Firebase product that you want to use
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase product that you want to use
             https://firebase.google.com/docs/web/setup#config-web-app -->
-        <script src="/__/firebase/6.2.3/firebase-app.js"></script>
-        <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
-        <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+    <script src="/__/firebase/6.2.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
+    <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
 
-        <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script>
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
@@ -173,8 +180,9 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        </script>
-    <script src = "https://code.jquery.com/jquery-3.1.0.js"></script>   
-    <script src= "leaderboard.js"> </script>
-   </body>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="leaderboard.js"> </script>
+</body>
+
 </html>

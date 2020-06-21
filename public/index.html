@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Code Review Serious Game by Bilsen</title>
-
+  <link rel="icon" href="../assets/cursor1.png">  
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -12,11 +12,11 @@
 </head>
 <body>
     <div class="mdl-layout mdl-js-layout">
-        <header class="mdl-layout__header">
+        <header class="mdl-layout__header transparent">
           <div class="mdl-layout-icon"></div>
           <div class="mdl-layout__header-row">
             <div class="mdl-layout-spacer"></div>
-            <span class="mdl-layout_title" style="font-size: 27px">Code Review Serious Game</span>
+            <span class="mdl-layout_title title" style="font-size: 27px">Code Review Serious Game</span>
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation">
               <!-- <a class="mdl-navigation__link" href="#">Nav link 1</a>
@@ -31,11 +31,11 @@
                 <div class="left" >
                 <h1>Sign Up</h1>
                 
-                <input type="text" name="UserName" placeholder="User Name" id="sign-up-username" />
+                <input type="text" name="UserName" placeholder="Your Name" id="sign-up-username" />
                 <input type="text" name="Email" placeholder="E-mail" id="sign-up-email" />
                 <input type="password" name="Password" placeholder="Password" id="sign-up-password" />
                 <input type="password" name="Password" placeholder="Retype Password"id= "sign-up-password-re" />
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" id="signUp">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" type="submit" name="submit" id="signUp">
                   Sign Up
                 </button>
 
@@ -44,12 +44,12 @@
                   <h1>Log in</h1>
                   <input type="text2" name="log_email" placeholder="Account E-mail" id="log-in-email" />
                   <input type="password" name="log_password" placeholder="Password" id="log-in-password" />
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="submit" id="login">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored transparent hover" type="submit" name="submit" id="login">
                   Login
                   </button>
                 </div>
                 <div class="right">
-                <span class="loginwith">Sign in with<br />social network</span>
+                <span class="loginwith">Sign in with<br/>Social Network</span>
                 
                 <button class="social-signin facebook" disabled >Log in with facebook</button>
                 <button class="social-signin twitter" disabled >Log in with Twitter</button>
@@ -65,7 +65,7 @@
       <!-- MDL Spinner Component -->
       <div id="loginProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
 
         <!-- TODO: Add SDKs for Firebase product that you want to use
             https://firebase.google.com/docs/web/setup#config-web-app -->

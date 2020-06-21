@@ -1,0 +1,535 @@
+<html>
+
+<head>
+	<title>Code Review Serious Game by Bilsen</title>
+    <link rel="stylesheet" href="tutorial.css" />
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="material-custom.css" />
+    <script src="material-custom.js"></script>
+    <!-- Material Design icon font -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Main Stylesheet -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+    <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/popper.js"></script>
+
+    <link rel="stylesheet"
+        href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link rel="icon" href="../assets/cursor1.png">
+
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
+</head>
+
+<body>
+    <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner ">
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 1 -->
+            <div class="carousel-item">
+                <div class = "carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">EVOLVABILITY > <span class="VR"> VISUAL REPRESENTATION</span> > INDENTATION</h2>
+                    <button id="editorBtn" class="editorBtn">
+                        <h3 id="editorBtnText">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor" class="editor">//this function returns the bigger of its two parameters
+public static int returnBigger(int n1, int n2){
+    if(n1 < n2)
+                                return n2;
+    return n1;
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="VR" id="caption">VISUAL REPRESENTATION</h1>
+                        <h4 class="tutorial-explanation VR" id="exp">The marked return statement is overly indented. It should be raised back 
+                                                                    up enough to be only 1 tab indented from its parent if statement.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/evolvability.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that make the code harder to read for humans,such as very long lines,
+                            bad indentation, redundant brackets or untimely blank lines.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 2 -->
+            <div class="carousel-item">
+                <div class = "carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">EVOLVABILITY > <span class="Organization"> ORGANIZATION</span> > DEAD CODE</h2>
+                    <button id="editorBtn2" class="editorBtn">
+                        <h3 id="editorBtnText2">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor2" class="editor">//this function returns the bigger of its two parameters
+public static int returnBigger(int n1, int n2){
+    if(n1 < n2)
+        return n2;
+    return n1;
+    return n2;
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="Organization" id="caption2">ORGANIZATION</h1>
+                        <h4 class="tutorial-explanation Organization" id="exp2">The third return statement cannot be reached, making it dead 
+                                                                                code. It should be removed.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/evolvability.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that can be fixed by applying relatively simple structural modifications to
+                            the software, such as getting rid of dead if clauses, duplicated code snippets or
+                            inconsistent naming conventions.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 3 -->
+            <div class="carousel-item">
+                <div class="carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">EVOLVABILITY > <span class="SA"> SOLUTION APPROACH</span> > SEMANTIC DEAD CODE
+                    </h2>
+                    <button id="editorBtn3" class="editorBtn">
+                        <h3 id="editorBtnText3" >SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor3" class="editor">//this function returns the larger of its two parameters
+public static int returnLarger(int n1, int n2){
+    if(n1 < n2)
+    {
+        n1++;
+        n1--;
+        return n2;
+    }
+    return n1;
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="SA" id="caption3">SOLUTION APPROACH</h1>
+                        <h4 class="tutorial-explanation SA" id="exp3">n1 is decremented right after being incremented: these lines execute without accomplishing anything thus they are semantic dead code. They should be 
+                                                                    removed unless dysfunctionality can be fixed.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/evolvability.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that require an alternative implementation method to fix, such as pieces
+                            of code that run, but do not do anything meaningful or pieces of code that are
+                            not the same but do the same task.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 8 -->
+            <div class="carousel-item">
+                <div class = "carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">EVOLVABILITY > <span class="SbL"> VARIABLE MANIPULATION</span> > ELEMENT TYPE</h2>
+                    <button id="editorBtn8" class="editorBtn">
+                        <h3 id="editorBtnText8">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor8" class="editor">//this function returns true if the input number is equal to 5
+public static boolean isFive(String n1){
+    int n2 = 5;
+    if(int(n1) == n2)
+        return true;
+    return false;
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="SbL" id="caption8">VARIABLE MANIPULATION</h1>
+                        <h4 class="tutorial-explanation SbL" id="exp8">n1 might not be an integer, potentially breaking the integer typecast at 
+                                                                    the comparison with n2, showing this to be a case of bad element typing. 
+                                                                    Parameter n1 should be an integer, not a string.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/evolvability.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that happen due to bad manipulation of variables, such as illogical/suboptimal 
+                            element types in a scope, void valued parameters and variables that are created as 
+                            immutable where they shouldn't.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 4 -->
+            <div class="carousel-item">
+                <div class = "carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">EVOLVABILITY > <span class="Textual"> DOCUMENTATION</span> > NAMING</h2>
+                    <button id="editorBtn4" class="editorBtn">
+                        <h3 id="editorBtnText4">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor4" class="editor">//this checks the length of a string and returns true if it is longer than 7 characters
+public static boolean checkPasswordLength(String n){
+    if(n.length() > 7)
+    {
+        return true;
+    }
+    return false;
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="Textual" id="caption4">DOCUMENTATION</h1>
+                        <h4 class="tutorial-explanation Textual" id="exp4">7 is a  magic number, suggesting that it can be better 
+                                                                        described with a name. Numbers (usually those besides 0 and 1) 
+                                                                        should be assigned to variables, or to constants when they are not 
+                                                                        supposed to change.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/evolvability.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects in and outside the code that occur due to bad documentation habits, but 
+                            aren't read by the language. Examples include inconsistent naming, use of magical 
+                            numbers (that can be replaced more meaningful text based names), misleading or 
+                            unnecessary comments and et cetera.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 5 -->
+            <div class="carousel-item">
+                <div class = "carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">FUNCTIONAL > <span class="Resource"> RESOURCE</span> > DATA MANIPULATION</h2>
+                    <button id="editorBtn5" class="editorBtn">
+                        <h3 id="editorBtnText5">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor5" class="editor">//this class is a person with an age
+public class Person {
+    static Date dateOfBirth;
+    public Person(date birthday) {
+        dateOfBirth = birthday;
+    }
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="Resource" id="caption5">RESOURCE</h1>
+                        <h4 class="tutorial-explanation Resource" id="exp5">Every object that is of the class Person has the same age because of this
+                                                                        bad data manipulation practice. To fix it, dateOfBirth should not be static.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/functional.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that are due to mistakes made with data, variables, or other resources' initialization, 
+                            manipulation, and release. Such as incorrect/suboptimal variable initializations and forgetting 
+                            to release memory space after use.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 9 -->
+            <div class="carousel-item">
+                <div class="carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">FUNCTIONAL > <span class="Logic"> LOGIC</span> > COMPARE</h2>
+                    <button id="editorBtn9" class="editorBtn">
+                        <h3 id="editorBtnText9">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor9" class="editor">String firstName = getFirstName(); // String overrides .equals()
+String lastName = getLastName();
+                        
+if (firstName == lastName){
+   // do something.. 
+ };
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="Logic" id="caption9">LOGIC</h1>
+                        <h4 class="tutorial-explanation Logic" id="exp9">Nonprimitives in Java cannot be compared with the standard comparison 
+                                                                        operators. As the String class's "equals" function is already overriden, it 
+                                                                        should be used for comparisons instead.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/functional.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that revole around faulty logic statements, such as illogical comparisons, mathematical 
+                            errors and the use of obviously inefficient algorithms/black boxes.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 10 -->
+            <div class="carousel-item">
+                <div class="carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">FUNCTIONAL > <span class="Logic"> LOGIC</span> > COMPUTE</h2>
+                    <button id="editorBtn10" class="editorBtn">
+                        <h3 id="editorBtnText10">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor10" class="editor">for (i = 0; i < 10; j++) { 
+    // do something..
+    i++;
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="Logic" id="caption10">LOGIC</h1>
+                        <h4 class="tutorial-explanation Logic" id="exp10">i being incremented inside a for loop is a bad computation practice for 
+                                                                        for loops. i should be incremented inside the for statement itself.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/functional.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that revole around faulty logic statements, such as illogical comparisons, mathematical 
+                            errors and the use of obviously inefficient algorithms/black boxes.</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 6 -->
+            <div class="carousel-item">
+                <div class="carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">FUNCTIONAL > <span class="Logic"> LOGIC</span> > ALGORITHM/PERFORMANCE</h2>
+                    <button id="editorBtn6" class="editorBtn">
+                        <h3 id="editorBtnText6">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor6" class="editor">//this function reads a file f
+public String readFile(File f) {
+    StringBuilder sb = new StringBuilder();
+    try {
+        readFileHelper(f, sb);//a code segment that can throw an IO exception
+    }
+    catch (IOException e) {
+        throw e;
+    }
+    return sb.toString();
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="Logic" id="caption6">LOGIC</h1>
+                        <h4 class="tutorial-explanation Logic" id="exp6">It is both a bad practice and a detriment to algorithm performance when an 
+                            exception is caught and nothing is done with it. The function should be marked as throwing an exception in its 
+                            prototype.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/functional.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that revole around faulty logic statements, such as illogical comparisons, mathematical 
+                            errors and the use of obviously inefficient algorithms/black boxes.</h5>
+                    </div>
+                </div>
+            </div>
+            <!--½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½½-->
+            <!-- slide 7 -->
+            <div class="carousel-item">
+                <div class="carouselTop">
+                    <button id="backBtn" class="backBtn">
+                        <h3>Back to Game!</h3>
+                    </button>
+                    <h2 class="topText">FUNCTIONAL > <span class="Interface"> INTERFACE</span> > PARAMETER</h2>
+                    <button id="editorBtn7" class="editorBtn">
+                        <h3 id="editorBtnText7">SHOW THE SOLUTION</h3>
+                    </button>
+                </div>
+                
+                <img class="d-block w-100" data-color=#282a36 alt="Second Image">
+
+                <div class="editorDiv">
+                    <div id="editor7" class="editor">//this function computes n1 when input 2 integers n1 and n2
+void compute(int n1, int n2){
+    computeHelper(n1);
+}
+                    </div>
+
+                </div>
+
+                <div class="tutorial-info carousel-caption">
+                    <div>
+                        <h1 class="Interface" id="caption7">INTERFACE</h1>
+                        <h4 class="tutorial-explanation Interface" id="exp7">Despite having no use, due to how Java works, the parameter n2 must always be 
+                                                                            passed to be able to call the function, making n2 a bad parameter. n2 should be 
+                                                                            removed to fix this bad practice.</h4>
+                    </div>
+                    <div class="typeImg"><img src='../assets/functional.png'></div>
+                    <div style="padding-bottom: 20px;">
+                        <h5 class="carouselBottomText">Defects that are cases of bad interactivity between other software parts, such as bad imports, 
+                            unnecessary or broken function calls, or even too many parameters on functions and et cetera.</h5>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon carouselBtn" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon carouselBtn" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase product that you want to use
+            https://firebase.google.com/docs/web/setup#config-web-app -->
+        <script src="/__/firebase/6.2.3/firebase-app.js"></script>
+        <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
+        <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+
+        <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
+                authDomain: "crsg-protoype.firebaseapp.com",
+                databaseURL: "https://crsg-protoype.firebaseio.com",
+                projectId: "crsg-protoype",
+                storageBucket: "crsg-protoype.appspot.com",
+                messagingSenderId: "438209695879",
+                appId: "1:438209695879:web:41b459953d567130"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        <script src="tutorial.js"> </script>
+        <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+body{
+    background-image: url('../assets/bg.png');
+    width: 100vw;
+    height: 100vh;
+} 
+
+.transparent {
+    background: #0000 !important;
+}
+
+.hover {
+    transition: box-shadow ease .6s, background ease .6s;
+}
+
+.hover:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 251, 213, 0.714);
+    background: rgba(255, 251, 213, 0.714) !important;
+}
+
+.quizImage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index:-1;
+}
+/* 
+.mdl-layout__drawer {
+    background-color: red;
+} */
