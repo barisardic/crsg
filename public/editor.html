@@ -903,9 +903,11 @@ public class ExerciseSumArray {
             Integer firstValue = i &lt firstNumber.size() ? firstNumber.get(i) : null;
             Integer secondValue = i &lt secondNumCopy.size() ? secondNumCopy.get(i) : null;
 
+
             int res = firstValue + secondValue + carry;
 
             carry = 0;
+
             if (res >= 10){
                 carry = 1;
                 res = res % 10;
@@ -937,6 +939,7 @@ class Matrices
     }
     public static int calcMatrixTotal(int mat[][])
     {
+
         int total = 0;
         // Loop through all rows
         for (int i = 0; i &lt; mat.length; i++)

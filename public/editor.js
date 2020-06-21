@@ -289,20 +289,6 @@ guruCount = 0;
 
 document.getElementById('guru').addEventListener('click', openGuruModal, false);
 
-function openGuruModal() {
-    //alert("Here guru guru");
-    editor.renderer.setShowGutter(false);
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById('guru_modal').classList.add("visible");
-}
-
-/* $(".js-open-modal").click(function(){
-  $(".guru_modal").addClass("visible");
-}); */
-
-//document.getElementById("guruSays").innerText = GurusWords[0]
-
-document.getElementById('js-close-modal').addEventListener('click', closeGuruModal, false);
 
 function closeGuruModal() {
     editor.renderer.setShowGutter(true);
