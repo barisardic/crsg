@@ -1,10 +1,43 @@
-<!DOCTYPE html>
+<!DOCTYPE html lang="en">
 <html lang="en">
 <head>
 <title>ACE in Action</title>
-<link rel="stylesheet" href="author-demo.css" />
 
-</style>
+<!-- Imports -->
+<!-- CSS File -->
+<link rel="stylesheet" href="author-demo.css" />
+<!-- Something -->
+<link rel="icon" href="../assets/cursor1.png">
+<!-- MDL, used for tabs -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<style type="text/css" media="screen">
+    /* width */
+    ::-webkit-scrollbar {
+       width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+       background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+       background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+       background: #555;
+    }
+ </style>
+
+
+
+
 </head>
 <body>
     <div id="multiple_editor_wrapper">
@@ -22,21 +55,43 @@
                 }
                 </div>
                 <div id="horizontal_dragbar"></div>
-                <div id="console">Console</div>
+                <div id="console">
+                    <div class="mdl-tabs mdl-js-tabs">
+
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#tab1" class="mdl-tabs__tab">Errors</a>
+                            <a href="#tab2" class="mdl-tabs__tab">Hint</a>
+                            <a href="#tab3" class="mdl-tabs__tab">Show Solution</a>
+                        </div>
+                        <div class="mdl-tabs__panel is-active" id="tab1">
+                            <div id="errors-list"></div>
+                        </div>
+                        <div class="mdl-tabs__panel" id="tab2">
+                            <p>Second tab's contgsdgkgmsdkgsdmkgsdmkdsgmksdgkgsdmmksdgmksdgksdgksdgsdgent.</p>
+                        </div>
+                        <div class="mdl-tabs__panel" id="tab3">
+                            <p>Third tab's content.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
             <div id="vertical_dragbar"></div>
         </div>
         
-        <div id="editor_2">function foo($awesome) {
+        <div>
+            <div id="editor_2">function foo($awesome) {
 
-            $x = 'Smyles make resizable window for youuuuu!';
+                $x = 'Smyles make resizable window for youuuuu!';
 
-            if( $awesome === TRUE ){
-                $x = 'Enjoy!';
-            }
+                if( $awesome === TRUE ){
+                    $x = 'Enjoy!';
+                }
 
-            return x;
-        }</div>
+                return x;
+            }</div>
+            <button id="submit-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Commit Changes</button>
+        </div>
 
     </div>
     

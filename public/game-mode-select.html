@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ACE in Action</title>
+<style type="text/css" media="screen">
+    
+    @keyframes example {
+      from {
+          color: #373738;
+          font-size: 6vh;
+        }
+      to {
+          color: #345fba;
+          font-size: 6.1vh;
+        }
+    }
+    
+    body {
+        margin: 20px;
+        background-color: #373738;
+    }
+    a {
+        text-decoration: none;
+        color: #343b4a;
+        font-family: sans-serif;
+        font-size: 6vh;
+    }
+    a:hover {
+        color: #345fba;
+        animation-name: example;
+        animation-duration: 1s;
+        font-size: 6.1vh;
+    }
+    
+    #game_mode_selection {
+        padding-left: 30px;
+        padding-right: 30px;
+        display: flex;
+        flex-direction: row;
+/*        justify-content: space-between;*/
+        height: 400px;
+        
+    }
+    #author_mode {
+        background-color: aliceblue;
+
+    }
+    #review_mode {
+        background-color: aquamarine;
+    }
+    #multiplayer {
+        background-color: azure;
+    }
+    #page_caption {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        font-size: 48px;
+    }
+    
+    .game_mode {
+        flex-grow: 1;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3px;
+        
+    }
+    
+</style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1 id="page_caption">CRSG GAME MODE SELECTION</h1>
+        </header>
+        <section id="game_mode_selection">
+            <div class = "game_mode" id="author_mode" >
+                <a href="/author-demo.html">Author<br>Game</a>
+            </div>
+            <div class = "game_mode" id="review_mode" >
+                <a href="/main.html">Review<br>Game</a>
+            </div>
+            <div class = "game_mode" id="multiplayer" >
+                <a href="">TBA</a>
+            </div>
+            
+        </section>
+    </main>
+    
+    
+    <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+   
+    </script>
+</body>
+</html>

@@ -1,19 +1,21 @@
 body {
-    margin: 40px;
+    margin: 0px;
 }
 
 #editor_1 {
-    height: 300px;
+    height: 70vh;
 }
 #editor_2 {
-    height: 400px;
-    width: 600px;
+    height: 90vh;
+    width: 50vw;
+    z-index: 0;
 }
 
 #editor_1_wrap {
     background-color: #cccccc;
     border-bottom: 1px solid #222222;
     width: 100%;
+    z-index: 0;
 }
 
 #horizontal_dragbar {
@@ -26,7 +28,6 @@ body {
 #vertical_dragbar {
     background-color: #007700;
     width: 5px;
-    height: fill;
     cursor: col-resize;
     opacity: 1;
 }
@@ -34,15 +35,43 @@ body {
     width: 50%;
     display: flex;
     flex-direction: row;
+    /* overflow: auto; */
 }
 #multiple_editor_wrapper {
     width: 100%;
-    height: 400px;
+    height: 100%;
     display: flex;
     flex-direction: row;
     background-color: aqua
 }
 #console {
-    width: 100%;
+    /* width: 100%; */
+    height: 29vh;
     background-color: azure;
+    overflow-y: scroll;
+    z-index: 0;
+    
+}
+/* .mdl-tabs__panel {
+    background-color: red;
+    overflow-y: scroll;
+} */
+#errors-list {
+    display: flex;
+    flex-direction: column;
+}
+.to-fix-error {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.error-reason {
+    word-wrap: break-word;
+    padding-right: 15px;
+    overflow-x: hidden;
+}
+#submit-btn {
+    width: 100%;
+    
 }
