@@ -33,26 +33,18 @@
     ::-webkit-scrollbar-thumb:hover {
        background: #555;
     }
- </style>
-
-
-
+</style>
 
 </head>
 <body>
+    <header>
+        <h4 id="title">CRSG AUTHOR GAME</h4>
+        <div id="titles"><p id="old_title">Old Code</p><p id="new_title">New Code</p></div>
+    </header>
     <div id="multiple_editor_wrapper">
         <div id="editor_bars_wrapper">
             <div id="editor_1_wrap">
-                <div id="editor_1">function foo($awesome) {
-
-                    $x = 'Smyles make resizable window for youuuuu!';
-
-                    if( $awesome === TRUE ){
-                        $x = 'Enjoy!';
-                    }
-
-                    return x;
-                }
+                <div id="editor_1">
                 </div>
                 <div id="horizontal_dragbar"></div>
                 <div id="console">
@@ -60,17 +52,14 @@
 
                         <div class="mdl-tabs__tab-bar">
                             <a href="#tab1" class="mdl-tabs__tab">Errors</a>
-                            <a href="#tab2" class="mdl-tabs__tab">Hint</a>
-                            <a href="#tab3" class="mdl-tabs__tab">Show Solution</a>
+                            <a href="#tab2" class="mdl-tabs__tab">Guide</a>
+                            <button id="show-solutions" class="mdl-button">Show Solution</button>
                         </div>
                         <div class="mdl-tabs__panel is-active" id="tab1">
                             <div id="errors-list"></div>
                         </div>
                         <div class="mdl-tabs__panel" id="tab2">
                             <p>Second tab's contgsdgkgmsdkgsdmkgsdmkdsgmksdgkgsdmmksdgmksdgksdgksdgsdgent.</p>
-                        </div>
-                        <div class="mdl-tabs__panel" id="tab3">
-                            <p>Third tab's content.</p>
                         </div>
                     </div>
 
@@ -79,17 +68,9 @@
             <div id="vertical_dragbar"></div>
         </div>
         
-        <div>
-            <div id="editor_2">function foo($awesome) {
-
-                $x = 'Smyles make resizable window for youuuuu!';
-
-                if( $awesome === TRUE ){
-                    $x = 'Enjoy!';
-                }
-
-                return x;
-            }</div>
+        <div id="right_editor_wrap">
+            <div id="editor_2">
+            </div>
             <button id="submit-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Commit Changes</button>
         </div>
 
@@ -97,6 +78,7 @@
     
     <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="author-level-texts.js"></script>
     <script src="author-demo.js"> </script>
 
 </body>
