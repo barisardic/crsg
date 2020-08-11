@@ -1,108 +1,50 @@
 var level1Code = `// Class Declaration
-public class Dog {
-    // Instance Variables
-    String name;
-    String breed;
-    int age;
-    String color;
-
-    // Constructor Declaration of Class
-    public Dog(String name, String breed,
-    int age, String color) {
-        this.name = name;
-        this.breed = breed;
-        this.age = age;
-        this.color = color;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getBreed() {
-        return breed;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-        public String getColor() {
-            return color;
+public class Factorial {
+    
+    public static int factorial(int number) {
+        
+        int result = 1;
+        
+        while(number >= 0) {
+            result *= number;
+            number--;
         }
-
-    @Override
-    public boolean equals(Dog dogo) {
-        return this.toString() == dogo.toString();
-    }
-
-    @Override
-    public String toString() {
-        return("Hi my name is "+ getName()+ ". My breed,age and color are " + this.getBreed()+"," +this.getAge()+","+ this.getColor());
+        
+        return result;
     }
 
     public static void main(String[] args) {
-        Dog tuffy = new Dog("tuffy","papillon", 5, "white");
-        System.out.println(tuffy.toString());
-    }
-}
+        int five = 4;
 
-      `;
+
+        //Tests
+        System.out.println(factorial(5) == 120);
+        System.out.println(factorial(0) == 1);
+        System.out.println(0);
+        System.out.println(five == 5);
+        System.out.println(1);
+    }
+}`;
 var level1Solution = `// Class Declaration
-public class Dog {
-    // Instance Variables
-    String name;
-    String breed;
-    int age;
-    String color;
-
-    // Constructor Declaration of Class
-    public Dog(String name, String breed,
-    int age, String color) {
-        this.name = name;
-        this.breed = breed;
-        this.age = age;
-        this.color = color;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getBreed() {
-        return breed;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-        public String getColor() {
-            return color;
+public class Factorial {
+    
+    public static int factorial(int number) {
+        
+        int result = 1;
+        
+        while(number > 0) {
+            result *= number;
+            number--;
         }
-
-    @Override
-    public boolean equals(Dog dogo) {
-        return this.toString().equals(dogo.toString());
-    }
-
-    @Override
-    public String toString() {
-        return("Hi my name is "+ getName()+ ". My breed,age and color are " + this.getBreed()+"," +this.getAge()+","+ this.getColor());
+        
+        return result;
     }
 
     public static void main(String[] args) {
-        Dog tuffy = new Dog("tuffy","papillon", 5, "white");
-        System.out.println(tuffy.toString());
+        
+        //Tests
+        System.out.println(0);
+        System.out.println(factorial(5) == 120);
+        System.out.println(factorial(0) == 1);
     }
-}
-
-      `;
+}`;
