@@ -12,19 +12,19 @@ public class Factorial {
         
         return result;
     }
-
-    public static void main(String[] args) {
-        int five = 4;
-
-
-        //Tests
-        System.out.println(factorial(5) == 120);
-        System.out.println(factorial(0) == 1);
-        System.out.println(0);
-        System.out.println(five == 5);
-        System.out.println(1);
-    }
 }`;
+
+var level1TestCode = `public static void main(String[] args) {
+    int five = 4;
+
+    //Tests
+    System.out.println(factorial(5) == 120);
+    System.out.println(factorial(0) == 1);
+    System.out.println(0);
+    System.out.println(five == 5);
+    System.out.println(1);
+}`
+
 var level1Solution = `// Class Declaration
 public class Factorial {
     
