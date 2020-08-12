@@ -12,6 +12,9 @@ var horizontal_dragging = false;
 
 var score = 0;
 
+var startDate = new Date();
+var startTime = startDate.getTime();
+
 // CODE INIT
 
 // Editor setup.
@@ -193,10 +196,7 @@ class CodeError {
                 this.gainedScore = this.currentScore;
             }
             else {
-                this.gainedScore = commentScore * (100 - ((reviewCounter - 2) * 20)) / 100;
-                if(this.gainedScore < 0) {
-                    this.gainedScore = 0;
-                }
+                this.gainedScore = this.calculateScore();
             }
             newFeedback = "Thanks. Problem is solved.";
         }
@@ -223,6 +223,26 @@ class CodeError {
         }
 
         this._newFeedback.push([ reviewCounter, newFeedback]);
+    }
+
+    calculateScore() {
+        let substractPercent = ((reviewCounter - 2) * 20);
+        if(this.showHint) {
+            substractPercent += 10;
+        }
+
+        let date_now = new Date ();
+        let time_now = date_now.getTime ();
+        let time_diff = time_now - startTime;
+        let minutes_elapsed = Math.floor ( time_diff / (1000 * 60) );
+        substractPercent += Math.max(0, minutes_elapsed - scoreTimeTreshold);
+
+        console.log("minutes elapsed, total sub");
+        console.log(minutes_elapsed);
+        console.log(substractPercent);
+
+        substractPercent = Math.min(substractPercent, 100);
+        return commentScore * (100 - substractPercent) / 100;
     }
     
     updateFeedback() {
@@ -254,6 +274,7 @@ var errors_tab = document.getElementById("errors-list");
 var errorCount = 0;
 
 var commentScore = 100 / errors.length;
+var scoreTimeTreshold = 2 * errors.length;
 
 // let discussions = [];
 function addDiscussion(errorPair) {
