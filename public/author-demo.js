@@ -292,7 +292,14 @@ function runCode( source) {
         showLoader(false);
 
         // Use results to infer & check
-        let runEvaluation = findCorrects( runResult);
+
+        let runAdapter = {
+            'compileStatus': runResult.compile_status,
+            'runError': runResult.run_status.stderr,
+            'output': runResult.run_status.output,
+        };
+
+        let runEvaluation = findCorrects( runAdapter);
 
         // If code compiled do a review
         doReview( runEvaluation);
@@ -312,19 +319,20 @@ function runCode( source) {
 }
 
 
-function findCorrects( runResult) {
+function findCorrects( runAdapter) {
+    
     console.log( "Find Correct Starts");
-    console.log(runResult);
+    console.log(runAdapter);
     
     let runEvaluation = {};
 
-    if( runResult.compile_status === "OK") {
-        if( runResult.run_status.stderr === "") {
+    if( runAdapter.compileStatus === "OK") {
+        if( runAdapter.runError === "") {
             runEvaluation.compiled = true;
             let correctness = [];
             runEvaluation.correctness = correctness;
 
-            let output = runResult.run_status.output.split("\n");
+            let output = runAdapter.output.split("\n");
             output.pop();
             console.log(output);
 
@@ -344,15 +352,15 @@ function findCorrects( runResult) {
             });
         }
         else {
-            document.getElementById("consoleText").innerText = runResult.run_status.stderr;
+            document.getElementById("consoleText").innerText = runAdapter.runError;
             runEvaluation.compiled = false;
-            console.log(runResult.compile_status);
+            console.log(runAdapter.compileStatus);
         }
     }
     else {
-        document.getElementById("consoleText").innerText = runResult.compile_status;
+        document.getElementById("consoleText").innerText = runAdapter.compileStatus;
         runEvaluation.compiled = false;
-        console.log(runResult.compile_status);
+        console.log(runAdapter.compileStatus);
     }
 
     console.log("Eval complete");
