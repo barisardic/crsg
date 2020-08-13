@@ -27,7 +27,7 @@ body {
     margin: 0;
 }
 #editor_1 {
-    height: 70vh;
+    height: 39vh;
     overflow-x: auto;
 }
 #editor_2 {
@@ -73,17 +73,13 @@ body {
 }
 #console {
     /* width: 100%; */
-    height: 29vh;
+    height: 60vh;
     background-color: azure;
     overflow-y: scroll;
     z-index: 0;
     padding-left: 10px;
     
 }
-/* .mdl-tabs__panel {
-    background-color: red;
-    overflow-y: scroll;
-} */
 #errors-list {
     display: flex;
     flex-direction: column;
@@ -107,3 +103,17 @@ body {
     height: 5vh;
     
 }
+#loader {
+    position: relative;
+    border: 36px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 36px solid #3498db;
+    width: 150px;
+    height: 150px;
+    left:45%;
+    top:50%;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    z-index: 1000;
+    position: absolute
+  }

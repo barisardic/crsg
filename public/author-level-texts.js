@@ -1,50 +1,179 @@
-var level1Code = `// Class Declaration
-public class Factorial {
-    
-    public static int factorial(int number) {
-        
-        int result = 1;
-        
-        while(number >= 0) {
-            result *= number;
-            number--;
+var level1Code = `public class SearchApp {
+    Node root;
+
+    private class Node {
+        int id;
+        String name;
+
+        Node leftChild;
+        Node rightChild;
+
+        Node(int id, String name) {
+            this.id = id;
+            this.name = name;
         }
-        
-        return result;
+
+        int getId() {
+            return id;
+        }
+
+        String getName() {
+            return name;
+        }
     }
+
+    // Every person should have an unique id.
+    // Return if add is successful.
+    public boolean addPerson( int id, String name) {
+        if(root == null) {
+            root = new Node( id, name);
+            return true;
+        }
+
+        Node currentNode = root;
+        Node previousNode = root;
+
+        while( currentNode != null) {
+            previousNode = currentNode;
+
+            if (id < currentNode.getId()) {
+                currentNode = currentNode.leftChild;
+            }
+            else {
+                currentNode = currentNode.rightChild;
+            }
+        }
+        if (id < previousNode.getId()) {
+            previousNode.leftChild = new Node(id, name);
+        }
+        else {
+            previousNode.rightChild = new Node(id, name);
+        }
+        return true;
+    }
+
+    public String findNameById( int id) {
+        return findNameAuxiliary(id, root);
+    }
+
+    public String findNameAuxiliary( int id, Node node) {
+        if(node == null) {
+            return null;
+        }
+        if( id == node.getId()) {
+            return node.getName();
+        }
+        else if( id < node.getId()) {
+            findNameAuxiliary(id, node.leftChild);
+        }
+        else {
+            findNameAuxiliary(id, node.rightChild);
+        }
+        return null;
+    }
+
 }`;
 
 var level1TestCode = `public static void main(String[] args) {
-    int five = 4;
+    SearchApp sr = new SearchApp();
+    System.out.println(sr.addPerson(20, "A"));
+    System.out.println(sr.addPerson(40, "B"));
+    System.out.println(!sr.addPerson(40, "C"));
+    System.out.println(sr.addPerson(49, "D"));
+    System.out.println(sr.addPerson(15, "R"));
+    System.out.println(!sr.addPerson(20, "R"));
+    System.out.println("1");
+    System.out.println(sr.findNameTest(20, "A", sr));
+    System.out.println(sr.findNameTest(40, "B", sr));
+    System.out.println(sr.findNameTest(15, "R", sr));
+    System.out.println(sr.findNameTest(49, "D", sr));
+    System.out.println("2");
 
-    //Tests
-    System.out.println(factorial(5) == 120);
-    System.out.println(factorial(0) == 1);
-    System.out.println(0);
-    System.out.println(five == 5);
-    System.out.println(1);
+}
+public static boolean findNameTest(int id, String expected, SearchApp sr) {
+    if(sr.findNameById(id) == null) {
+        return false;
+    }
+    else {
+        return  sr.findNameById(id).equals( expected);
+    }
 }`
 
-var level1Solution = `// Class Declaration
-public class Factorial {
-    
-    public static int factorial(int number) {
-        
-        int result = 1;
-        
-        while(number > 0) {
-            result *= number;
-            number--;
+var level1Solution = `public class SearchApp {
+    Node root;
+
+    private class Node {
+        int id;
+        String name;
+
+        Node leftChild;
+        Node rightChild;
+
+        Node(int id, String name) {
+            this.id = id;
+            this.name = name;
         }
-        
-        return result;
+
+        int getId() {
+            return id;
+        }
+
+        String getName() {
+            return name;
+        }
     }
 
-    public static void main(String[] args) {
-        
-        //Tests
-        System.out.println(0);
-        System.out.println(factorial(5) == 120);
-        System.out.println(factorial(0) == 1);
+    // Every person should have an unique id.
+    // Return if add is successful.
+    public boolean addPerson( int id, String name) {
+        if(root == null) {
+            root = new Node( id, name);
+            return true;
+        }
+
+        Node currentNode = root;
+        Node previousNode = root;
+
+        while( currentNode != null) {
+            previousNode = currentNode;
+
+            if (id == currentNode.getId()) {
+                return false;
+            }
+            if (id < currentNode.getId()) {
+                currentNode = currentNode.leftChild;
+            }
+            else {
+                currentNode = currentNode.rightChild;
+            }
+        }
+        if (id < previousNode.getId()) {
+            previousNode.leftChild = new Node(id, name);
+        }
+        else {
+            previousNode.rightChild = new Node(id, name);
+        }
+        return true;
     }
+
+    public String findNameById( int id) {
+        return findNameAuxiliary(id, root);
+    }
+
+    public String findNameAuxiliary( int id, Node node) {
+        if(node == null) {
+            return null;
+        }
+        if( id == node.getId()) {
+            return node.getName();
+        }
+        else if( id < node.getId()) {
+            return findNameAuxiliary(id, node.leftChild);
+        }
+        else {
+            return findNameAuxiliary(id, node.rightChild);
+             
+        }
+    }
+
 }`;

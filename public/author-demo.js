@@ -3,46 +3,67 @@
 
 // GLOBALS
 // Creating the editors.
-var editor = ace.edit( "editor_1" );
-var editor2 = ace.edit( "editor_2" );
+var editor = setupEditor( "editor_1", true, "ace/theme/monokai");
+var editor2 = setupEditor( "editor_2", false, "ace/theme/xcode");
 
 // Becomes true while dragging a bar.
 var vertical_dragging = false;
 var horizontal_dragging = false;
 
+// Player's total score.
 var score = 0;
 
+// Page load date
 var startDate = new Date();
 var startTime = startDate.getTime();
 
 // CODE INIT
 
-// Editor setup.
-// Setting the editor text to initial text.
-editor.getSession().setValue(level1Code);
-editor2.getSession().setValue(level1Code);
-
 //Scroll to the bottom
 var scrollingElement = (document.scrollingElement || document.body);
 scrollingElement.scrollTop = scrollingElement.scrollHeight;
 
-// Set editors. TODO maybe simple factory.
-editor.setTheme("ace/theme/monokai");
-editor.setReadOnly(true);
-editor.getSession().setMode( { path: "ace/mode/java", inline: true } );
-editor2.getSession().setMode( { path: "ace/mode/java", inline: true } );
-// enable autocompletion and snippets
-editor.setOptions( {
-    enableBasicAutocompletion: true,
-    enableSnippets           : true,
-    enableLiveAutocompletion : false
-} );
-editor2.setOptions( {
-    enableBasicAutocompletion: true,
-    enableSnippets           : true,
-    enableLiveAutocompletion : false
-} );
+let errorDatas = [];
+errorDatas.push(new CodeError([4,23], "Classes cannot have classes inside them.", false, "Inner classes don't exist!", "This error wasn't real."));
 
+errorDatas.push(new CodeError([36,45], "Adding multiple persons with the same ID shouldn't be possible", true, "Check whether or not ID already exists.", "Returning false if new ID is equal."));
+
+errorDatas.push(new CodeError([59, 73], "Returns null most of the time instead of name.", true, "Check returns carefully", "Recursive methods' return should be used."));
+let errors = [];
+errorDatas.forEach( data => {
+    errors.push(new ErrorPair(data));
+});
+
+// Each comment's worth.
+var commentScore = 100 / errors.length;
+// Time in which there is no penalty.
+var scoreTimeTreshold = 2 * errors.length;
+
+// Getting the tab to show the errors.
+var errors_tab = document.getElementById("errors-list");
+var errorCount = 0;
+
+// FUNCTIONS
+
+// Editor setup.
+function setupEditor( editorName, readOnly, theme) {
+    // Setting the editor text to initial text.
+    let newEditor = ace.edit( editorName);
+    newEditor.getSession().setValue(level1Code);
+    newEditor.getSession().setMode( { path: "ace/mode/java", inline: true } );
+
+    // Set editors. TODO maybe simple factory.
+    newEditor.setTheme(theme);
+    newEditor.setReadOnly( readOnly);
+
+    // enable autocompletion and snippets
+    newEditor.setOptions( {
+        enableBasicAutocompletion: true,
+        enableSnippets           : true,
+        enableLiveAutocompletion : true
+    } );
+    return newEditor;
+}
 
 // Resizing code.
 // Horizontal dragbar movement.
@@ -100,11 +121,14 @@ $( '#vertical_dragbar' ).mousedown( function ( e ) {
 
 } );
 
+//Temporary Patch (Hopefully)
+$('#editor_1_wrap').css('width', $("#editor_bars_wrapper").width() - 5);
 // Make second editor grow when resizing the browser.
 window.onresize = () => {
     
     $('#right_editor_wrap').css('width', $('#multiple_editor_wrapper').width() - $("#editor_bars_wrapper").width());
     $('#editor_2').css('width', $("#multiple_editor_wrapper").width() - $("#editor_bars_wrapper").width());
+    $('#editor_1_wrap').css('width', $("#editor_bars_wrapper").width() - 5);
     
 }
 
@@ -131,152 +155,6 @@ $( document ).mouseup( function ( e ) {
 
 } );
 
-// Review comment class.
-class CodeError {
-    constructor(lines, reason, isTrueError, hint, explanation) {
-        // Linet at which error occurs.
-        this.lines = lines;
-        // First review.
-        this.reason = reason;
-        // Hint to be returned when a user requests hint.
-        this.hint = hint;
-        // Should the hint be displayed.
-        this.showHint = false;
-        // Is the error genuine or should be rejected.
-        this.isTrueError = isTrueError;
-        // Player's guess on whether or not the problem is genuine.
-        this.guess = true;
-        // Is the error solved.
-        this.resolved = false;
-        // Used to temporarily stage resolved.
-        this.updatedResolved = false;
-        // Shown to user.
-        this._feedback = [];
-        // Used to temporarily stage new feedback.
-        this._newFeedback = [];
-        // Solution explanation.
-        this.explanation = explanation;
-        // Current Score.
-        this.currentScore = 0;
-        // How much score is gained from this solution.
-        this.gainedScore = 0;
-    }
-
-    // Returns the solution text.
-    getExplanation() {
-        let toReturn = "Error at lines " + this.lines[0] + "-" + this.lines[1];;
- 
-        toReturn += "\n" + "Solution: " + this.explanation;
-      
-        return toReturn;
-    }
-
-    // Returns relevant data of review comment.
-    toString() {
-        let toReturn = "Error at lines " + this.lines[0] + "-" + this.lines[1] + ":\n" + "Review 1: " + this.reason;
-        let counter = 2;
-        this._feedback.forEach( i => {
-            toReturn += "\n" + "Review " + i[0] + ": " + i[1];
-        });
-        if(this.showHint) {
-            toReturn += "\n" + "Hint: " + this.hint;
-        }
-        return toReturn;
-    }
-
-    // Stages an update on feedback and resolved state. Update is realized vai update function.
-    checkAnswer( isCorrect) {
-        let newFeedback = null;
-        this._newFeedback = [...this._feedback];
-        this.gainedScore = 0;
-
-        if( isCorrect) {
-            this.updatedResolved = true;
-            if(this.resolved) {
-                this.gainedScore = this.currentScore;
-            }
-            else {
-                this.gainedScore = this.calculateScore();
-            }
-            newFeedback = "Thanks. Problem is solved.";
-        }
-        else if(this.resolved === true){
-            this.updatedResolved = false;
-            newFeedback = "This error occurred again. Plase solve it again.";
-        }
-        else {
-            this.updatedResolved = this.resolved;
-            newFeedback = "Problem persists.";
-        }
-
-        // Update feedback.
-        for(let i = 0; i < this._newFeedback.length; i++) {
-
-            if(this._newFeedback[i][1] === newFeedback) {
-                this._newFeedback[i][0] = reviewCounter;
-
-                let temp = this._newFeedback[i];
-                this._newFeedback[i] = this._newFeedback[this._newFeedback.length - 1];
-                this._newFeedback[this._newFeedback.length - 1] = temp;
-                return;
-            }
-        }
-
-        this._newFeedback.push([ reviewCounter, newFeedback]);
-    }
-
-    calculateScore() {
-        let substractPercent = ((reviewCounter - 2) * 20);
-        if(this.showHint) {
-            substractPercent += 10;
-        }
-
-        let date_now = new Date ();
-        let time_now = date_now.getTime ();
-        let time_diff = time_now - startTime;
-        let minutes_elapsed = Math.floor ( time_diff / (1000 * 60) );
-        substractPercent += Math.max(0, minutes_elapsed - scoreTimeTreshold);
-
-        console.log("minutes elapsed, total sub");
-        console.log(minutes_elapsed);
-        console.log(substractPercent);
-
-        substractPercent = Math.min(substractPercent, 100);
-        return commentScore * (100 - substractPercent) / 100;
-    }
-    
-    updateFeedback() {
-        this.resolved = this.updatedResolved;
-        this._feedback = this._newFeedback;
-        this.currentScore = this.gainedScore;
-    }
-}
-
-class ErrorPair {
-    constructor(Error) {
-        this.errorData = Error;
-        this.errorElement = null;
-    }
-}
-
-let errorDatas = [];
-errorDatas.push(new CodeError([40,40], "This won't probably work as expected.", true, "Is string a literal?", "Strings cannot be compared with == becasue they are not primitive."));
-
-errorDatas.push(new CodeError([13,14], "This is bad.", true, "Is five four?"));
-
-let errors = [];
-errorDatas.forEach(data => {
-    errors.push(new ErrorPair(data));
-});
-
-// Getting the tab to show the errors.
-var errors_tab = document.getElementById("errors-list");
-var errorCount = 0;
-
-var commentScore = 100 / errors.length;
-var scoreTimeTreshold = 2 * errors.length;
-
-// let discussions = [];
 function addDiscussion(errorPair) {
     let errorData = errorPair.errorData;
 
@@ -310,8 +188,6 @@ function addDiscussion(errorPair) {
             errorReason.className = "";
             Error.guess = true;
         }
-        
-        
     };
 
     buttonWrapper.appendChild(rejectButton);
@@ -389,7 +265,6 @@ var details = {
     'lang': "JAVA",
 };
 
-
 function runCode( source) {
     details['source'] = source;
 
@@ -414,6 +289,7 @@ function runCode( source) {
 
         document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'auto';
         document.getElementById('multiple_editor_wrapper').style.opacity = '1';
+        showLoader(false);
 
         // Use results to infer & check
         let runEvaluation = findCorrects( runResult);
@@ -426,9 +302,11 @@ function runCode( source) {
         // Do something for an error here
         document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'auto';
         document.getElementById('multiple_editor_wrapper').style.opacity = '1';
+        showLoader(false);
     })
     document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'none';
     document.getElementById('multiple_editor_wrapper').style.opacity = '0.4';
+    showLoader(true);
 
 
 }
@@ -485,6 +363,7 @@ function findCorrects( runResult) {
 function doReview( runEvaluation) {
     if( !runEvaluation.compiled) {
         alert("Runtime or Compilation Error");
+        document.getElementById("errorOutput").click();
         return;
     }
 
@@ -549,6 +428,7 @@ function acceptChanges() {
         }
     }
 
+    document.getElementById("feedbacks").click();
     reviewCounter++;
 }
 
@@ -557,4 +437,50 @@ function insertMain( code) {
     var insertHere = code.lastIndexOf("}");
 
     return code.slice(0, insertHere) + level1TestCode + "}";
+}
+
+
+(function timeUpdate() {
+
+    let date_now = new Date ();
+    let time_now = date_now.getTime ();
+    let time_diff = time_now - startTime;
+    let passedSeconds = Math.floor ( time_diff / 1000 );
+    
+    passedSeconds = scoreTimeTreshold * 60 - passedSeconds;
+
+    let msg = "Remaining Time: ";
+    if( passedSeconds <= 0 ) {
+        passedSeconds *= -1;
+        msg = "Penalized Time: ";
+    }
+    let m = Math.floor ( passedSeconds / 60);
+    let s = passedSeconds % 60;
+
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('timeInfo').innerHTML = msg +
+    m + ":" + s;
+
+    if(msg[0] != 'R') {
+        document.getElementById('penaltyInfo').innerText = m;
+    }    
+
+    setTimeout(timeUpdate, 1000);
+})();
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+function showLoader( show) {
+    if( document.getElementById("loader") === null && show) {
+        let loader = document.createElement("div");
+        loader.id = "loader";
+        document.body.appendChild(loader);
+    }
+    else if(!show) {
+        let loader = document.getElementById("loader");
+        loader.parentNode.removeChild(loader);
+    }
 }

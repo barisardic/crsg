@@ -40,6 +40,16 @@
     ::-webkit-scrollbar-thumb:hover {
        background: #555;
     }
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 </style>
 
 </head>
@@ -48,6 +58,7 @@
     <header>
         <h4 id="title">CRSG AUTHOR GAME</h4>
         <div id="titles"><p id="old_title">Old Code</p><p id="new_title">New Code</p></div>
+        <p style="text-align: center;"><span id = "timeInfo"></span> Penalty = <span id = "penaltyInfo">0</span>%</p>
     </header>
 
     <!-- Editors & Tabs -->
@@ -63,9 +74,9 @@
                     <div class="mdl-tabs mdl-js-tabs">
 
                         <div class="mdl-tabs__tab-bar">
-                            <a href="#tab1" class="mdl-tabs__tab">Errors</a>
+                            <a href="#tab1" id="feedbacks" class="mdl-tabs__tab">Errors</a>
                             <a href="#tab2" class="mdl-tabs__tab">Guide</a>
-                            <a href="#tab3" class="mdl-tabs__tab">Console Output</a>
+                            <a href="#tab3" id="errorOutput" class="mdl-tabs__tab">Console Output</a>
 
                             <button id="show-solutions" class="mdl-tabs__tab">Show Solution</button>
                         </div>
@@ -149,6 +160,7 @@
         </div>
     </div>
 
+    <script src="codeError.js"> </script>
     <script src="author-level-texts.js"></script>
     <script src="author-demo.js"> </script>
 
