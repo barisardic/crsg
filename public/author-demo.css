@@ -27,11 +27,11 @@ body {
     margin: 0;
 }
 #editor_1 {
-    height: 39vh;
+    height: 36vh;
     overflow-x: auto;
 }
 #editor_2 {
-    height: 95vh;
+    height: 92vh;
     z-index: 0;
     width: 100%;
     overflow-x: auto;
@@ -56,7 +56,7 @@ body {
     width: 5px;
     cursor: col-resize;
     opacity: 1;
-    height: 100vh;
+    height: 97vh;
 }
 #editor_bars_wrapper {
     width: 50%;
@@ -66,7 +66,7 @@ body {
 }
 #multiple_editor_wrapper {
     width: 100%;
-    height: 100%;
+    height: 97vh;
     display: flex;
     flex-direction: row;
     background-color: aqua
@@ -116,4 +116,10 @@ body {
     animation: spin 2s linear infinite;
     z-index: 1000;
     position: absolute
+  }
+  #timers {
+      text-align: center;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      background-color: cadetblue;
   }

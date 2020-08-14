@@ -1,4 +1,4 @@
-var level1Code = `public class SearchApp {
+var level1Code = `public class Main {
     Node root;
 
     private class Node {
@@ -75,7 +75,7 @@ var level1Code = `public class SearchApp {
 }`;
 
 var level1TestCode = `public static void main(String[] args) {
-    SearchApp sr = new SearchApp();
+    Main sr = new Main();
     System.out.println(sr.addPerson(20, "A"));
     System.out.println(sr.addPerson(40, "B"));
     System.out.println(!sr.addPerson(40, "C"));
@@ -90,7 +90,7 @@ var level1TestCode = `public static void main(String[] args) {
     System.out.println("2");
 
 }
-public static boolean findNameTest(int id, String expected, SearchApp sr) {
+public static boolean findNameTest(int id, String expected, Main sr) {
     if(sr.findNameById(id) == null) {
         return false;
     }
@@ -99,7 +99,7 @@ public static boolean findNameTest(int id, String expected, SearchApp sr) {
     }
 }`
 
-var level1Solution = `public class SearchApp {
+var level1Solution = `public class Main {
     Node root;
 
     private class Node {

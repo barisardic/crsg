@@ -51,7 +51,7 @@ class CodeError {
         return toReturn;
     }
 
-    // Stages an update on feedback and resolved state. Update is realized vai update function.
+    // Stages an update on feedback and resolved state. Update is realized via update function.
     checkAnswer( isCorrect) {
         let newFeedback = null;
         this._newFeedback = [...this._feedback];

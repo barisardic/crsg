@@ -181,12 +181,12 @@ function addDiscussion(errorPair) {
         if(rejectButton.innerText === "REJECT") {
             rejectButton.innerText = "Accept";
             errorReason.className = "striked";
-            Error.guess = false;
+            errorData.guess = false;
         }
         else {
             rejectButton.innerText = "Reject";
             errorReason.className = "";
-            Error.guess = true;
+            errorData.guess = true;
         }
     };
 
@@ -257,67 +257,111 @@ document.getElementById("solutionConfirm").onclick = () => {
         };
     });
 
+    document.getElementById("feedbacks").click();
     document.getElementById("show-solutions").onclick = null;
 };
 
-var details = {
-    'client_secret': 'f9d86bc5cd7e190645c950fb5370b21091e0cb31',
-    'lang': "JAVA",
+
+// API BUSINESS
+var APISubmitSettings = {
+    //DON'T TOUCH HERE
+	"async": true,
+	"crossDomain": true,
+	"url": "https://judge0.p.rapidapi.com/submissions",
+	"method": "POST",
+	"headers": {
+		"x-rapidapi-host": "judge0.p.rapidapi.com",
+		"x-rapidapi-key": "a034fb73c3mshb44c326d3feba71p1d1faejsnef7781857d0a",
+		"content-type": "application/json",
+		"accept": "application/json"
+	},
+	"processData": false,
+};
+
+var APIGetSettings = {
+    "async": true,
+    "crossDomain": true,
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "judge0.p.rapidapi.com",
+        "x-rapidapi-key": "a034fb73c3mshb44c326d3feba71p1d1faejsnef7781857d0a"
+    }
+};
+
+var sendData = { 
+    "language_id": 62,
 };
 
 function runCode( source) {
-    details['source'] = source;
+    sendData.source_code = source;
+    APISubmitSettings.data =  JSON.stringify(sendData);
 
-    // Converting to form.
-    let formBody = [];
-    for (let property in details) {
-        let encodedKey = encodeURIComponent(property);
-        let encodedValue = encodeURIComponent(details[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
-
-    fetch('https://api.hackerearth.com/v3/code/run/', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-    },
-    body: formBody
-    }).then((data) => data.json())
-    .then( (runResult) => {
-        // Work with JSON data here
-
-        document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'auto';
-        document.getElementById('multiple_editor_wrapper').style.opacity = '1';
-        showLoader(false);
-
-        // Use results to infer & check
-
-        let runAdapter = {
-            'compileStatus': runResult.compile_status,
-            'runError': runResult.run_status.stderr,
-            'output': runResult.run_status.output,
-        };
-
-        let runEvaluation = findCorrects( runAdapter);
-
-        // If code compiled do a review
-        doReview( runEvaluation);
+    $.ajax(APISubmitSettings).done(function (response) {
+        console.log(response);
         
-    })
-    .catch((err) => {
-        // Do something for an error here
+        setTimeout( getResult, 3000);    
+        function getResult() {
+            
+            APIGetSettings.url =  "https://judge0.p.rapidapi.com/submissions/" + response.token;
+    
+            $.ajax(APIGetSettings).done(function (finalResponse) {
+                console.log(finalResponse);
+                
+                if(finalResponse.status.id == 1 || finalResponse.status.id == 2) {
+                    console.log("TRYING AGAIN");
+                    setTimeout( getResult, 1000);
+                }
+                else {
+                    document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'auto';
+                    document.getElementById('multiple_editor_wrapper').style.opacity = '1';
+                    showLoader(false);
+
+                    // Use results to infer & check
+
+                    let runAdapter = {
+                        'compileStatus': "OK",
+                        'runError': "",
+                        'output': "",
+                    };
+                    if(finalResponse.status.id == 3) {
+                        runAdapter.output = finalResponse.stdout;
+                    }
+                    else if(finalResponse.status.id == 6) {
+                        runAdapter.compileStatus = finalResponse.compile_output;
+                    }
+                    else {
+                        alert("DEBUG ONLY, CODE STATUS ID: " + finalResponse.status.id);
+                        runAdapter.runError = finalResponse.stderr;
+                    }
+
+                    let runEvaluation = findCorrects( runAdapter);
+
+                    // If code compiled do a review
+                    doReview( runEvaluation);
+                }
+            }).fail(error => {
+                alert("GET FAILED");
+                console.log(error);
+
+                document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'auto';
+                document.getElementById('multiple_editor_wrapper').style.opacity = '1';
+                showLoader(false);
+            });
+        }
+    }).fail(error => {
+        alert("POST FAILED");
+        console.log(error);
+
         document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'auto';
         document.getElementById('multiple_editor_wrapper').style.opacity = '1';
         showLoader(false);
-    })
+    });
+
     document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'none';
     document.getElementById('multiple_editor_wrapper').style.opacity = '0.4';
     showLoader(true);
 
-
 }
-
 
 function findCorrects( runAdapter) {
     
@@ -393,7 +437,7 @@ function doReview( runEvaluation) {
             }
         }
         else {
-            err.errorData.checkAnswer( err.errorData.guess);
+            err.errorData.checkAnswer( !err.errorData.guess);
         }
 
         if(err.errorData.updatedResolved && previouslyUnsolved) {
