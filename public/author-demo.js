@@ -271,7 +271,7 @@ var APISubmitSettings = {
 	"method": "POST",
 	"headers": {
 		"x-rapidapi-host": "judge0.p.rapidapi.com",
-		"x-rapidapi-key": "a034fb73c3mshb44c326d3feba71p1d1faejsnef7781857d0a",
+		"x-rapidapi-key": j0Key,
 		"content-type": "application/json",
 		"accept": "application/json"
 	},
