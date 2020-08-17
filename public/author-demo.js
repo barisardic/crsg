@@ -2,10 +2,12 @@
 // Author: Yusuf Avci
 
 // GLOBALS
+var levelData = levelDatas[localStorage.getItem('selectedLevel')];
+
 // Creating the editors.
 var editor = setupEditor( "editor_1", true, "ace/theme/monokai");
 var editor2 = setupEditor( "editor_2", false, "ace/theme/xcode");
-
+var Range = ace.require('ace/range').Range // get reference to ace/range
 // Becomes true while dragging a bar.
 var vertical_dragging = false;
 var horizontal_dragging = false;
@@ -23,14 +25,9 @@ var startTime = startDate.getTime();
 var scrollingElement = (document.scrollingElement || document.body);
 scrollingElement.scrollTop = scrollingElement.scrollHeight;
 
-let errorDatas = [];
-errorDatas.push(new CodeError([4,23], "Classes cannot have classes inside them.", false, "Inner classes don't exist!", "This error wasn't real."));
 
-errorDatas.push(new CodeError([36,45], "Adding multiple persons with the same ID shouldn't be possible", true, "Check whether or not ID already exists.", "Returning false if new ID is equal."));
-
-errorDatas.push(new CodeError([59, 73], "Returns null most of the time instead of name.", true, "Check returns carefully", "Recursive methods' return should be used."));
 let errors = [];
-errorDatas.forEach( data => {
+levelData.errorDatas.forEach( data => {
     errors.push(new ErrorPair(data));
 });
 
@@ -49,10 +46,9 @@ var errorCount = 0;
 function setupEditor( editorName, readOnly, theme) {
     // Setting the editor text to initial text.
     let newEditor = ace.edit( editorName);
-    newEditor.getSession().setValue(level1Code);
+    newEditor.getSession().setValue(levelData.code);
     newEditor.getSession().setMode( { path: "ace/mode/java", inline: true } );
 
-    // Set editors. TODO maybe simple factory.
     newEditor.setTheme(theme);
     newEditor.setReadOnly( readOnly);
 
@@ -86,7 +82,9 @@ $( '#horizontal_dragbar' ).mousedown( function ( e ) {
         // Set wrapper height
         $( '#editor_1' ).css( 'height', eheight - 5);
         $( '#editor_1_wrap' ).css( 'height', eheight);
-        $( '#console' ).css( 'height', $(window).height() - eheight);
+        $( '#console' ).css( 'height', $(window).height() - eheight - 20);
+
+        // $( '#panels' ).css( 'height', $(window).height() - eheight - 100);
 
         // Set dragbar opacity while dragging (set to 0 to not show)
         $( '#horizontal_dragbar' ).css( 'opacity', 0.15 );
@@ -133,11 +131,11 @@ window.onresize = () => {
 }
 
 //YUSUF's DEBUGGING AUXILIARY
-document.onmousemove = function(e){
-    var x = e.pageX;
-    var y = e.pageY;
-    e.target.title = "X is "+x+" and Y is "+y;
-};
+// document.onmousemove = function(e){
+//     var x = e.pageX;
+//     var y = e.pageY;
+//     e.target.title = "X is "+x+" and Y is "+y;
+// };
 
 // Finish resizing when mouse is up.
 $( document ).mouseup( function ( e ) {
@@ -172,7 +170,7 @@ function addDiscussion(errorPair) {
     rejectButton.innerText = "Reject";
 
     let buttonWrapper = document.createElement("div");
-    buttonWrapper.class = "buttonduo";
+    buttonWrapper.className = "buttonduo";
     
     rejectButton.onclick = () => {
         let parent = rejectButton.parentNode;
@@ -201,10 +199,7 @@ function addDiscussion(errorPair) {
 
         document.getElementById("hintConfirm").onclick = () => {
             console.log("Hey");
-
-            let parent = hintButton.parentNode;
             buttonWrapper.removeChild(hintButton);
-            let errorNum = parent.id.slice(-1);
             errorData.showHint = true;
             errorReason.innerText = errorData.toString();
         };
@@ -230,6 +225,11 @@ var reviewCounter = 2;
 document.getElementById("submit-btn").onclick = () => {
     runSource = editor2.getSession().getValue();
     
+    if(runSource.includes("System")) {
+        alert("Please don't use System");
+        return;
+    }
+
     runCode(insertMain(runSource));
 
 };
@@ -242,7 +242,7 @@ document.getElementById("show-solutions").onclick = () => {
 document.getElementById("solutionConfirm").onclick = () => {
 
     // Set editor 2 to solved.
-    editor2.getSession().setValue(level1Solution);
+    editor2.getSession().setValue(levelData.solution);
     editor2.setReadOnly(true);
 
     errors.forEach(err => {
@@ -256,6 +256,13 @@ document.getElementById("solutionConfirm").onclick = () => {
             window.location.href = "/game-mode-select.html";
         };
     });
+
+    levelData.solutionHighlights.forEach((rangex) => {
+        editor2.session.addMarker(
+            new Range(rangex[0] - 1, 0, rangex[1], 0), "ace_step", "text"
+        );
+    });
+    
 
     document.getElementById("feedbacks").click();
     document.getElementById("show-solutions").onclick = null;
@@ -370,6 +377,7 @@ function findCorrects( runAdapter) {
     
     let runEvaluation = {};
 
+    //ToDo Give feedbacks.
     if( runAdapter.compileStatus === "OK") {
         if( runAdapter.runError === "") {
             runEvaluation.compiled = true;
@@ -488,7 +496,7 @@ function acceptChanges() {
 function insertMain( code) {
     var insertHere = code.lastIndexOf("}");
 
-    return code.slice(0, insertHere) + level1TestCode + "}";
+    return code.slice(0, insertHere) + levelData.test + "}";
 }
 
 

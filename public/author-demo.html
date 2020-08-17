@@ -1,7 +1,7 @@
 <!DOCTYPE html lang="en">
 <html lang="en">
 <head>
-<title>ACE in Action</title>
+<title>Author Module</title>
 
 <!-- Imports -->
 <!-- CSS File -->
@@ -74,20 +74,39 @@
                     <div class="mdl-tabs mdl-js-tabs">
 
                         <div class="mdl-tabs__tab-bar">
-                            <a href="#tab1" id="feedbacks" class="mdl-tabs__tab">Errors</a>
-                            <a href="#tab2" class="mdl-tabs__tab">Guide</a>
-                            <a href="#tab3" id="errorOutput" class="mdl-tabs__tab">Console Output</a>
+                            <a href="#tab1" id="feedbacks" class="mdl-tabs__tab">Reviews</a>
+                            <a href="#tab2" class="mdl-tabs__tab is-active">Guide</a>
+                            <a href="#tab3" id="errorOutput" class="mdl-tabs__tab">Error Output</a>
 
                             <button id="show-solutions" class="mdl-tabs__tab">Show Solution</button>
-                        </div>
-                        <div class="mdl-tabs__panel is-active" id="tab1">
-                            <div id="errors-list"></div>
-                        </div>
-                        <div class="mdl-tabs__panel" id="tab2">
-                            <p>Be careful.</p>
-                        </div>
-                        <div class="mdl-tabs__panel" id="tab3">
-                            <p id="consoleText" >Empty</p>
+                        </div>       
+                                     
+                        <div id="panels">
+                            <div class="mdl-tabs__panel" id="tab1">
+                                <div id="errors-list"></div>
+                            </div>
+                            <div class="mdl-tabs__panel  is-active" id="tab2">
+                                <div id="guide-text">
+                                    <h3>Welcome To CRSG Author Module</h3>
+                                    <h5><b>Game Description</b></h5>
+                                    <p>You wrote a module for a project and opened a pull request. However, there were some problems with your code. CRSG reviewed your code and gave you some feedbacks. You must solve the problems and commit again until you solve all the problems.</p>
+                                    <h5><b>Game Components</b></h5>
+                                    <p><b>1) Editors</b></p>
+                                    <p>Left-hand side editor shows your initial code. It is read-only.</p>
+                                    <p>Right hand side editor shows your latest code. You should edit it and fix the errors in the original code.</p>
+                                    <p>When you think you solved all of the problems in the code, click commit changes to get a new review.</p>
+                                    <p>You can resize all of the modules as you wish.</p>
+                                    <p><b>2) Reviews</b></p>
+                                    <p>You can see review comments in this tab. Beware! Some reviews may be incorrect because reviewers can make mistakes as well. You should reject a review if you think it doesn't make sense. You can click the show hint button to see a hint about a review comment as well.</p>
+                                    <p><b>3) Error Output</b></p>
+                                    <p>If your code has a compile-time or runtime error, it is shown in the error output.</p>
+                                    <p><b>4) Show Solutions</b></p>
+                                    <p>You can click show solutions to see the solutions. Note that you will not get any more points after you see the solutions.</p>
+                                </div>
+                            </div>
+                            <div class="mdl-tabs__panel" id="tab3">
+                                <p id="consoleText" >There is no output yet.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -113,7 +132,8 @@
                     <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
                 </div>
                 <div class="modal-body">
-                    A previously resolved review comment will be unsolved again if you submit.<br>Do you want to commit?
+                    <!-- A previously resolved review comment will be unsolved again if you submit.<br>Do you want to commit? -->
+                    Are you sure?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

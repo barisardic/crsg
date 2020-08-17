@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Select Level</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style type="text/css" media="screen">
+    
+    @keyframes example {
+      from {
+          color: #373738;
+          font-size: 6vh;
+        }
+      to {
+          color: #345fba;
+          font-size: 6.1vh;
+        }
+    }
+    
+    body {
+        margin: 20px;
+        background-image: url("assets/galaxy-img.jpg");
+        background-size: auto;
+        background-repeat: no-repeat;
+    }
+
+    a:hover {
+        color: #345fba;
+        animation-name: example;
+        animation-duration: 1s;
+        font-size: 6.1vh;
+    }
+    
+    #levelSelection {
+        padding: 30px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 80px;
+        column-gap: 40px;
+        row-gap: 40px;
+        
+    }
+    #author_mode {
+        background-color: aliceblue;
+
+    }
+    #review_mode {
+        background-color: aquamarine;
+    }
+    #multiplayer {
+        background-color: azure;
+    }
+    #page_caption {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: beige;
+        font-size: 48px;
+    }
+    
+    .levelButton {
+        height: 30;
+        
+    }
+    
+</style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1 id="page_caption">CRSG GAME MODE SELECTION</h1>
+        </header>
+        <section id="levelSelection" class="mdl-cell mdl-grid">
+            
+        </section>
+    </main>
+    
+    
+    <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        var LEVEL_COUNT = 9;
+        var levelSelection = document.getElementById('levelSelection');
+
+        for(let i = 0; i < LEVEL_COUNT; i++) {
+            let levelBtn = document.createElement('button');
+            levelBtn.innerText = "Level " + (i + 1);
+            levelBtn.className = "levelButton btn btn-primary";
+
+            
+
+            if(i < 2) {
+                levelBtn.onclick = () => {
+                    localStorage.setItem('selectedLevel', i);
+                    window.location.href = "/author-demo.html";
+                };
+            }
+            else {
+                levelBtn.innerText = "TBA";
+                levelBtn.onclick = () => {
+                    alert('Level is not ready.');
+                };
+            }
+            levelSelection.appendChild(levelBtn);
+        }
+    </script>
+</body>
+</html>
