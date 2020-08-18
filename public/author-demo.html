@@ -57,7 +57,7 @@
     <!-- Header -->
     <header>
         <h4 id="title">CRSG AUTHOR GAME</h4>
-        <div id="titles"><p id="old_title">Old Code</p><p id="new_title">New Code</p></div>
+        <div id="titles"><p id="old_title">Reviewed Commit</p><p id="new_title">New Commit</p></div>
         <p id="timers"><span id = "timeInfo"></span> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Penalty = <span id = "penaltyInfo">0</span>%</p>
     </header>
 
@@ -74,17 +74,14 @@
                     <div class="mdl-tabs mdl-js-tabs">
 
                         <div class="mdl-tabs__tab-bar">
-                            <a href="#tab1" id="feedbacks" class="mdl-tabs__tab">Reviews</a>
                             <a href="#tab2" class="mdl-tabs__tab is-active">Guide</a>
+                            <a href="#tab1" id="feedbacks" class="mdl-tabs__tab">Reviews</a>
                             <a href="#tab3" id="errorOutput" class="mdl-tabs__tab">Error Output</a>
 
                             <button id="show-solutions" class="mdl-tabs__tab">Show Solution</button>
                         </div>       
                                      
                         <div id="panels">
-                            <div class="mdl-tabs__panel" id="tab1">
-                                <div id="errors-list"></div>
-                            </div>
                             <div class="mdl-tabs__panel  is-active" id="tab2">
                                 <div id="guide-text">
                                     <h3>Welcome To CRSG Author Module</h3>
@@ -102,7 +99,14 @@
                                     <p>If your code has a compile-time or runtime error, it is shown in the error output.</p>
                                     <p><b>4) Show Solutions</b></p>
                                     <p>You can click show solutions to see the solutions. Note that you will not get any more points after you see the solutions.</p>
+                                    <p><b>5) Score System</b></p>
+                                    <p>Each review comment's worth are equal. You lose 20% score from each unsolved review comment when you commit changes.</p>
+                                    <p>You have 2 minutes for each review comment. (You can allocate your total time differently if you wish). If you run out of time, you will lose 1% of score per minute for reamining review comments.</p>
+                                    <p>The topmost penalty indicator shows much penalty you will get if you commit now.</p>
                                 </div>
+                            </div>
+                            <div class="mdl-tabs__panel" id="tab1">
+                                <div id="errors-list"></div>
                             </div>
                             <div class="mdl-tabs__panel" id="tab3">
                                 <p id="consoleText" >There is no output yet.</p>
@@ -132,8 +136,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
                 </div>
                 <div class="modal-body">
-                    <!-- A previously resolved review comment will be unsolved again if you submit.<br>Do you want to commit? -->
-                    Are you sure?
+                    You have broken a previously fixed review comment. Do you want to submit anyway?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

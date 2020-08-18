@@ -18,6 +18,8 @@ var score = 0;
 // Page load date
 var startDate = new Date();
 var startTime = startDate.getTime();
+var dateNow = startDate;
+
 
 // CODE INIT
 
@@ -39,6 +41,15 @@ var scoreTimeTreshold = 2 * errors.length;
 // Getting the tab to show the errors.
 var errors_tab = document.getElementById("errors-list");
 var errorCount = 0;
+
+//Highlight feedback
+errors.forEach((curErrPair) => {
+    let left = curErrPair.errorData.lines[0];
+    let right = curErrPair.errorData.lines[1];
+    editor.session.addMarker(
+        new Range(left - 1, 0, right, 0), "ace_step", "text"
+    );
+});
 
 // FUNCTIONS
 
@@ -230,12 +241,13 @@ document.getElementById("submit-btn").onclick = () => {
         return;
     }
 
+    dateNow = new Date ();
     runCode(insertMain(runSource));
 
 };
 
 document.getElementById("show-solutions").onclick = () => {
-    document.getElementById("solutionScore").innerHTML = "<b>" + score + "<b>";
+    document.getElementById("solutionScore").innerHTML = "<b>" + score.toFixed(2) + "<b>";
     $("#solutionModal").modal('show');
 };
 
@@ -421,6 +433,8 @@ function findCorrects( runAdapter) {
 }
 
 function doReview( runEvaluation) {
+    let dangerWarn = false;
+
     if( !runEvaluation.compiled) {
         alert("Runtime or Compilation Error");
         document.getElementById("errorOutput").click();
@@ -453,15 +467,19 @@ function doReview( runEvaluation) {
         }
         else if(!err.errorData.updatedResolved && !previouslyUnsolved) {
             err.action = 'show';
+            dangerWarn = true;
         }
         else {
             err.action = null;
         }
     }
 
-    $("#submitModal").modal('show');
-    //acceptChanges();
-    
+    if( dangerWarn) {
+        $("#submitModal").modal('show');   
+    }
+    else {
+        acceptChanges();
+    }
 }
 
 document.getElementById("submitConfirm").onclick = () => {
@@ -481,6 +499,7 @@ function acceptChanges() {
         err.errorElement.firstChild.innerText = err.errorData.toString();
 
         if( err.action === 'hide') {
+            err.errorElement.firstChild.style.color = '#34eb77';
             err.errorElement.firstChild.nextSibling.style.display = 'none';
         }
         else if( err.action === 'show') {
@@ -517,13 +536,13 @@ function insertMain( code) {
     let m = Math.floor ( passedSeconds / 60);
     let s = passedSeconds % 60;
 
-    m = checkTime(m);
+    let mx = checkTime(m);
     s = checkTime(s);
     document.getElementById('timeInfo').innerHTML = msg +
-    m + ":" + s;
+    mx + ":" + s;
 
     if(msg[0] != 'R') {
-        document.getElementById('penaltyInfo').innerText = m;
+        document.getElementById('penaltyInfo').innerText = checkTime(m + 1);
     }    
 
     setTimeout(timeUpdate, 1000);

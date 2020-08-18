@@ -40,10 +40,10 @@ class CodeError {
 
     // Returns relevant data of review comment.
     toString() {
-        let toReturn = "Error at lines " + this.lines[0] + "-" + this.lines[1] + ":\n" + "Review 1: " + this.reason;
+        let toReturn = "Error at lines " + this.lines[0] + "-" + this.lines[1] + ":\n" + "Review Round 1: " + this.reason;
         let counter = 2;
         this._feedback.forEach( i => {
-            toReturn += "\n" + "Review " + i[0] + ": " + i[1];
+            toReturn += "\n" + "Review Round" + i[0] + ": " + i[1];
         });
         if(this.showHint) {
             toReturn += "\n" + "Hint: " + this.hint;
@@ -98,14 +98,20 @@ class CodeError {
             substractPercent += 10;
         }
 
-        let date_now = new Date ();
-        let time_now = date_now.getTime ();
+        console.log("CALCULATING SCORE");
+
+
+        let time_now = dateNow.getTime ();
         let time_diff = time_now - startTime;
-        let minutes_elapsed = Math.floor ( time_diff / (1000 * 60) );
+        let minutes_elapsed = Math.ceil ( time_diff / (1000 * 60) );
+
+        console.log("MINUTES ELAPSED");
         substractPercent += Math.max(0, minutes_elapsed - scoreTimeTreshold);
 
+        console.log("SUBSTRACT PERCENT")
         console.log("minutes elapsed, total sub");
         console.log(minutes_elapsed);
+        console.log(scoreTimeTreshold);
         console.log(substractPercent);
 
         substractPercent = Math.min(substractPercent, 100);
