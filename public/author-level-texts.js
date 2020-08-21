@@ -1,3 +1,5 @@
+import {CodeError} from '/codeError.js';
+
 var levelDatas = [];
 
 
@@ -6,56 +8,80 @@ var levelDatas = [];
 let level1Data = {};
 
 let level1ErrorDatas = [];
-level1ErrorDatas.push(new CodeError([4,23], "Classes cannot have classes inside them.", false, "Inner classes don't exist!",
+level1ErrorDatas.push(new CodeError([11,42], "Classes cannot have classes inside them.", false, "Inner classes don't exist!",
 "This error wasn't real."));
 
-level1ErrorDatas.push(new CodeError([36,45], "Adding multiple persons with the same ID shouldn't be possible", true,
+level1ErrorDatas.push(new CodeError([60,69], "Adding multiple persons with the same ID shouldn't be possible", true,
 "Check whether or not ID already exists.",
 "We should return false when a new person's ID is equal to a previously added one."));
 
-level1ErrorDatas.push(new CodeError([59, 73], "Returns null most of the time instead of name.", true,"Check returns carefully",
+level1ErrorDatas.push(new CodeError([94, 107], "Returns null most of the time instead of name.", true,"Check returns carefully",
 "We should put return in front of the recursive method calls to be able to use the results."));
 
 level1Data.errorDatas = level1ErrorDatas;
 
-level1Data.code = `public class Main {
+level1Data.code = `/**
+* Add and retrieve people to the system.
+* People are saved in a binary tree.
+*/
+public class Main {
     Node root;
-
+    
+    /**
+    * Each node represents a person.
+    */
     private class Node {
         int id;
         String name;
-
         Node leftChild;
         Node rightChild;
-
+        
+        /**
+        * Node constructor
+        * @param id used to retrieve people.
+        * @param name people's name
+        */
         Node(int id, String name) {
             this.id = id;
             this.name = name;
         }
-
+        
+        /**
+        * Used to get ID
+        * @return Id of a node.
+        */
         int getId() {
             return id;
         }
-
+        
+        /**
+        * Used to get name.
+        * @return name of the person
+        */
         String getName() {
             return name;
         }
     }
-
-    // Every person should have an unique id.
-    // Return if add is successful.
-    public boolean addPerson( int id, String name) {
-        if(root == null) {
-            root = new Node( id, name);
+    
+    /**
+    * Adds a person to the system (binary tree)
+    * @param id Used to add and retrieve people.
+    *           Ids cannot be identical.
+    * @param name Name of the added person.
+    * @return is the operation successful.
+    */
+    public boolean addPerson(int id, String name) {
+        if (root == null) {
+            root = new Node(id, name);
             return true;
         }
-
+        
         Node currentNode = root;
         Node previousNode = root;
-
-        while( currentNode != null) {
+        
+        while (currentNode != null) {
             previousNode = currentNode;
-
+            
             if (id < currentNode.getId()) {
                 currentNode = currentNode.leftChild;
             }
@@ -71,19 +97,30 @@ level1Data.code = `public class Main {
         }
         return true;
     }
-
-    public String findNameById( int id) {
+    
+    /**
+    * Finds names by ID.
+    * @param id Id of the queried person.
+    * @return person's name.
+    */
+    public String findNameById(int id) {
         return findNameAuxiliary(id, root);
     }
-
-    public String findNameAuxiliary( int id, Node node) {
-        if(node == null) {
+    
+    /**
+    * Returns the name of queried ID recursively.
+    * @param id Id of the queried person.
+    * @param node Searched node.
+    * @return Person's name.
+    */
+    public String findNameAuxiliary(int id, Node node) {
+        if (node == null) {
             return null;
         }
-        if( id == node.getId()) {
+        if (id == node.getId()) {
             return node.getName();
         }
-        else if( id < node.getId()) {
+        else if (id < node.getId()) {
             findNameAuxiliary(id, node.leftChild);
         }
         else {
@@ -91,7 +128,6 @@ level1Data.code = `public class Main {
         }
         return null;
     }
-
 }`;
 
 level1Data.test = `public static void main(String[] args) {
@@ -119,50 +155,74 @@ public static boolean findNameTest(int id, String expected, Main sr) {
     }
 }`
 
-level1Data.solutionHighlights = [[39,41],[69,75]];
+level1Data.solutionHighlights = [[63,65],[104,109]];
 
-level1Data.solution = `public class Main {
+level1Data.solution = `/**
+* Add and retrieve people to the system.
+* People are saved in a binary tree.
+*/
+public class Main {
     Node root;
-
+    
+    /**
+    * Each node represents a person.
+    */
     private class Node {
         int id;
         String name;
-
         Node leftChild;
         Node rightChild;
-
+        
+        /**
+        * Node constructor
+        * @param id used to retrieve people.
+        * @param name people's name
+        */
         Node(int id, String name) {
             this.id = id;
             this.name = name;
         }
-
+        
+        /**
+        * Used to get ID
+        * @return Id of a node.
+        */
         int getId() {
             return id;
         }
-
+        
+        /**
+        * Used to get name.
+        * @return name of the person
+        */
         String getName() {
             return name;
         }
     }
-
-    // Every person should have an unique id.
-    // Return if add is successful.
-    public boolean addPerson( int id, String name) {
-        if(root == null) {
-            root = new Node( id, name);
+    
+    /**
+    * Adds a person to the system (binary tree)
+    * @param id Used to add and retrieve people.
+    *           Ids cannot be identical.
+    * @param name Name of the added person.
+    * @return is the operation successful.
+    */
+    public boolean addPerson(int id, String name) {
+        if (root == null) {
+            root = new Node(id, name);
             return true;
         }
-
+        
         Node currentNode = root;
         Node previousNode = root;
-
-        while( currentNode != null) {
+        
+        while (currentNode != null) {
             previousNode = currentNode;
-
+            
             if (id == currentNode.getId()) {
                 return false;
             }
-            if (id < currentNode.getId()) {
+            else if (id < currentNode.getId()) {
                 currentNode = currentNode.leftChild;
             }
             else {
@@ -177,27 +237,36 @@ level1Data.solution = `public class Main {
         }
         return true;
     }
-
-    public String findNameById( int id) {
+    
+    /**
+    * Finds names by ID.
+    * @param id Id of the queried person.
+    * @return person's name.
+    */
+    public String findNameById(int id) {
         return findNameAuxiliary(id, root);
     }
-
-    public String findNameAuxiliary( int id, Node node) {
-        if(node == null) {
+    
+    /**
+    * Returns the name of queried ID recursively.
+    * @param id Id of the queried person.
+    * @param node Searched node.
+    * @return Person's name.
+    */
+    public String findNameAuxiliary(int id, Node node) {
+        if (node == null) {
             return null;
         }
-        if( id == node.getId()) {
+        if (id == node.getId()) {
             return node.getName();
         }
-        else if( id < node.getId()) {
+        else if (id < node.getId()) {
             return findNameAuxiliary(id, node.leftChild);
         }
         else {
             return findNameAuxiliary(id, node.rightChild);
-             
         }
     }
-
 }`;
 
 levelDatas.push( level1Data);
@@ -205,7 +274,7 @@ levelDatas.push( level1Data);
 // **
 // Level 2 Data
 // **
-level2Data = {};
+let level2Data = {};
 
 let level2ErrorDatas = [];
 level2ErrorDatas.push(new CodeError([61,61], "You are only changing the top index. You aren't actually removing the number from the stack.",
@@ -497,3 +566,7 @@ public class Main {
 }`;
 
 levelDatas.push( level2Data);
+
+// export { levelDatas };
+
+export default levelDatas;

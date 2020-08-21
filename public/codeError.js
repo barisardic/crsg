@@ -1,5 +1,5 @@
 // Review comment class.
-class CodeError {
+export class CodeError {
     constructor(lines, reason, isTrueError, hint, explanation) {
         // Linet at which error occurs.
         this.lines = lines;
@@ -43,7 +43,7 @@ class CodeError {
         let toReturn = "Error at lines " + this.lines[0] + "-" + this.lines[1] + ":\n" + "Review Round 1: " + this.reason;
         let counter = 2;
         this._feedback.forEach( i => {
-            toReturn += "\n" + "Review Round" + i[0] + ": " + i[1];
+            toReturn += "\n" + "Review Round " + i[0] + ": " + i[1];
         });
         if(this.showHint) {
             toReturn += "\n" + "Hint: " + this.hint;
@@ -52,7 +52,7 @@ class CodeError {
     }
 
     // Stages an update on feedback and resolved state. Update is realized via update function.
-    checkAnswer( isCorrect) {
+    checkAnswer( isCorrect, reviewCounter, time_diff, scoreTimeTreshold, commentScore) {
         let newFeedback = null;
         this._newFeedback = [...this._feedback];
         this.gainedScore = 0;
@@ -63,9 +63,15 @@ class CodeError {
                 this.gainedScore = this.currentScore;
             }
             else {
-                this.gainedScore = this.calculateScore();
+                this.gainedScore = this.calculateScore(reviewCounter, time_diff, scoreTimeTreshold, commentScore);
             }
-            newFeedback = "Thanks. Problem is solved.";
+            if( this.isTrueError) {
+                newFeedback = "Thanks. Problem is solved.";
+            }
+            else {
+                newFeedback = "You are right. This comment was wrong.";
+            }
+            
         }
         else if(this.resolved === true){
             this.updatedResolved = false;
@@ -92,7 +98,7 @@ class CodeError {
         this._newFeedback.push([ reviewCounter, newFeedback]);
     }
 
-    calculateScore() {
+    calculateScore( reviewCounter, time_diff, scoreTimeTreshold, commentScore) {
         let substractPercent = ((reviewCounter - 2) * 20);
         if(this.showHint) {
             substractPercent += 10;
@@ -100,10 +106,7 @@ class CodeError {
 
         console.log("CALCULATING SCORE");
 
-
-        let time_now = dateNow.getTime ();
-        let time_diff = time_now - startTime;
-        let minutes_elapsed = Math.ceil ( time_diff / (1000 * 60) );
+        let minutes_elapsed = time_diff / (1000 * 60);
 
         console.log("MINUTES ELAPSED");
         substractPercent += Math.max(0, minutes_elapsed - scoreTimeTreshold);
@@ -126,7 +129,7 @@ class CodeError {
 }
 
 
-class ErrorPair {
+export class ErrorPair {
     constructor(Error) {
         this.errorData = Error;
         this.errorElement = null;

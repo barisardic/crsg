@@ -1,6 +1,10 @@
 // CRSG AUTHOR MODULE
 // Author: Yusuf Avci
 
+import {ErrorPair} from '/codeError.js';
+import levelDatas from '/author-level-texts.js';
+
+
 // GLOBALS
 var levelData = levelDatas[localStorage.getItem('selectedLevel')];
 
@@ -36,7 +40,7 @@ levelData.errorDatas.forEach( data => {
 // Each comment's worth.
 var commentScore = 100 / errors.length;
 // Time in which there is no penalty.
-var scoreTimeTreshold = 2 * errors.length;
+var scoreTimeTreshold = 1/60 * errors.length;
 
 // Getting the tab to show the errors.
 var errors_tab = document.getElementById("errors-list");
@@ -234,7 +238,7 @@ errors.forEach(err => {
 
 var reviewCounter = 2;
 document.getElementById("submit-btn").onclick = () => {
-    runSource = editor2.getSession().getValue();
+    let runSource = editor2.getSession().getValue();
     
     if(runSource.includes("System")) {
         alert("Please don't use System");
@@ -441,7 +445,9 @@ function doReview( runEvaluation) {
         return;
     }
 
-    correctness = runEvaluation.correctness;
+    let correctness = runEvaluation.correctness;
+    let time_now = dateNow.getTime ();
+    let time_diff = time_now - startTime;
 
     for(let i = 0; i < errors.length; i++) {
         let err = errors[i];
@@ -450,16 +456,17 @@ function doReview( runEvaluation) {
         console.log( err);
 
         
+
         if( err.errorData.isTrueError) {
             if( !err.errorData.guess) {
-                err.errorData.checkAnswer(false);
+                err.errorData.checkAnswer(false, reviewCounter, time_diff, scoreTimeTreshold, commentScore);
             }
             else {
-                err.errorData.checkAnswer(correctness[i]);
+                err.errorData.checkAnswer(correctness[i], reviewCounter, time_diff, scoreTimeTreshold, commentScore);
             }
         }
         else {
-            err.errorData.checkAnswer( !err.errorData.guess);
+            err.errorData.checkAnswer( !err.errorData.guess, reviewCounter, time_diff, scoreTimeTreshold, commentScore);
         }
 
         if(err.errorData.updatedResolved && previouslyUnsolved) {
@@ -500,6 +507,7 @@ function acceptChanges() {
 
         if( err.action === 'hide') {
             err.errorElement.firstChild.style.color = '#34eb77';
+            err.errorElement.firstChild.className = '';
             err.errorElement.firstChild.nextSibling.style.display = 'none';
         }
         else if( err.action === 'show') {
@@ -526,27 +534,30 @@ function insertMain( code) {
     let time_diff = time_now - startTime;
     let passedSeconds = Math.floor ( time_diff / 1000 );
     
-    passedSeconds = scoreTimeTreshold * 60 - passedSeconds;
+    let remainingTime = scoreTimeTreshold * 60 - passedSeconds;
 
     let msg = "Remaining Time: ";
-    if( passedSeconds <= 0 ) {
-        passedSeconds *= -1;
+    if( remainingTime <= 0 ) {
+        remainingTime *= -1;
         msg = "Penalized Time: ";
     }
-    let m = Math.floor ( passedSeconds / 60);
-    let s = passedSeconds % 60;
+    let m = Math.floor ( remainingTime / 60);
+    let s = remainingTime % 60;
 
     let mx = checkTime(m);
     s = checkTime(s);
     document.getElementById('timeInfo').innerHTML = msg +
     mx + ":" + s;
 
+    let penalty = (reviewCounter - 2) * 20;
     if(msg[0] != 'R') {
-        document.getElementById('penaltyInfo').innerText = checkTime(m + 1);
+        penalty += m + 1;
     }    
-
+    document.getElementById('penaltyInfo').innerText = Math.min(100, penalty);
     setTimeout(timeUpdate, 1000);
+
 })();
+
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
