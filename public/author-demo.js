@@ -1,52 +1,91 @@
 // CRSG AUTHOR MODULE
 // Author: Yusuf Avci
 
+// Imports
 import {ErrorPair} from '/codeError.js';
 import levelDatas from '/author-level-texts.js';
+var Range = ace.require('ace/range').Range;
 
 
-// GLOBALS
+// Get selected level's data.
+/**
+ * Holds data of the current level.
+ */
 var levelData = levelDatas[localStorage.getItem('selectedLevel')];
 
-// Creating the editors.
-var editor = setupEditor( "editor_1", true, "ace/theme/monokai");
-var editor2 = setupEditor( "editor_2", false, "ace/theme/xcode");
-var Range = ace.require('ace/range').Range // get reference to ace/range
-// Becomes true while dragging a bar.
+// Creating and setting up the editors.
+/**
+ * Editor that shows the reviewed code. Is read-only.
+ */
+const editor = setupEditor( "editor_1", true, "ace/theme/monokai");
+/**
+ * Editor that shows the latest code.
+ */
+const editor2 = setupEditor( "editor_2", false, "ace/theme/xcode");
+
+
+/**
+ * Becomes true while dragging the vertical resize bar.
+ */
 var vertical_dragging = false;
+/**
+ * Becomes true while dragging the horizontal resize bar.
+ */
 var horizontal_dragging = false;
 
-// Player's total score.
+/**
+ * Player's total score.
+ */
 var score = 0;
 
-// Page load date
-var startDate = new Date();
-var startTime = startDate.getTime();
-var dateNow = startDate;
+// Page load date, used for time scoring.
+/**
+ * Page load date.
+ */
+const startDate = new Date();
+/**
+ * Page load time.
+ */
+const startTime = startDate.getTime();
+/**
+ * Current date. Is updated when clicked submit.
+ */
+var dateNow;
 
-
-// CODE INIT
-
-//Scroll to the bottom
+// Automatically scroll to the bottom of the page.
 var scrollingElement = (document.scrollingElement || document.body);
 scrollingElement.scrollTop = scrollingElement.scrollHeight;
 
-
+/**
+ * Holds each review comment's visual and model data.
+ */
 let errors = [];
+// Filling the errors array with review data.
 levelData.errorDatas.forEach( data => {
     errors.push(new ErrorPair(data));
 });
 
-// Each comment's worth.
-var commentScore = 100 / errors.length;
-// Time in which there is no penalty.
+/**
+ * Each comment's score value.
+ */
+const commentScore = 100 / errors.length;
+
+/**
+ * Number of minutes without time penalty.
+ */
 var scoreTimeTreshold = 1/60 * errors.length;
 
-// Getting the tab to show the errors.
+/**
+ * HTML element in which review comments are displayed.
+ */
 var errors_tab = document.getElementById("errors-list");
+
+/**
+ * Counter for counting the errors in the discussions (Review comments).
+ */
 var errorCount = 0;
 
-//Highlight feedback
+// Highlight reviews.
 errors.forEach((curErrPair) => {
     let left = curErrPair.errorData.lines[0];
     let right = curErrPair.errorData.lines[1];
@@ -57,17 +96,26 @@ errors.forEach((curErrPair) => {
 
 // FUNCTIONS
 
-// Editor setup.
+/**
+ * Create and setup an editor.
+ * @param {string} editorName Id of the html element that will become the editor. 
+ * @param {boolean} readOnly Should the editor be read-only.
+ * @param {string} theme Preffered theme.
+ * @returns Created editor.
+ */
 function setupEditor( editorName, readOnly, theme) {
-    // Setting the editor text to initial text.
+    // Creating the editor.
     let newEditor = ace.edit( editorName);
+    // Setting the editor's code to the chosen level's code.
     newEditor.getSession().setValue(levelData.code);
     newEditor.getSession().setMode( { path: "ace/mode/java", inline: true } );
 
+    // Setting the theme.
     newEditor.setTheme(theme);
+    // Setting the read-only property.
     newEditor.setReadOnly( readOnly);
 
-    // enable autocompletion and snippets
+    // Enable autocompletion and snippets.
     newEditor.setOptions( {
         enableBasicAutocompletion: true,
         enableSnippets           : true,
@@ -76,38 +124,43 @@ function setupEditor( editorName, readOnly, theme) {
     return newEditor;
 }
 
-// Resizing code.
-// Horizontal dragbar movement.
+/*
+ * Resizing Code
+ * Used to resize the left-side editor vertically.
+ */
+// Works while mouse is down on horizontal dragbar.
 $( '#horizontal_dragbar' ).mousedown( function ( e ) {
     e.preventDefault();
     window.vertical_dragging = true;
 
     var editor_1 = $( '#editor_1' );
     
+    // Top of the editor.
     var top_offset = editor_1.offset().top;
 
-    // handle mouse movement
+    // Handle mouse movement.
     $( document ).mousemove( function ( e ) {
 
-        var actualY = e.pageY;
-        // editor height
-        var eheight = actualY - top_offset;
+        // Setting the editor height.
+        var eheight = e.pageY - top_offset;
         
+        // Below panel cannot be smaller than 20%.
         eheight = Math.min( eheight, $(window).height() * 0.80);
+
         // Set wrapper height
+        // Leaving 5px for the resize bar.
         $( '#editor_1' ).css( 'height', eheight - 5);
         $( '#editor_1_wrap' ).css( 'height', eheight);
         $( '#console' ).css( 'height', $(window).height() - eheight - 20);
 
-        // $( '#panels' ).css( 'height', $(window).height() - eheight - 100);
-
-        // Set dragbar opacity while dragging (set to 0 to not show)
+        // Lower dragbar opacity while dragging.
         $( '#horizontal_dragbar' ).css( 'opacity', 0.15 );
 
     } );
 
 } );
 
+// Used to resize the editors horizontally.
 $( '#vertical_dragbar' ).mousedown( function ( e ) {
     e.preventDefault();
     window.horizontal_dragging = true;
@@ -117,25 +170,29 @@ $( '#vertical_dragbar' ).mousedown( function ( e ) {
 
     // handle mouse movement
     $( document ).mousemove( function ( e ) {
-        var actualX = e.pageX;
-        // editor height
-        var ewidth = actualX - left_offset;
+
+        // Editor width.
+        var ewidth = e.pageX - left_offset;
+
+        // Limit resize.
         ewidth = Math.max( 200, ewidth);
         ewidth = Math.min( $(window).width() - 160, ewidth);
-        // Set wrapper height
-        $( '#editor_bars_wrapper' ).css( 'width', ewidth); // SUSPICIOUS
+
+        // Resizing.
+        $( '#editor_bars_wrapper' ).css( 'width', ewidth);
         $('#editor_1_wrap').css('width', ewidth - 5);
         $('#editor_2').css('width', $('#multiple_editor_wrapper').width() - ewidth);
         $('#right_editor_wrap').css('width', $('#multiple_editor_wrapper').width() - ewidth);
-        // Set dragbar opacity while dragging (set to 0 to not show)
+
+        // Lower dragbar opacity while dragging.
         $( '#vertical_dragbar' ).css( 'opacity', 0.15 );
 
     } );
 
 } );
 
-//Temporary Patch (Hopefully)
-$('#editor_1_wrap').css('width', $("#editor_bars_wrapper").width() - 5);
+//$('#editor_1_wrap').css('width', $("#editor_bars_wrapper").width() - 5);
+
 // Make second editor grow when resizing the browser.
 window.onresize = () => {
     
@@ -145,7 +202,7 @@ window.onresize = () => {
     
 }
 
-//YUSUF's DEBUGGING AUXILIARY
+//YUSUF's DEBUGGING AUXILIARY (Shows X and Y coordinates on the screen as a tooltip.)
 // document.onmousemove = function(e){
 //     var x = e.pageX;
 //     var y = e.pageY;
@@ -168,32 +225,59 @@ $( document ).mouseup( function ( e ) {
 
 } );
 
+/**
+ * Adds a review comment to the page by using the review comment data.
+ * @param {ErrorPair} errorPair contains review comment data and review comment HTML element.
+ * errorPair's HTML part is given empty and is filled by this function.
+ */
 function addDiscussion(errorPair) {
+
+    // Data part of the error pair.
     let errorData = errorPair.errorData;
 
-    // Creating a discussion.
+    // Creating a discussion (review comment HTML element).
     let discussion = document.createElement("div");
+
+    // Set classname.
     discussion.className = "to-fix-error";
+    // Set id.
     discussion.id = "error-" + errorCount;
 
+    // Review comment.
     let errorReason = document.createElement("p");
     errorReason.innerText = errorData.toString();
     discussion.appendChild(errorReason);
     
+    /**
+     * Reject review comment button.
+     */
     let rejectButton = document.createElement("button");
     rejectButton.className ="mdl-button mdl-js-button mdl-button--raised mdl-button--colored";
     rejectButton.innerText = "Reject";
 
+    /**
+     * Show hint button.
+     */
+    let hintButton = document.createElement("button");
+    hintButton.className ="mdl-button mdl-js-button mdl-button--raised mdl-button--colored";
+    hintButton.innerText = "Show Hint";
+
+    /**
+     * Wraps reject and show hint buttons.
+     */
     let buttonWrapper = document.createElement("div");
     buttonWrapper.className = "buttonduo";
     
+    // If reject button is clicked.
     rejectButton.onclick = () => {
-        let parent = rejectButton.parentNode;
-        let errorNum = parent.id.slice(-1);
-        console.log(rejectButton.innerText);
+        
+        // Toggle text reject or accept.
         if(rejectButton.innerText === "REJECT") {
             rejectButton.innerText = "Accept";
+
+            // Strike text to indicate rejection.
             errorReason.className = "striked";
+            // ToDO better naming.
             errorData.guess = false;
         }
         else {
@@ -203,35 +287,43 @@ function addDiscussion(errorPair) {
         }
     };
 
+    // Add reject button to the wrapper.
     buttonWrapper.appendChild(rejectButton);
 
-    let hintButton = document.createElement("button");
-    hintButton.className ="mdl-button mdl-js-button mdl-button--raised mdl-button--colored";
-    hintButton.innerText = "Show Hint";
-
+    // If hint button is clicked.
     hintButton.onclick = () => {
+
+        // Show a confirmation popup.
         $("#hintModal").modal('show');
 
         document.getElementById("hintConfirm").onclick = () => {
-            console.log("Hey");
+
+            // Remove the show hint button.
             buttonWrapper.removeChild(hintButton);
+            // Show the hint.
             errorData.showHint = true;
             errorReason.innerText = errorData.toString();
         };
-        
     };
 
+    // Add show hint button to the wrapper.
     buttonWrapper.appendChild(hintButton);
 
+    // Add the button wrapper to the review comment.
     discussion.appendChild(buttonWrapper);
 
+    // Add a page brake.
     discussion.appendChild(document.createElement("hr"));
    
+    // Add the review comment to the review comments tab.
     errors_tab.appendChild(discussion);
+
+    // Set errorpair's HTML element to the created discussion.
     errorPair.errorElement = discussion;
     errorCount++;
 }
 
+// Run add disscussion function for each review comment.
 errors.forEach(err => {
     addDiscussion(err);
 });
@@ -285,8 +377,10 @@ document.getElementById("solutionConfirm").onclick = () => {
 };
 
 
-// API BUSINESS
-var APISubmitSettings = {
+/**
+ * Template of the JSON object to post to judge0 API.
+ */
+const APIPostSettings = {
     //DON'T TOUCH HERE
 	"async": true,
 	"crossDomain": true,
@@ -301,7 +395,10 @@ var APISubmitSettings = {
 	"processData": false,
 };
 
-var APIGetSettings = {
+/**
+ * Template of the JSON object to send get to judge0 API.
+ */
+const APIGetSettings = {
     "async": true,
     "crossDomain": true,
     "method": "GET",
@@ -309,51 +406,76 @@ var APIGetSettings = {
         "x-rapidapi-host": "judge0.p.rapidapi.com",
         "x-rapidapi-key": j0Key
     }
+    // "data" will be inserted
 };
 
-var sendData = { 
+/**
+ * Template of the source code that will be sended to the Judge0 API.
+ */
+const sendData = { 
     "language_id": 62,
+    // "source_code" will be inserted.
 };
 
+/**
+ * Runs a Java source code, then evaluates the results and gives feedback.
+ * @param {string} source Java source code. 
+ */
 function runCode( source) {
-    sendData.source_code = source;
-    APISubmitSettings.data =  JSON.stringify(sendData);
 
-    $.ajax(APISubmitSettings).done(function (response) {
+    // Set send data's source and add to the post settings.
+    sendData.source_code = source;
+    APIPostSettings.data =  JSON.stringify(sendData);
+
+    // Post the sourec code to the API. API returns a token which is used to get the run status.
+    $.ajax(APIPostSettings).done(function (response) {
         console.log(response);
         
-        setTimeout( getResult, 3000);    
+        // Waits 3 seconds to get the result. (If token is used too early, the code will not be run.)
+        setTimeout( getResult, 3000);
+        
         function getResult() {
             
+            // Use the response token to adjust the get request JSON.
             APIGetSettings.url =  "https://judge0.p.rapidapi.com/submissions/" + response.token;
     
+            // Do a get request.
             $.ajax(APIGetSettings).done(function (finalResponse) {
                 console.log(finalResponse);
                 
+                // If the code isn't run yet, GET again after 1 second.
                 if(finalResponse.status.id == 1 || finalResponse.status.id == 2) {
                     console.log("TRYING AGAIN");
                     setTimeout( getResult, 1000);
                 }
                 else {
+
+                    // Turn the page back to normal.
                     document.getElementById('multiple_editor_wrapper').style.pointerEvents = 'auto';
                     document.getElementById('multiple_editor_wrapper').style.opacity = '1';
                     showLoader(false);
 
                     // Use results to infer & check
 
+                    // Holds the run status. Used to be able to change the API easily in the future.
                     let runAdapter = {
                         'compileStatus': "OK",
                         'runError': "",
                         'output': "",
                     };
+
+                    // If runned succesfully, set the output.
                     if(finalResponse.status.id == 3) {
                         runAdapter.output = finalResponse.stdout;
                     }
+
+                    // If there was a compilation error, set the compile status.
                     else if(finalResponse.status.id == 6) {
                         runAdapter.compileStatus = finalResponse.compile_output;
                     }
+                    // If there's a runtime error, set the run error.
                     else {
-                        alert("DEBUG ONLY, CODE STATUS ID: " + finalResponse.status.id);
+                        //alert("DEBUG ONLY, CODE STATUS ID: " + finalResponse.status.id);
                         runAdapter.runError = finalResponse.stderr;
                     }
 
@@ -493,6 +615,9 @@ document.getElementById("submitConfirm").onclick = () => {
     acceptChanges();
 }
 
+/**
+ * Complete the commit. Update the score, feedbacks.
+ */
 function acceptChanges() {
     score = 0;
 
@@ -519,7 +644,11 @@ function acceptChanges() {
     reviewCounter++;
 }
 
-// Inserts main to test.
+/**
+ * Inserts a main function to the source code.
+ * @param {string} code Source code.
+ * @returns Resulting code. 
+ */
 function insertMain( code) {
     var insertHere = code.lastIndexOf("}");
 
@@ -558,11 +687,20 @@ function insertMain( code) {
 
 })();
 
+/**
+ * Adds zero in front of numbers less than 10.
+ * @param {number} i Input number.
+ * @returns Resulting number as a string. 
+ */
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) {i = "0" + i};
     return i;
 }
 
+/**
+ * Enables/disables a spinning loader animation.
+ * @param {boolean} show Should the spinner be shown. 
+ */
 function showLoader( show) {
     if( document.getElementById("loader") === null && show) {
         let loader = document.createElement("div");
@@ -574,3 +712,17 @@ function showLoader( show) {
         loader.parentNode.removeChild(loader);
     }
 }
+
+function completeGame() {
+    let subButton = document.getElementById("submit-btn");
+    subButton.innerText = "Go Back";
+    subButton.onclick = () => {
+        window.location.href = "/game-mode-select.html";
+    };
+
+    editor2.setReadOnly(true);
+
+    alert("Congrats You Completed the level. If you wish you can see the solutions or you can go back to select another level.");
+}
+
+completeGame();
