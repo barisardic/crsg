@@ -94,8 +94,6 @@
             if(i < 2) {
                 levelBtn.onclick = () => {
                     if(!( parseInt(localStorage.getItem('selectedLevel')) === i)) {
-
-                        alert("NOT A RELOAD");
                         localStorage.setItem('isReloaded', 'false');
                         localStorage.setItem('selectedLevel', i);
                     }

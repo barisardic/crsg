@@ -89,7 +89,7 @@ var scrollingElement = (document.scrollingElement || document.body);
 scrollingElement.scrollTop = scrollingElement.scrollHeight;
 
 /**
- * @type {ErrorPair[]} Holds each review comment's visual and model data.
+ * Holds each review comment's visual and model data.
  */
 let errors = [];
 
@@ -98,7 +98,6 @@ levelData.errorDatas.forEach(data => {
     errors.push(new ErrorPair(data));
 });
 
-var completedAlready = false;
 // If page is reloaded, get data from local storage.
 if( isReloaded === 'true') {
     reloadInit();
@@ -127,6 +126,7 @@ function newInit( ) {
     persistData.startTime = startTime;
     persistData.showSolutions = false;
     persistData.code = editor2.getSession().getValue();
+    persistData.levelCompleted = false;
 
     // Save each CodeError object.
     persistData.errorDatas = [];
@@ -134,6 +134,7 @@ function newInit( ) {
         persistData.errorDatas.push(i.errorData);
     });
     
+    // Save data to localstorage.
     savePageData(persistData);
     localStorage.setItem("isReloaded", 'true');
 }
@@ -141,9 +142,7 @@ function newInit( ) {
 /**
  * Used to get page data from local storage.
  */
-
 function reloadInit( ) {
-    completedAlready = true;
     console.log("Reloaded");
 
     persistData = getPageData();
@@ -154,13 +153,9 @@ function reloadInit( ) {
     startTime = persistData.startTime;
     editor2.getSession().setValue( persistData.code);
 
-    
+    // Set review comment datas to previous.
     for(let i = 0; i < persistData.errorDatas.length; i++) {
         (errors[i]).errorData.setAgain(persistData.errorDatas[i]);
-
-        if(!persistData.errorDatas[i].resolved) {
-            completedAlready = false;
-        }
     }
 
     document.getElementById('scoreInfo').innerText = score.toFixed(2);
@@ -197,6 +192,10 @@ errors.forEach((curErrPair) => {
 
 createOverallComment();
 // FUNCTIONS
+
+/**
+ * Creates an overall comment and adds it to the reviews tab.
+ */
 function createOverallComment() {
 
     let overallCommentWrapper = document.createElement('div');
@@ -241,14 +240,14 @@ function setupEditor(editorName, readOnly, theme) {
     return newEditor;
 }
 
-/*
+// Works while mouse is down on horizontal dragbar.
+/**
  * Resizing Code
  * Used to resize the left-side editor vertically.
  */
-// Works while mouse is down on horizontal dragbar.
 $('#horizontal_dragbar' ).mousedown(function (e ) {
     e.preventDefault();
-    window.vertical_dragging = true;
+    vertical_dragging = true;
 
     var editor_1 = $('#editor_1' );
     
@@ -280,7 +279,7 @@ $('#horizontal_dragbar' ).mousedown(function (e ) {
 // Used to resize the editors horizontally.
 $('#vertical_dragbar' ).mousedown(function (e ) {
     e.preventDefault();
-    window.horizontal_dragging = true;
+    horizontal_dragging = true;
 
     var editor_1 = $('#editor_1' );
     var left_offset = editor_1.offset().left;
@@ -329,7 +328,7 @@ window.onresize = () => {
 // Finish resizing when mouse is up.
 $(document ).mouseup(function (e ) {
 
-    if (window.vertical_dragging || window.horizontal_dragging) {
+    if (vertical_dragging || horizontal_dragging) {
         var editor_1 = $('#editor_1' );
         $('#horizontal_dragbar' ).css('opacity', 1 );
         $('#vertical_dragbar' ).css('opacity', 1 );
@@ -432,6 +431,9 @@ function addDiscussion(errorPair) {
             // Show the hint.
             errorData.showHint = true;
             errorReason.innerText = errorData.toString();
+
+            persistData.errorDatas[curId] = errorData;
+            savePageData(persistData);
         };
     };
 
@@ -491,6 +493,7 @@ document.getElementById("solutionConfirm").onclick = () => {
 
     errors.forEach(err => {
 
+        // Change feedback
         err.errorElement.firstChild.innerText = err.errorData.getExplanation();
 
         err.errorElement.removeChild(err.errorElement.firstChild.nextSibling); 
@@ -501,6 +504,7 @@ document.getElementById("solutionConfirm").onclick = () => {
         };
     });
 
+    // Highlight solutions.
     levelData.solutionHighlights.forEach((rangex) => {
         editor2.session.addMarker(
             new Range(rangex[0] - 1, 0, rangex[1], 0), "ace_step", "text"
@@ -509,15 +513,23 @@ document.getElementById("solutionConfirm").onclick = () => {
     
 
     document.getElementById("feedbacks").click();
+    // Make show solutions non-clickable.
     document.getElementById("show-solutions").onclick = null;
 
     persistData.showSolutions = true;
     savePageData(persistData);
 };
 
+/**
+ * If level was completed before reload, complete game.
+ */
+if (persistData.levelCompleted) {
+    completeGame();
+}
 if (persistData.showSolutions) {
     document.getElementById("solutionConfirm").click();
 }
+
 
 /**
  * Template of the JSON object to post to judge0 API.
@@ -650,6 +662,10 @@ function runCode(source) {
 
 }
 
+/**
+ * Infers which review comments are solved according to run result.
+ * @param {Object} runAdapter Run data from API (Reformatted).
+ */
 function findCorrects(runAdapter) {
     
     console.log("Find Correct Starts");
@@ -657,7 +673,6 @@ function findCorrects(runAdapter) {
     
     let runEvaluation = {};
 
-    //ToDo Give feedbacks.
     if (runAdapter.compileStatus === "OK") {
         if (runAdapter.runError === "") {
 
@@ -667,6 +682,7 @@ function findCorrects(runAdapter) {
             let correctness = [];
             runEvaluation.correctness = correctness;
 
+            // Slit run output to lines.
             let output = runAdapter.output.split("\n");
             output.pop();
             console.log(output);
@@ -687,25 +703,31 @@ function findCorrects(runAdapter) {
             });
         }
         else {
+            // If there is an uncaught runtime error, show error in error console.
             document.getElementById("consoleText").innerText = runAdapter.runError;
             runEvaluation.compiled = false;
             console.log(runAdapter.compileStatus);
         }
     }
     else {
+        // If there is a compile time error, show error in error console.
         document.getElementById("consoleText").innerText = runAdapter.compileStatus;
         runEvaluation.compiled = false;
         console.log(runAdapter.compileStatus);
     }
 
-    console.log("Eval complete");
     console.log(runEvaluation);
     return runEvaluation;
 }
 
+/**
+ * Uses runEvaluation to create feedbacks.
+ * @param {Object} runEvaluation Used to create feedbacks.
+ */
 function doReview(runEvaluation) {
     let dangerWarn = false;
 
+    // If there is an error, show on the error console.
     if (!runEvaluation.compiled) {
         alert("Runtime or Compilation Error");
         document.getElementById("errorOutput").click();
@@ -721,8 +743,6 @@ function doReview(runEvaluation) {
 
         let previouslyUnsolved = !err.errorData.resolved;
         console.log(err);
-
-        
 
         if (err.errorData.isTrueError) {
             if (!err.errorData.guess) {
@@ -764,50 +784,68 @@ document.getElementById("submitConfirm").onclick = () => {
  * Complete the commit. Update the score, feedbacks.
  */
 function acceptChanges() {
+
+    // Set score to zero before recalculation.
     score = 0;
+    // Save latest code for reload.
     persistData.code = editor2.getSession().getValue();
 
+    // If level completed stays true, game will be completed.
     let levelCompleted = true;
     for(let i = 0; i < errors.length; i++) {
         let err = errors[i];
 
         err.errorData.updateFeedback();
 
+        // If one of the errors is not resolved, levelCompleted becomes false.
         if (!err.errorData.resolved) {
             levelCompleted = false;
         }
 
+        // Recalculate score.
         score += err.errorData.currentScore;
 
+        // Update the feedback text.
         err.errorElement.firstChild.innerText = err.errorData.toString();
 
+        // Update score text.
         document.getElementById('scoreInfo').innerText = score.toFixed(2);
 
+        // Hide show hint and reject buttons.
         if (err.action === 'hide') {
             err.errorElement.firstChild.style.color = '#34eb77';
             err.errorElement.firstChild.className = '';
             err.errorElement.firstChild.nextSibling.style.display = 'none';
         }
+        // Show show hint and reject buttons.
         else if (err.action === 'show') {
             err.errorElement.firstChild.nextSibling.style.display = 'block';
         }
     
+        // Save review comment data.
         persistData.errorDatas[i] = err.errorData;
     }
 
     if (levelCompleted) {
         completeGame();
+
+        persistData.levelCompleted = levelCompleted;
     }
 
+    // Change focus to reviews.
     document.getElementById("feedbacks").click();
+
+    // Increment review counter.
     reviewCounter++;
+
+    // Save page datas. (for reload)
     persistData.reviewCounter = reviewCounter;
     persistData.score = score;
     savePageData(persistData);
 }
 
 /**
- * Inserts a main function to the source code.
+ * Inserts a main function that tests the code to the source code.
  * @param {string} code Source code.
  * @returns Resulting code. 
  */
@@ -818,18 +856,21 @@ function insertMain (code) {
 }
 
 /**
- * Updates the above timer bar each second.
+ * Updates the above timer bar once per second.
  * @function
  */
 var timeUpdate = () => {
 
+    // Get current time.
     let date_now = new Date ();
     let time_now = date_now.getTime ();
     let time_diff = time_now - startTime;
+
+    // Calculate remaining time (or penalized).
     let passedSeconds = Math.floor(time_diff / 1000 );
-    
     let remainingTime = scoreTimeTreshold * 60 - passedSeconds;
 
+    // Update Time Display.
     let msg = "Remaining Time: ";
     if (remainingTime <= 0 ) {
         remainingTime *= -1;
@@ -843,16 +884,18 @@ var timeUpdate = () => {
     document.getElementById('timeInfo').innerHTML = msg +
     mx + ":" + s;
 
+    // Calculate Penalty.
     let penalty = (reviewCounter - 2) * 20;
     if(msg[0] != 'R') {
         penalty += m + 1;
-    }    
+    }
+    // Update penalty display. 
     document.getElementById('penaltyInfo').innerText = Math.min(100, penalty);
     
     setTimeout(timeUpdate, 1000);
 
 }
-
+// Start time update immediately.
 timeUpdate();
 
 /**
@@ -867,14 +910,17 @@ function checkTime(i) {
 
 /**
  * Enables/disables a spinning loader animation.
- * @param {boolean} show Should the spinner be shown. 
+ * @param {boolean} show Should the spinner be visible. 
  */
 function showLoader(show) {
+
+    // Create and show loader.
     if (document.getElementById("loader") === null && show) {
         let loader = document.createElement("div");
         loader.id = "loader";
         document.body.appendChild(loader);
     }
+    // Remove Loader
     else if(!show) {
         let loader = document.getElementById("loader");
         loader.parentNode.removeChild(loader);
@@ -883,26 +929,28 @@ function showLoader(show) {
 
 /**
  * Runned when all reviews are resolved.
- * Disables edit, stops timer, shows a congratulations popup.
+ * Disables edit, disables commit, stops timer, shows a congratulations popup.
  */
 function completeGame() {
+
+    // Change overall comment.
     let overallComment = document.getElementById('overallComment');
     overallComment.innerText = "Looks good.";
     overallComment.style.color = "#6fd435";
 
+    // Disable commit.
     let subButton = document.getElementById("submit-btn");
     subButton.innerText = "Go Back";
     subButton.onclick = () => {
         window.location.href = "/game-mode-select.html";
     };
 
+    // Disable edit.
     editor2.setReadOnly(true);
 
+    // Stop timer.
     timeUpdate = () => {};
 
+    // Congratulate.
     $("#congratModal").modal('show');
-}
-
-if(completedAlready) {
-    completeGame();
 }
