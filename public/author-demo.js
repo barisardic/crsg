@@ -6,6 +6,21 @@ import {ErrorPair} from '/codeError.js';
 import levelDatas from '/author-level-texts.js';
 var Range = ace.require('ace/range').Range;
 
+// Page load date, used for time scoring.
+/**
+ * Page load date.
+ */
+const startDate = new Date();
+
+/**
+ * Page load time. (First load)
+ */
+var startTime;
+
+/**
+ * Current date. Is updated when clicked submit.
+ */
+var dateNow;
 
 // Get selected level's data.
 /**
@@ -17,17 +32,18 @@ var levelData = levelDatas[localStorage.getItem('selectedLevel')];
 /**
  * Editor that shows the reviewed code. Is read-only.
  */
-const editor = setupEditor( "editor_1", true, "ace/theme/monokai");
+const editor = setupEditor("editor_1", true, "ace/theme/monokai");
+
 /**
  * Editor that shows the latest code.
  */
-const editor2 = setupEditor( "editor_2", false, "ace/theme/xcode");
-
+const editor2 = setupEditor("editor_2", false, "ace/theme/xcode");
 
 /**
  * Becomes true while dragging the vertical resize bar.
  */
 var vertical_dragging = false;
+
 /**
  * Becomes true while dragging the horizontal resize bar.
  */
@@ -36,34 +52,119 @@ var horizontal_dragging = false;
 /**
  * Player's total score.
  */
-var score = 0;
+var score;
 
-// Page load date, used for time scoring.
 /**
- * Page load date.
+ * Is the page reloaded.
  */
-const startDate = new Date();
+let isReloaded = localStorage.getItem("isReloaded");
+
 /**
- * Page load time.
+ * Data that persists through reload.
  */
-const startTime = startDate.getTime();
+var persistData;
+
 /**
- * Current date. Is updated when clicked submit.
+ * Counts review rounds.
  */
-var dateNow;
+var reviewCounter;
+
+/**
+ * Saves the data to local storage.
+ * @param {Object} persist Data that should be saved.
+ */
+function savePageData(persist) {
+    localStorage.setItem('persistData', JSON.stringify(persist));
+};
+
+/**
+ * Gets the saved data from local storage.
+ */
+function getPageData() {
+    return JSON.parse(localStorage.getItem('persistData'));
+};
 
 // Automatically scroll to the bottom of the page.
 var scrollingElement = (document.scrollingElement || document.body);
 scrollingElement.scrollTop = scrollingElement.scrollHeight;
 
 /**
- * Holds each review comment's visual and model data.
+ * @type {ErrorPair[]} Holds each review comment's visual and model data.
  */
 let errors = [];
+
 // Filling the errors array with review data.
-levelData.errorDatas.forEach( data => {
+levelData.errorDatas.forEach(data => {
     errors.push(new ErrorPair(data));
 });
+
+var completedAlready = false;
+// If page is reloaded, get data from local storage.
+if( isReloaded === 'true') {
+    reloadInit();
+}
+// If page is new, create everything from scratch.
+else {
+    newInit();
+}
+
+/**
+ * Used for creating and saving game metadata.
+ */
+function newInit( ) {
+    // Create data to persist through reload.
+    persistData = {};
+    // Set score to zero.
+    score = 0;
+    // Set review counter to 2. (First review is made pre game.)
+    reviewCounter = 2;
+    // Start time is set to start date's time.
+    startTime = startDate.getTime();
+
+    // Save score, review counter, startTime, showSolutions and current code.
+    persistData.score = score;
+    persistData.reviewCounter = reviewCounter;
+    persistData.startTime = startTime;
+    persistData.showSolutions = false;
+    persistData.code = editor2.getSession().getValue();
+
+    // Save each CodeError object.
+    persistData.errorDatas = [];
+    errors.forEach((i) => {
+        persistData.errorDatas.push(i.errorData);
+    });
+    
+    savePageData(persistData);
+    localStorage.setItem("isReloaded", 'true');
+}
+
+/**
+ * Used to get page data from local storage.
+ */
+
+function reloadInit( ) {
+    completedAlready = true;
+    console.log("Reloaded");
+
+    persistData = getPageData();
+    console.log(persistData);
+
+    score = persistData.score;
+    reviewCounter = persistData.reviewCounter;
+    startTime = persistData.startTime;
+    editor2.getSession().setValue( persistData.code);
+
+    
+    for(let i = 0; i < persistData.errorDatas.length; i++) {
+        (errors[i]).errorData.setAgain(persistData.errorDatas[i]);
+
+        if(!persistData.errorDatas[i].resolved) {
+            completedAlready = false;
+        }
+    }
+
+    document.getElementById('scoreInfo').innerText = score.toFixed(2);
+}
 
 /**
  * Each comment's score value.
@@ -73,7 +174,7 @@ const commentScore = 100 / errors.length;
 /**
  * Number of minutes without time penalty.
  */
-var scoreTimeTreshold = 1/60 * errors.length;
+var scoreTimeTreshold = 2 * errors.length;
 
 /**
  * HTML element in which review comments are displayed.
@@ -94,7 +195,23 @@ errors.forEach((curErrPair) => {
     );
 });
 
+createOverallComment();
 // FUNCTIONS
+function createOverallComment() {
+
+    let overallCommentWrapper = document.createElement('div');
+    overallCommentWrapper.id = "overall";
+    let overallCommentCaption = document.createElement('p');
+    overallCommentCaption.innerText = "Overall Comment: ";
+    let overallComment = document.createElement('p');
+    overallComment.id = 'overallComment';
+    overallComment.style.color = '#d4b935';
+    overallComment.innerText = "Needs Work.";
+    overallCommentWrapper.appendChild(overallCommentCaption);
+    overallCommentWrapper.appendChild(overallComment);
+    overallCommentWrapper.appendChild(document.createElement('hr'));
+    errors_tab.appendChild(overallCommentWrapper);
+}
 
 /**
  * Create and setup an editor.
@@ -103,20 +220,20 @@ errors.forEach((curErrPair) => {
  * @param {string} theme Preffered theme.
  * @returns Created editor.
  */
-function setupEditor( editorName, readOnly, theme) {
+function setupEditor(editorName, readOnly, theme) {
     // Creating the editor.
-    let newEditor = ace.edit( editorName);
+    let newEditor = ace.edit(editorName);
     // Setting the editor's code to the chosen level's code.
     newEditor.getSession().setValue(levelData.code);
-    newEditor.getSession().setMode( { path: "ace/mode/java", inline: true } );
+    newEditor.getSession().setMode({ path: "ace/mode/java", inline: true } );
 
     // Setting the theme.
     newEditor.setTheme(theme);
     // Setting the read-only property.
-    newEditor.setReadOnly( readOnly);
+    newEditor.setReadOnly(readOnly);
 
     // Enable autocompletion and snippets.
-    newEditor.setOptions( {
+    newEditor.setOptions({
         enableBasicAutocompletion: true,
         enableSnippets           : true,
         enableLiveAutocompletion : true
@@ -129,63 +246,63 @@ function setupEditor( editorName, readOnly, theme) {
  * Used to resize the left-side editor vertically.
  */
 // Works while mouse is down on horizontal dragbar.
-$( '#horizontal_dragbar' ).mousedown( function ( e ) {
+$('#horizontal_dragbar' ).mousedown(function (e ) {
     e.preventDefault();
     window.vertical_dragging = true;
 
-    var editor_1 = $( '#editor_1' );
+    var editor_1 = $('#editor_1' );
     
     // Top of the editor.
     var top_offset = editor_1.offset().top;
 
     // Handle mouse movement.
-    $( document ).mousemove( function ( e ) {
+    $(document ).mousemove(function (e ) {
 
         // Setting the editor height.
         var eheight = e.pageY - top_offset;
         
         // Below panel cannot be smaller than 20%.
-        eheight = Math.min( eheight, $(window).height() * 0.80);
+        eheight = Math.min(eheight, $(window).height() * 0.80);
 
         // Set wrapper height
         // Leaving 5px for the resize bar.
-        $( '#editor_1' ).css( 'height', eheight - 5);
-        $( '#editor_1_wrap' ).css( 'height', eheight);
-        $( '#console' ).css( 'height', $(window).height() - eheight - 20);
+        $('#editor_1' ).css('height', eheight - 5);
+        $('#editor_1_wrap' ).css('height', eheight);
+        $('#console' ).css('height', $(window).height() - eheight - 20);
 
         // Lower dragbar opacity while dragging.
-        $( '#horizontal_dragbar' ).css( 'opacity', 0.15 );
+        $('#horizontal_dragbar' ).css('opacity', 0.15 );
 
     } );
 
 } );
 
 // Used to resize the editors horizontally.
-$( '#vertical_dragbar' ).mousedown( function ( e ) {
+$('#vertical_dragbar' ).mousedown(function (e ) {
     e.preventDefault();
     window.horizontal_dragging = true;
 
-    var editor_1 = $( '#editor_1' );
+    var editor_1 = $('#editor_1' );
     var left_offset = editor_1.offset().left;
 
     // handle mouse movement
-    $( document ).mousemove( function ( e ) {
+    $(document ).mousemove(function (e ) {
 
         // Editor width.
         var ewidth = e.pageX - left_offset;
 
         // Limit resize.
-        ewidth = Math.max( 200, ewidth);
-        ewidth = Math.min( $(window).width() - 160, ewidth);
+        ewidth = Math.max(200, ewidth);
+        ewidth = Math.min($(window).width() - 160, ewidth);
 
         // Resizing.
-        $( '#editor_bars_wrapper' ).css( 'width', ewidth);
+        $('#editor_bars_wrapper' ).css('width', ewidth);
         $('#editor_1_wrap').css('width', ewidth - 5);
         $('#editor_2').css('width', $('#multiple_editor_wrapper').width() - ewidth);
         $('#right_editor_wrap').css('width', $('#multiple_editor_wrapper').width() - ewidth);
 
         // Lower dragbar opacity while dragging.
-        $( '#vertical_dragbar' ).css( 'opacity', 0.15 );
+        $('#vertical_dragbar' ).css('opacity', 0.15 );
 
     } );
 
@@ -210,13 +327,13 @@ window.onresize = () => {
 // };
 
 // Finish resizing when mouse is up.
-$( document ).mouseup( function ( e ) {
+$(document ).mouseup(function (e ) {
 
-    if( window.vertical_dragging || window.horizontal_dragging) {
-        var editor_1 = $( '#editor_1' );
-        $( '#horizontal_dragbar' ).css( 'opacity', 1 );
-        $( '#vertical_dragbar' ).css( 'opacity', 1 );
-        $( document ).unbind( 'mousemove' );
+    if (window.vertical_dragging || window.horizontal_dragging) {
+        var editor_1 = $('#editor_1' );
+        $('#horizontal_dragbar' ).css('opacity', 1 );
+        $('#vertical_dragbar' ).css('opacity', 1 );
+        $(document ).unbind('mousemove' );
 
         // Editors don't adjust itself without these functions.
         editor.resize();
@@ -242,6 +359,7 @@ function addDiscussion(errorPair) {
     discussion.className = "to-fix-error";
     // Set id.
     discussion.id = "error-" + errorCount;
+    let curId = errorCount;
 
     // Review comment.
     let errorReason = document.createElement("p");
@@ -253,7 +371,15 @@ function addDiscussion(errorPair) {
      */
     let rejectButton = document.createElement("button");
     rejectButton.className ="mdl-button mdl-js-button mdl-button--raised mdl-button--colored";
-    rejectButton.innerText = "Reject";
+
+    if(errorData.guess) {
+        rejectButton.innerText = "Reject";   
+    }
+    else {
+        rejectButton.innerText = "Accept";
+        // Strike text to indicate rejection.
+        errorReason.className = "striked";
+    }
 
     /**
      * Show hint button.
@@ -285,6 +411,9 @@ function addDiscussion(errorPair) {
             errorReason.className = "";
             errorData.guess = true;
         }
+
+        persistData.errorDatas[curId] = errorData;
+        savePageData(persistData);
     };
 
     // Add reject button to the wrapper.
@@ -306,9 +435,11 @@ function addDiscussion(errorPair) {
         };
     };
 
-    // Add show hint button to the wrapper.
-    buttonWrapper.appendChild(hintButton);
-
+    if(!errorData.showHint) {
+        // Add show hint button to the wrapper.
+        buttonWrapper.appendChild(hintButton);
+    }
+    
     // Add the button wrapper to the review comment.
     discussion.appendChild(buttonWrapper);
 
@@ -320,6 +451,12 @@ function addDiscussion(errorPair) {
 
     // Set errorpair's HTML element to the created discussion.
     errorPair.errorElement = discussion;
+
+    if(errorData.resolved) {
+        errorReason.style.color = '#34eb77';
+        errorReason.className = '';
+        buttonWrapper.style.display = 'none';
+    }
     errorCount++;
 }
 
@@ -328,7 +465,6 @@ errors.forEach(err => {
     addDiscussion(err);
 });
 
-var reviewCounter = 2;
 document.getElementById("submit-btn").onclick = () => {
     let runSource = editor2.getSession().getValue();
     
@@ -374,8 +510,14 @@ document.getElementById("solutionConfirm").onclick = () => {
 
     document.getElementById("feedbacks").click();
     document.getElementById("show-solutions").onclick = null;
+
+    persistData.showSolutions = true;
+    savePageData(persistData);
 };
 
+if (persistData.showSolutions) {
+    document.getElementById("solutionConfirm").click();
+}
 
 /**
  * Template of the JSON object to post to judge0 API.
@@ -421,7 +563,7 @@ const sendData = {
  * Runs a Java source code, then evaluates the results and gives feedback.
  * @param {string} source Java source code. 
  */
-function runCode( source) {
+function runCode(source) {
 
     // Set send data's source and add to the post settings.
     sendData.source_code = source;
@@ -432,7 +574,7 @@ function runCode( source) {
         console.log(response);
         
         // Waits 3 seconds to get the result. (If token is used too early, the code will not be run.)
-        setTimeout( getResult, 3000);
+        setTimeout(getResult, 3000);
         
         function getResult() {
             
@@ -446,7 +588,7 @@ function runCode( source) {
                 // If the code isn't run yet, GET again after 1 second.
                 if(finalResponse.status.id == 1 || finalResponse.status.id == 2) {
                     console.log("TRYING AGAIN");
-                    setTimeout( getResult, 1000);
+                    setTimeout(getResult, 1000);
                 }
                 else {
 
@@ -479,10 +621,10 @@ function runCode( source) {
                         runAdapter.runError = finalResponse.stderr;
                     }
 
-                    let runEvaluation = findCorrects( runAdapter);
+                    let runEvaluation = findCorrects(runAdapter);
 
                     // If code compiled do a review
-                    doReview( runEvaluation);
+                    doReview(runEvaluation);
                 }
             }).fail(error => {
                 alert("GET FAILED");
@@ -508,16 +650,19 @@ function runCode( source) {
 
 }
 
-function findCorrects( runAdapter) {
+function findCorrects(runAdapter) {
     
-    console.log( "Find Correct Starts");
+    console.log("Find Correct Starts");
     console.log(runAdapter);
     
     let runEvaluation = {};
 
     //ToDo Give feedbacks.
-    if( runAdapter.compileStatus === "OK") {
-        if( runAdapter.runError === "") {
+    if (runAdapter.compileStatus === "OK") {
+        if (runAdapter.runError === "") {
+
+            document.getElementById("consoleText").innerText = "Compiled Successfully.";
+
             runEvaluation.compiled = true;
             let correctness = [];
             runEvaluation.correctness = correctness;
@@ -527,10 +672,10 @@ function findCorrects( runAdapter) {
             console.log(output);
 
             let currentCorrect = true;
-            output.forEach( outputLine => {
+            output.forEach(outputLine => {
                 console.log('current correct: ' + currentCorrect);
 
-                if( isNaN(outputLine)) {
+                if (isNaN(outputLine)) {
                     if(outputLine === 'false') {
                         currentCorrect = false;
                     }
@@ -558,10 +703,10 @@ function findCorrects( runAdapter) {
     return runEvaluation;
 }
 
-function doReview( runEvaluation) {
+function doReview(runEvaluation) {
     let dangerWarn = false;
 
-    if( !runEvaluation.compiled) {
+    if (!runEvaluation.compiled) {
         alert("Runtime or Compilation Error");
         document.getElementById("errorOutput").click();
         return;
@@ -575,12 +720,12 @@ function doReview( runEvaluation) {
         let err = errors[i];
 
         let previouslyUnsolved = !err.errorData.resolved;
-        console.log( err);
+        console.log(err);
 
         
 
-        if( err.errorData.isTrueError) {
-            if( !err.errorData.guess) {
+        if (err.errorData.isTrueError) {
+            if (!err.errorData.guess) {
                 err.errorData.checkAnswer(false, reviewCounter, time_diff, scoreTimeTreshold, commentScore);
             }
             else {
@@ -588,7 +733,7 @@ function doReview( runEvaluation) {
             }
         }
         else {
-            err.errorData.checkAnswer( !err.errorData.guess, reviewCounter, time_diff, scoreTimeTreshold, commentScore);
+            err.errorData.checkAnswer(!err.errorData.guess, reviewCounter, time_diff, scoreTimeTreshold, commentScore);
         }
 
         if(err.errorData.updatedResolved && previouslyUnsolved) {
@@ -603,7 +748,7 @@ function doReview( runEvaluation) {
         }
     }
 
-    if( dangerWarn) {
+    if (dangerWarn) {
         $("#submitModal").modal('show');   
     }
     else {
@@ -620,28 +765,45 @@ document.getElementById("submitConfirm").onclick = () => {
  */
 function acceptChanges() {
     score = 0;
+    persistData.code = editor2.getSession().getValue();
 
+    let levelCompleted = true;
     for(let i = 0; i < errors.length; i++) {
         let err = errors[i];
 
         err.errorData.updateFeedback();
 
+        if (!err.errorData.resolved) {
+            levelCompleted = false;
+        }
+
         score += err.errorData.currentScore;
 
         err.errorElement.firstChild.innerText = err.errorData.toString();
 
-        if( err.action === 'hide') {
+        document.getElementById('scoreInfo').innerText = score.toFixed(2);
+
+        if (err.action === 'hide') {
             err.errorElement.firstChild.style.color = '#34eb77';
             err.errorElement.firstChild.className = '';
             err.errorElement.firstChild.nextSibling.style.display = 'none';
         }
-        else if( err.action === 'show') {
+        else if (err.action === 'show') {
             err.errorElement.firstChild.nextSibling.style.display = 'block';
         }
+    
+        persistData.errorDatas[i] = err.errorData;
+    }
+
+    if (levelCompleted) {
+        completeGame();
     }
 
     document.getElementById("feedbacks").click();
     reviewCounter++;
+    persistData.reviewCounter = reviewCounter;
+    persistData.score = score;
+    savePageData(persistData);
 }
 
 /**
@@ -649,28 +811,31 @@ function acceptChanges() {
  * @param {string} code Source code.
  * @returns Resulting code. 
  */
-function insertMain( code) {
+function insertMain (code) {
     var insertHere = code.lastIndexOf("}");
 
     return code.slice(0, insertHere) + levelData.test + "}";
 }
 
-
-(function timeUpdate() {
+/**
+ * Updates the above timer bar each second.
+ * @function
+ */
+var timeUpdate = () => {
 
     let date_now = new Date ();
     let time_now = date_now.getTime ();
     let time_diff = time_now - startTime;
-    let passedSeconds = Math.floor ( time_diff / 1000 );
+    let passedSeconds = Math.floor(time_diff / 1000 );
     
     let remainingTime = scoreTimeTreshold * 60 - passedSeconds;
 
     let msg = "Remaining Time: ";
-    if( remainingTime <= 0 ) {
+    if (remainingTime <= 0 ) {
         remainingTime *= -1;
         msg = "Penalized Time: ";
     }
-    let m = Math.floor ( remainingTime / 60);
+    let m = Math.floor (remainingTime / 60);
     let s = remainingTime % 60;
 
     let mx = checkTime(m);
@@ -683,9 +848,12 @@ function insertMain( code) {
         penalty += m + 1;
     }    
     document.getElementById('penaltyInfo').innerText = Math.min(100, penalty);
+    
     setTimeout(timeUpdate, 1000);
 
-})();
+}
+
+timeUpdate();
 
 /**
  * Adds zero in front of numbers less than 10.
@@ -701,8 +869,8 @@ function checkTime(i) {
  * Enables/disables a spinning loader animation.
  * @param {boolean} show Should the spinner be shown. 
  */
-function showLoader( show) {
-    if( document.getElementById("loader") === null && show) {
+function showLoader(show) {
+    if (document.getElementById("loader") === null && show) {
         let loader = document.createElement("div");
         loader.id = "loader";
         document.body.appendChild(loader);
@@ -713,7 +881,15 @@ function showLoader( show) {
     }
 }
 
+/**
+ * Runned when all reviews are resolved.
+ * Disables edit, stops timer, shows a congratulations popup.
+ */
 function completeGame() {
+    let overallComment = document.getElementById('overallComment');
+    overallComment.innerText = "Looks good.";
+    overallComment.style.color = "#6fd435";
+
     let subButton = document.getElementById("submit-btn");
     subButton.innerText = "Go Back";
     subButton.onclick = () => {
@@ -722,7 +898,11 @@ function completeGame() {
 
     editor2.setReadOnly(true);
 
-    alert("Congrats You Completed the level. If you wish you can see the solutions or you can go back to select another level.");
+    timeUpdate = () => {};
+
+    $("#congratModal").modal('show');
 }
 
-completeGame();
+if(completedAlready) {
+    completeGame();
+}

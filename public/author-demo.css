@@ -44,6 +44,14 @@ body {
     z-index: 0;
 }
 
+#overall {
+    margin-top: 10px;
+}
+
+#overall p {
+    display: inline;
+}
+
 #horizontal_dragbar {
     background-color: #662277;
     width: 100%;

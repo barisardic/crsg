@@ -78,8 +78,6 @@
         </section>
     </main>
     
-    
-    <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script>
@@ -95,7 +93,13 @@
 
             if(i < 2) {
                 levelBtn.onclick = () => {
-                    localStorage.setItem('selectedLevel', i);
+                    if(!( parseInt(localStorage.getItem('selectedLevel')) === i)) {
+
+                        alert("NOT A RELOAD");
+                        localStorage.setItem('isReloaded', 'false');
+                        localStorage.setItem('selectedLevel', i);
+                    }
+                    
                     window.location.href = "/author-demo.html";
                 };
             }

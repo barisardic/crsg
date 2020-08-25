@@ -1,7 +1,27 @@
-// Review comment class.
 export class CodeError {
+    /**
+     * Contains data of a review comment.
+     * @param {number[]} lines Contains start and end lines of the review comment.
+     * @param {string} reason First review. (Reason of error)
+     * @param {boolean} isTrueError Is the error a genuine error. (If false, should be rejected) 
+     * @param {string} hint Hint that will be shown.
+     * @param {string} explanation Solution explanation
+     * @property {number[]} lines Contains start and end lines of the review comment.
+     * @property {string} reason First review. (Reason of error)
+     * @property {string} hint Hint that will be shown.
+     * @property {boolean} showHint Should the hint be displayed.
+     * @property {boolean} isTrueError Is the error a genuine error. (If false, should be rejected) 
+     * @property {boolean} guess Guess = ture means the player thinks the review is genuine.
+     * @property {boolean} resolved Is the problem solved.
+     * @property {boolean} updatedResolved Used to stage new resolved state before commiting.
+     * @property {string[]} _feedback Cotains feedbacks, hints.
+     * @property {string[]} _newFeedback Used to stage new reviews before confirmation.
+     * @property {string} explanation Solution explanation.
+     * @property {number} currentScore User's current score gained from this review.
+     * @property {number} gainedScore Used to stage gained score before confirmation.
+     */
     constructor(lines, reason, isTrueError, hint, explanation) {
-        // Linet at which error occurs.
+        // Lines at which error occurs.
         this.lines = lines;
         // First review.
         this.reason = reason;
@@ -27,6 +47,22 @@ export class CodeError {
         this.currentScore = 0;
         // How much score is gained from this solution.
         this.gainedScore = 0;
+    }
+
+    setAgain( storedError) {
+        this.lines = storedError.lines;
+        this.reason = storedError.reason;
+        this.hint = storedError.hint;
+        this.showHint = storedError.showHint;
+        this.isTrueError = storedError.isTrueError;
+        this.guess = storedError.guess;
+        this.resolved = storedError.resolved;
+        this.updatedResolved = storedError.updatedResolved;
+        this._feedback = storedError._feedback;
+        this._newFeedback = storedError._newFeedback;
+        this.explanation = storedError.explanation;
+        this.currentScore = storedError.currentScore;
+        this.gainedScore = storedError.gainedScore;
     }
 
     // Returns the solution text.
@@ -69,7 +105,7 @@ export class CodeError {
                 newFeedback = "Thanks. Problem is solved.";
             }
             else {
-                newFeedback = "You are right. This comment was wrong.";
+                newFeedback = "You are right. This comment was a false positive.";
             }
             
         }
@@ -98,6 +134,13 @@ export class CodeError {
         this._newFeedback.push([ reviewCounter, newFeedback]);
     }
 
+    /**
+     * Calculates the score the player will get from a review comment.
+     * @param {number} reviewCounter 
+     * @param {number} time_diff 
+     * @param {number} scoreTimeTreshold 
+     * @param {number} commentScore 
+     */
     calculateScore( reviewCounter, time_diff, scoreTimeTreshold, commentScore) {
         let substractPercent = ((reviewCounter - 2) * 20);
         if(this.showHint) {
@@ -121,6 +164,10 @@ export class CodeError {
         return commentScore * (100 - substractPercent) / 100;
     }
     
+    /**
+     * Updates the feedback.
+     * @function
+     */
     updateFeedback() {
         this.resolved = this.updatedResolved;
         this._feedback = this._newFeedback;
@@ -130,6 +177,12 @@ export class CodeError {
 
 
 export class ErrorPair {
+    /**
+     * Contains error data and error element (HTML aspects).
+     * @param {CodeError} Error Error data of the error pair.
+     * @property {CodeError} errorData Error data of the error pair.
+     * @property {Object} errorElement Error html element. Is set in addDiscussion function.
+     */
     constructor(Error) {
         this.errorData = Error;
         this.errorElement = null;
