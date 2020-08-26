@@ -93,10 +93,14 @@
 
             if(i < 2) {
                 levelBtn.onclick = () => {
-                    if(!( parseInt(localStorage.getItem('selectedLevel')) === i)) {
-                        localStorage.setItem('isReloaded', 'false');
-                        localStorage.setItem('selectedLevel', i);
-                    }
+
+                    // Previous solution, resets when you change game.
+                    // if(!( parseInt(localStorage.getItem('selectedLevel')) === i)) {
+                    //     localStorage.setItem('isReloaded', 'false');
+                    //     localStorage.setItem('selectedLevel', i);
+                    // }
+
+                    localStorage.setItem('selectedLevel', i);
                     
                     window.location.href = "/author-demo.html";
                 };

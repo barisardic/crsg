@@ -6,6 +6,14 @@ import {ErrorPair} from '/codeError.js';
 import levelDatas from '/author-level-texts.js';
 var Range = ace.require('ace/range').Range;
 
+
+// If not logged in, redirect to sign-up.
+firebase.auth().onAuthStateChanged(user => {
+    if(!user) {
+        window.location.href = '/index.html';
+    }
+});
+
 // Page load date, used for time scoring.
 /**
  * Page load date.
@@ -21,6 +29,11 @@ var startTime;
  * Current date. Is updated when clicked submit.
  */
 var dateNow;
+
+/**
+ * How many seconds have past since page loaded.
+ */
+var time_diff = 0;
 
 // Get selected level's data.
 /**
@@ -57,7 +70,8 @@ var score;
 /**
  * Is the page reloaded.
  */
-let isReloaded = localStorage.getItem("isReloaded");
+let isReloadedString = "isReloaded-" + localStorage.getItem('selectedLevel');
+let isReloaded = localStorage.getItem(isReloadedString);
 
 /**
  * Data that persists through reload.
@@ -74,14 +88,14 @@ var reviewCounter;
  * @param {Object} persist Data that should be saved.
  */
 function savePageData(persist) {
-    localStorage.setItem('persistData', JSON.stringify(persist));
+    localStorage.setItem('persistData-' + localStorage.getItem('selectedLevel'), JSON.stringify(persist));
 };
 
 /**
  * Gets the saved data from local storage.
  */
 function getPageData() {
-    return JSON.parse(localStorage.getItem('persistData'));
+    return JSON.parse(localStorage.getItem('persistData-' + localStorage.getItem('selectedLevel')));
 };
 
 // Automatically scroll to the bottom of the page.
@@ -136,7 +150,7 @@ function newInit( ) {
     
     // Save data to localstorage.
     savePageData(persistData);
-    localStorage.setItem("isReloaded", 'true');
+    localStorage.setItem(isReloadedString, 'true');
 }
 
 /**
@@ -736,7 +750,7 @@ function doReview(runEvaluation) {
 
     let correctness = runEvaluation.correctness;
     let time_now = dateNow.getTime ();
-    let time_diff = time_now - startTime;
+    time_diff = time_now - startTime;
 
     for(let i = 0; i < errors.length; i++) {
         let err = errors[i];
@@ -792,10 +806,16 @@ function acceptChanges() {
 
     // If level completed stays true, game will be completed.
     let levelCompleted = true;
+    let resolvedStore = [];
+    let hintStore = [];
+
     for(let i = 0; i < errors.length; i++) {
         let err = errors[i];
 
         err.errorData.updateFeedback();
+
+        resolvedStore.push( err.errorData.resolved);
+        hintStore.push( err.errorData.showHint);
 
         // If one of the errors is not resolved, levelCompleted becomes false.
         if (!err.errorData.resolved) {
@@ -842,6 +862,22 @@ function acceptChanges() {
     persistData.reviewCounter = reviewCounter;
     persistData.score = score;
     savePageData(persistData);
+
+    // Save to database.
+    let user = firebase.auth().currentUser;
+    let userId = user.uid;
+    let database = firebase.database();
+    let newPostRef = database.ref('author-game/' + userId).push();
+    newPostRef.set({
+        level: localStorage.getItem('selectedLevel'),
+        round: reviewCounter - 2,
+        score: score,
+        timeSpend: time_diff / 1000,
+        hintUses: hintStore,
+        resolved: resolvedStore,
+        levelCompleted: levelCompleted,
+        shownSolution: persistData.showSolutions,
+    });
 }
 
 /**
@@ -866,10 +902,10 @@ var timeUpdate = () => {
     // Get current time.
     let date_now = new Date ();
     let time_now = date_now.getTime ();
-    let time_diff = time_now - startTime;
+    let time_diff2 = time_now - startTime;
 
     // Calculate remaining time (or penalized).
-    let passedSeconds = Math.floor(time_diff / 1000 );
+    let passedSeconds = Math.floor(time_diff2 / 1000 );
     let remainingTime = scoreTimeTreshold * 60 - passedSeconds;
 
     // Update Time Display.

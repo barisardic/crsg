@@ -210,6 +210,36 @@
         </div>
     </div>
 
+    <!-- Firebase -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+   <!-- TODO: Add SDKs for Firebase product that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+   <script src="/__/firebase/6.2.3/firebase-app.js"></script>
+   <script src="/__/firebase/6.2.3/firebase-auth.js"></script>
+   <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+
+   <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+   <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+         apiKey: "AIzaSyA0aonfduOwOfnPoCxZfuaDBcOufU2Zj_8",
+         authDomain: "crsg-protoype.firebaseapp.com",
+         databaseURL: "https://crsg-protoype.firebaseio.com",
+         projectId: "crsg-protoype",
+         storageBucket: "crsg-protoype.appspot.com",
+         messagingSenderId: "438209695879",
+         appId: "1:438209695879:web:41b459953d567130"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+   </script>
+
+   <!-- Level -->
+
     <script src="j0k.js"></script>
     <script src="author-demo.js" type="module"> </script>
 
