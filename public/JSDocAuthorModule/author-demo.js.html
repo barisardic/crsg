@@ -1,4 +1,32 @@
-// CRSG AUTHOR MODULE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: author-demo.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: author-demo.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// CRSG AUTHOR MODULE
 // Author: Yusuf Avci
 
 // Imports
@@ -154,7 +182,7 @@ function reloadInit( ) {
     editor2.getSession().setValue( persistData.code);
 
     // Set review comment datas to previous.
-    for(let i = 0; i < persistData.errorDatas.length; i++) {
+    for(let i = 0; i &lt; persistData.errorDatas.length; i++) {
         (errors[i]).errorData.setAgain(persistData.errorDatas[i]);
     }
 
@@ -481,7 +509,7 @@ document.getElementById("submit-btn").onclick = () => {
 };
 
 document.getElementById("show-solutions").onclick = () => {
-    document.getElementById("solutionScore").innerHTML = "<b>" + score.toFixed(2) + "<b>";
+    document.getElementById("solutionScore").innerHTML = "&lt;b>" + score.toFixed(2) + "&lt;b>";
     $("#solutionModal").modal('show');
 };
 
@@ -609,7 +637,7 @@ function runCode(source) {
                     document.getElementById('multiple_editor_wrapper').style.opacity = '1';
                     showLoader(false);
 
-                    // Use results to infer & check
+                    // Use results to infer &amp; check
 
                     // Holds the run status. Used to be able to change the API easily in the future.
                     let runAdapter = {
@@ -738,7 +766,7 @@ function doReview(runEvaluation) {
     let time_now = dateNow.getTime ();
     let time_diff = time_now - startTime;
 
-    for(let i = 0; i < errors.length; i++) {
+    for(let i = 0; i &lt; errors.length; i++) {
         let err = errors[i];
 
         let previouslyUnsolved = !err.errorData.resolved;
@@ -756,10 +784,10 @@ function doReview(runEvaluation) {
             err.errorData.checkAnswer(!err.errorData.guess, reviewCounter, time_diff, scoreTimeTreshold, commentScore);
         }
 
-        if(err.errorData.updatedResolved && previouslyUnsolved) {
+        if(err.errorData.updatedResolved &amp;&amp; previouslyUnsolved) {
             err.action = 'hide';            
         }
-        else if(!err.errorData.updatedResolved && !previouslyUnsolved) {
+        else if(!err.errorData.updatedResolved &amp;&amp; !previouslyUnsolved) {
             err.action = 'show';
             dangerWarn = true;
         }
@@ -792,7 +820,7 @@ function acceptChanges() {
 
     // If level completed stays true, game will be completed.
     let levelCompleted = true;
-    for(let i = 0; i < errors.length; i++) {
+    for(let i = 0; i &lt; errors.length; i++) {
         let err = errors[i];
 
         err.errorData.updateFeedback();
@@ -874,7 +902,7 @@ var timeUpdate = () => {
 
     // Update Time Display.
     let msg = "Remaining Time: ";
-    if (remainingTime <= 0 ) {
+    if (remainingTime &lt;= 0 ) {
         remainingTime *= -1;
         msg = "Penalized Time: ";
     }
@@ -906,7 +934,7 @@ timeUpdate();
  * @returns Resulting number as a string. 
  */
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};
+    if (i &lt; 10) {i = "0" + i};
     return i;
 }
 
@@ -917,7 +945,7 @@ function checkTime(i) {
 function showLoader(show) {
 
     // Create and show loader.
-    if (document.getElementById("loader") === null && show) {
+    if (document.getElementById("loader") === null &amp;&amp; show) {
         let loader = document.createElement("div");
         loader.id = "loader";
         document.body.appendChild(loader);
@@ -955,4 +983,26 @@ function completeGame() {
 
     // Congratulate.
     $("#congratModal").modal('show');
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CodeError_CodeError.html">CodeError</a></li><li><a href="ErrorPair_ErrorPair.html">ErrorPair</a></li></ul><h3>Global</h3><ul><li><a href="global.html#acceptChanges">acceptChanges</a></li><li><a href="global.html#addDiscussion">addDiscussion</a></li><li><a href="global.html#APIGetSettings">APIGetSettings</a></li><li><a href="global.html#APIPostSettings">APIPostSettings</a></li><li><a href="global.html#checkTime">checkTime</a></li><li><a href="global.html#commentScore">commentScore</a></li><li><a href="global.html#completeGame">completeGame</a></li><li><a href="global.html#createOverallComment">createOverallComment</a></li><li><a href="global.html#dateNow">dateNow</a></li><li><a href="global.html#doReview">doReview</a></li><li><a href="global.html#editor">editor</a></li><li><a href="global.html#editor2">editor2</a></li><li><a href="global.html#errorCount">errorCount</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#errors_tab">errors_tab</a></li><li><a href="global.html#findCorrects">findCorrects</a></li><li><a href="global.html#getPageData">getPageData</a></li><li><a href="global.html#horizontal_dragging">horizontal_dragging</a></li><li><a href="global.html#insertMain">insertMain</a></li><li><a href="global.html#isReloaded">isReloaded</a></li><li><a href="global.html#level1Data">level1Data</a></li><li><a href="global.html#level1ErrorDatas">level1ErrorDatas</a></li><li><a href="global.html#levelData">levelData</a></li><li><a href="global.html#levelDatas">levelDatas</a></li><li><a href="global.html#newInit">newInit</a></li><li><a href="global.html#persistData">persistData</a></li><li><a href="global.html#reloadInit">reloadInit</a></li><li><a href="global.html#reviewCounter">reviewCounter</a></li><li><a href="global.html#runCode">runCode</a></li><li><a href="global.html#savePageData">savePageData</a></li><li><a href="global.html#score">score</a></li><li><a href="global.html#scoreTimeTreshold">scoreTimeTreshold</a></li><li><a href="global.html#sendData">sendData</a></li><li><a href="global.html#setupEditor">setupEditor</a></li><li><a href="global.html#showLoader">showLoader</a></li><li><a href="global.html#startDate">startDate</a></li><li><a href="global.html#startTime">startTime</a></li><li><a href="global.html#timeUpdate">timeUpdate</a></li><li><a href="global.html#vertical_dragging">vertical_dragging</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Wed Aug 26 2020 17:46:31 GMT+0300 (GMT+03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
