@@ -196,7 +196,7 @@ if (levelChosen == 1) {
     answer4.reason.push("Data and resource manipulation");
     answers[3] = answer4;
 
-    var hints = ["There are " + answers.length + " defects in the code", "Pay close attention to comparisons", "Sadly, mistakes can be repeted ", "There are some things in OO languages that are always more dangerous"];
+    var hints = ["There are " + answers.length + " defects in the code", "Pay close attention to comparisons", "Sadly, mistakes can be repeated ", "There are some things in OO languages that are always more dangerous"];
     var GurusWords = ["You should not merge code while the discussions are still taking place.",
         "Offer alternative implementations, but assume the author already considered them. ('What do you think about using a custom validator here?')",
         "Be explicit. Remember people don't always understand your intentions online.",
