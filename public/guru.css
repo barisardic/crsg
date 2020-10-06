@@ -1,6 +1,6 @@
 .guru_modal {
     display: none;
-    position: relative;
+    position: fixed;
     top: 90%;
     left: 50%;
     transform: translate(-50%, -85%);

@@ -43,34 +43,34 @@
 </head>
 
 <body>
-   <div id="overlay">
-      <div class="guru_modal" id="guru_modal">
-         <div class="guru_modal__header" id="guru_modal__header">
-         </div>
-         <div class="guru container">
-            <img class=" guru portrait" name="guruPortrait" src='../assets/astroHappyAnim.gif' />
-            <audio id="guruType" src="../sounds/type.mp3"></audio>
-            <p id="guruSays" class="guruSays noselect">
-               Welcome back to my log! I keep useful code review notes for myself here!
-            </p>
-         </div>
-         <button href="#" class="js-close-modal" id="js-close-modal"></button>
-      </div>
-   </div>
-
-
-   <div class="container" id="container" style=" display: flex; flex-direction: column;">
-
+   <div id="container" >
+    <div id="overlay">
+        <div class="guru_modal" id="guru_modal">
+           <div class="guru_modal__header" id="guru_modal__header">
+           </div>
+           <div class="guru container">
+              <img class=" guru portrait" name="guruPortrait" src='../assets/astroHappyAnim.gif' />
+              <audio id="guruType" src="../sounds/type.mp3"></audio>
+              <p id="guruSays" class="guruSays noselect">
+                 Welcome back to my log! I keep useful code review notes for myself here!
+              </p>
+           </div>
+           <button href="#" class="js-close-modal" id="js-close-modal"></button>
+        </div>
+     </div>
       <div class="vertical" id="description">
+          <div id="left-wrapper">
          <div class="util" id="leftTopDesc">
             <!-- MUSIC -->
-            <div class="musicContainer" style="margin:0 auto; width:300px; margin-top: 1%;">
+            <div class="musicContainer" style="margin:auto; width:300px; margin-top: 1%;">
                <audio controls loop class="music">
                   <source src="../sounds/editorTranquility.mp3" type="audio/mpeg" />
                </audio>
             </div>
-            <div class="mdl-layout__drawer-button mdl-button--fab mdl-js-button mdl-js-ripple-effect" onclick="history.back()"><i class="material-icons" style="color:#fff;">arrow_back</i></div>
             <h3 id="titleMsg" style="font-size: 20px; text-align: center;">Defects you find will go here!<br /></h3>
+            <div class="mdl-layout__drawer-button mdl-button--fab mdl-js-button mdl-js-ripple-effect" onclick="history.back()"><i class="material-icons" style="color:#fff;">arrow_back</i></div>
+            
+           
          </div>
 
          <div class="util" id="leftTop">
@@ -189,7 +189,9 @@
             </div>
 
          </div>
+         
          <div class="mdl-tabs mdl-js-tabs" id="leftBottom">
+            <div id="horizontal_dragbar"></div>
             <div class="mdl-tabs__tab-bar  ">
                <button href="#" class="js-open-modal mdl-tabs__tab editorBtn editorBtnBigFont" id="guru">
                   Log
@@ -472,7 +474,11 @@
 
             </div>
          </div>
+        </div>
+        <div id="vertical_dragbar"></div>
       </div>
+      <div id="right-wrapper">
+        <div id="editors">
       <pre id="editor">
 //½½½½½ Welcome to the interaction manual of Code Reviewer 9000k! ½½½½½
 //This machine is used to observe and find defects on code, and classify them!
@@ -1014,7 +1020,8 @@ public class Primes{
          return totalFee;
          }
       </div>
-
+    </div>
+    </div>
       <!-- Accent-colored raised button with ripple -->
 
       <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
@@ -1024,27 +1031,7 @@ public class Primes{
          <div class="mdl-snackbar__text"></div>
          <button class="mdl-snackbar__action" type="button"></button>
       </div>
-      <!-- Modal -->
-      <!-- <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Your results!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-   </div>
+      
    </div>
    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
    <!-- <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script> -->

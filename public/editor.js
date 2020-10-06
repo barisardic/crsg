@@ -369,6 +369,97 @@ $(document).click(function (event) {
 
 document.addEventListener('DOMContentLoaded', lines, false);
 
+     /**
+ * Becomes true while dragging the vertical resize bar.
+ */
+var vertical_dragging = false;
+
+/**
+ * Becomes true while dragging the horizontal resize bar.
+ */
+var horizontal_dragging = false;
+
+$('#horizontal_dragbar' ).mousedown(function (e ) {
+    e.preventDefault();
+    vertical_dragging = true;
+
+    var leftTop = $('#leftTop' );
+    
+    // Top of the editor.
+    var top_offset = leftTop.offset().top;
+
+    // Handle mouse movement.
+    $(document ).mousemove(function (e ) {
+
+        // Setting the editor height.
+        var eheight = e.pageY - top_offset;
+        
+        // Below panel cannot be smaller than 20%.
+        eheight = Math.min(eheight, $(window).height() * 0.80);
+
+        // Set wrapper height
+        // Leaving 5px for the resize bar.
+        $('#leftTop' ).css('height', eheight - 5);
+        $('#description' ).css('height', eheight);
+        $('#leftBottom' ).css('height', $(window).height() - eheight - 20);
+
+        // Lower dragbar opacity while dragging.
+        $('#horizontal_dragbar' ).css('opacity', 0.15 );
+
+    } );
+
+} );
+$('#vertical_dragbar' ).mousedown(function (e ) {
+    e.preventDefault();
+    horizontal_dragging = true;
+
+    var leftTop = $('#leftTop' );
+    var left_offset = leftTop.offset().left;
+
+    // handle mouse movement
+    $(document ).mousemove(function (e ) {
+
+        // Editor width.
+        var ewidth = e.pageX - left_offset;
+
+        // Limit resize.
+        ewidth = Math.max(200, ewidth);
+        ewidth = Math.min($(window).width() - 160, ewidth);
+
+        // Resizing.
+        $('#description' ).css('width', ewidth);
+        $('#left-wrapper').css('width', ewidth - 5);
+        $('#editors').css('width', $('#page-wrapper').width() - ewidth);
+        $('#right-wrapper').css('width', $('#page-wrapper').width() - ewidth);
+
+        // Lower dragbar opacity while dragging.
+        $('#vertical_dragbar' ).css('opacity', 0.15 );
+
+    } );
+
+} );
+window.onresize = () => {
+    
+    $('#right-wrapper').css('width', $('#container').width() - $("#description").width());
+    $('#editor_2').css('width', $("#container").width() - $("#description").width());
+    $('#left-wrapper').css('width', $("#description").width() - 5);
+    
+}
+$(document ).mouseup(function (e ) {
+
+if (vertical_dragging || horizontal_dragging) {
+    var editor_1 = $('#leftTop' );
+    $('#horizontal_dragbar' ).css('opacity', 1 );
+    $('#vertical_dragbar' ).css('opacity', 1 );
+    $(document ).unbind('mousemove' );
+
+    // Editors don't adjust itself without these functions.
+     editor.resize();
+    
+}
+
+} );
+
 function lines() {
     function getLines() {
         selectionRange = editor.getSelectionRange();

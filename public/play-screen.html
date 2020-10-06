@@ -1,0 +1,497 @@
+<!DOCTYPE html lang="en">
+
+<head>
+   <link rel="icon" href="../assets/cursor1.png">
+   <link rel="stylesheet" href="guru.css" />
+   <link rel="stylesheet" href="play-screen.css" />
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="stylesheet" href="material-custom.css" />
+   <script src="material-custom.js"></script>
+   <!-- Material Design icon font -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+   </script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+   </script>
+    <script src="timeme.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+   <title>Play Code Review Serious Game by Bilsen</title>
+   <!-- <link rel="stylesheet" href="editor.css" /> -->
+   <style type="text/css" media="screen">
+      /* width */
+      ::-webkit-scrollbar {
+         width: 10px;
+      }
+      body {
+    margin: 0px;
+}
+      /* Track */
+      ::-webkit-scrollbar-track {
+         background: #f1f1f1;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+         background: #888;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+         background: #555;
+      }
+      #horizontal_dragbar {
+    background-color: #662277;
+    width: 100%;
+    height: 5px;
+    cursor: row-resize;
+    opacity: 1;
+}
+#vertical_dragbar {
+    background-color: #007700;
+    width: 5px;
+    cursor: col-resize;
+    opacity: 1;
+    height: 97vh;
+}
+      #right-wrapper {
+        width: 50vw;
+    }
+    
+    #left-wrapper {
+        width: 50%;
+    display: flex;
+    flex-direction: row;
+    /* overflow: auto; */
+    }
+    #left-inner {
+    background-color: #cccccc;
+    border-bottom: 1px solid #222222;
+    width: calc(100% - 5px);
+    z-index: 0;
+}
+#page-wrapper {
+    width: 100%;
+    height: 97vh;
+    display: flex;
+    flex-direction: row;
+    background-color: aqua
+}
+#leftTop {
+    height: 36vh;
+    overflow-x: auto;
+}
+#leftBottom {
+    /* width: 100%; */
+    height: 60vh;
+    background-color: azure;
+    
+    z-index: 0;
+    padding-left: 10px;
+    
+}
+#editors {
+    height: 92vh;
+    z-index: 0;
+    width: 100%;
+    overflow-x: auto;
+}
+   </style>
+</head>
+<body>
+    <div id="page-wrapper">
+        <div id="left-wrapper">
+            <div id="left-inner">
+                <div id="leftTop">
+
+                </div>
+                <div id="horizontal_dragbar"></div>
+                <div class="mdl-tabs mdl-js-tabs" id="leftBottom">
+                    <div class="mdl-tabs__tab-bar  ">
+                       <button href="#" class="js-open-modal mdl-tabs__tab editorBtn editorBtnBigFont" id="guru">
+                          Log
+                       </button>
+                       <div class="divider"> </div>
+                       <button class=" mdl-tabs__tab material-icons editorBtn editorBtnBigFont funcButn" id="arrow_resizer">
+                          keyboard_arrow_up
+                       </button>
+                       <div class="divider"> </div>
+                       <button class="mdl-tabs__tab editorBtn editorBtnBigFont funcButn" id="hover">
+                          +
+                       </button>
+                    </div>
+                    <div class="mdl-tabs__tab-bar">
+                       
+                          <button class="mdl-tabs__tab  mdl-js-ripple-effect editorBtn funcButn" id="submitBtn">
+                             Submit
+                          </button>
+                          <div class="divider"></div>
+                          <a href="#narrative-panel" class="mdl-tabs__tab tabBtn is-active descTab" id="dTab">Description</a>
+                          <a href="#description-panel" class="mdl-tabs__tab tabBtn guideTab">Guide</a>
+                          <a href="#checkist-panel" class="mdl-tabs__tab tabBtn checkTab">Checklist</a>
+                          <button class="mdl-tabs__tab  mdl-js-ripple-effect editorBtn funcButn" id="hintBtn">
+                             Hint
+                          </button>
+                          <div class="divider"></div>
+                          <button class="mdl-tabs__tab  mdl-js-ripple-effect editorBtn funcButn" id="answersBtn">
+                             See Answers
+                          </button>
+                       
+                    </div>
+                    <div class="mdl-tabs__panel is-active" id="narrative-panel">
+                       <ul id="narrativeText1">
+                          <p>Welcome to the CRSG, this is a tutorial level to make sure you know how to play. You can
+                             start right away
+                             by giving a quick glance to the <strong> GUIDE</strong>. Then you can review the code.</p>
+                          <p><strong> When you have found a defect, select the line(s) it is in. Then press the add button
+                                in the
+                                right corner below.
+                                It will be added to your defect list, from there you can select the reason for the
+                                defect. </strong></p>
+                          <p> Remember to make use of your <strong>checklist</strong> and <strong>guide</strong>. If you
+                             are not sure
+                             about the
+                             type of defect that you have found or how to select it, you should refer
+                             back to the guide.
+                             -Bilsen Team </p>
+        
+                       </ul>
+                       <ul id="narrativeText2">
+                          <p>This level will be your first real taste of the game. This level consists of a simple java
+                             class
+                             with code smells and even defects. Go and find them! As always select the error reasons
+                             carefully and
+                             reasonably in order to
+                             get more points.
+                          </p>
+        
+                       </ul>
+                       <ul id="narrativeText3">
+                          <p>Things are getting more serious. In this level you are reviewing a very simple arithmetic
+                             operation
+                             implemented on
+                             arrays however in order to get a high score you need to pay close attention to the
+                             operations performed
+                             and their
+                             validity.
+                          </p>
+        
+                       </ul>
+                       <ul id="narrativeText4">
+                          <p> <strong>Congratulations for making it this far! </strong>
+                             You are now dealing with a program performing matrix operations. While working with matrices
+                             things can
+                             always
+                             go wrong and defect can hide under your nose for a long time. <strong> So be careful.
+                             </strong>
+                          </p>
+        
+                       </ul>
+                       <ul id="narrativeText5">
+                          <p>Last level of the experiment is <strong>HERE</strong> and about prime numbers!! </p>
+                          <p>
+                             PS: <strong>If a line of code is missing you should select the nearest encapsulating object
+                                structure, eg
+                                the nearest curly brackets, for example if a return statement is
+                                missing inside an "if" statement you should select the whole if statement. The reason of
+                                the defect for
+                                such cases should be "Data and resource manipulation"</strong>
+                          </p>
+        
+                       </ul>
+                    </div>
+                    <div class="mdl-tabs__panel" id="description-panel">
+                       <img src="assets/defects picture.png" style="width: 80%; height: auto; margin-left:15%; " />
+                       <ul style="font-size: large">
+                        <table>
+                            <tbody>
+                               <tr>
+                                  <td><strong>False Positives</strong><br> 
+                                    Instances where you think you have found a defect when there isn't any are false 
+                                    positives. False positives are unwanted in the code review process. You should
+                                    double check your defect list before submitting to avoid false positives.</td>
+          
+                               </tr>
+                               <tr>
+                                  <td><h2 align="center"  style="color: #799dff;" title="These type of defects increase maintanance effort and decrease understandibility of code.">
+                                    Evolvability Defects</h2></td>
+                               </tr>
+                               <tr>
+                                  <td><strong class="SA">Semantic duplication</strong><br>
+                                    There are two sections in the code that are not the same but they perform the same 
+                                    task.</td>
+          
+                               </tr>
+                               <tr>
+                                  <td><strong class="SA">Semantic dead code</strong><br>
+                                    A piece of code that the program executes which does
+                                    not perform any meaningful task.</td>
+          
+                               </tr>
+                               <tr>
+                                  <td><strong class="Organization">Duplication</strong><br>
+                                    The exact replica of this code exists in the project.</td>
+          
+                               </tr>
+                               <tr>
+                                  <td><strong class="Organization">Consistency</strong><br>
+                                    When something is achieveable with multiple ways or styles,
+                                    you should
+                                    select one of them and use only that for consistency. For example if you are naming your
+                                    variables as
+                                    camel case, you should not change it arbitrarily. </td>
+                               </tr>
+                               <tr>
+                                  <td><strong class="Organization">Dead Code</strong><br>
+                                    A piece of code in the program which is never executed.</li>
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td><strong class="VR">Bracket</strong><br>
+                                    Unnecessary or inconsistent usage of brackets. </td>
+                               </tr>
+                               <tr>
+                                  <td><strong class="VR">Indentation</strong><br>
+                                    Indentation of a certain code piece is not compliant with the
+                                    rest of
+                                    code.</td>
+                               </tr>
+                               <tr>
+                                  <td><strong class="VR">Blank line</strong><br>
+                                    Empty lines usually indicate a separation of
+                                    functionality thus they
+                                    are commonly founded in places where single responsibility principle is violated.</td>
+                               </tr>
+                               <tr>
+                                  <td><strong class="VR">Long line</strong><br>
+                                    Unnaturally long lines of code makes programs harder to read
+                                    and debug,
+                                    they might also make you miss code reuse opportunities.</td>
+                               </tr>
+                               <tr>
+                                <td><strong class="Textual">Naming</strong><br>
+                                    Inconsistent or irrelevant naming.</td>
+                               </tr>
+                               <tr>
+                                <td><strong class="Textual">Comments</strong><br>
+                                    Comments that are completely unnecessary or wrong. </td>
+                               </tr>
+                               <tr>
+                                <td><strong class="SbL">Immutable</strong><br>
+                                    An immutable object is an object that can not be changed once
+                                    its created.</td>
+                             </tr>
+                             <tr>
+                                <td><strong class="SbL">Void Parameter</strong><br>
+                                    Null never should be a parameter to an object since it
+                                    does not
+                                    contribute to anything. The right way is to make 2 versions of the method one with the
+                                    object parameter
+                                    and the second with no parameters.</td>
+                             </tr>
+                             <tr>
+                                <td><strong class="SbL">Element Type</strong><br>
+                                    Suboptimal usage of element (variable) type assignments.</td>
+                             </tr>
+                             <tr>
+                                <td><h2 align="center" style="color: #799dff;" title="These type of defects prevent the code from working correctly.">
+                                    Functional Defects</h2></td>
+                             </tr>
+                             <tr>
+                                <td><strong class="Interface">Function Call</strong><br>
+                                    Improper or unnecessary function call, we should extend
+                                    this to include
+                                    middle man functions or multi responsibility methods.</td>
+                             </tr>
+                             <tr>
+                                <td><strong class="Interface">Parameter</strong><br>
+                                    Too many or unnecessary parameters, wrong choice of parameters,
+                                    perhaps
+                                    even null parameters.</td>
+                             </tr>
+                             <tr>
+                                <td><strong class="Resource">Variable initialization</strong><br>
+                                    Unnecessary dummy initializations, maybe some
+                                    variable should
+                                    have been declared as final or vica versa. </td>
+                             </tr>
+                             <tr>
+                                <td><strong class="Resource">Memory management</strong><br>
+                                    Very common in some languages, not so common in others.
+                                    Very hard to observe in languages where manual memory allocation is not allowed.</td>
+                             </tr>
+                             <tr>
+                                <td><strong class="Resource">Data and Resource Manipulation</strong><br>
+                                    Defects that are due to mistakes made with 
+                                    data, variables, or other resources' initialization, manipulation, and release. Such as 
+                                    incorrect/suboptimal variable initializations and forgetting to release memory space after use.</td>
+                             </tr>
+                             <tr>
+                                <td><strong class="Logic">Compare</strong><br>
+                                    Any errors made while utilizing "&lt;",”>””=” type of operators
+                                    are of this
+                                    type.</td>
+                             </tr>
+                             <tr>
+                                <td><strong class="Logic">Compute</strong><br>
+                                    These are the errors which are mathematics related rather than
+                                    programming.</td>
+                             </tr>
+                             <tr>
+                                <td><strong class="Logic">Algorithm/Performance</strong><br>
+                                    Obvious design choices that makes the program
+                                    “significantly”
+                                    inefficient memory or speed wise.</td>
+                             </tr>
+                            </tbody>
+                         </table>
+                       </ul>
+                    </div>
+                    <div class="mdl-tabs__panel" style="overflow-x:auto;" id="checkist-panel">
+        
+                       <table>
+                          <tbody>
+                             <tr>
+                                <td>1) Check line lengths, indentation and parentheses</td>
+                             </tr>
+                             <tr>
+                                <td>2) Trace names for consistency and meaning/relevance</td>
+                             </tr>
+                             <tr>
+                                <td>3) Check for the use of magic numbers</td>
+                             </tr>
+                             <tr>
+                                <td>4) Check classes and functions for length and clarity</td>
+                             </tr>
+                             <tr>
+                                <td>5) Trace functional modules for functional exclusivity<br>(modules should not have side effects)</td>
+                             </tr>
+                             <tr>
+                                <td>6) Check for literal and semantic duplications</td>
+                             </tr>
+                             <tr>
+                                <td>6) Check for literal and semantic duplications</td>
+                             </tr>
+                             <tr>
+                                <td>7) Check code for documentations and comments</td>
+                             </tr>
+                             <tr>
+                                <td>8) Check for dangling memory</td>
+                             </tr>
+                             <tr>
+                                <td>9) Check computations for correctness</td>
+                             </tr>
+                             <tr>
+                                <td>10) Check for redundant performance sinks<br>(Empty catch cases, dead loops, null returns etc.)</td>
+                             </tr>
+                          </tbody>
+                       </table>
+        
+                    </div>
+                 </div>
+            </div>
+            <div id="vertical_dragbar"></div>
+        </div>
+        <div id="right-wrapper">
+            <div id="editors"></div>
+        </div>
+    </div>
+
+ <script>
+     /**
+ * Becomes true while dragging the vertical resize bar.
+ */
+var vertical_dragging = false;
+
+/**
+ * Becomes true while dragging the horizontal resize bar.
+ */
+var horizontal_dragging = false;
+
+$('#horizontal_dragbar' ).mousedown(function (e ) {
+    e.preventDefault();
+    vertical_dragging = true;
+
+    var leftTop = $('#leftTop' );
+    
+    // Top of the editor.
+    var top_offset = leftTop.offset().top;
+
+    // Handle mouse movement.
+    $(document ).mousemove(function (e ) {
+
+        // Setting the editor height.
+        var eheight = e.pageY - top_offset;
+        
+        // Below panel cannot be smaller than 20%.
+        eheight = Math.min(eheight, $(window).height() * 0.80);
+
+        // Set wrapper height
+        // Leaving 5px for the resize bar.
+        $('#leftTop' ).css('height', eheight - 5);
+        $('#left-wrapper' ).css('height', eheight);
+        $('#leftBottom' ).css('height', $(window).height() - eheight - 20);
+
+        // Lower dragbar opacity while dragging.
+        $('#horizontal_dragbar' ).css('opacity', 0.15 );
+
+    } );
+
+} );
+$('#vertical_dragbar' ).mousedown(function (e ) {
+    e.preventDefault();
+    horizontal_dragging = true;
+
+    var leftTop = $('#leftTop' );
+    var left_offset = leftTop.offset().left;
+
+    // handle mouse movement
+    $(document ).mousemove(function (e ) {
+
+        // Editor width.
+        var ewidth = e.pageX - left_offset;
+
+        // Limit resize.
+        ewidth = Math.max(200, ewidth);
+        ewidth = Math.min($(window).width() - 160, ewidth);
+
+        // Resizing.
+        $('#left-wrapper' ).css('width', ewidth);
+        $('#left-inner').css('width', ewidth - 5);
+        $('#editors').css('width', $('#page-wrapper').width() - ewidth);
+        $('#right-wrapper').css('width', $('#page-wrapper').width() - ewidth);
+
+        // Lower dragbar opacity while dragging.
+        $('#vertical_dragbar' ).css('opacity', 0.15 );
+
+    } );
+
+} );
+window.onresize = () => {
+    
+    $('#right-wrapper').css('width', $('#page-wrapper').width() - $("#editor_bars_wrapper").width());
+    $('#editor_2').css('width', $("#page-wrapper").width() - $("#editor_bars_wrapper").width());
+    $('#editor_1_wrap').css('width', $("#editor_bars_wrapper").width() - 5);
+    
+}
+$(document ).mouseup(function (e ) {
+
+if (vertical_dragging || horizontal_dragging) {
+    var editor_1 = $('#editor_1' );
+    $('#horizontal_dragbar' ).css('opacity', 1 );
+    $('#vertical_dragbar' ).css('opacity', 1 );
+    $(document ).unbind('mousemove' );
+
+    // Editors don't adjust itself without these functions.
+    /* editor.resize();
+    editor2.resize(); */
+}
+
+} );
+
+ </script>   
+</body>

@@ -3,94 +3,75 @@
 *:after {
   box-sizing: border-box;
 }
+
 body {
   background: #282a36;
   position: relative;
-
-  /* border: 5px solid rgb(9, 226, 20);  */
-  
-}
-#container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    /*  border: 5px solid rgb(9, 226, 20);   */
-    
-}
-#horizontal_dragbar {
-    background-color: #662277;
-    width: 100%;
-    height: 5px;
-    cursor: row-resize;
-    opacity: 1;
-}
-#vertical_dragbar {
-    background-color: #007700;
-    width: 5px;
-    cursor: col-resize;
-    opacity: 1;
-    height: 97vh;
-}
-#right-wrapper {
-    width: 50vw;
 }
 
-#left-wrapper {
-    width: calc(100% - 5px);
-    z-index: 0;
-     /* border: 5px solid rgb(119, 226, 20);  */
-}
 #editor {
+  float: right;
   display: none;
-  height: 92vh;
-  z-index: 0;
-  width: 100%;
-  overflow-x: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
 }
 
 #editor2 {
-    display: none;
-    height: 92vh;
-    z-index: 0;
-    width: 100%;
-    overflow-x: auto;
+  float: right;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
   /* border: 5px solid rgb(226, 9, 20); */
 }
 
 #editor3 {
-    display: none;
-    height: 92vh;
-    z-index: 0;
-    width: 100%;
-    overflow-x: auto;
+  float: right;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
   /* border: 5px solid rgb(226, 9, 20); */
 }
 
 #editor4 {
-    display: none;
-    height: 92vh;
-    z-index: 0;
-    width: 100%;
-    overflow-x: auto;
+  float: right;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
   /* border: 5px solid rgb(226, 9, 20); */
 }
 
 #editor5 {
-    display: none;
-    height: 92vh;
-    z-index: 0;
-    width: 100%;
-    overflow-x: auto;
+  float: right;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
   /* border: 5px solid rgb(226, 9, 20); */
 }
 
 #editor6 {
-    display: none;
-    height: 92vh;
-    z-index: 0;
-    width: 100%;
-    overflow-x: auto;
+  display: none;
+  float: right;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
   /*
     border: 5px solid rgb(226, 9, 20);
     */
@@ -141,10 +122,14 @@ i.icon-black {
 }
 
 #description {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    /* overflow: auto; */
+  position: absolute;
+  /*
+  border: 5px solid rgb(52, 153, 91);
+  */
+  top: 0;
+  right: 50%;
+  bottom: 0;
+  left: 0;
 }
 
 #leftTopDesc {
@@ -152,39 +137,9 @@ i.icon-black {
   border: 5px solid #E18728;
   */
   bottom: 0px;
-  height: 5%;
-  overflow: none;
-  display: flex;
-  flex-direction: row;
-  /* border: 5px solid rgb(199, 2, 11); */
-}
-
-#leftTop {
-  background: url('../assets/pcb2.png') center / cover;
-  color: white;
-/*   border: solid 0.1vw #626262;
-  border-radius: 1vw; */
-  height: 40%;
-  width: 100%;
+  height: 10%;
   overflow: auto;
-  float: left;
-  
-/*   border: 5px solid rgb(199, 202, 11); */
-  
 }
-
-#leftBottom {
-  background-color: #282a36;
-/*   border: solid 0.1vw #626262;
-  border-radius: 1vw; */
-  color: white;
-  /* border: 5px solid #E18728; */
-  bottom: 0px;
-  height: 50%;
-  overflow-x: auto;
-  overflow-y: auto;
-}
-
 .vertical {
   display: flex;
   flex-direction: column;
@@ -193,7 +148,6 @@ i.icon-black {
 .horizontal {
   display: flex;
   flex-direction: row;
-  height: 100%;
   width: 100%;
 }
 
@@ -481,7 +435,7 @@ tr:nth-child(even) {
 }
 
 #overlay {
-  position: absolute;
+  position: relative;
   /* Sit on top of the page content */
   display: none;
   /* Hidden by default */
