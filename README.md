@@ -12,4 +12,5 @@ CRSG: a serious game for teaching code review
 https://dl.acm.org/doi/10.1145/3368089.3417932
 
 Click below for a gameplay demo!
+
 [![](http://img.youtube.com/vi/FLnr3p4bhOg/0.jpg)](http://www.youtube.com/watch?v=FLnr3p4bhOg "")
