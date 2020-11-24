@@ -12,9 +12,8 @@ function newUser(){
     firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).then(
         (user)=>{
        // here you can use either the returned user object or       firebase.auth().currentUser. I will use the returned user object
-          if(user){
-            
-          }
+       firebase.auth().currentUser.updateEmail(newUserEmail)
+       console.log(firebase.auth().currentUser.email)
       })
       .catch(function(error) {
         // Handle Errors here.
@@ -49,6 +48,17 @@ function loginUser(){
 // user state changed
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
+      if(user.emailVerified == false){
+        var user = firebase.auth().currentUser;
+        user.sendEmailVerification().catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert("Unsuccessful. " +errorMessage)
+          
+          // ...
+        }); 
+      }
     // User is signed in.
     //alert("hello");
     // ...

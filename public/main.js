@@ -39,8 +39,12 @@ document.getElementById("playButton5").addEventListener("click", playPage, false
 document.getElementById("PostQuizButton").addEventListener("click",playPostQuiz,false);
 //document.getElementById("playButton6").addEventListener("click",playPage,false);
 function playTutorial(){
-  localStorage.setItem('selected', 0);
-  window.location.href = "/tutorial.html";
+  if(firebase.auth().currentUser.emailVerified == false){alert("You need to verify your email!")}
+  else{
+    localStorage.setItem('selected', 0);
+    window.location.href = "/tutorial.html";
+  }
+  
 }
 function playPreQuiz(){
     // selectedLevel = 0;
