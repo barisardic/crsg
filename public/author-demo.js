@@ -514,7 +514,7 @@ document.getElementById("solutionConfirm").onclick = () => {
         let subButton = document.getElementById("submit-btn");
         subButton.innerText = "Go Back";
         subButton.onclick = () => {
-            window.location.href = "/game-mode-select.html";
+            window.location.href = "/main.html";
         };
     });
 
@@ -980,7 +980,7 @@ function completeGame() {
     let subButton = document.getElementById("submit-btn");
     subButton.innerText = "Go Back";
     subButton.onclick = () => {
-        window.location.href = "/game-mode-select.html";
+        window.location.href = "/main.html";
     };
 
     // Disable edit.

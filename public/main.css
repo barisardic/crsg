@@ -237,44 +237,32 @@ p {
     text-align: center;
 }
 
-.stat1Col {
-    transform: translateX(-15%);
-}
+
 .stat2 {
     transform: translateY(-340%);
     text-align: center;
 }
-.stat2Col {
-    transform: translateX(-30%);
-}
+
 .stat3 {
     transform: translateY(-315%);
     text-align: center;
 }
-.stat3Col {
-    transform: translateX(-65%);
-}
+
 .stat4 {
     transform: translateY(-605%);
     text-align: center;
 }
-.stat4Col {
-    transform: translateX(-90%);
-}
+
 .stat5 {
     transform: translateY(-405%);
     text-align: center;
 }
-.stat5Col {
-    transform: translateX(-155%);
-}
+
 .postq {
     transform: translateY(210%);
     text-align: center;
 }
-.postqCol {
-    transform: translateX(-645%);
-}
+
 /*prequiz*/
 .station.prequiz {
   top: 0%;
