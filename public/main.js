@@ -67,7 +67,7 @@ function playPage() {
 function authorPage0() {
     //alert(this.id);
     var selectedLevel = 0
-    localStorage.setItem('selected', selectedLevel);
+    localStorage.setItem('selectedLevel', selectedLevel);
     // ...
     
     //TODO goto new page after this and load the level:D
@@ -76,7 +76,7 @@ function authorPage0() {
   function authorPage1() {
     //alert(this.id);
     var selectedLevel = 1
-    localStorage.setItem('selected', selectedLevel);
+    localStorage.setItem('selectedLevel', selectedLevel);
     // ...
     
     //TODO goto new page after this and load the level:D

@@ -142,7 +142,7 @@ export class CodeError {
      * @param {number} commentScore 
      */
     calculateScore( reviewCounter, time_diff, scoreTimeTreshold, commentScore) {
-        let substractPercent = ((reviewCounter - 2) * 20);
+        let substractPercent = ((reviewCounter - 2) * 10);
         if(this.showHint) {
             substractPercent += 10;
         }

@@ -183,8 +183,8 @@ const commentScore = 100 / errors.length;
 /**
  * Number of minutes without time penalty.
  */
-var scoreTimeTreshold = 2 * errors.length;
-
+//var scoreTimeTreshold = 2 * errors.length;
+var scoreTimeTreshold = 10;
 /**
  * HTML element in which review comments are displayed.
  */
@@ -242,6 +242,7 @@ function setupEditor(editorName, readOnly, theme) {
 
     // Setting the theme.
     newEditor.setTheme(theme);
+    newEditor.setFontSize(14);
     // Setting the read-only property.
     newEditor.setReadOnly(readOnly);
 
@@ -482,6 +483,11 @@ errors.forEach(err => {
 });
 
 document.getElementById("submit-btn").onclick = () => {
+    console.log("Tries :"+String(reviewCounter-2))
+    if(reviewCounter-2 >= 10){
+        alert("You have used all of your attempts")
+        return;
+    }
     let runSource = editor2.getSession().getValue();
     
     if(runSource.includes("System")) {
@@ -601,7 +607,7 @@ function runCode(source) {
         
         // Waits 3 seconds to get the result. (If token is used too early, the code will not be run.)
         setTimeout(getResult, 3000);
-        
+        let timeOutCounter = 0
         function getResult() {
             
             // Use the response token to adjust the get request JSON.
@@ -614,6 +620,11 @@ function runCode(source) {
                 // If the code isn't run yet, GET again after 1 second.
                 if(finalResponse.status.id == 1 || finalResponse.status.id == 2) {
                     console.log("TRYING AGAIN");
+                    timeOutCounter = timeOutCounter + 1
+                    if(timeOutCounter>10){
+                        alert("Judge Api response is stuck in queue")
+                        location.reload();
+                    }
                     setTimeout(getResult, 1000);
                 }
                 else {
@@ -878,6 +889,34 @@ function acceptChanges() {
         levelCompleted: levelCompleted,
         shownSolution: persistData.showSolutions,
     });
+    var relativeScore = Math.round(score/10)
+    var previousHighScoreLevelToRead = "level" + String(Number(localStorage.getItem('selectedLevel'))+3)
+    var previousHighScore = 0
+    var highScoreRef = database.ref('users/' + userId + "/scores/" + previousHighScoreLevelToRead);
+    highScoreRef.once('value', function (snapshot) {
+        previousHighScore = snapshot.val();
+    });
+    //update the high score if new score is higher
+
+    if (relativeScore > previousHighScore) {
+        var userScoreRef = database.ref('users/' + userId + "/scores");
+        userScoreRef.child(previousHighScoreLevelToRead).set(relativeScore);
+
+        userScoreRef.once('value', function (snapshot) {
+            var newHighScoreSumLocal = 0;
+            snapshot.forEach(function (childSnapshot) {
+                var levelNo = childSnapshot.key;
+                var levelScore = childSnapshot.val();
+                newHighScoreSumLocal = newHighScoreSumLocal + levelScore;
+                //alert(levelNo+"-"+levelScore);
+
+                // ...
+            });
+            var updateSum = database.ref('users/' + userId);
+            updateSum.child("highScore").set(newHighScoreSumLocal);
+        });
+
+    }
 }
 
 /**
@@ -923,12 +962,12 @@ var timeUpdate = () => {
     mx + ":" + s;
 
     // Calculate Penalty.
-    let penalty = (reviewCounter - 2) * 20;
+    let penalty = (reviewCounter - 2) * 10;
     if(msg[0] != 'R') {
         penalty += m + 1;
     }
     // Update penalty display. 
-    document.getElementById('penaltyInfo').innerText = Math.min(100, penalty);
+    //document.getElementById('penaltyInfo').innerText = Math.min(100, penalty);
     
     setTimeout(timeUpdate, 1000);
 

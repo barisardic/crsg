@@ -160,7 +160,8 @@ i.icon-black {
 }
 
 #leftTop {
-  background: url('../assets/pcb2.png') center / cover;
+  /* background: url('../assets/pcb2.png') center / cover; */
+  background-color: #282a36;
   color: white;
 /*   border: solid 0.1vw #626262;
   border-radius: 1vw; */

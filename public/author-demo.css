@@ -8,7 +8,7 @@ body {
 #title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    background-color: #47adc9;
+    background-color: #64144c;
     margin: 0;
     padding: 5px;
 }
@@ -82,7 +82,7 @@ body {
 #console {
     /* width: 100%; */
     height: 60vh;
-    background-color: azure;
+    background-color: #f9f7ff;
     
     z-index: 0;
     padding-left: 10px;
@@ -128,6 +128,7 @@ body {
 #submit-btn {
     width: 100%;
     height: 5vh;
+    background-color: #64144c;
     
 }
 #loader {
@@ -148,5 +149,5 @@ body {
     text-align: center;
     margin-bottom: 0px;
     padding-bottom: 0px;
-    background-color: cadetblue;
+    background-color: #64144c;
 }

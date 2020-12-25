@@ -58,10 +58,10 @@
     <header>
         <div class="mdl-layout__drawer-button mdl-button--fab mdl-js-button mdl-js-ripple-effect" onclick="window.location.href='main.html';">
             <i class="material-icons" style="color:#fff; ">arrow_back</i></div>
-        <h4 id="title">CRSG AUTHOR GAME</h4>
+        <h4 id="title" style="color:#fff; " >CRSG AUTHOR MODE</h4>
         <div style="margin-left:5%; " id="titles"><p id="old_title">Reviewed Commit</p><p id="new_title">New Commit</p></div>
-        <p id="timers"><strong><span id = "timeInfo"></span>
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Points Lost = <span id = "penaltyInfo">0</span>%
+        <p id="timers" style="color:#fff; "><strong><span id = "timeInfo"></span>
+            <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Points Lost = <span id = "penaltyInfo">0</span>% -->
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Score = <span id = "scoreInfo">0</span>%
         </strong></p>
     </header>
@@ -95,7 +95,7 @@
                                 <div id="guide-text">
                                     <h3>Welcome To CRSG Author Module</h3>
                                     <h5><b>Game Description</b></h5>
-                                    <p>You wrote a module for a project and opened a pull request. However, there were some problems with your code. CRSG reviewed your code and gave you some feedbacks. You must solve the problems and commit again until you solve all the problems.</p>
+                                    <p>You wrote a module for relay system and opened a pull request. However, there were some problems with your code. Your code was reviewed and some reviewer comments are provided. You must solve the problems and commit again until you solve all the problems.</p>
                                     <h5><b>Game Components</b></h5>
                                     <p><b>1) Editors</b></p>
                                     <p>Left-hand side editor shows your initial code. It is read-only.</p>
@@ -106,13 +106,13 @@
                                     <p><b>2) Reviews</b></p>
                                     <p>You can see review comments in this tab. Beware! Some reviews may be incorrect because reviewers can make mistakes as well. You should reject a review if you think it doesn't make sense. You can click the show hint button to see a hint about a review comment as well.</p>
                                     <p><b>3) Error Output</b></p>
-                                    <p>If your code has a compile-time or runtime error, it is shown in the error output.</p>
+                                    <p>If your code has a compile-time or runtime error, it is shown in the error output tab.</p>
                                     <p><b>4) Show Solutions</b></p>
                                     <p>You can click show solutions to see the solutions. Note that you will not get any more points after you see the solutions.</p>
                                     <p><b>5) Score System</b></p>
-                                    <p>Each review comment's worth are equal. You lose 20% score from each unsolved review comment when you commit changes.</p>
-                                    <p>You have 2 minutes for each review comment. (You can allocate your total time differently if you wish). If you run out of time, you will lose 1% of score per minute for reamining review comments.</p>
-                                    <p>The topmost penalty indicator shows much penalty you will get if you commit now.</p>
+                                    <p>Each review comment's worth are equal. You lose 10% of the points from each unsolved review comment when you commit changes.</p>
+                                    <p>You have 2 minutes for each review comment. (You can allocate your total time differently if you wish). If you run out of time, you will lose 1% of score per minute for remaining review comments.</p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="mdl-tabs__panel" id="tab1">
@@ -132,7 +132,7 @@
         <div id="right_editor_wrap">
             <div id="editor_2">
             </div>
-            <button id="submit-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Commit Changes</button>
+            <button id="submit-btn" style="color:#fff; " class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Commit Changes</button>
         </div>
 
     </div>

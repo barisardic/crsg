@@ -13,6 +13,9 @@ if (levelChosen == 1) {
     editor.setTheme("ace/theme/dracula2");
     editor.session.setMode("ace/mode/java");
     editor.setReadOnly(true);
+    if (localStorage.getItem("timesPlayed1") === null) {
+        localStorage.setItem('timesPlayed1', 0);
+      }
 } else if (levelChosen == 2) {
     document.getElementById("editor2").style.display = "block";
     document.getElementById("narrativeText2").style.display = "block";
@@ -21,6 +24,9 @@ if (levelChosen == 1) {
     editor.setTheme("ace/theme/dracula2");
     editor.session.setMode("ace/mode/java");
     editor.setReadOnly(true);
+    if (localStorage.getItem("timesPlayed2") === null) {
+        localStorage.setItem('timesPlayed2', 0);
+      }
 } else if (levelChosen == 3) {
     document.getElementById("editor3").style.display = "block";
     document.getElementById("narrativeText3").style.display = "block";
@@ -29,6 +35,9 @@ if (levelChosen == 1) {
     editor.setTheme("ace/theme/dracula2");
     editor.session.setMode("ace/mode/java");
     editor.setReadOnly(true);
+    if (localStorage.getItem("timesPlayed3") === null) {
+        localStorage.setItem('timesPlayed3', 0);
+      }
 } else if (levelChosen == 4) {
     document.getElementById("editor4").style.display = "block";
     document.getElementById("narrativeText4").style.display = "block";
@@ -37,6 +46,9 @@ if (levelChosen == 1) {
     editor.setTheme("ace/theme/dracula2");
     editor.session.setMode("ace/mode/java");
     editor.setReadOnly(true);
+    if (localStorage.getItem("timesPlayed4") === null) {
+        localStorage.setItem('timesPlayed4', 0);
+      }
 } else if (levelChosen == 5) {
     document.getElementById("editor5").style.display = "block";
     document.getElementById("narrativeText5").style.display = "block";
@@ -45,6 +57,9 @@ if (levelChosen == 1) {
     editor.setTheme("ace/theme/dracula2");
     editor.session.setMode("ace/mode/java");
     editor.setReadOnly(true);
+    if (localStorage.getItem("timesPlayed5") === null) {
+        localStorage.setItem('timesPlayed5', 0);
+      }
 } else if (levelChosen == 6) {
     document.getElementById("editor6").style.display = "block";
     document.getElementById("narrativeText5").style.display = "block";
@@ -52,10 +67,12 @@ if (levelChosen == 1) {
     var code = document.querySelector("editor6");
     editor.setTheme("ace/theme/dracula2");
     editor.session.setMode("ace/mode/java");
-    ğ
     editor.setReadOnly(true);
+    if (localStorage.getItem("timesPlayed6") === null) {
+        localStorage.setItem('timesPlayed6', 0);
+      }
 }
-editor.setFontSize(18);
+editor.setFontSize(14);
 // if user saw answers to a level disable the submit button
 // first check if the asnwers to the level are seen or not in submission button listener
 
@@ -429,11 +446,12 @@ $('#vertical_dragbar' ).mousedown(function (e ) {
         // Resizing.
         $('#description' ).css('width', ewidth);
         $('#left-wrapper').css('width', ewidth - 5);
-        $('#editors').css('width', $('#page-wrapper').width() - ewidth);
-        $('#right-wrapper').css('width', $('#page-wrapper').width() - ewidth);
+        $('#editors').css('width', $('#container').width() - ewidth);
+        $('#right-wrapper').css('width', $('#container').width() - ewidth);
 
         // Lower dragbar opacity while dragging.
         $('#vertical_dragbar' ).css('opacity', 0.15 );
+        editor.resize()
 
     } );
 
@@ -478,6 +496,10 @@ function lines() {
 };
 var previousHighScore = 0;
 function submitSelection() {
+    if (Number(localStorage.getItem("timesPlayed"+String(levelChosen))) > 9){
+        alert("You have used all of your attempts")
+        return;    
+    }
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     var database = firebase.database();
@@ -538,6 +560,10 @@ function evaluateSelection(seen){
             });
 
         }
+        // for submission limit
+        var playerAttempts = localStorage.getItem("timesPlayed"+levelChosen)
+        playerAttempts = Number(playerAttempts)+1
+        localStorage.setItem('timesPlayed'+levelChosen, playerAttempts);
 
         noOfanswers = answers.length;
         maxScore = 3 * noOfanswers;

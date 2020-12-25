@@ -108,7 +108,7 @@ firebase.auth().onAuthStateChanged(function(user) {
               }
             }).then(function(){
             localStorage.setItem('selected', -1);
-            window.location.href = "/game-mode-select.html";
+            window.location.href = "/main.html";
             });   
             
             console.log("pos 2");
@@ -116,7 +116,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       }
       else{
         localStorage.setItem('selected', -1);
-        window.location.href = "/game-mode-select.html";
+        window.location.href = "/main.html";
       }
       /* localStorage.setItem('selected', -1);
       window.location.href = "/main.html"; */

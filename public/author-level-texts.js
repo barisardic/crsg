@@ -14,11 +14,11 @@ let level1Data = {};
  * Level 1's Error Datas (CodeErrors)
  */
 let level1ErrorDatas = [];
-level1ErrorDatas.push(new CodeError([11,42], "Classes cannot have classes inside them.", false, "Inner classes don't exist!",
+level1ErrorDatas.push(new CodeError([11,42], "Classes cannot have classes inside them.", false, "Do inner classes exist in Java?",
 "This review comment was a false positive."));
 
 level1ErrorDatas.push(new CodeError([60,69], "Adding multiple persons with the same ID shouldn't be possible", true,
-"Check whether or not ID already exists.",
+"Check whether or not ID already exists in the node.",
 "We should return false when a new person's ID is equal to a previously added one."));
 
 level1ErrorDatas.push(new CodeError([94, 107], "Returns null most of the time instead of name.", true,"Check returns carefully",
@@ -286,7 +286,7 @@ levelDatas.push( level1Data);
 let level2Data = {
     errorDatas: [
         new CodeError([56,62], "This crashes when the stack is empty.",
-            true, "Check if empty.", "You should use the isEmpty function to check if the stack is empty and if it is not empty, you should return -1."),
+            true, "Check if empty.", "Check if the stack is empty and if it is not empty, you should return -1."),
         new CodeError([81,87], "Data is lost when resizing.",
             true, "Are numbers automatically copied to a new arrary?",
             "You have to copy the values from the old stack to the new one. Otherwise, the resized array will be empty."),
