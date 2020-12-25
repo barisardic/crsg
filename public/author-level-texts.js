@@ -297,7 +297,7 @@ let level2Data = {
             "We should use top to iterate instead of array's length represents the maximum length of the stack."),
     ],
 
-    solutionHighlights: [[57,66],[89,91],[127,129]],
+    solutionHighlights: [[57,66],[89,92],[127,129]],
 
     code: `/**
 * An auto resizing Stack implemented with an Array
@@ -380,10 +380,9 @@ class StackArray {
     * @param newSize New size of the array.
     */
     private void resize(int newSize) {
-        int[] transferArray = new int[newSize];
+        int[] resizedArray = new int[newSize];
         
-        // This reference change might be nice in here
-        stackArray = transferArray;
+        stackArray = resizedArray;
         maxSize = newSize;
     }
     
@@ -438,7 +437,7 @@ class StackArray {
             }
             System.out.println("0");
             // Control Review Comment 2
-            StackArray myStackArray = new StackArray(10);
+            StackArray myStackArray = new StackArray(5);
             myStackArray.push(1);
             myStackArray.push(2);
             myStackArray.push(3);
@@ -460,6 +459,8 @@ class StackArray {
             System.out.println(myStackArray.pop() == 3);
             System.out.println(myStackArray.pop() == 2);
             System.out.println(myStackArray.pop() == 1);
+
+
             System.out.println("1");
             // Control Review Comment 4
             StackArray reverseStack = new StackArray(4);
@@ -559,14 +560,14 @@ class StackArray {
     * @param newSize New size of the array.
     */
     private void resize(int newSize) {
-        int[] transferArray = new int[newSize];
+        int[] resizedArray = new int[newSize];
         
-        for (int i = 0; i < transferArray.length; i++) {
-            transferArray[i] = stackArray[i];
+        int smallerSize = Math.min(newSize, stackArray.length);
+        for (int i = 0; i < smallerSize; i++) {
+            resizedArray[i] = stackArray[i];
         }
         
-        // This reference change might be nice in here
-        stackArray = transferArray;
+        stackArray = resizedArray;
         maxSize = newSize;
     }
     

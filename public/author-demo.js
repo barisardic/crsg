@@ -850,6 +850,7 @@ function acceptChanges() {
         }
         // Show show hint and reject buttons.
         else if (err.action === 'show') {
+            err.errorElement.firstChild.style.color = '#212529';
             err.errorElement.firstChild.nextSibling.style.display = 'block';
         }
     
