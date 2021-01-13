@@ -184,7 +184,7 @@ const commentScore = 100 / errors.length;
  * Number of minutes without time penalty.
  */
 //var scoreTimeTreshold = 2 * errors.length;
-var scoreTimeTreshold = 10;
+var scoreTimeTreshold = 12;
 /**
  * HTML element in which review comments are displayed.
  */
@@ -283,7 +283,7 @@ $('#horizontal_dragbar' ).mousedown(function (e ) {
         $('#editor_1' ).css('height', eheight - 5);
         $('#editor_1_wrap' ).css('height', eheight);
         $('#console' ).css('height', $(window).height() - eheight - 20);
-
+        $('#panels' ).css('height', $(window).height() - eheight - 70);
         // Lower dragbar opacity while dragging.
         $('#horizontal_dragbar' ).css('opacity', 0.15 );
 
@@ -625,7 +625,7 @@ function runCode(source) {
                         alert("Judge Api response is stuck in queue")
                         location.reload();
                     }
-                    setTimeout(getResult, 1000);
+                    setTimeout(getResult, 1500);
                 }
                 else {
 

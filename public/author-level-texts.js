@@ -384,6 +384,7 @@ class StackArray {
         
         stackArray = resizedArray;
         maxSize = newSize;
+        
     }
     
     /**

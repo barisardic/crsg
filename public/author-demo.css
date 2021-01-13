@@ -94,7 +94,7 @@ body {
   }
 
 #panels {
-    height: calc(100% - 50px);
+    height: 53.5vh;
     overflow-y: scroll;
 }
 #guide-text {
